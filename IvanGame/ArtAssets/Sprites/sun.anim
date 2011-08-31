@@ -1,0 +1,8 @@
+#Number of Frames 
+#ArtAssets/ milisec	Transparency
+#filename 	pause	r	g	b	xOffset	yOffset ( <n | c | r> <c=circle has offset, radius | r=rectangle has offset, width, height>, ... )
+NumFrames: 4
+sun1.bmp	20	0 0 255	0.0 0.0	( c 0.0 0.0 10.0 )
+sun2.bmp	20	0 0 255	0.0 0.0	( c 0.0 0.0 10.0 )
+sun3.bmp	20	0 0 255	0.0 0.0	( c 0.0 0.0 10.0 )
+sun4.bmp	20	0 0 255	0.0 0.0	( c 0.0 0.0 10.0 )
