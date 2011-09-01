@@ -67,7 +67,7 @@ namespace BodilyInfection
         /// <summary>
         /// Returns the current FPS of the game
         /// </summary>
-        UInt32 FPS { get { return currentFPS; } }
+        int FPS { get { return currentFPS; } }
         #endregion Properties
 
         #region Variables
@@ -76,9 +76,7 @@ namespace BodilyInfection
         /// <summary>
         /// \todo implement or get rid of these
         /// </summary>
-        UInt32 startclock;
-        UInt32 deltaclock;
-        UInt32 currentFPS;
+        int currentFPS;
         #endregion FPS calc
 
         int mCurrentLevel;/**< Current Level index. */
@@ -145,13 +143,21 @@ namespace BodilyInfection
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            #region Handle input
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            #endregion Handle input
+
+            CurrentLevel.Update();
+
+            #region FPS
+            currentFPS = 1/gameTime.ElapsedGameTime.Seconds;
+            #endregion FPS
 
             base.Update(gameTime);
+
         }
 
         /// <summary>
@@ -162,13 +168,24 @@ namespace BodilyInfection
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
+            CurrentLevel.DrawScene();
+            spriteBatch.End();
+            #region DrawFPS
+            if (ShowFPS)
+            {
+            }
+            #endregion DrawFPS
 
             base.Draw(gameTime);
         }
         #endregion Updating
 
         #region Methods
+        /// <summary>
+        /// Sets the current level.
+        /// </summary>
+        /// <param name="name"></param>
         void SetCurrentLevel(string name)
         {
             for (int i = 0, count = mLevels.Count; i < count; i++)
@@ -180,7 +197,7 @@ namespace BodilyInfection
                     return;
                 }
             }
-            Console.WriteLine(string.Format("Level {0} does not exist",name));
+            Console.WriteLine(string.Format("Level {0} does not exist", name));
         }
         #endregion Methods
     }
