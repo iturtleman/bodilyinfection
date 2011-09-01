@@ -5,15 +5,29 @@ using System.Text;
 
 namespace BodilyInfection
 {
+    /// <summary>
+    /// This class is tasked with keeping track of the
+    /// curent Animation's state.
+    /// </summary>
     class Actor
     {
         #region Properties
-        int frame { get; set; }
-        int currentAnimation { get; set; }
+        /// <summary>
+        /// The frame number.
+        /// </summary>
+        int Frame { get; set; }
+
+        /// <summary>
+        /// Index of the current loaded animation.
+        /// </summary>
+        int CurrentAnimation { get; set; }
         #endregion
 
         #region Variables
-        List<Animation> animations = new List<Animation>();
+        /// <summary>
+        /// List of all the Actor's animations.
+        /// </summary>
+        public List<Animation> animations = new List<Animation>();
         #endregion
 
         #region Constructor
