@@ -11,20 +11,95 @@ using Microsoft.Xna.Framework.Media;
 
 namespace BodilyInfection
 {
+    /// \todo move this somewhere else
+    public delegate void Behavior();
+
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class Game : Microsoft.Xna.Framework.Game
     {
+        #region Properties
+        /// <summary>
+        /// Decides whether or not to draw bounding boxes
+        /// </summary>
+        public bool ShowCollisions { get; set; }
+        /// <summary>
+        /// Decides whether or not to draw FPS
+        /// </summary>
+        public bool ShowFPS { get; set; }
+
+        /// <summary>
+        /// Gets or sets the current level being played.
+        /// </summary>
+        Level CurrentLevel
+        {
+            get
+            {
+                if (mCurrentLevel < mLevels.Count)
+                {
+                    return mLevels[mCurrentLevel];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the index of the current level being played.
+        /// </summary>
+        int LevelIndex
+        {
+            get
+            {
+                return mCurrentLevel;
+            }
+
+        }
+
+        /// <summary>
+        /// Gets the total count of levels.
+        /// </summary>
+        int LevelCount { get { return mLevels.Count; } }
+
+        /// <summary>
+        /// Returns the current FPS of the game
+        /// </summary>
+        UInt32 FPS { get { return currentFPS; } }
+        #endregion Properties
+
+        #region Variables
+
+        #region FPS calc
+        /// <summary>
+        /// \todo implement or get rid of these
+        /// </summary>
+        UInt32 startclock;
+        UInt32 deltaclock;
+        UInt32 currentFPS;
+        #endregion FPS calc
+
+        int mCurrentLevel;/**< Current Level index. */
+        List<Level> mLevels = new List<Level>();
+        Dictionary<string, Behavior> mLevelBehaviors = new Dictionary<string, Behavior>();
+        #endregion Variables
+
+        #region premade things
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        #endregion
 
-        public Game1()
+        #region Constructor
+        public Game()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
+        #endregion Constructor
 
+        #region Initialization
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -49,7 +124,9 @@ namespace BodilyInfection
 
             // TODO: use this.Content to load your game content here
         }
+        #endregion Initialization
 
+        #region Destruction
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// all content.
@@ -58,7 +135,9 @@ namespace BodilyInfection
         {
             // TODO: Unload any non ContentManager content here
         }
+        #endregion Destruction
 
+        #region Updating
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -87,5 +166,22 @@ namespace BodilyInfection
 
             base.Draw(gameTime);
         }
+        #endregion Updating
+
+        #region Methods
+        void SetCurrentLevel(string name)
+        {
+            for (int i = 0, count = mLevels.Count; i < count; i++)
+            {
+                if (mLevels[i].Name == name)
+                {
+                    mCurrentLevel = i;
+                    mLevels[mCurrentLevel].Load();
+                    return;
+                }
+            }
+            Console.WriteLine(string.Format("Level {0} does not exist",name));
+        }
+        #endregion Methods
     }
 }
