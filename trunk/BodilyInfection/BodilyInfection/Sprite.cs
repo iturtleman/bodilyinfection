@@ -47,6 +47,7 @@ namespace BodilyInfection
         public void StartAnim() { mAnimating = true; }/**< Causes the animation to play. */
         public void StopAnim() { mAnimating = false; }/**< Causes the animation to stop. */
         public void Rewind() { mActor.Frame = 0; }/**< Resets the Sprite's animation to the first frame. */
+       
         public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
         {
             //Frame so we don't have to find it so often
@@ -81,12 +82,13 @@ namespace BodilyInfection
             Vector2 pt = Pos + frame.AnimationPeg;
             drawCollisions(frame.CollisionData, pt);
         }
+        
         public Sprite CollisionWithSprite(string name)
         {
             //        //get the frame for readability
             //SpriteFrame frame = GetAnimation();
             ////get the first sprite with this name
-            //Sprite s= Game::game().getCurrentLevel().findSpriteByName(name);
+            //Sprite s= This.Game.getCurrentLevel().findSpriteByName(name);
             //if(s==null)
             //    return null;
             //for(int i=0; i <  frame.CollisionData.Count; i++)
@@ -97,6 +99,7 @@ namespace BodilyInfection
         // public vector<Collision> getCollisionData();/**< Returns collision data */
         #endregion Methods
 
+        #region Variables
         private string mName;/**< Sprite's name */
         private bool mAnimating;/**< Tells whether to animate or not */
         private bool mDrawn;/**< Tells if the object has been drawn the first time */
@@ -104,6 +107,6 @@ namespace BodilyInfection
         private Microsoft.Xna.Framework.GameTime mLastUpdate;/**< Number that indicates when the Sprite has last updated. Overflows in about 24 days so no worries. */
         private Actor mActor;/**< This Sprite's Actor. */
         private Behavior mBehavior;/**< Sprite's Behavior */
-
+        #endregion Variables
     }
 }

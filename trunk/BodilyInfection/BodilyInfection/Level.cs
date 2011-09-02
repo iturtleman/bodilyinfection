@@ -38,9 +38,9 @@ namespace BodilyInfection
         /// </summary>
         public string Name { get { return mName; } }
         /// <summary>
-        /// Gets and Sets Level's background
+        /// Gets and Sets Level's current Background
         /// </summary>
-        Background Background { get; set; }
+        public Background Background { get; set; }
         #endregion Properties
 
         #region Variables
@@ -64,10 +64,6 @@ namespace BodilyInfection
         /// </summary>
         protected List<Animation> mAnims = new List<Animation>();
 
-        /// <summary>
-        /// The current Background
-        /// </summary>
-        Background mBackground;
         #endregion Variables
 
         #region Methods
@@ -87,8 +83,8 @@ namespace BodilyInfection
         internal void DrawScene(Microsoft.Xna.Framework.GameTime gameTime)
         {
             /** Draw BG */
-            if (mBackground != null)
-                mBackground.Draw();
+            if (Background != null)
+                Background.Draw();
 
             /** Draw Sprites*/
             DrawSprites(gameTime);
@@ -107,7 +103,7 @@ namespace BodilyInfection
         void DrawCollisions()
         {
             if(Game.ShowCollisions){
-                mBackground.DrawCollisions();
+                Background.DrawCollisions();
                 foreach (var sprite in mSprites)
                 {
                     sprite.DrawCollisions();
