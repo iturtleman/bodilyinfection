@@ -15,7 +15,11 @@ namespace BodilyInfection
     public delegate void Behavior();
 
     /// <summary>
-    /// This is the main type for your game
+    /// High-level controller for the game
+    /// This class is tasked with the following:
+    /// - creating the SDL screen
+    /// - loading levels from appropriate locations
+    /// - switching levels as appropriate
     /// </summary>
     public class Game : Microsoft.Xna.Framework.Game
     {
