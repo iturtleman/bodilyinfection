@@ -42,12 +42,36 @@ namespace BodilyInfection
 
 
         #region Methods
-        public void SetAnimation(int animation) { mActor.CurrentAnimation = animation; }/**< changes to the specified animation beginning at 0. */
-        public void ToggleAnim() { mAnimating = !mAnimating; }/**< Pauses or resumes an animation. */
-        public void StartAnim() { mAnimating = true; }/**< Causes the animation to play. */
-        public void StopAnim() { mAnimating = false; }/**< Causes the animation to stop. */
-        public void Rewind() { mActor.Frame = 0; }/**< Resets the Sprite's animation to the first frame. */
-       
+        /// <summary>
+        /// changes to the specified animation beginning at 0.
+        /// </summary>
+        /// <param name="animation">The animation to select (begins at 0)</param>
+        public void SetAnimation(int animation) { mActor.CurrentAnimation = animation; }
+
+        /// <summary>
+        /// Pauses or resumes an animation.
+        /// </summary>
+        public void ToggleAnim() { mAnimating = !mAnimating; }
+
+        /// <summary>
+        /// Causes the animation to play.
+        /// </summary>
+        public void StartAnim() { mAnimating = true; }
+
+        /// <summary>
+        /// Causes the animation to stop.
+        /// </summary>
+        public void StopAnim() { mAnimating = false; }
+
+        /// <summary>
+        ///  Resets the Sprite's animation to the first frame.
+        /// </summary>
+        public void Rewind() { mActor.Frame = 0; }
+
+        /// <summary>
+        /// Draw the Scene
+        /// </summary>
+        /// <param name="gameTime">Game time as given by the game class</param>
         public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
         {
             //Frame so we don't have to find it so often
@@ -70,10 +94,15 @@ namespace BodilyInfection
                     mLastUpdate = gameTime;
                 }
             }
-            if (mVisible == true) { }
-        }/**< draws Sprite. */
+            if (mVisible == true)
+            {
+                This.Game.spriteBatch.Draw(mActor.Animations[mActor.CurrentAnimation].Frames[mActor.Frame].image, Pos, Color.White);
+            }
+        }
 
-        ///Draws Collision data for the Object (from outside)
+        /// <summary>
+        /// Draws Collision data for the Object (from outside)
+        /// </summary>
         public void DrawCollisions()
         {
             //get the frame for readability
@@ -82,7 +111,12 @@ namespace BodilyInfection
             Vector2 pt = Pos + frame.AnimationPeg;
             drawCollisions(frame.CollisionData, pt);
         }
-        
+
+        /// <summary>
+        /// checks for collision with sprite of a given name.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public Sprite CollisionWithSprite(string name)
         {
             //        //get the frame for readability
@@ -95,18 +129,49 @@ namespace BodilyInfection
             //    if(frame.CollisionData[i].checkCollisions(s.getCollisionData(), s.Pos + s.GetAnimation().AnimationPeg, Pos + frame.AnimationPeg))//if there is a collision
             //        return s;
             return null;//if there aren't collisions
-        }/**< checks for collision with sprite of a given name. */
-        // public vector<Collision> getCollisionData();/**< Returns collision data */
+        }
+        /// <summary>
+        /// Returns collision data
+        /// </summary>
+        /// <returns></returns>
+        //public vector<Collision> getCollisionData();
         #endregion Methods
 
         #region Variables
-        private string mName;/**< Sprite's name */
-        private bool mAnimating;/**< Tells whether to animate or not */
-        private bool mDrawn;/**< Tells if the object has been drawn the first time */
-        private float mSpeed;/**< Movement speed of the Sprite. */
-        private Microsoft.Xna.Framework.GameTime mLastUpdate;/**< Number that indicates when the Sprite has last updated. Overflows in about 24 days so no worries. */
-        private Actor mActor;/**< This Sprite's Actor. */
-        private Behavior mBehavior;/**< Sprite's Behavior */
+        /// <summary>
+        /// Sprite's name
+        /// </summary>
+        private string mName;
+
+        /// <summary>
+        /// Tells whether to animate or not
+        /// </summary>
+        private bool mAnimating;
+
+        /// <summary>
+        /// Tells if the object has been drawn the first time
+        /// </summary>
+        private bool mDrawn;
+
+        /// <summary>
+        /// Movement speed of the Sprite.
+        /// </summary>
+        private float mSpeed;
+
+        /// <summary>
+        /// Number that indicates when the Sprite has last updated. Overflows in about 24 days so no worries.
+        /// </summary>
+        private Microsoft.Xna.Framework.GameTime mLastUpdate;
+
+        /// <summary>
+        /// This Sprite's Actor.
+        /// </summary>
+        private Actor mActor;
+
+        /// <summary>
+        /// Sprite's Behavior
+        /// </summary>
+        private Behavior mBehavior;
         #endregion Variables
     }
 }
