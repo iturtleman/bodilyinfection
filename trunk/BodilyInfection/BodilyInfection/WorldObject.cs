@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace BodilyInfection
 {
-    class WorldObject
+    abstract class WorldObject
     {
         public WorldObject(int z = 0)
         {
@@ -19,7 +19,7 @@ namespace BodilyInfection
         /// Draws the obejct
         /// </summary>
         /// <param name="gameTime">The gametime for the drawing frame.</param>
-        public virtual abstract void Draw(Microsoft.Xna.Framework.GameTime gameTime);
+        public abstract void Draw(Microsoft.Xna.Framework.GameTime gameTime);
         /// <summary>
         /// Draws Collision data for the Object
         /// </summary>
