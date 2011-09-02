@@ -82,6 +82,7 @@ namespace BodilyInfection
         #region Draw
         internal void DrawScene(Microsoft.Xna.Framework.GameTime gameTime)
         {
+            This.Game.spriteBatch.Begin();
             /** Draw BG */
             if (Background != null)
                 Background.Draw();
@@ -91,6 +92,7 @@ namespace BodilyInfection
 
             /** Draw Boundary Data */
             DrawCollisions();
+            This.Game.spriteBatch.End();
         }
         internal void DrawSprites(Microsoft.Xna.Framework.GameTime gameTime)
         {
@@ -152,7 +154,5 @@ namespace BodilyInfection
             mActors.Remove(name);
         }
         #endregion Methods
-
-        
     }
 }

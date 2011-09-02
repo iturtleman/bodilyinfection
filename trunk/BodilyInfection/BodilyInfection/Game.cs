@@ -90,7 +90,7 @@ namespace BodilyInfection
 
         #region premade things
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        internal SpriteBatch spriteBatch;
         #endregion
 
         #region Constructor
