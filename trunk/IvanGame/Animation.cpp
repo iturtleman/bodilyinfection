@@ -171,11 +171,9 @@ int Animation::loadAnimation(std::string animFile)
 
 				/** sets frame delay and makes sure height and width are correct */
 				mFrames[count].pause = pause;
-				mW = mFrames[count].width; 
-				mH = mFrames[count].height;
 				
 				/** Set the animation Peg*/
-				mFrames[count].animationPeg = Point2D(x + double(mW)/2, y + double(mH)/2);
+				mFrames[count].animationPeg = Point2D(x + double(mFrames[count].width)/2, y + double(mFrames[count].height)/2);
 
 				count++;
 			}
