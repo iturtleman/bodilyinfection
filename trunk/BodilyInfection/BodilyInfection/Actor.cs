@@ -31,7 +31,7 @@ namespace BodilyInfection
         #endregion
 
         #region Constructor
-        Actor(Animation anim)
+        public Actor(Animation anim)
         {
             animations.Add(anim);
         }
