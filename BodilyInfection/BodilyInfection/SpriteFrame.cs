@@ -20,17 +20,7 @@ namespace BodilyInfection
         /// this frame and next.
         /// </summary>
         public int Pause { get; set; }
-
-        /// <summary>
-        /// Base width of the frame's image.
-        /// </summary>
-        public int Width { get; set; }
-
-        /// <summary>
-        /// Base height of the frame's image.
-        /// </summary>
-        public int Height { get; set; }
-
+        
         /// <summary>
         /// The offeset from position to place
         /// the image. Defaults to (0,0)

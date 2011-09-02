@@ -24,8 +24,6 @@ class Animation
 	SpriteFrame *mFrames;/**< Pointer to the current animation. As an array of SpriteFrames */
 	int mBuilt,/**< Using as a bool */
 	 mNumFrames,/**< Number of frames in this Animation */
-	 mW,/**< Animation's current width */
-	 mH;/**< The animation's current Height */
 	bool operator==(Animation a){return mName==a.mName;}
 	std::string mName;//add name to anim file
 };
