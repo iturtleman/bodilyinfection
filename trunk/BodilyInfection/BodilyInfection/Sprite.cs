@@ -34,7 +34,8 @@ namespace BodilyInfection
         ///     changes to the specified animation beginning at 0
         /// </summary>
 	    public SpriteFrame GetAnimation(){ 
-            get{
+            get
+            {
                 return mActor.Animations[mActor.CurrentAnimation].mFrames[mActor.mFrame];
             } 
 
@@ -49,13 +50,13 @@ namespace BodilyInfection
 	    public void StartAnim() {mAnimating = true;}/**< Causes the animation to play. */
 	    public void StopAnim() {mAnimating = false;}/**< Causes the animation to stop. */
 	    public void Rewind() {mActor.mFrame = 0;}/**< Resets the Sprite's animation to the first frame. */
-        public void Draw()
+        public void Draw(Microsoft.Xna.Framework.GameTime gameTime)
         {
             //Frame so we don't have to find it so often
             SpriteFrame frame = GetAnimation();
             if (mAnimating == true)
             {
-                if (mLastUpdate + frame.pause * mSpeed < SDL_GetTicks())
+                if (mLastUpdate + frame.pause * mSpeed < gameTime.ElapsedGameTime.Ticks)
                 {
                     //obtain current peg 
                     Vector2 ppos = frame.animationPeg;
@@ -67,7 +68,7 @@ namespace BodilyInfection
                     //obtain next peg
                     Vector2 npos = frame.animationPeg;
                     //move current position to difference of two
-                    mPos.add(ppos - npos);
+                    Pos.add(ppos - npos);
                     mLastUpdate = SDL_GetTicks();
                 }
             }
