@@ -15,12 +15,12 @@ namespace BodilyInfection
         /// <summary>
         /// The frame number.
         /// </summary>
-        int Frame { get; set; }
+        public int Frame { get; set; }
 
         /// <summary>
         /// Index of the current loaded animation.
         /// </summary>
-        int CurrentAnimation { get; set; }
+        public int CurrentAnimation { get; set; }
         #endregion
 
         #region Variables
