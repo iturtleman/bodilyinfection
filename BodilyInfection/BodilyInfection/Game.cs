@@ -21,7 +21,7 @@ namespace BodilyInfection
     /// - loading levels from appropriate locations
     /// - switching levels as appropriate
     /// </summary>
-    public class Game : Microsoft.Xna.Framework.Game
+    internal partial class Game : Microsoft.Xna.Framework.Game
     {
         #region Properties
         /// <summary>
@@ -36,7 +36,7 @@ namespace BodilyInfection
         /// <summary>
         /// Gets or sets the current level being played.
         /// </summary>
-        Level CurrentLevel
+        internal Level CurrentLevel
         {
             get
             {
@@ -125,6 +125,7 @@ namespace BodilyInfection
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            LoadResources();
         }
         #endregion Initialization
 
@@ -154,10 +155,12 @@ namespace BodilyInfection
 
             #endregion Handle input
 
-            CurrentLevel.Update();
+            if (CurrentLevel != null)
+                CurrentLevel.Update();
 
             #region FPS
-            currentFPS = 1/gameTime.ElapsedGameTime.Seconds;
+            if (gameTime.ElapsedGameTime.Ticks > 0)
+                currentFPS = 1000 / gameTime.ElapsedGameTime.Milliseconds;
             #endregion FPS
 
             base.Update(gameTime);
@@ -172,11 +175,13 @@ namespace BodilyInfection
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            CurrentLevel.DrawScene(gameTime);
-            
+            if (CurrentLevel != null)
+                CurrentLevel.DrawScene(gameTime);
+
             #region DrawFPS
             if (ShowFPS)
             {
+
             }
             #endregion DrawFPS
 
