@@ -7,5 +7,14 @@ namespace BodilyInfection
 {
     class Background
     {
+        internal void Draw()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void DrawCollisions()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

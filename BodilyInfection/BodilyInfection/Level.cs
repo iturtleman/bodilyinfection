@@ -63,6 +63,11 @@ namespace BodilyInfection
         /// This level's Animations
         /// </summary>
         protected List<Animation> mAnims = new List<Animation>();
+
+        /// <summary>
+        /// The current Background
+        /// </summary>
+        Background mBackground;
         #endregion Variables
 
         #region Methods
@@ -78,24 +83,37 @@ namespace BodilyInfection
         }
         #endregion Actions
 
-        #region Drawing
-        public void DrawSprites()
+        #region Draw
+        internal void DrawScene(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            for (int i = 0; i < mSprites.Count; i++)
+            /** Draw BG */
+            if (mBackground != null)
+                mBackground.Draw();
+
+            /** Draw Sprites*/
+            DrawSprites(gameTime);
+
+            /** Draw Boundary Data */
+            DrawCollisions();
+        }
+        internal void DrawSprites(Microsoft.Xna.Framework.GameTime gameTime)
+        {
+            foreach (var sprite in mSprites)
             {
-                mSprites[i].Draw();
+                sprite.Draw(gameTime);
             }
         }
 
-        //void DrawCollisions()
-        //{
-        //    if(Game::game()->ShowCollisions){
-        //        mBackground->drawCollisions();
-        //        for (size_t i=0; i<mSprites.size(); ++i) {
-        //            mSprites[i]->drawCollisions();
-        //        }
-        //    }
-        //}
+        void DrawCollisions()
+        {
+            if(Game.ShowCollisions){
+                mBackground.DrawCollisions();
+                foreach (var sprite in mSprites)
+                {
+                    sprite.DrawCollisions();
+                }
+            }
+        }
         #endregion Drawing
 
         public void AddSprite(Sprite sp)
@@ -139,5 +157,6 @@ namespace BodilyInfection
         }
         #endregion Methods
 
+        
     }
 }
