@@ -27,14 +27,15 @@ namespace BodilyInfection
         /// <summary>
         /// List of all the Actor's animations.
         /// </summary>
-        public List<Animation> animations = new List<Animation>();
+        public List<Animation> Animations = new List<Animation>();
         #endregion
 
         #region Constructor
         public Actor(Animation anim)
         {
-            animations.Add(anim);
+            Animations.Add(anim);
         }
         #endregion
     }
 }
+
