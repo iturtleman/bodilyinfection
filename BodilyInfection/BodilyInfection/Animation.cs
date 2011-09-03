@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace BodilyInfection
 {
@@ -17,24 +18,19 @@ namespace BodilyInfection
         #region Properties
         public int Built { get; set; }
         public int NumFrames { get; set; }
-        public int Width { get; set; }
-        public int Height { get; set; }
         public string Name { get; set; }
         #endregion
 
         #region Variables
-        private string spritePath = "ArtAssets/Sprites/";
         public List<SpriteFrame> Frames = new List<SpriteFrame>();
         #endregion
 
         #region Constructors
-        public Animation(string filename) :
-            this(filename, filename)
-        {
-        }
+        public Animation(string filename) : this(filename, filename){}
 
         public Animation(string filename, string name)
         {
+            Name = name;
             LoadAnimation(filename);
         }
         #endregion
@@ -50,52 +46,99 @@ namespace BodilyInfection
             string file;
             int[] transparency = new int[3];
             int pause;
-            filename = spritePath + filename;
+            filename = string.Format("Content/Sprites/{0}", filename);
+
+            if (!File.Exists(filename))
+            {
+                Console.WriteLine(string.Format("Error opening \'{0}\'. The file does not exist.", filename));
+                return;
+            }
 
             using (StreamReader stream = new StreamReader(filename))
             {
-                int count = 0;
                 while (!stream.EndOfStream)
                 {
                     buffer = stream.ReadLine();
 
-                    // ...
-                    Built = 1;
-
-                    if (buffer.Length > 0 &&
-                        !new char[] { 
-                            '#', '\r', '\0', '\n' 
-                        }.Contains(buffer[0]) &&
-                        !buffer.StartsWith("NumFrames:"))
+                    //make sure the first char is not # or whitespace
+                    if (buffer.Length > 0 && !buffer.StartsWith("#") && !String.IsNullOrWhiteSpace(buffer))
                     {
-                        string[] frameInfo = buffer.Split('\t');
-                        file = frameInfo[0];
-                        pause = Int32.Parse(frameInfo[1]);
-                        for (int x = 0; x < 3; x++)
+                        if (buffer.StartsWith("NumFrames:"))
                         {
-                            int value = Int32.Parse(frameInfo[1 + x]);
-                            if (value >= 0 && value <= 255)
+                            NumFrames = int.Parse(buffer.Trim().Split().Last());
+                            Built = 1;
+                        }
+                        else
+                        {
+                            string[] frameInfo = buffer.Split(new char[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
+
+                            /** File name */
+                            file = frameInfo[0];
+                            /** Pause time */
+                            pause = Int32.Parse(frameInfo[1]);
+                            /** transparency #'s R G B */
+                            for (int x = 0; x < 3; x++)
                             {
-                                transparency[x] = value;
+                                int value = Int32.Parse(frameInfo[1 + x]);
+                                if (value >= 0 && value <= 255)
+                                {
+                                    transparency[x] = value;
+                                }
+                                else
+                                {
+                                    transparency[x] = 0;
+                                    Console.WriteLine("{0}\nInvalid visibility value!", value);
+                                }
+
+                                /** AnimationPeg offset*/
+                                float pegX = float.Parse(frameInfo[5]);
+                                float pegY = float.Parse(frameInfo[6]);
+
+                                /** Collision data */
+                                string[] collisiondata = frameInfo[7].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                                int index=0;
+                                string c = collisiondata[index++];
+                                if (c == "(")
+                                {
+                                    c = collisiondata[index++];
+                                    while (c != ")")
+                                    {
+                                        if (c == "n")
+                                        {
+                                            c = collisiondata[index++];
+                                            continue;
+                                        }
+                                        else if (c == "c")
+                                        {
+                                            double xOffset = double.Parse(collisiondata[index++]);
+                                            double yOffset = double.Parse(collisiondata[index++]);
+                                            double radius = double.Parse(collisiondata[index++]);
+                                            //Frames[count].CollisionData.Add(new CollisionCircle(Vector2(xOffset, yOffset), radius));
+                                        }
+                                        else if (c == "r")
+                                        {
+                                            double xOffset = double.Parse(collisiondata[index++]);
+                                            double yOffset = double.Parse(collisiondata[index++]);
+                                            double width = double.Parse(collisiondata[index++]);
+                                            double height = double.Parse(collisiondata[index++]);
+                                            //Frames[count].CollisionData.Add(new CollisionRectangle(Vector2(xOffset, yOffset), width, height));
+                                        }
+                                        c = collisiondata[index++];
+                                    }
+                                }
+
+                                SpriteFrame sf = new SpriteFrame();
+
+                                sf.image =This.Game.Content.Load<Texture2D>(@"Sprites\"+file);
+                                
+                                /** sets frame delay */
+                                sf.Pause = pause;
+
+                                /** Set the animation Peg*/
+                                sf.AnimationPeg = new Vector2(pegX + (float)sf.image.Width / 2, pegY + (float)sf.image.Height / 2);
+
+                                Frames.Add(sf);
                             }
-                            else
-                            {
-                                transparency[x] = 0;
-                            }
-                            float pegX = 0;
-                            float pegY = 0;
-                            float.TryParse(frameInfo[5], out pegX);
-                            float.TryParse(frameInfo[6], out pegY);
-
-                            /** sets frame delay and makes sure height and width are correct */
-                            Frames[count].Pause = pause;
-                            Width = Frames[count].Width;
-                            Height = Frames[count].Height;
-
-                            /** Set the animation Peg*/
-                            Frames[count].AnimationPeg = new Vector2(pegX + (float)Width / 2, pegY + (float)Height / 2);
-
-                            count++;
                         }
                     }
                 }
