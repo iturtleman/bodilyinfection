@@ -19,7 +19,7 @@ namespace BodilyInfection
         /// Amount of time to pause between
         /// this frame and next.
         /// </summary>
-        public int Pause { get; set; }
+        public long Pause { get; set; }
         
         /// <summary>
         /// The offeset from position to place
