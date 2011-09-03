@@ -24,14 +24,19 @@ namespace BodilyInfection
             Sprite vikings1 = new Sprite("viking1", new Actor(l.GetAnimation("viking.anim")));
             vikings1.Pos = new Vector2(0, 0);
             vikings1.Speed= 1;
+            l.AddSprite(vikings1);
 
             Sprite vikings2 = new Sprite("viking2", new Actor(l.GetAnimation("viking.anim")));
             vikings2.Pos = new Vector2(350, 300);
             vikings2.Speed = 1.5f;
+            l.AddSprite(vikings2);
 
             Sprite sun = new Sprite("sun", new Actor(l.GetAnimation("sun.anim")));
             sun.Pos = new Vector2(480, 50);
             sun.Speed = 1;
+            l.AddSprite(sun);
+
+
         }
 
         internal static void LevelWorldUpdate()
@@ -42,14 +47,17 @@ namespace BodilyInfection
 
             Background bg = LevelWorld.Background;
 
-            if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X < 0)
-                player.Pos.X -= 1;
-            if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X > 0)
-                player.Pos.X += 1;
-            if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y < 0)
-                player.Pos.Y += 1;
-            if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y > 0)
-                player.Pos.Y -= 1;
+            if (player != null)
+            {
+                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X < 0)
+                    player.Pos.X -= 1;
+                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X > 0)
+                    player.Pos.X += 1;
+                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y < 0)
+                    player.Pos.Y += 1;
+                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y > 0)
+                    player.Pos.Y -= 1;
+            }
 
             //if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.X < 0)
             //    bg.Pos.X -= 1;
