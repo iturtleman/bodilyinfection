@@ -161,7 +161,7 @@ namespace BodilyInfection
                 CurrentLevel.Update();
 
             #region FPS
-            if (gameTime.ElapsedGameTime.Ticks > 0)
+            if (gameTime.ElapsedGameTime.Milliseconds > 0)
                 currentFPS = 1000 / gameTime.ElapsedGameTime.Milliseconds;
             #endregion FPS
 
