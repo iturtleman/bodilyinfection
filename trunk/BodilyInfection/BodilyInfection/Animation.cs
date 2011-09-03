@@ -16,7 +16,7 @@ namespace BodilyInfection
     class Animation
     {
         #region Properties
-        public int Built { get; set; }
+        public bool Built { get; set; }
         public int NumFrames { get; set; }
         public string Name { get; set; }
         #endregion
@@ -66,7 +66,7 @@ namespace BodilyInfection
                         if (buffer.StartsWith("NumFrames:"))
                         {
                             NumFrames = int.Parse(buffer.Trim().Split().Last());
-                            Built = 1;
+                            Built = true;
                         }
                         else
                         {

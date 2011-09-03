@@ -11,7 +11,16 @@ namespace BodilyInfection
         public Sprite(string name, Actor actor)
         {
             mName = name;
+            mDrawn = false;
             mActor = actor;
+            mLastUpdate = new GameTime();
+            //add to current level
+            This.Game.CurrentLevel.AddSprite(this);
+
+            if (mActor.Animations[mActor.CurrentAnimation].Built)
+            {
+                if (mActor.Animations[mActor.CurrentAnimation].NumFrames > 1) mAnimating = true;
+            }
         }
 
         #region Properties
@@ -78,7 +87,7 @@ namespace BodilyInfection
             SpriteFrame frame = GetAnimation();
             if (mAnimating == true)
             {
-                if (mLastUpdate.ElapsedGameTime.Ticks + frame.Pause * mSpeed < gameTime.ElapsedGameTime.Ticks)
+                if (mLastUpdate.TotalGameTime.Ticks + frame.Pause * mSpeed < gameTime.TotalGameTime.Ticks)
                 {
                     //obtain current peg 
                     Vector2 ppos = frame.AnimationPeg;
@@ -91,7 +100,7 @@ namespace BodilyInfection
                     Vector2 npos = frame.AnimationPeg;
                     //move current position to difference of two
                     Pos += (ppos - npos);
-                    mLastUpdate = gameTime;
+                    mLastUpdate = new GameTime(gameTime.TotalGameTime,gameTime.ElapsedGameTime);
                 }
             }
             if (mVisible == true)
