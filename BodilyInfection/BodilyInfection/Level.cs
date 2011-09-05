@@ -25,11 +25,15 @@ namespace BodilyInfection
         /// <summary>
         /// Level's load action
         /// </summary>
-        protected Behavior LoadBehavior { get; set; }
+        public Behavior LoadBehavior { get; set; }
         /// <summary>
         /// Level's update Behavior
         /// </summary>
-        protected Behavior UpdateBehavior { get; set; }
+        public Behavior UpdateBehavior { get; set; }
+        /// <summary>
+        /// Level's End Behavior
+        /// </summary>
+        public Behavior EndBehavior { get; set; }
         #endregion Behaviors
 
         #region Properties
