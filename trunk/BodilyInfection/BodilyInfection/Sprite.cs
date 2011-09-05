@@ -39,6 +39,26 @@ namespace BodilyInfection
         /// </summary>
         public string Name { get { return mName; } }
 
+        #endregion Properties
+
+        #region Behaviors
+        /// <summary>
+        /// Sprite's Load Behavior
+        /// </summary>
+        public Behavior LoadBehavior;
+
+        /// <summary>
+        /// Sprite's Update Behavior
+        /// </summary>
+        public Behavior UpdateBehavior;
+
+        /// <summary>
+        /// Sprite's End Behavior
+        /// </summary>
+        public Behavior EndBehavior;
+        #endregion Behaviors
+
+        #region Methods
         /// <summary>
         ///     changes to the specified animation beginning at 0
         /// </summary>
@@ -47,10 +67,6 @@ namespace BodilyInfection
             return mActor.Animations[mActor.CurrentAnimation].Frames[mActor.Frame];
         }
 
-        #endregion Properties
-
-
-        #region Methods
         /// <summary>
         /// changes to the specified animation beginning at 0.
         /// </summary>
@@ -87,7 +103,7 @@ namespace BodilyInfection
             SpriteFrame frame = GetAnimation();
             if (mAnimating == true)
             {
-                if (mLastUpdate.TotalGameTime.Ticks + frame.Pause * (int)mSpeed < gameTime.TotalGameTime.Ticks)
+                if (mLastUpdate.TotalGameTime.Ticks + frame.Pause * (int)Speed < gameTime.TotalGameTime.Ticks)
                 {
                     //obtain current peg 
                     Vector2 ppos = frame.AnimationPeg;
@@ -163,11 +179,6 @@ namespace BodilyInfection
         private bool mDrawn;
 
         /// <summary>
-        /// Movement speed of the Sprite.
-        /// </summary>
-        private float mSpeed;
-
-        /// <summary>
         /// Number that indicates when the Sprite has last updated. Overflows in about 24 days so no worries.
         /// </summary>
         private Microsoft.Xna.Framework.GameTime mLastUpdate;
@@ -177,10 +188,6 @@ namespace BodilyInfection
         /// </summary>
         private Actor mActor;
 
-        /// <summary>
-        /// Sprite's Behavior
-        /// </summary>
-        private Behavior mBehavior;
         #endregion Variables
     }
 }
