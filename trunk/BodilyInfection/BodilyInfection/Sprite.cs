@@ -121,7 +121,7 @@ namespace BodilyInfection
             }
             if (mVisible == true)
             {
-                This.Game.spriteBatch.Draw(mActor.Animations[mActor.CurrentAnimation].Frames[mActor.Frame].image, Pos, Color.White);
+                This.Game.spriteBatch.Draw(mActor.Animations[mActor.CurrentAnimation].Frames[mActor.Frame].Image, Pos, Color.White);
             }
         }
 
