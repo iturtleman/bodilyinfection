@@ -13,7 +13,7 @@ namespace BodilyInfection
         /// <summary>
         /// Image Texture
         /// </summary>
-        public Texture2D image { get; set; }
+        public Texture2D Image { get; set; }
 
         /// <summary>
         /// Amount of time to pause between
@@ -26,6 +26,14 @@ namespace BodilyInfection
         /// the image. Defaults to (0,0)
         /// </summary>
         public Vector2 AnimationPeg { get; set; }
+        /// <summary>
+        /// The frame's width
+        /// </summary>
+        public int Width { get; set; }
+        /// <summary>
+        ///  The frame's height
+        /// </summary>
+        public int Height { get; set; }
         #endregion
 
         #region Variables
