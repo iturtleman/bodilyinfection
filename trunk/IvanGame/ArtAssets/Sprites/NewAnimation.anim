@@ -1,0 +1,16 @@
+<Animation>
+	<Frame>
+		<SpriteSheet>sun1<SpriteSheet/>
+		<FrameDelay>20<FrameDelay/>
+		<Width/>
+		<Height/>
+		<TransparentColor>
+			<R><R/>
+			<G><G/>
+			<B><B/>
+		<TransparentColor/>
+		<CollisionData>
+			<Collision><Collision/>
+		<CollisionData/>
+	<Frame/>
+<Animation/>
