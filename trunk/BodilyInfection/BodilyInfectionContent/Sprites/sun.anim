@@ -4,7 +4,6 @@
     FrameDelay="20"
     Width="0"
     Height="0"
-    Transparency="0000FF"
     Offset="0,0"
     >
     <!--List of all collision data for a frame-->
@@ -16,7 +15,6 @@
     FrameDelay="20"
     Width="0"
     Height="0"
-    Transparency="0000FF"
     Offset="0,0"
     >
     <!--List of all collision data for a frame-->
@@ -28,7 +26,6 @@
     FrameDelay="20"
     Width="0"
     Height="0"
-    Transparency="0000FF"
     Offset="0,0"
     >
     <!--List of all collision data for a frame-->
@@ -40,7 +37,6 @@
     FrameDelay="20"
     Width="0"
     Height="0"
-    Transparency="0000FF"
     Offset="0,0"
     >
     <!--List of all collision data for a frame-->
