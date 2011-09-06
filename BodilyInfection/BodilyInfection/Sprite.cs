@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace BodilyInfection
 {
@@ -96,6 +97,7 @@ namespace BodilyInfection
         /// </summary>
         public void Rewind() { mActor.Frame = 0; }
 
+        #region Draw
         /// <summary>
         /// Draw the Scene
         /// </summary>
@@ -140,7 +142,9 @@ namespace BodilyInfection
             Vector2 pt = Pos + frame.AnimationPeg;
             drawCollisions(frame.CollisionData, pt);
         }
+        #endregion Draw
 
+        #region Collision
         /// <summary>
         /// checks for collision with sprite of a given name.
         /// </summary>
@@ -164,6 +168,8 @@ namespace BodilyInfection
         /// </summary>
         /// <returns></returns>
         //public vector<Collision> getCollisionData();
+        #endregion Collision
+
         #endregion Methods
 
         #region Variables

@@ -4,7 +4,6 @@
     FrameDelay="50"
     Width="0"
     Height="0"
-    Transparency="00FF00"
     Offset="0,0"
     >
     <!--List of all collision data for a frame-->
@@ -16,7 +15,6 @@
     FrameDelay="50"
     Width="0"
     Height="0"
-    Transparency="00FF00"
     Offset="0,0"
     >
     <!--List of all collision data for a frame-->
@@ -28,7 +26,6 @@
     FrameDelay="50"
     Width="0"
     Height="0"
-    Transparency="00FF00"
     Offset="0,0"
     >
     <!--List of all collision data for a frame-->
@@ -40,7 +37,6 @@
     FrameDelay="50"
     Width="0"
     Height="0"
-    Transparency="00FF00"
     Offset="0,0"
     >
     <!--List of all collision data for a frame-->
@@ -52,7 +48,6 @@
     FrameDelay="50"
     Width="0"
     Height="0"
-    Transparency="00FF00"
     Offset="0,0"
     >
     <!--List of all collision data for a frame-->
@@ -64,7 +59,6 @@
     FrameDelay="50"
     Width="0"
     Height="0"
-    Transparency="00FF00"
     Offset="0,0"
     >
     <!--List of all collision data for a frame-->
@@ -76,7 +70,6 @@
     FrameDelay="50"
     Width="0"
     Height="0"
-    Transparency="00FF00"
     Offset="0,0"
     >
     <!--List of all collision data for a frame-->
@@ -88,7 +81,6 @@
     FrameDelay="50"
     Width="0"
     Height="0"
-    Transparency="00FF00"
     Offset="0,0"
     >
     <!--List of all collision data for a frame-->
@@ -100,7 +92,6 @@
     FrameDelay="50"
     Width="0"
     Height="0"
-    Transparency="00FF00"
     Offset="0,0"
     >
     <!--List of all collision data for a frame-->

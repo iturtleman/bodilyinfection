@@ -4,7 +4,6 @@
     FrameDelay="Number of milliseconds to wait before moving to the next frame" 
     Width="Width of the frame"
     Height="Height of the frame"
-    Transparency="Transparency color of the form RRGGBB"
     Offset="Point of the form x,y where x,y are floats"
     >
     <!--List of all collision data for a frame-->
