@@ -106,7 +106,7 @@ namespace BodilyInfection
             SpriteFrame frame = GetAnimation();
             if (mAnimating == true)
             {
-                if (mLastUpdate.TotalGameTime.Ticks + frame.Pause * (int)Speed < gameTime.TotalGameTime.Ticks)
+                if (mLastUpdate.TotalGameTime.TotalMilliseconds + frame.Pause * Speed < gameTime.TotalGameTime.TotalMilliseconds)
                 {
                     //obtain current peg 
                     Vector2 ppos = frame.AnimationPeg;
