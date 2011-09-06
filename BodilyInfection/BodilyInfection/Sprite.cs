@@ -106,6 +106,7 @@ namespace BodilyInfection
             SpriteFrame frame = GetAnimation();
             if (mAnimating == true)
             {
+                //used to update the animation. Occurs once the frame's pause * sprite's speed occurs.
                 if (mLastUpdate.TotalGameTime.TotalMilliseconds + frame.Pause * Speed < gameTime.TotalGameTime.TotalMilliseconds)
                 {
                     //obtain current peg 
@@ -120,14 +121,6 @@ namespace BodilyInfection
                     //move current position to difference of two
                     Pos += (ppos - npos);
                     mLastUpdate = new GameTime(gameTime.TotalGameTime,gameTime.ElapsedGameTime);
-                    /*
-                     * 
-                     * Should be called once per draw/update cycle, not for each sprite frame update.
-                     * 
-                     * 
-                     * 
-                     * 
-                     */
                 }
             }
             if (mVisible == true)
@@ -190,7 +183,7 @@ namespace BodilyInfection
         private bool mDrawn;
 
         /// <summary>
-        /// Number that indicates when the Sprite has last updated. Overflows in about 24 days so no worries.
+        /// Number that indicates when the Sprite'a animation was last updated.
         /// </summary>
         private Microsoft.Xna.Framework.GameTime mLastUpdate;
 
