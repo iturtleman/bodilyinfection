@@ -120,6 +120,14 @@ namespace BodilyInfection
                     //move current position to difference of two
                     Pos += (ppos - npos);
                     mLastUpdate = new GameTime(gameTime.TotalGameTime,gameTime.ElapsedGameTime);
+                    /*
+                     * 
+                     * Should be called once per draw/update cycle, not for each sprite frame update.
+                     * 
+                     * 
+                     * 
+                     * 
+                     */
                 }
             }
             if (mVisible == true)
