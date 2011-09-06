@@ -12,8 +12,9 @@ namespace BodilyInfection
         {
             LoadBehavior = () => { };
             UpdateBehavior = () => { };
+            EndBehavior = () => { };
         }
-        public Level(string n, Behavior loadBehave, Behavior updateBehave)
+        public Level(string n, Behavior loadBehave, Behavior updateBehave, Behavior endBehavior)
         {
             mName = n;
             LoadBehavior = loadBehave;

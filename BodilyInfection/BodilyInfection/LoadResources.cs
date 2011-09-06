@@ -8,7 +8,7 @@ namespace BodilyInfection
     internal partial class Game : Microsoft.Xna.Framework.Game
     {
         void LoadResources(){
-            mLevels.Add(new Level("World", LevelFunctions.LevelWorldLoad, LevelFunctions.LevelWorldUpdate));
+            mLevels.Add(new Level("World", LevelFunctions.LevelWorldLoad, LevelFunctions.LevelWorldUpdate, LevelFunctions.DoNothing));
         }
     }
 }
