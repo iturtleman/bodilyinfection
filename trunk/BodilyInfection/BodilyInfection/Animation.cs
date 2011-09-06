@@ -33,6 +33,7 @@ namespace BodilyInfection
         {
             Name = name;
             LoadAnimation(filename);
+            Built = true;
         }
         #endregion
 
@@ -51,7 +52,7 @@ namespace BodilyInfection
                 return;
             }
             XDocument doc = XDocument.Load(filename);
-
+            int count = 0;
             foreach (var frame in doc.Descendants("Frame"))
             {
                 SpriteFrame sf = new SpriteFrame();
@@ -75,7 +76,9 @@ namespace BodilyInfection
                 sf.AnimationPeg = new Vector2(pegX + (float)sf.Image.Width / 2, pegY + (float)sf.Image.Height / 2);
 
                 Frames.Add(sf);
+                count++;
             }
+            NumFrames = count;
         }
 
         #region old

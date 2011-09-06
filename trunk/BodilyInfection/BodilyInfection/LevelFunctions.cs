@@ -9,6 +9,8 @@ namespace BodilyInfection
 {
     internal static class LevelFunctions
     {
+        internal static void DoNothing() { }
+
         internal static void LevelWorldLoad()
         {
             Level l = This.Game.CurrentLevel;
