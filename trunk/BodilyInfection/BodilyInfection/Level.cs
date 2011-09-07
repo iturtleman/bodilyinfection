@@ -55,9 +55,9 @@ namespace BodilyInfection
         string mName = "";
 
         /// <summary>
-        /// Vector of all sprites on the level. \todo Maybe make into Dictonary? This should be a list of World objects once implemented. \todo add accessor or move to public \todo make a Dictonary by name (for collisions) \todo make a list ordered by Zorder (for drawing)
+        /// Vector of all WorldObjects drawn on the level.
         /// </summary>
-        protected List<Sprite> mSprites = new List<Sprite>();
+        protected List<WorldObject> mSprites = new List<WorldObject>();
 
         /// <summary>
         /// This level's actors. 
@@ -126,7 +126,7 @@ namespace BodilyInfection
 
         public Sprite GetSprite(string name)
         {
-            return mSprites.Find(delegate(Sprite s) { return s.Name == name; });
+            return (mSprites.Find(delegate(WorldObject s) { return s.Name == name; }) as Sprite);
         }
 
         public void RemoveSprite(Sprite sp)
