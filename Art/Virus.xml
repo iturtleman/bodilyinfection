@@ -1,0 +1,283 @@
+<XnaContent>
+  <Asset Type="TextureAtlasPipeline.TextureAtlasSource">
+    <SpritePaths>
+      <Item>virus/spinfast/virus_spin0148.png</Item>
+      <Item>virus/spinfast/virus_spin0152.png</Item>
+      <Item>virus/spinfast/virus_spin0156.png</Item>
+      <Item>virus/spinfast/virus_spin0160.png</Item>
+      <Item>virus/spinfast/virus_spin0164.png</Item>
+      <Item>virus/spinfast/virus_spin0168.png</Item>
+      <Item>virus/spinfast/virus_spin0172.png</Item>
+      <Item>virus/spinfast/virus_spin0176.png</Item>
+      <Item>virus/spinfast/virus_spin0180.png</Item>
+      <Item>virus/spinfast/virus_spin0184.png</Item>
+      <Item>virus/spinfast/virus_spin0188.png</Item>
+      <Item>virus/spinfast/virus_spin0192.png</Item>
+      <Item>virus/spinfast/virus_spin0196.png</Item>
+      <Item>virus/spinfast/virus_spin0200.png</Item>
+      <Item>virus/spinfast/virus_spin0204.png</Item>
+      <Item>virus/spinfast/virus_spin0208.png</Item>
+      <Item>virus/spinfast/virus_spin0212.png</Item>
+      <Item>virus/spinfast/virus_spin0216.png</Item>
+      <Item>virus/spinfast/virus_spin0220.png</Item>
+      <Item>virus/spinfast/virus_spin0224.png</Item>
+      <Item>virus/spinfast/virus_spin0228.png</Item>
+      <Item>virus/spinfast/virus_spin0232.png</Item>
+      <Item>virus/spinfast/virus_spin0236.png</Item>
+      <Item>virus/spinfast/virus_spin0240.png</Item>
+      <Item>virus/spinfast/virus_spin0244.png</Item>
+      <Item>virus/spinfast/virus_spin0248.png</Item>
+      <Item>virus/spinfast/virus_spin0252.png</Item>
+      <Item>virus/spinfast/virus_spin0256.png</Item>
+      <Item>virus/spinfast/virus_spin0260.png</Item>
+      <Item>virus/spinfast/virus_spin0264.png</Item>
+      <Item>virus/spinfast/virus_spin0268.png</Item>
+      <Item>virus/spinfast/virus_spin0272.png</Item>
+      <Item>virus/spinfast/virus_spin0276.png</Item>
+      <Item>virus/spinfast/virus_spin0280.png</Item>
+      <Item>virus/spinfast/virus_spin0284.png</Item>
+      <Item>virus/spinfast/virus_spin0288.png</Item>
+      <Item>virus/spinfast/virus_spin0292.png</Item>
+      <Item>virus/spinfast/virus_spin0296.png</Item>
+      <Item>virus/spinfast/virus_spin0300.png</Item>
+      <Item>virus/spinfast/virus_spin0304.png</Item>
+      <Item>virus/spinfast/virus_spin0308.png</Item>
+      <Item>virus/spinfast/virus_spin0312.png</Item>
+      <Item>virus/spinfast/virus_spin0316.png</Item>
+      <Item>virus/spinfast/virus_spin0320.png</Item>
+      <Item>virus/spinfast/virus_spin0324.png</Item>
+      <Item>virus/spinfast/virus_spin0328.png</Item>
+      <Item>virus/spinfast/virus_spin0332.png</Item>
+      <Item>virus/spinfast/virus_spin0336.png</Item>
+      <Item>virus/spinfast/virus_spin0340.png</Item>
+      <Item>virus/spinfast/virus_spin0344.png</Item>
+      <Item>virus/spinfast/virus_spin0348.png</Item>
+      <Item>virus/spinfast/virus_spin0352.png</Item>
+      <Item>virus/spinfast/virus_spin0356.png</Item>
+      <Item>virus/spinfast/virus_spin0360.png</Item>
+    </SpritePaths>
+    <SpriteInfo>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+      <Item />
+      <DontPackAlpha>false</DontPackAlpha>
+      <PadX>true</PadX>
+      <PadY>true</PadY>
+    </SpriteInfo>
+    <MinWidth>0</MinWidth>
+    <MaxWidth>0</MaxWidth>
+    <PackTransparent>true</PackTransparent>
+    <PowerOf2Width>true</PowerOf2Width>
+    <PowerOf2Height>true</PowerOf2Height>
+  </Asset>
+</XnaContent>
