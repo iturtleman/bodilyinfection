@@ -21,6 +21,8 @@ namespace BodilyInfection
             /** load animations */
             l.AddAnimation(new Animation("viking.anim"));
             l.AddAnimation(new Animation("sun.anim"));
+            l.AddAnimation(new Animation("rbc.anim"));
+
 
             /** load sprites */
             Sprite vikings1 = new Sprite("viking1", new Actor(l.GetAnimation("viking.anim")));
@@ -35,6 +37,10 @@ namespace BodilyInfection
             sun.Pos = new Vector2(480, 50);
             sun.Speed = 1;
 
+            Sprite rbc = new Sprite("rbc", new Actor(l.GetAnimation("rbc.anim")));
+            rbc.Pos = new Vector2(50, 50);
+            rbc.Speed = 1;
+
 
         }
 
@@ -42,7 +48,7 @@ namespace BodilyInfection
         {
             Level LevelWorld = This.Game.CurrentLevel;
 
-            Sprite player = LevelWorld.GetSprite("viking1");
+            Sprite player = LevelWorld.GetSprite("rbc");
 
             Background bg = LevelWorld.Background;
 

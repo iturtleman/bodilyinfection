@@ -49,25 +49,21 @@
       <Name>sun1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_ColorKeyColor>0, 0, 255, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
     <Compile Include="Sprites\sun2.bmp">
       <Name>sun2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_ColorKeyColor>0, 0, 255, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
     <Compile Include="Sprites\sun3.bmp">
       <Name>sun3</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_ColorKeyColor>0, 0, 255, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
     <Compile Include="Sprites\sun4.bmp">
       <Name>sun4</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_ColorKeyColor>0, 0, 255, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
     <None Include="Sprites\viking.anim">
       <Name>viking</Name>
@@ -76,55 +72,46 @@
       <Name>viking1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_ColorKeyColor>0, 255, 0, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
     <Compile Include="Sprites\viking2.bmp">
       <Name>viking2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_ColorKeyColor>0, 255, 0, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
     <Compile Include="Sprites\viking3.bmp">
       <Name>viking3</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_ColorKeyColor>0, 255, 0, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
     <Compile Include="Sprites\viking4.bmp">
       <Name>viking4</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_ColorKeyColor>0, 255, 0, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
     <Compile Include="Sprites\viking5.bmp">
       <Name>viking5</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_ColorKeyColor>0, 255, 0, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
     <Compile Include="Sprites\viking6.bmp">
       <Name>viking6</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_ColorKeyColor>0, 255, 0, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
     <Compile Include="Sprites\viking7.bmp">
       <Name>viking7</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_ColorKeyColor>0, 255, 0, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
     <Compile Include="Sprites\viking8.bmp">
       <Name>viking8</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_ColorKeyColor>0, 255, 0, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
     <Compile Include="Sprites\viking9.bmp">
       <Name>viking9</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_ColorKeyColor>0, 255, 0, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +132,343 @@
     </Compile>
     <Compile Include="Backgrounds\garden.jpg">
       <Name>garden</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0047.png">
+      <Name>rbc_spin0047</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0049.png">
+      <Name>rbc_spin0049</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0051.png">
+      <Name>rbc_spin0051</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0053.png">
+      <Name>rbc_spin0053</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0055.png">
+      <Name>rbc_spin0055</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0057.png">
+      <Name>rbc_spin0057</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0059.png">
+      <Name>rbc_spin0059</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0061.png">
+      <Name>rbc_spin0061</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0063.png">
+      <Name>rbc_spin0063</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0065.png">
+      <Name>rbc_spin0065</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0067.png">
+      <Name>rbc_spin0067</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0069.png">
+      <Name>rbc_spin0069</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0071.png">
+      <Name>rbc_spin0071</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0073.png">
+      <Name>rbc_spin0073</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0075.png">
+      <Name>rbc_spin0075</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0077.png">
+      <Name>rbc_spin0077</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0079.png">
+      <Name>rbc_spin0079</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0081.png">
+      <Name>rbc_spin0081</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0083.png">
+      <Name>rbc_spin0083</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0085.png">
+      <Name>rbc_spin0085</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0087.png">
+      <Name>rbc_spin0087</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0089.png">
+      <Name>rbc_spin0089</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0091.png">
+      <Name>rbc_spin0091</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0093.png">
+      <Name>rbc_spin0093</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0095.png">
+      <Name>rbc_spin0095</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0097.png">
+      <Name>rbc_spin0097</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0099.png">
+      <Name>rbc_spin0099</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0101.png">
+      <Name>rbc_spin0101</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0103.png">
+      <Name>rbc_spin0103</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0105.png">
+      <Name>rbc_spin0105</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0107.png">
+      <Name>rbc_spin0107</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0109.png">
+      <Name>rbc_spin0109</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0111.png">
+      <Name>rbc_spin0111</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0113.png">
+      <Name>rbc_spin0113</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0115.png">
+      <Name>rbc_spin0115</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0117.png">
+      <Name>rbc_spin0117</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0119.png">
+      <Name>rbc_spin0119</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0121.png">
+      <Name>rbc_spin0121</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0123.png">
+      <Name>rbc_spin0123</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0125.png">
+      <Name>rbc_spin0125</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0127.png">
+      <Name>rbc_spin0127</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0129.png">
+      <Name>rbc_spin0129</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0131.png">
+      <Name>rbc_spin0131</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0133.png">
+      <Name>rbc_spin0133</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0135.png">
+      <Name>rbc_spin0135</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0137.png">
+      <Name>rbc_spin0137</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0139.png">
+      <Name>rbc_spin0139</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Longspin\rbc_spin0141.png">
+      <Name>rbc_spin0141</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0047.png">
+      <Name>rbc_spin0047</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0052.png">
+      <Name>rbc_spin0052</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0057.png">
+      <Name>rbc_spin0057</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0062.png">
+      <Name>rbc_spin0062</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0067.png">
+      <Name>rbc_spin0067</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0072.png">
+      <Name>rbc_spin0072</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0077.png">
+      <Name>rbc_spin0077</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0082.png">
+      <Name>rbc_spin0082</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0087.png">
+      <Name>rbc_spin0087</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0092.png">
+      <Name>rbc_spin0092</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0097.png">
+      <Name>rbc_spin0097</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0102.png">
+      <Name>rbc_spin0102</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0107.png">
+      <Name>rbc_spin0107</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0112.png">
+      <Name>rbc_spin0112</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0117.png">
+      <Name>rbc_spin0117</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0122.png">
+      <Name>rbc_spin0122</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0127.png">
+      <Name>rbc_spin0127</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0132.png">
+      <Name>rbc_spin0132</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Sprites\RedBloodCell\Shortspin\rbc_spin0137.png">
+      <Name>rbc_spin0137</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

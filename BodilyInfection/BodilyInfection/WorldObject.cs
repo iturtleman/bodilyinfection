@@ -8,6 +8,8 @@ namespace BodilyInfection
 {
     abstract class WorldObject
     {
+        
+
         public WorldObject(int z = 0)
         {
             ZOrder = z;
@@ -15,23 +17,40 @@ namespace BodilyInfection
             mTransparency = 1;
             mAngle = 0;
         }
+        #region Methods
         /// <summary>
         /// Draws the obejct
         /// </summary>
         /// <param name="gameTime">The gametime for the drawing frame.</param>
         public abstract void Draw(Microsoft.Xna.Framework.GameTime gameTime);
+
+        /// <summary>
+        /// Overwrite how to draw collisions for different world objects
+        /// </summary>
+        public virtual void DrawCollisions()
+        {
+        }
+        
         /// <summary>
         /// Draws Collision data for the Object
         /// </summary>
         /// <param name="vec">List of Collision data for the given object</param>
         /// <param name="pos">Position where to draw the collision from</param>
-        public void drawCollisions(List<Collision> vec, Vector2 pos)
+        public void DrawCollisions(List<Collision> vec, Vector2 pos)
         {
             for (int i = 0; i < vec.Count; i++)
             {
                 vec[i].Draw(pos);
             }
         }
+        #endregion Methods
+
+        #region Properties
+        /// <summary>
+        ///     gets the sprite's name
+        /// </summary>
+        public string Name { get { return mName; } }
+
         /// <summary>
         /// Sets the Sprite's transparency.
         /// </summary>
@@ -60,6 +79,14 @@ namespace BodilyInfection
         /// The current (x,y) position
         /// </summary>
         public Vector2 Pos = new Vector2(0, 0);
+
+        #endregion Properties
+
+        #region Variables
+        /// <summary>
+        /// Sprite's name
+        /// </summary>
+        protected string mName;
         /// <summary>
         /// Determine if Object should be visible
         /// </summary>
@@ -76,5 +103,6 @@ namespace BodilyInfection
         /// Stacking order. Determines what draws on top.
         /// </summary>
         protected int ZOrder;
+        #endregion Variables
     }
 }

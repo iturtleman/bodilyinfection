@@ -37,12 +37,7 @@ namespace BodilyInfection
         ///     the sprite's speed
         /// </summary>
         public float Speed { get; set; }
-
-        /// <summary>
-        ///     gets the sprite's name
-        /// </summary>
-        public string Name { get { return mName; } }
-
+        
         #endregion Properties
 
         #region Behaviors
@@ -134,13 +129,13 @@ namespace BodilyInfection
         /// <summary>
         /// Draws Collision data for the Object (from outside)
         /// </summary>
-        public void DrawCollisions()
+        public override void DrawCollisions()
         {
             //get the frame for readability
             SpriteFrame frame = mActor.Animations[mActor.CurrentAnimation].Frames[mActor.Frame];
             //center the location
             Vector2 pt = Pos + frame.AnimationPeg;
-            drawCollisions(frame.CollisionData, pt);
+            DrawCollisions(frame.CollisionData, pt);
         }
         #endregion Draw
 
@@ -173,10 +168,6 @@ namespace BodilyInfection
         #endregion Methods
 
         #region Variables
-        /// <summary>
-        /// Sprite's name
-        /// </summary>
-        private string mName;
 
         /// <summary>
         /// Tells whether to animate or not
