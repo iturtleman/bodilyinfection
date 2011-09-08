@@ -11,6 +11,17 @@ namespace BodilyInfection
     {
         internal static void DoNothing() { }
 
+        /// <summary>
+        /// Returns left thumb state for given player
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static Vector2 GetLeftThumbState(PlayerIndex p)
+        {
+            Vector2 state = new Vector2(GamePad.GetState(p).ThumbSticks.Left.X, -GamePad.GetState(p).ThumbSticks.Left.Y);
+            return state;
+        }
+
         internal static void LevelWorldLoad()
         {
             Level l = This.Game.CurrentLevel;
@@ -54,24 +65,17 @@ namespace BodilyInfection
 
             if (player != null)
             {
-                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X < 0)
-                    player.Pos.X -= 1;
-                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X > 0)
-                    player.Pos.X += 1;
-                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y < 0)
-                    player.Pos.Y += 1;
-                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y > 0)
-                    player.Pos.Y -= 1;
+                player.Pos += GetLeftThumbState(PlayerIndex.One);
             }
 
             //if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.X < 0)
-            //    bg.Pos.X -= 1;
+            //    bg.X -= 1;
             //if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.X > 0)
-            //    bg.Pos.X += 1;
+            //    bg.X += 1;
             //if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.Y < 0)
-            //    bg.Pos.Y += 1;
+            //    bg.Y += 1;
             //if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.Y > 0)
-            //    bg.Pos.Y -= 1;
+            //    bg.Y -= 1;
         }
     }
 }
