@@ -128,8 +128,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BodilyInfectionContent\BodilyInfectionContent.contentproj">
-      <Name>BodilyInfectionContent</Name>
+      <Name>BodilyInfectionContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
+      <Project>{36615B70-F4BA-41E9-A38A-2836EDD4D596}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

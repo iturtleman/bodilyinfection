@@ -20,20 +20,27 @@ namespace BodilyInfection
         /// this frame and next.
         /// </summary>
         public long Pause { get; set; }
-        
+
         /// <summary>
         /// The offeset from position to place
         /// the image. Defaults to (0,0)
         /// </summary>
         public Vector2 AnimationPeg { get; set; }
+
         /// <summary>
         /// The frame's width
         /// </summary>
         public int Width { get; set; }
+
         /// <summary>
         ///  The frame's height
         /// </summary>
         public int Height { get; set; }
+
+        /// <summary>
+        /// Position of the top left corner
+        /// </summary>
+        public Vector2 StartPos { get; set; }
         #endregion
 
         #region Variables
@@ -43,7 +50,7 @@ namespace BodilyInfection
         ///  default is tagged to center
         ///  of the sprite
         /// </summary>
-        public List<Vector2> HotSpots = new List<Vector2>();
+        public List<Point> HotSpots = new List<Point>();
 
         /// <summary>
         /// The collision data for this sprite.
