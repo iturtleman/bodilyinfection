@@ -10,11 +10,10 @@ namespace Collision
 {
     class Virus
     {
-        public Virus(ContentManager cm, Random random, GraphicsDeviceManager gfx)
+        public Virus(ContentManager cm, Vector2 position)
         {
             virusTexture = cm.Load<Texture2D>("virus");
-            virusPosition.X = random.Next(0, gfx.GraphicsDevice.Viewport.Width);
-            virusPosition.Y = random.Next(0, gfx.GraphicsDevice.Viewport.Height);
+            virusPosition = position;
             virusVelocity = Vector2.Zero;
         }
 

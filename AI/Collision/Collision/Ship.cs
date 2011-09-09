@@ -34,11 +34,11 @@ namespace Collision
             GamePadState currentState = GamePad.GetState(PlayerIndex.One);
             if (currentState.IsConnected)
             {
-                
+
                 // Create some velocity if the right trigger is down.
                 //Vector2 shipVelocityAdd = Vector2.Zero;
 
-                       
+
                 shipPosition.X += shipSpeed * currentState.ThumbSticks.Left.X;
                 shipPosition.Y += shipSpeed * -currentState.ThumbSticks.Left.Y;
 
@@ -46,7 +46,7 @@ namespace Collision
                 //shipVelocityAdd *= currentState.ThumbSticks.Left.X;
 
                 // Finally, add this vector to our velocity.
-               // shipVelocity += shipVelocityAdd;
+                // shipVelocity += shipVelocityAdd;
 
                 //if (currentState.ThumbSticks.Left.X != 0 || currentState.ThumbSticks.Left.Y != 0)
                 //    GamePad.SetVibration(PlayerIndex.One, 1, 1);
@@ -65,6 +65,27 @@ namespace Collision
 
                 // Bleed off velocity over time.
                 //shipVelocity *= 0.95f;
+            }
+            else /* Move with arrow keys */
+            {
+                KeyboardState keys = Keyboard.GetState();
+                if (keys.IsKeyDown(Keys.Up))
+                {
+                    shipPosition.Y -= shipSpeed;
+                }
+                else if (keys.IsKeyDown(Keys.Down))
+                {
+                    shipPosition.Y += shipSpeed;
+                }
+
+                if (keys.IsKeyDown(Keys.Left))
+                {
+                    shipPosition.X -= shipSpeed;
+                }
+                else if (keys.IsKeyDown(Keys.Right))
+                {
+                    shipPosition.X += shipSpeed;
+                }
             }
         }
        

@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
 
-namespace Collision
+namespace BodilyInfection
 {
-    class RedBloodCell
+    class RedBloodCell : Sprite
     {
-        public RedBloodCell(ContentManager cm, Vector2 position, Vector2 velocity)
+        //public RedBloodCell(ContentManager cm, Vector2 position, Vector2 velocity)
+        public RedBloodCell(string name, Actor actor): base(name, actor)
         {
-            rbcTexture = cm.Load<Texture2D>("rbc");
-            rbcPosition = position;
+            //rbcTexture = cm.Load<Texture2D>("rbc");
+            //rbcPosition = position;
             rbcSpeed = new Vector2(10.0f, 10.0f);
-            randomVelocity = velocity;
-            
+            //randomVelocity = velocity;
+
         }
 
         private Texture2D rbcTexture;// { get; set; }
@@ -31,7 +31,8 @@ namespace Collision
             sb.End();
         }
 
-        public void Update(GameTime gt, GraphicsDeviceManager gfx) {
+        public void Update(GameTime gt, GraphicsDeviceManager gfx)
+        {
 
             // Move the sprite by speed, scaled by elapsed time.
             rbcPosition.X +=
