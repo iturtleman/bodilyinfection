@@ -81,6 +81,9 @@ namespace BodilyInfection
         internal void Update()
         {
             UpdateBehavior();
+            foreach(Sprite sp in mSprites){
+                sp.UpdateBehavior();
+            }
         }
         #endregion Actions
 
@@ -118,6 +121,20 @@ namespace BodilyInfection
         public Sprite GetSprite(string name)
         {
             return (mSprites.Find(delegate(WorldObject s) { return s.Name == name; }) as Sprite);
+        }
+
+        /// <summary>
+        /// Retrieves all sprites with the specified type.
+        /// @TODO Get only sprites within a certain distance of a point, for efficiency's sake.
+        ///     Possibly could make use of Bruce's collision code.
+        /// </summary>
+        /// <param name="typename">The type name to select by.</param>
+        /// <returns></returns>
+        public List<Sprite> GetSpritesByType(string typename)
+        {
+            return (mSprites.FindAll(
+                delegate(WorldObject s) { return s.GetType().Name == typename; }).ConvertAll<Sprite>(
+                    delegate(WorldObject s) { return s as Sprite; }));
         }
 
         public void RemoveSprite(Sprite sp)

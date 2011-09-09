@@ -12,10 +12,10 @@ namespace BodilyInfection
         public Sprite(string name, Actor actor)
         {
             mName = name;
-            mDrawn = false;
+            //mDrawn = false;
             mActor = actor;
             mLastUpdate = new GameTime();
-            LoadBehavior=()=>{};
+            LoadBehavior=()=>{ };
             UpdateBehavior = () => { };
             EndBehavior = () => { };
             //add to current level
@@ -36,7 +36,7 @@ namespace BodilyInfection
         /// <summary>
         ///     the sprite's speed
         /// </summary>
-        public float Speed { get; set; }
+        public float AnimationSpeed { get; set; }
         
         #endregion Properties
 
@@ -104,7 +104,7 @@ namespace BodilyInfection
             if (mAnimating == true)
             {
                 //used to update the animation. Occurs once the frame's pause * sprite's speed occurs.
-                if (mLastUpdate.TotalGameTime.TotalMilliseconds + frame.Pause * Speed < gameTime.TotalGameTime.TotalMilliseconds)
+                if (mLastUpdate.TotalGameTime.TotalMilliseconds + frame.Pause * AnimationSpeed < gameTime.TotalGameTime.TotalMilliseconds)
                 {
                     //obtain current peg 
                     Vector2 ppos = frame.AnimationPeg;
@@ -164,7 +164,7 @@ namespace BodilyInfection
         /// <summary>
         /// Tells if the object has been drawn the first time
         /// </summary>
-        private bool mDrawn;
+        //private bool mDrawn;
 
         /// <summary>
         /// Number that indicates when the Sprite'a animation was last updated.

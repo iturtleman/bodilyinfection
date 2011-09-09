@@ -36,21 +36,21 @@ namespace BodilyInfection
 
 
             /** load sprites */
-            Sprite vikings1 = new Sprite("viking1", new Actor(l.GetAnimation("viking.anim")));
+            Sprite vikings1 = new RedBloodCell("viking1", new Actor(l.GetAnimation("viking.anim")));
             vikings1.Pos = new Vector2(0, 0);
-            vikings1.Speed= 1;
+            vikings1.AnimationSpeed= 1;
 
             Sprite vikings2 = new Sprite("viking2", new Actor(l.GetAnimation("viking.anim")));
             vikings2.Pos = new Vector2(350, 300);
-            vikings2.Speed = 1.5f;
+            vikings2.AnimationSpeed = 1.5f;
 
-            Sprite sun = new Sprite("sun", new Actor(l.GetAnimation("sun.anim")));
+            Sprite sun = new Virus("sun", new Actor(l.GetAnimation("sun.anim")));
             sun.Pos = new Vector2(480, 50);
-            sun.Speed = 1;
+            sun.AnimationSpeed = 1;
 
-            Sprite rbc = new Sprite("rbc", new Actor(l.GetAnimation("rbc.anim")));
+            Sprite rbc = new Ship("rbc", new Actor(l.GetAnimation("rbc.anim")));
             rbc.Pos = new Vector2(50, 50);
-            rbc.Speed = 1;
+            rbc.AnimationSpeed = 1;
 
 
         }
@@ -63,14 +63,14 @@ namespace BodilyInfection
 
             Background bg = LevelWorld.Background;
 
-            if (player != null)
+            /*if (player != null)
             {
                 GamePadState currentState = GamePad.GetState(PlayerIndex.One);
                 if (currentState.IsConnected)
                 {
                     player.Pos += GetLeftThumbState(PlayerIndex.One);
                 }
-                else /* Move with arrow keys */
+                else // Move with arrow keys
                 {
                     KeyboardState keys = Keyboard.GetState();
                     float shipSpeed = 5;
@@ -92,7 +92,7 @@ namespace BodilyInfection
                         player.Pos.X += shipSpeed;
                     }
                 }
-            }
+            }*/
 
             //if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.X < 0)
             //    bg.X -= 1;
