@@ -65,7 +65,33 @@ namespace BodilyInfection
 
             if (player != null)
             {
-                player.Pos += GetLeftThumbState(PlayerIndex.One);
+                GamePadState currentState = GamePad.GetState(PlayerIndex.One);
+                if (currentState.IsConnected)
+                {
+                    player.Pos += GetLeftThumbState(PlayerIndex.One);
+                }
+                else /* Move with arrow keys */
+                {
+                    KeyboardState keys = Keyboard.GetState();
+                    float shipSpeed = 5;
+                    if (keys.IsKeyDown(Keys.Up))
+                    {
+                        player.Pos.Y -= shipSpeed;
+                    }
+                    else if (keys.IsKeyDown(Keys.Down))
+                    {
+                        player.Pos.Y += shipSpeed;
+                    }
+
+                    if (keys.IsKeyDown(Keys.Left))
+                    {
+                        player.Pos.X -= shipSpeed;
+                    }
+                    else if (keys.IsKeyDown(Keys.Right))
+                    {
+                        player.Pos.X += shipSpeed;
+                    }
+                }
             }
 
             //if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.X < 0)

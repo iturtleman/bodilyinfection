@@ -122,15 +122,24 @@ namespace Collision
                 objects.Add(circle);
             }
 
+            Vector2 randomPosition;
+            Vector2 randomVelocity;
+
             for (int i = 0; i < numberOfRbcs; i++)
             {
-                RedBloodCell rbc = new RedBloodCell(Content, random, graphics);
+                randomPosition = new Vector2(random.Next(0, graphics.GraphicsDevice.Viewport.Width),
+                                                    random.Next(0, graphics.GraphicsDevice.Viewport.Height));
+                randomVelocity = new Vector2(((float)random.Next(1, 10) / 100) + ((float)random.Next(1, 10) / 1000),
+                                                    ((float)random.Next(1, 10) / 100) + ((float)random.Next(1, 10) / 1000));
+                RedBloodCell rbc = new RedBloodCell(Content, randomPosition, randomVelocity);
                 rbcs.Add(rbc);
             }
 
             for (int i = 0; i < numberOfViruses; i++)
             {
-                Virus virus = new Virus(Content, random, graphics);
+                randomPosition = new Vector2(random.Next(0, graphics.GraphicsDevice.Viewport.Width),
+                                                    random.Next(0, graphics.GraphicsDevice.Viewport.Height));
+                Virus virus = new Virus(Content, randomPosition);
                 viruses.Add(virus);
             }
 
@@ -162,6 +171,7 @@ namespace Collision
             //code you want to test time of
            
             //------------------------------------------------
+            ship.Update();
 
             foreach (RedBloodCell i in rbcs)
             {
@@ -173,7 +183,6 @@ namespace Collision
                 i.Update(gameTime, graphics, ship.shipPosition);
             }
 
-            ship.Update();
             //------------------------------------------------
             DateTime stopFill = DateTime.Now;
 
