@@ -9,68 +9,61 @@ namespace BodilyInfection
 {
     class RedBloodCell : Sprite
     {
-        //public RedBloodCell(ContentManager cm, Vector2 position, Vector2 velocity)
-        public RedBloodCell(string name, Actor actor): base(name, actor)
+        public RedBloodCell(string name, Actor actor)
+            : this(name, actor, new Vector2(3.0f, 3.0f))
         {
-            //rbcTexture = cm.Load<Texture2D>("rbc");
-            //rbcPosition = position;
-            rbcSpeed = new Vector2(10.0f, 10.0f);
-            //randomVelocity = velocity;
-
+            
         }
 
-        private Texture2D rbcTexture;// { get; set; }
-        private Vector2 rbcPosition;// { get; set; }
-        private Vector2 rbcSpeed;// { get; set; }
-        private Vector2 randomVelocity;
-
-        public void Draw(SpriteBatch sb)
+        public RedBloodCell(string name, Actor actor, Vector2 velocity)
+            : base(name, actor)
         {
-            sb.Begin();
-            sb.Draw(rbcTexture, rbcPosition, Color.White);
-            sb.End();
+            movementVelocity = velocity;
+            UpdateBehavior += new Behavior(Update);
         }
 
-        public void Update(GameTime gt, GraphicsDeviceManager gfx)
+
+
+        private Vector2 movementVelocity;// { get; set; }
+
+        public void Update()
         {
 
             // Move the sprite by speed, scaled by elapsed time.
-            rbcPosition.X +=
-                rbcSpeed.X * ((float)gt.ElapsedGameTime.TotalSeconds + randomVelocity.X);
+            Pos.X += movementVelocity.X;
 
-            rbcPosition.Y +=
-                rbcSpeed.Y * ((float)gt.ElapsedGameTime.TotalSeconds + randomVelocity.Y);
-
+            Pos.Y += movementVelocity.Y;
+            
             int MaxX =
-                gfx.GraphicsDevice.Viewport.Width - rbcTexture.Width;
+                This.Game.GraphicsDevice.Viewport.Width;
             int MinX = 0;
             int MaxY =
-                gfx.GraphicsDevice.Viewport.Height - rbcTexture.Height;
+                This.Game.GraphicsDevice.Viewport.Height;
             int MinY = 0;
 
             // Check for bounce.
-            if (rbcPosition.X > MaxX)
+            if (Pos.X > MaxX)
             {
-                rbcSpeed.X *= -1;
-                rbcPosition.X = MaxX;
+                movementVelocity.X *= -1;
+                Pos.X = MaxX;
             }
 
-            else if (rbcPosition.X < MinX)
+            else if (Pos.X < MinX)
             {
-                rbcSpeed.X *= -1;
-                rbcPosition.X = MinX;
+                movementVelocity.X *= -1;
+                Pos.X = MinX;
             }
 
-            if (rbcPosition.Y > MaxY)
+            if (Pos.Y > MaxY)
             {
-                rbcSpeed.Y *= -1;
-                rbcPosition.Y = MaxY;
+                movementVelocity.Y *= -1;
+                Pos.Y = MaxY;
             }
 
-            else if (rbcPosition.Y < MinY)
+            else if (Pos.Y < MinY)
             {
-                rbcSpeed.Y *= -1;
-                rbcPosition.Y = MinY;
+                movementVelocity.Y *= -1;
+                Pos.Y = MinY;
             }
         }
     }

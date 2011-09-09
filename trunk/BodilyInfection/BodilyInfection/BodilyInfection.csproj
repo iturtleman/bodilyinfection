@@ -121,6 +121,9 @@
     <Compile Include="Engine\SpriteFrame.cs" />
     <Compile Include="Engine\This.cs" />
     <Compile Include="Engine\WorldObject.cs" />
+    <Compile Include="RedBloodCell.cs" />
+    <Compile Include="Ship.cs" />
+    <Compile Include="Virus.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
