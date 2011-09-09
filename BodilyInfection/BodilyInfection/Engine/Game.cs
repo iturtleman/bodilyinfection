@@ -27,7 +27,7 @@ namespace BodilyInfection
         /// <summary>
         /// Decides whether or not to draw bounding boxes
         /// </summary>
-        public static bool ShowCollisions { get; set; }
+        public static bool ShowCollisions { get { return Collision.ShowCollisions; } set { Collision.ShowCollisions=value; } }
         /// <summary>
         /// Decides whether or not to draw FPS
         /// </summary>
@@ -89,7 +89,7 @@ namespace BodilyInfection
         #endregion Variables
 
         #region premade things
-        GraphicsDeviceManager graphics;
+        internal GraphicsDeviceManager graphics;
         internal SpriteBatch spriteBatch;
         #endregion
 
@@ -178,7 +178,7 @@ namespace BodilyInfection
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             if (CurrentLevel != null)
-                CurrentLevel.DrawScene(gameTime);
+                CurrentLevel.Draw(gameTime);
 
             #region DrawFPS
             if (ShowFPS)

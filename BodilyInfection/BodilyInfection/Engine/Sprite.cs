@@ -126,19 +126,6 @@ namespace BodilyInfection
             }
         }
 
-        /// <summary>
-        /// Draws Collision data for the Object (from outside)
-        /// </summary>
-        public override void DrawCollisions()
-        {
-            //get the frame for readability
-            SpriteFrame frame = mActor.Animations[mActor.CurrentAnimation].Frames[mActor.Frame];
-            //center the location
-            Vector2 pt = Pos + frame.AnimationPeg;
-            DrawCollisions(frame.CollisionData, pt);
-        }
-        #endregion Draw
-
         #region Collision
         /// <summary>
         /// checks for collision with sprite of a given name.
@@ -190,5 +177,7 @@ namespace BodilyInfection
         private Actor mActor;
 
         #endregion Variables
+
+        #endregion Methods
     }
 }
