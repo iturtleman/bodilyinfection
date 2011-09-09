@@ -24,25 +24,6 @@ namespace BodilyInfection
         /// <param name="gameTime">The gametime for the drawing frame.</param>
         public abstract void Draw(Microsoft.Xna.Framework.GameTime gameTime);
 
-        /// <summary>
-        /// Overwrite how to draw collisions for different world objects
-        /// </summary>
-        public virtual void DrawCollisions()
-        {
-        }
-        
-        /// <summary>
-        /// Draws Collision data for the Object
-        /// </summary>
-        /// <param name="vec">List of Collision data for the given object</param>
-        /// <param name="pos">Position where to draw the collision from</param>
-        public void DrawCollisions(List<Collision> vec, Vector2 pos)
-        {
-            for (int i = 0; i < vec.Count; i++)
-            {
-                vec[i].Draw(pos);
-            }
-        }
         #endregion Methods
 
         #region Properties

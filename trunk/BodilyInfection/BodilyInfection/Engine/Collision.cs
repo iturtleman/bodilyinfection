@@ -11,5 +11,12 @@ namespace BodilyInfection
         {
             throw new NotImplementedException();
         }
+
+        internal static void Draw()
+        {
+            //throw new NotImplementedException();
+        }
+
+        public static bool ShowCollisions { get; set; }
     }
 }
