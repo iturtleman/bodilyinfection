@@ -55,7 +55,7 @@ namespace AnimationEditor
 
         public override string ToString()
         {
-            return string.Format("Pause:{0} milliseconds\nAnimation Peg at {1}\nClear color is {2}\nTop Left is at {3}\nWidth:{4}\nHeight:{5}",Pause,AnimationPeg,ClearColor,StartPos,Width,Height);
+            return string.Format("Pause:{0} milliseconds\nAnimation Peg at {1}\nClear color is {2}\nTop Left is at {3}\nWidth:{4}\nHeight:{5}\nFilename:{6}",Pause,AnimationPeg,ClearColor,StartPos,Width,Height,File);
         }
     }
 }

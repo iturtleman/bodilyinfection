@@ -26,13 +26,18 @@ namespace AnimationEditor
     {
         public ObservableCollection<SpriteSheetVisual> SpriteFrameData { get; set; }
 
-
         public MainWindow()
         {
             InitializeComponent();
             storage.mainWindow = this;
             SpriteFrameData = new ObservableCollection<SpriteSheetVisual>();
             CloseFrames.MouseDown += new MouseButtonEventHandler(CloseFrames_MouseDown);
+            CopyFrames.MouseUp += new MouseButtonEventHandler(CopyFrames_MouseUp);
+        }
+
+        void CopyFrames_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            SpriteSheetItems.SelectAll();
         }
 
         void CloseFrames_MouseDown(object sender, MouseButtonEventArgs e)
@@ -105,7 +110,7 @@ namespace AnimationEditor
             AnimFile file = ((Files.SelectedItem as TabItem).DataContext as AnimFile);
             if (file != null && sfd.ShowDialog() == true)
             {
-                XDocument doc = file.CreateAnimFile(sfd.FileName);
+                XDocument doc = file.CreateAnimFile(sfd.SafeFileName);
                 doc.Save(sfd.FileName);
             }
         }
@@ -153,8 +158,8 @@ namespace AnimationEditor
             loadAnimDialog.Filter = "Image Files(*.BMP;*PNG;*.JPG;*.GIF)|*.BMP;*.PNG;*.JPG;*.GIF|All files (*.*)|*.*";
             if (loadAnimDialog.ShowDialog() == true)
             {
-                ObservableCollection<Frame> frames = new ObservableCollection<Frame>();
-                string[] fileNames = loadAnimDialog.FileNames;
+                List<Frame> frames = new List<Frame>();
+                string[] fileNames = loadAnimDialog.SafeFileNames;
                 int count = 0;
                 foreach (var file in loadAnimDialog.OpenFiles())
                 {
@@ -176,19 +181,8 @@ namespace AnimationEditor
                     );
                     count++;
                 }
-                if (Files.HasItems && Files.Items.Count > 0)
-                {
-                    Files.Items.MoveCurrentToFirst();
-                    (Files.SelectedItem as TabItem).DataContext = new AnimFile(frames);
-                }
-                else
-                {
-                    Files.Items.Clear();
-                    FileAnimationEditor fae = new FileAnimationEditor();
-                    fae.DataContext = new AnimFile(frames);
-                    Files.ItemsSource = new List<FileAnimationEditor>() { fae };
-                    Files.SelectedIndex = 0;
-                }
+                //add them to a new frameset
+                AddSpriteSheet(frames, "images");
             }
         }
         #endregion
@@ -212,7 +206,7 @@ namespace AnimationEditor
                     sfd.Filter = "Animation files(*.anim)|*.anim";
                     if (sfd.ShowDialog() == true)
                     {
-                        XDocument doc = file.CreateAnimFile(sfd.FileName);
+                        XDocument doc = file.CreateAnimFile(sfd.SafeFileName);
                         doc.Save(sfd.FileName);
                         file.Filename = sfd.FileName;
                     }
@@ -244,10 +238,11 @@ namespace AnimationEditor
                 string[] spos = frame.Attribute("TLPos").Value.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 Point TL = new Point(int.Parse(spos[0]), int.Parse(spos[1]));
                 CroppedBitmap img = new CroppedBitmap(spritesheet, new Int32Rect((int)TL.X, (int)TL.Y, w, h));
-
+                string file = FileName.Substring(FileName.LastIndexOf('\\')+1);
+                file = file.Remove(file.LastIndexOf('.'));
                 frames.Add(new Frame()
                 {
-                    File = spritesheetfile,
+                    File = file,
                     Image = img,
                     AnimationPeg = new Point(0, 0),
                     Height = h,

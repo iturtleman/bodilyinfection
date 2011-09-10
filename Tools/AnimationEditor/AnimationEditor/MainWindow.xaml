@@ -11,11 +11,11 @@
         Title="Animation Editor"
         Height="768"
         Width="1024">
-	<Window.Resources>
-		<local:ShowItems x:Key="ShowItems"/>
-		<local:NameConverter x:Key="NameConverter"/>
-		<local:SpriteSheetConverter x:Key="SpriteSheetConverter"/>
-	</Window.Resources>
+    <Window.Resources>
+        <local:ShowItems x:Key="ShowItems"/>
+        <local:NameConverter x:Key="NameConverter"/>
+        <local:SpriteSheetConverter x:Key="SpriteSheetConverter"/>
+    </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="Open" CanExecute="Yes" Executed="LoadFromAnimFile"/>
         <CommandBinding Command="Save" CanExecute="CanSave" Executed="SaveFile"/>
@@ -26,14 +26,14 @@
         <CommandBinding Command="{x:Static local:MainWindow.CommandImportImage}" CanExecute="Yes" Executed="ImportImage"/>
     </Window.CommandBindings>
     <Grid>
-    	<Grid.ColumnDefinitions>
-    		<ColumnDefinition Width="0.803*"/>
-    		<ColumnDefinition Width="0.197*"/>
-    	</Grid.ColumnDefinitions>
-    	<Grid.RowDefinitions>
-    		<RowDefinition Height="20"/>
-    		<RowDefinition Height="*"/>
-    	</Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.803*"/>
+            <ColumnDefinition Width="0.197*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Menu Margin="0" Grid.ColumnSpan="2">
             <MenuItem Header="_File" >
                 <MenuItem Header="Load From Anim File" Command="Open"/>
@@ -63,30 +63,45 @@
                 <local:FileAnimationEditor DataContext="{Binding DataContext, ElementName=tabItem}"/>
             </TabItem>
         </TabControl>
-    	<ListBox x:Name="SpriteSheets" ItemsSource="{Binding SpriteFrameData, ElementName=window}" IsSynchronizedWithCurrentItem="True" Margin="0" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" HorizontalContentAlignment="Center" Grid.Row="1" Grid.Column="1"/>
-    	<ListBox x:Name="SpriteSheetItems" ItemsSource="{Binding SelectedValue.Frames, Converter={StaticResource ShowItems}, ElementName=SpriteSheets, Mode=OneWay}" Margin="0" HorizontalContentAlignment="Center" Grid.Row="1" dd:DragDrop.DropHandler="{Binding}" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" HorizontalAlignment="Right" Visibility="{Binding SelectedIndex, Converter={StaticResource ShowItems}, ElementName=SpriteSheets}">
-    		 <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Border BorderThickness="3" CornerRadius="3">
-                                    <Border.BorderBrush>
-                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FF2E5762" Offset="0"/>
-                                            <GradientStop Color="#FF87DDF3" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Border.BorderBrush>
-                                    <Image Source="{Binding Image}" ToolTip="{Binding}"/>
-                                </Border>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>  	
-		</ListBox>
-    	<Border x:Name="CloseFrames" BorderBrush="Black" BorderThickness="1" CornerRadius="1" Margin="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" Visibility="{Binding SelectedIndex, Converter={StaticResource ShowItems}, ElementName=SpriteSheets}">
-    		<Border.Background>
-    			<RadialGradientBrush RadiusY="1.25" RadiusX="0.75">
-    				<GradientStop Color="#FFF24014"/>
-    				<GradientStop Color="#FFB6300E" Offset="1"/>
-    			</RadialGradientBrush>
-    		</Border.Background>
-			<TextBlock Text="Close Sprite Frame list"/>
-    	</Border>
+        <ListBox x:Name="SpriteSheets" ItemsSource="{Binding SpriteFrameData, ElementName=window}" IsSynchronizedWithCurrentItem="True" Margin="0" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" HorizontalContentAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+        <ListBox x:Name="SpriteSheetItems" ItemsSource="{Binding SelectedValue.Frames, Converter={StaticResource ShowItems}, ElementName=SpriteSheets, Mode=OneWay}" Margin="0" HorizontalContentAlignment="Center" Grid.Row="1" dd:DragDrop.DropHandler="{Binding}" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" HorizontalAlignment="Right" Visibility="{Binding SelectedIndex, Converter={StaticResource ShowItems}, ElementName=SpriteSheets}" SelectionMode="Multiple">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="3" CornerRadius="3">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF2E5762" Offset="0"/>
+                                <GradientStop Color="#FF87DDF3" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                        <Image Source="{Binding Image}" ToolTip="{Binding}"/>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center">
+        	<Grid.RowDefinitions>
+        		<RowDefinition/>     	
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+        	<Border x:Name="CloseFrames" BorderBrush="Black" BorderThickness="1" CornerRadius="1" Margin="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" Visibility="{Binding SelectedIndex, Converter={StaticResource ShowItems}, ElementName=SpriteSheets}">
+        		<Border.Background>
+        			<RadialGradientBrush RadiusY="1.25" RadiusX="0.75">
+        				<GradientStop Color="#FFF24014"/>
+        				<GradientStop Color="#FFB6300E" Offset="1"/>
+        			</RadialGradientBrush>
+        		</Border.Background>
+        		<TextBlock Text="Close Sprite Frame list"/>
+        	</Border>
+        	<Border x:Name="CopyFrames" BorderBrush="Black" BorderThickness="1" CornerRadius="1" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" Visibility="{Binding SelectedIndex, Converter={StaticResource ShowItems}, ElementName=SpriteSheets}">
+        		<Border.Background>
+        			<RadialGradientBrush RadiusY="1.25" RadiusX="0.75">
+        				<GradientStop Color="#FF25F214"/>
+        				<GradientStop Color="#FF1BB60E" Offset="1"/>
+        			</RadialGradientBrush>
+        		</Border.Background>
+        		<TextBlock Text="Select All Frames"/>
+        	</Border>
+        </Grid>
     </Grid>
 </Window>
