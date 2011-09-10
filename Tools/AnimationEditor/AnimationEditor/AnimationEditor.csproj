@@ -63,7 +63,6 @@
     <Compile Include="EditFrame.xaml.cs">
       <DependentUpon>EditFrame.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SpriteSheet.cs" />
     <Compile Include="SpriteSheetVisual.xaml.cs">
       <DependentUpon>SpriteSheetVisual.xaml</DependentUpon>
     </Compile>

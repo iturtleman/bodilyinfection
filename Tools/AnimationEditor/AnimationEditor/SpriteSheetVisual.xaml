@@ -17,7 +17,7 @@
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
-		<TextBlock x:Name="textBlock" Text="{Binding Name, Converter={StaticResource NameConverter}, FallbackValue=TEST}" Grid.Row="0" HorizontalAlignment="Left" MaxWidth="200" ToolTip="{Binding Text, ElementName=textBlock}" />
-		<Image Source="{Binding Frames, Converter={StaticResource SpriteSheetConverter}}" Grid.Row="1"/>
+		<TextBlock x:Name="textBlock" Text="{Binding FileName, Converter={StaticResource NameConverter}, FallbackValue=TEST}" Grid.Row="0" HorizontalAlignment="Left" MaxWidth="200" ToolTip="{Binding Text, ElementName=textBlock}" />
+		<Image Source="{Binding Frames, Converter={StaticResource SpriteSheetConverter}}" Grid.Row="1" ToolTip="Select to view all Frames in this Spritesheet"/>
 	</Grid>
 </UserControl>

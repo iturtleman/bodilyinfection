@@ -2,10 +2,20 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:local="clr-namespace:AnimationEditor"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Name="window" mc:Ignorable="d" x:Class="AnimationEditor.MainWindow"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:dd="clr-namespace:GongSolutions.Wpf.DragDrop;assembly=GongSolutions.Wpf.DragDrop"
+		x:Name="window"
+		mc:Ignorable="d"
+		x:Class="AnimationEditor.MainWindow"
         Title="Animation Editor"
         Height="768"
         Width="1024">
+	<Window.Resources>
+		<local:ShowItems x:Key="ShowItems"/>
+		<local:NameConverter x:Key="NameConverter"/>
+		<local:SpriteSheetConverter x:Key="SpriteSheetConverter"/>
+	</Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="Open" CanExecute="Yes" Executed="LoadFromAnimFile"/>
         <CommandBinding Command="Save" CanExecute="CanSave" Executed="SaveFile"/>
@@ -53,6 +63,30 @@
                 <local:FileAnimationEditor DataContext="{Binding DataContext, ElementName=tabItem}"/>
             </TabItem>
         </TabControl>
-    	<ListBox x:Name="SpriteSheets" ItemsSource="{Binding SpriteSheetData, ElementName=window}" Margin="0" HorizontalContentAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+    	<ListBox x:Name="SpriteSheets" ItemsSource="{Binding SpriteFrameData, ElementName=window}" IsSynchronizedWithCurrentItem="True" Margin="0" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" HorizontalContentAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+    	<ListBox x:Name="SpriteSheetItems" ItemsSource="{Binding SelectedValue.Frames, Converter={StaticResource ShowItems}, ElementName=SpriteSheets, Mode=OneWay}" Margin="0" HorizontalContentAlignment="Center" Grid.Row="1" dd:DragDrop.DropHandler="{Binding}" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" HorizontalAlignment="Right" Visibility="{Binding SelectedIndex, Converter={StaticResource ShowItems}, ElementName=SpriteSheets}">
+    		 <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="3" CornerRadius="3">
+                                    <Border.BorderBrush>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF2E5762" Offset="0"/>
+                                            <GradientStop Color="#FF87DDF3" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.BorderBrush>
+                                    <Image Source="{Binding Image}" ToolTip="{Binding}"/>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>  	
+		</ListBox>
+    	<Border x:Name="CloseFrames" BorderBrush="Black" BorderThickness="1" CornerRadius="1" Margin="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" Visibility="{Binding SelectedIndex, Converter={StaticResource ShowItems}, ElementName=SpriteSheets}">
+    		<Border.Background>
+    			<RadialGradientBrush RadiusY="1.25" RadiusX="0.75">
+    				<GradientStop Color="#FFF24014"/>
+    				<GradientStop Color="#FFB6300E" Offset="1"/>
+    			</RadialGradientBrush>
+    		</Border.Background>
+			<TextBlock Text="Close Sprite Frame list"/>
+    	</Border>
     </Grid>
 </Window>
