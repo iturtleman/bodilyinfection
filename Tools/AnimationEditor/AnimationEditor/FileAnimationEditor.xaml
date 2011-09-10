@@ -3,6 +3,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	    xmlns:dd="clr-namespace:GongSolutions.Wpf.DragDrop;assembly=GongSolutions.Wpf.DragDrop"
 	xmlns:local="clr-namespace:AnimationEditor"
 	mc:Ignorable="d"
 	x:Class="AnimationEditor.FileAnimationEditor"
@@ -27,12 +28,12 @@
                 <RowDefinition/>
                 <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
-            <Grid x:Name="Workspace" Grid.Row="0">
+            <Grid x:Name="Workspace" Grid.Row="0" Grid.ColumnSpan="2">
             	<Grid x:Name="Sheet" Visibility="{Binding Visibility, Converter={StaticResource VisibilityInverter1}, ElementName=ShowSpriteSheetButton}" Background="Magenta">
             		<TextBlock Text="TESTING!"/>
-            		</Grid>
+            	</Grid>
 			</Grid>
-            <Border Grid.Row="1" BorderThickness="0,3,0,0">
+            <Border Grid.Row="1" BorderThickness="0,3,0,0" Grid.ColumnSpan="2">
                 <Border.BorderBrush>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0.03"/>
@@ -48,7 +49,15 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="200"/>
                     </Grid.ColumnDefinitions>
-					<Grid Grid.ColumnSpan="2">
+					<Grid x:Name="MenuButtons" Grid.ColumnSpan="2">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
 						<Border x:Name="SaveSpriteSheetButton" BorderBrush="Black" BorderThickness="1" CornerRadius="1" Tag="Collapse Window" HorizontalAlignment="Left" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" Padding="1,0,1,1" ToolTip="Save Sprite Sheet" Visibility="{Binding Visibility, Converter={StaticResource VisibilityInverter}, ElementName=ShowSpriteSheetButton}">
 							<Border.Background>
 								<RadialGradientBrush RadiusY="1.25" RadiusX="0.75">
@@ -56,9 +65,9 @@
 									<GradientStop Color="#FF0EB62F" Offset="1"/>
 								</RadialGradientBrush>
 							</Border.Background>
-							<TextBlock Text="Save" Margin="0" FontSize="13.333" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+							<TextBlock Text="Save" Margin="0" FontSize="13.333" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 						</Border>
-						<Border x:Name="CancelButton" BorderBrush="Black" BorderThickness="1" CornerRadius="1" Tag="Collapse Window" HorizontalAlignment="Left" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" Padding="1,0,1,1" ToolTip="Don't save now" Visibility="{Binding Visibility, Converter={StaticResource VisibilityInverter}, ElementName=ShowSpriteSheetButton}" Margin="62,0,0,0">
+						<Border x:Name="CancelButton" BorderBrush="Black" BorderThickness="1" CornerRadius="1" Tag="Collapse Window" VerticalAlignment="Top" Padding="1,0,1,1" ToolTip="Don't save now" Visibility="{Binding Visibility, Converter={StaticResource VisibilityInverter}, ElementName=ShowSpriteSheetButton}" Margin="0" HorizontalAlignment="Right" d:LayoutOverrides="HorizontalAlignment" Grid.Column="1">
 							<Border.Background>
 								<RadialGradientBrush RadiusY="1.25" RadiusX="0.75">
 									<GradientStop Color="#FFF21414"/>
@@ -67,7 +76,7 @@
 							</Border.Background>
 							<TextBlock Text="Cancel" Margin="0" FontSize="13.333" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 						</Border>
-						<Border x:Name="ShowSpriteSheetButton" BorderBrush="Black" BorderThickness="1" CornerRadius="1" Tag="Collapse Window" HorizontalAlignment="Left" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" Padding="1,0,1,1" ToolTip="View Sprite Sheet">
+						<Border x:Name="ShowSpriteSheetButton" BorderBrush="Black" BorderThickness="1" CornerRadius="1" Tag="Collapse Window" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="1,0,1,1" ToolTip="View Sprite Sheet" Grid.ColumnSpan="2">
 							<Border.Background>
 								<RadialGradientBrush RadiusY="1.25" RadiusX="0.75">
 									<GradientStop Color="#FF14F25F"/>
@@ -76,28 +85,46 @@
 							</Border.Background>
 							<TextBlock Text="View Sprite Sheet" Margin="0" FontSize="13.333" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 						</Border>
+						<Border x:Name="EditFrame" BorderBrush="Black" BorderThickness="1" CornerRadius="1" Tag="Collapse Window" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="1,0,1,1" ToolTip="Edit the Selected Frame" Grid.Column="2" Grid.ColumnSpan="3">
+							<Border.Background>
+								<RadialGradientBrush RadiusY="1.25" RadiusX="0.75">
+									<GradientStop Color="#FF14F25F"/>
+									<GradientStop Color="#FF0EB62F" Offset="1"/>
+								</RadialGradientBrush>
+							</Border.Background>
+							<TextBlock Text="Edit Frame" Margin="0" FontSize="13.333" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+						</Border>
+						<Border x:Name="Okay" BorderBrush="Black" BorderThickness="1" CornerRadius="1" Tag="Collapse Window" HorizontalAlignment="Right" VerticalAlignment="Top" Padding="1,0,1,1" ToolTip="Save Frame" Visibility="{Binding Visibility, Converter={StaticResource VisibilityInverter}, ElementName=EditFrame}" Grid.Column="1">
+							<Border.Background>
+								<RadialGradientBrush RadiusY="1.25" RadiusX="0.75">
+									<GradientStop Color="#FF14F25F"/>
+									<GradientStop Color="#FF0EB62F" Offset="1"/>
+								</RadialGradientBrush>
+							</Border.Background>
+							<TextBlock Text="Okay" Margin="0" FontSize="13.333" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+						</Border>
 					</Grid>
-                    <ListBox x:Name="SpriteFrames" ItemsSource="{Binding Frames}" ItemsPanel="{DynamicResource ListBoxTemplate}" Grid.Row="1">
+                    <ListBox x:Name="SpriteFrames" ItemsSource="{Binding Frames}" ItemsPanel="{DynamicResource ListBoxTemplate}" Grid.Row="1"  IsSynchronizedWithCurrentItem="True" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Border BorderThickness="1" CornerRadius="3">
+                                <Border BorderThickness="3" CornerRadius="3">
                                     <Border.BorderBrush>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                             <GradientStop Color="#FF2E5762" Offset="0"/>
                                             <GradientStop Color="#FF87DDF3" Offset="1"/>
                                         </LinearGradientBrush>
                                     </Border.BorderBrush>
-                                    <Image Source="{Binding File}" ToolTip="{Binding}"/>
+                                    <Image Source="{Binding Image}" ToolTip="{Binding}"/>
                                 </Border>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Border Grid.Column="1" BorderThickness="3,0,0,0" Grid.Row="1">
+                    <Border Grid.Column="1" BorderThickness="3,3,0,0" Grid.Row="1">
                         <Border.BorderBrush>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF7D89C7" Offset="0.03"/>
-                                <GradientStop Color="White"/>
-                            </LinearGradientBrush>
+                        	<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        		<GradientStop Color="#FF7D89C7" Offset="0.655"/>
+                        		<GradientStop Color="White" Offset="1"/>
+                        	</LinearGradientBrush>
                         </Border.BorderBrush>
                         <Viewbox x:Name="Preview" OpacityMask="Black"/>
                     </Border>
