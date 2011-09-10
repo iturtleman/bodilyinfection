@@ -18,44 +18,15 @@ namespace AnimationEditor
 	/// </summary>
 	public partial class SpriteSheetVisual : UserControl
 	{
+        public string FileName { get; set; }
+
+        public List<Frame> Frames { get; set; }
+
+        public int FrameCount { get { return Frames != null ? Frames.Count : 0; } }
+
 		public SpriteSheetVisual()
 		{
 			this.InitializeComponent();
 		}
 	}
-
-    public class SpriteSheetConverter : IValueConverter
-    {
-
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            List<Frame> ss = value as List<Frame>;
-            if (ss != null && ss.Count > 0)
-            {
-                return ss[0].Image;
-            }
-            else
-                return value;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            return value;
-        }
-    }
-
-    public class NameConverter : IValueConverter
-    {
-
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            string name = value as string;
-            return name.Substring(name.LastIndexOf('\\')+1);
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            return value;
-        }
-    }
 }

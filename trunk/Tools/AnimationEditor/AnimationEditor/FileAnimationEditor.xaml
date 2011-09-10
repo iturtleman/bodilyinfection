@@ -29,7 +29,7 @@
                 <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
             <Grid x:Name="Workspace" Grid.Row="0" Grid.ColumnSpan="2">
-            	<Grid x:Name="Sheet" Visibility="{Binding Visibility, Converter={StaticResource VisibilityInverter1}, ElementName=ShowSpriteSheetButton}" Background="Magenta">
+            	<Grid x:Name="Sheet" Visibility="{Binding Visibility, Converter={StaticResource VisibilityInverter1}, ElementName=ShowSpriteSheetButton}">
             		<TextBlock Text="TESTING!"/>
             	</Grid>
 			</Grid>
@@ -104,7 +104,7 @@
 							<TextBlock Text="Okay" Margin="0" FontSize="13.333" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 						</Border>
 					</Grid>
-                    <ListBox x:Name="SpriteFrames" ItemsSource="{Binding Frames}" ItemsPanel="{DynamicResource ListBoxTemplate}" Grid.Row="1"  IsSynchronizedWithCurrentItem="True" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True">
+                    <ListBox x:Name="SpriteFrames" ItemsSource="{Binding Frames}" ItemsPanel="{DynamicResource ListBoxTemplate}" Grid.Row="1"  IsSynchronizedWithCurrentItem="True" dd:DragDrop.IsDropTarget="True" dd:DragDrop.DropHandler="{Binding}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderThickness="3" CornerRadius="3">

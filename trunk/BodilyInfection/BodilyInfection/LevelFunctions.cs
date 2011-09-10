@@ -33,7 +33,7 @@ namespace BodilyInfection
             l.AddAnimation(new Animation("viking.anim"));
             l.AddAnimation(new Animation("sun.anim"));
             l.AddAnimation(new Animation("rbc.anim"));
-
+            l.AddAnimation(new Animation("virusPulse.anim"));
 
             /** load sprites */
             Sprite vikings1 = new RedBloodCell("viking1", new Actor(l.GetAnimation("viking.anim")));
@@ -44,15 +44,13 @@ namespace BodilyInfection
             vikings2.Pos = new Vector2(350, 300);
             vikings2.AnimationSpeed = 1.5f;
 
-            Sprite sun = new Virus("sun", new Actor(l.GetAnimation("sun.anim")));
+            Sprite sun = new Virus("sun", new Actor(l.GetAnimation("virusPulse.anim")));
             sun.Pos = new Vector2(480, 50);
             sun.AnimationSpeed = 1;
 
             Sprite rbc = new Ship("rbc", new Actor(l.GetAnimation("rbc.anim")));
             rbc.Pos = new Vector2(50, 50);
             rbc.AnimationSpeed = 1;
-
-
         }
 
         internal static void LevelWorldUpdate()

@@ -22,8 +22,6 @@ namespace AnimationEditor
     /// </summary>
     public partial class FileAnimationEditor : UserControl
     {
-        public string Filename { get; set; }
-
         #region Variables
         XDocument doc;
         PngBitmapEncoder png;
@@ -123,7 +121,7 @@ namespace AnimationEditor
                         XElement elem = new XElement("Frame");
                         elem.SetAttributeValue("Height", f.Height);
                         elem.SetAttributeValue("Width", f.Width);
-                        elem.SetAttributeValue("TLPos", new Point(row * max, col * max));
+                        elem.SetAttributeValue("TLPos", new Point(col * f.Width, row * f.Height));
                         doc.Root.Add(elem);
                     }
                     DpiX = frames[0].Image.DpiX;
@@ -158,6 +156,9 @@ namespace AnimationEditor
                 }
 
                 doc.Save(string.Format("{0}.spsh", sfd.FileName));
+
+                string str = sfd.FileName.Substring(sfd.FileName.LastIndexOf('\\')+1);
+                (DataContext as AnimFile).Filename = str.Substring(0, str.Length - str.LastIndexOf('.'));
             }
             ToggleSpriteSheetVisible();
         }

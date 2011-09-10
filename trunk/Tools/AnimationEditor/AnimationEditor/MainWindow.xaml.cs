@@ -24,10 +24,20 @@ namespace AnimationEditor
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ObservableCollection<SpriteSheetVisual> SpriteFrameData { get; set; }
+
+
         public MainWindow()
         {
             InitializeComponent();
             storage.mainWindow = this;
+            SpriteFrameData = new ObservableCollection<SpriteSheetVisual>();
+            CloseFrames.MouseDown += new MouseButtonEventHandler(CloseFrames_MouseDown);
+        }
+
+        void CloseFrames_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            SpriteSheets.SelectedIndex = -1;
         }
 
         public readonly static RoutedUICommand CommandCreateSpriteSheet;
@@ -72,7 +82,6 @@ namespace AnimationEditor
         public void LoadFromAnimFile(Object sender, ExecutedRoutedEventArgs e)
         {
             OpenFileDialog loadAnimDialog = new OpenFileDialog();
-            loadAnimDialog.InitialDirectory = @"./";
             loadAnimDialog.Title = "Select animation file to load.";
             loadAnimDialog.Multiselect = false;
             loadAnimDialog.Filter = "Animation files (*.anim)|*.anim|All files (*.*)|*.*";
@@ -84,12 +93,21 @@ namespace AnimationEditor
 
         public void SaveFile(Object sender, ExecutedRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            AnimFile file = ((Files.SelectedItem as TabItem).DataContext as AnimFile);
+            if (file != null)
+                Save(file);
         }
 
         public void SaveFileAs(Object sender, ExecutedRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Animation files(*.anim)|*.anim";
+            AnimFile file = ((Files.SelectedItem as TabItem).DataContext as AnimFile);
+            if (file != null && sfd.ShowDialog() == true)
+            {
+                XDocument doc = file.CreateAnimFile(sfd.FileName);
+                doc.Save(sfd.FileName);
+            }
         }
 
         public void CreateAnimation(Object sender, ExecutedRoutedEventArgs e)
@@ -104,6 +122,12 @@ namespace AnimationEditor
 
         public void SaveAndExit(Object sender, ExecutedRoutedEventArgs e)
         {
+            foreach (TabItem file in Files.Items)
+            {
+                AnimFile animfile = (file.DataContext as AnimFile);
+                if (file != null)
+                    Save(animfile);
+            }
             Application.Current.Shutdown();
         }
 
@@ -171,6 +195,31 @@ namespace AnimationEditor
 
         #region Methods
 
+        private void Save(AnimFile file)
+        {
+            if (file != null)
+            {
+                if (File.Exists(file.Filename))
+                {
+                    string name =file.Filename.EndsWith(".anim") ? file.Filename : string.Format("{0}.anim", file.Filename);
+                    XDocument doc = file.CreateAnimFile(name);
+                    doc.Save(name);
+                    file.Filename = name;
+                }
+                else
+                {
+                    SaveFileDialog sfd = new SaveFileDialog();
+                    sfd.Filter = "Animation files(*.anim)|*.anim";
+                    if (sfd.ShowDialog() == true)
+                    {
+                        XDocument doc = file.CreateAnimFile(sfd.FileName);
+                        doc.Save(sfd.FileName);
+                        file.Filename = sfd.FileName;
+                    }
+                }
+            }
+        }
+
         private void ParseAnimfile(Stream stream)
         {
             throw new NotImplementedException();
@@ -223,17 +272,15 @@ namespace AnimationEditor
             //    Files.ItemsSource = new List<FileAnimationEditor>() { fae };
             //    Files.SelectedIndex = 0;
             //}
-            AddSpriteSheet(new SpriteSheet() { 
-                Frames=frames,
-                Name=spritesheetfile 
-            });
+
+            /*SpriteFrameData.Add*/
+            AddSpriteSheet(frames, spritesheetfile);
         }
 
-        private void AddSpriteSheet(SpriteSheet spriteSheet)
+        private void AddSpriteSheet(List<Frame> frames, string spritesheetfile)
         {
             List<SpriteSheetVisual> lss = new List<SpriteSheetVisual>();
-            SpriteSheetVisual ssv = new SpriteSheetVisual();
-            ssv.DataContext = spriteSheet;
+            SpriteSheetVisual ssv = new SpriteSheetVisual() { Frames = frames, FileName = spritesheetfile };
             lss.Add(ssv);
             foreach (var item in SpriteSheets.Items)
             {
@@ -243,18 +290,12 @@ namespace AnimationEditor
                     lss.Add(s);
                 }
             }
-            SpriteSheets.ItemsSource=lss;
+            SpriteSheets.ItemsSource = lss;
+            SpriteSheets.SelectedIndex = -1;
         }
 
         #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
 
-        private void FirePropertyChanged(string propertyName)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
-        }
         #endregion
         #endregion Methods
 
@@ -290,5 +331,63 @@ namespace AnimationEditor
         }
         #endregion Image
 
+    }
+
+    public class ShowItems : IValueConverter
+    {
+
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value != null && value.GetType() == typeof(int))
+            {
+                int index = (int)value;
+                return index == -1 ? Visibility.Collapsed : Visibility.Visible;
+            }
+            return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return value;
+        }
+    }
+
+    public class NameConverter : IValueConverter
+    {
+
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value != null)
+            {
+                string name = value as string;
+                return name.Substring(name.LastIndexOf('\\') + 1);
+            }
+            return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return value;
+        }
+    }
+
+    public class SpriteSheetConverter : IValueConverter
+    {
+
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            List<Frame> ss = value as List<Frame>;
+            if (ss != null && ss.Count > 0)
+            {
+                return ss[0].Image;
+            }
+            else
+                return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return value;
+        }
     }
 }
