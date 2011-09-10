@@ -33,12 +33,10 @@ namespace AnimationEditor
         {
             XDocument doc = new XDocument();
             doc.Add(new XElement("Animation"));
-            string file = filename.Substring(filename.LastIndexOf('\\') + 1);
-            file = file.Remove(file.LastIndexOf('.'));
             foreach (Frame frame in Frames)
             {
                 XElement elem = new XElement("Frame");
-                elem.SetAttributeValue("SpriteSheet", file);
+                elem.SetAttributeValue("SpriteSheet", frame.File.Remove(frame.File.LastIndexOf('.')));
                 elem.SetAttributeValue("FrameDelay", frame.Pause);
                 elem.SetAttributeValue("Width", frame.Width);
                 elem.SetAttributeValue("Height", frame.Height);

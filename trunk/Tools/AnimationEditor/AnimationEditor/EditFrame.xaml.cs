@@ -96,8 +96,17 @@ namespace AnimationEditor
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             string s = value as string;
-            if(s!=null)
-            return s.Substring(s.LastIndexOf("\\"));
+            if (s != null)
+            {
+                try
+                {
+                    return s.Substring(s.LastIndexOf("\\"));
+                }
+                catch
+                {
+                    return s;
+                }
+            }
             return value;
         }
 
