@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 using Microsoft.Win32;
 using System.IO;
+using System.Collections.ObjectModel;
 
 namespace AnimationEditor
 {
@@ -23,25 +24,6 @@ namespace AnimationEditor
     {
         public string Filename { get; set; }
 
-        public FileAnimationEditor()
-        {
-            this.InitializeComponent();
-
-            SaveSpriteSheetButton.MouseUp += new MouseButtonEventHandler(SaveSpriteSheetButton_MouseUp);
-            ShowSpriteSheetButton.MouseUp += new MouseButtonEventHandler(ShowSpriteSheetButton_MouseUp);
-            CancelButton.MouseUp += new MouseButtonEventHandler(CancelButton_MouseUp);
-        }
-
-        void CancelButton_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            ToggleSpriteSheetVisible();
-        }
-
-        private void ToggleSpriteSheetVisible()
-        {
-            ShowSpriteSheetButton.Visibility = ShowSpriteSheetButton.Visibility == Visibility.Visible?Visibility.Collapsed:Visibility.Visible;
-        }
-
         #region Variables
         XDocument doc;
         PngBitmapEncoder png;
@@ -50,11 +32,43 @@ namespace AnimationEditor
         int pow;
         #endregion Variables
 
+        public FileAnimationEditor()
+        {
+            this.InitializeComponent();
+
+            SaveSpriteSheetButton.MouseUp += new MouseButtonEventHandler(SaveSpriteSheetButton_MouseUp);
+            ShowSpriteSheetButton.MouseUp += new MouseButtonEventHandler(ShowSpriteSheetButton_MouseUp);
+            CancelButton.MouseUp += new MouseButtonEventHandler(CancelButton_MouseUp);
+            EditFrame.MouseUp += new MouseButtonEventHandler(EditFrame_MouseUp);
+            Okay.MouseUp += new MouseButtonEventHandler(Okay_MouseUp);
+        }
+
+
+
+        #region EventHandlers
+        void EditFrame_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (SpriteFrames.SelectedIndex > -1)
+            {
+                Frame f = SpriteFrames.SelectedValue as Frame;
+                if (f != null)
+                {
+                    Workspace.Children.Add(new EditFrame(f));
+                }
+            }
+            EditFrame.Visibility = Visibility.Collapsed;
+        }
+
+        void Okay_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            EditFrame.Visibility = Visibility.Visible;
+        }
+
         void ShowSpriteSheetButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (SpriteFrames.DataContext != null)
             {
-                List<Frame> frames = (SpriteFrames.DataContext as AnimFile).Frames;
+                ObservableCollection<Frame> frames = (SpriteFrames.DataContext as AnimFile).Frames;
 
                 if (frames != null)
                 {
@@ -101,8 +115,8 @@ namespace AnimationEditor
                     {
                         Frame f = frames[i];
                         Image img = new Image() { Source = f.Image };
-                        int row = i % horizTileCount;
-                        int col = i / horizTileCount;
+                        int row = i / horizTileCount;
+                        int col = i % horizTileCount;
                         Grid.SetRow(img, row);
                         Grid.SetColumn(img, col);
                         Sheet.Children.Add(img);
@@ -147,6 +161,20 @@ namespace AnimationEditor
             }
             ToggleSpriteSheetVisible();
         }
+
+        void CancelButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ToggleSpriteSheetVisible();
+        }
+        #endregion EventHandlers
+
+        #region Methods
+        private void ToggleSpriteSheetVisible()
+        {
+            ShowSpriteSheetButton.Visibility = ShowSpriteSheetButton.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        #endregion Methods
     }
 
     public class VisibilityInverter : IValueConverter

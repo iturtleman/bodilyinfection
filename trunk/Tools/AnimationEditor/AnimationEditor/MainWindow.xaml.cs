@@ -13,6 +13,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.IO;
+using System.Xml.Linq;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace AnimationEditor
 {
@@ -24,7 +27,7 @@ namespace AnimationEditor
         public MainWindow()
         {
             InitializeComponent();
-
+            storage.mainWindow = this;
         }
 
         public readonly static RoutedUICommand CommandCreateSpriteSheet;
@@ -72,7 +75,7 @@ namespace AnimationEditor
             loadAnimDialog.InitialDirectory = @"./";
             loadAnimDialog.Title = "Select animation file to load.";
             loadAnimDialog.Multiselect = false;
-            loadAnimDialog.Filter = "Animation files (*.anim)|*.anim;";
+            loadAnimDialog.Filter = "Animation files (*.anim)|*.anim|All files (*.*)|*.*";
             if (loadAnimDialog.ShowDialog() == true)
             {
                 ParseAnimfile(loadAnimDialog.OpenFile());
@@ -101,12 +104,20 @@ namespace AnimationEditor
 
         public void SaveAndExit(Object sender, ExecutedRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Application.Current.Shutdown();
         }
 
         public void ImportSpriteSheet(Object sender, ExecutedRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            OpenFileDialog loadAnimDialog = new OpenFileDialog();
+            loadAnimDialog.InitialDirectory = @"C:\Users\Ivan Lloyd\Dropbox\GameDesign\BodilyInfection\BodilyInfection\BodilyInfectionContent\Sprites";
+            loadAnimDialog.Title = "Select image file to load.";
+            loadAnimDialog.Multiselect = true;
+            loadAnimDialog.Filter = "Image Files(*.spsh)|*.spsh|All files (*.*)|*.*";
+            if (loadAnimDialog.ShowDialog() == true)
+            {
+                ParseSpriteSheet(loadAnimDialog.FileName);
+            }
         }
 
         public void ImportImage(Object sender, ExecutedRoutedEventArgs e)
@@ -118,7 +129,7 @@ namespace AnimationEditor
             loadAnimDialog.Filter = "Image Files(*.BMP;*PNG;*.JPG;*.GIF)|*.BMP;*.PNG;*.JPG;*.GIF|All files (*.*)|*.*";
             if (loadAnimDialog.ShowDialog() == true)
             {
-                List<Frame> frames = new List<Frame>();
+                ObservableCollection<Frame> frames = new ObservableCollection<Frame>();
                 string[] fileNames = loadAnimDialog.FileNames;
                 int count = 0;
                 foreach (var file in loadAnimDialog.OpenFiles())
@@ -159,10 +170,92 @@ namespace AnimationEditor
         #endregion
 
         #region Methods
+
         private void ParseAnimfile(Stream stream)
         {
             throw new NotImplementedException();
         }
+
+        private void ParseSpriteSheet(string FileName)
+        {
+            List<Frame> frames = new List<Frame>();
+            string spritesheetfile = FileName.Remove(FileName.LastIndexOf("."));
+            int count = 0;
+
+            BitmapImage spritesheet = new BitmapImage();
+            spritesheet.BeginInit();
+            spritesheet.StreamSource = new StreamReader(spritesheetfile).BaseStream;
+            spritesheet.EndInit();
+
+            XDocument doc = XDocument.Load(FileName);
+            foreach (var frame in doc.Descendants("Frame"))
+            {
+                int h = int.Parse(frame.Attribute("Height").Value);
+                int w = int.Parse(frame.Attribute("Width").Value);
+                string[] spos = frame.Attribute("TLPos").Value.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                Point TL = new Point(int.Parse(spos[0]), int.Parse(spos[1]));
+                CroppedBitmap img = new CroppedBitmap(spritesheet, new Int32Rect((int)TL.X, (int)TL.Y, w, h));
+
+                frames.Add(new Frame()
+                {
+                    File = spritesheetfile,
+                    Image = img,
+                    AnimationPeg = new Point(0, 0),
+                    Height = h,
+                    Width = w,
+                    StartPos = TL,
+                    Pause = 20,
+                    ClearColor = Colors.Magenta
+                }
+                );
+                count++;
+            }
+            //if (Files.HasItems && Files.Items.Count > 0)
+            //{
+            //    Files.Items.MoveCurrentToFirst();
+            //    (Files.SelectedItem as TabItem).DataContext = new AnimFile(frames);
+            //}
+            //else
+            //{
+            //    Files.Items.Clear();
+            //    FileAnimationEditor fae = new FileAnimationEditor();
+            //    fae.DataContext = new AnimFile(frames);
+            //    Files.ItemsSource = new List<FileAnimationEditor>() { fae };
+            //    Files.SelectedIndex = 0;
+            //}
+            AddSpriteSheet(new SpriteSheet() { 
+                Frames=frames,
+                Name=spritesheetfile 
+            });
+        }
+
+        private void AddSpriteSheet(SpriteSheet spriteSheet)
+        {
+            List<SpriteSheetVisual> lss = new List<SpriteSheetVisual>();
+            SpriteSheetVisual ssv = new SpriteSheetVisual();
+            ssv.DataContext = spriteSheet;
+            lss.Add(ssv);
+            foreach (var item in SpriteSheets.Items)
+            {
+                SpriteSheetVisual s = item as SpriteSheetVisual;
+                if (s != null)
+                {
+                    lss.Add(s);
+                }
+            }
+            SpriteSheets.ItemsSource=lss;
+        }
+
+        #region PropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void FirePropertyChanged(string propertyName)
+        {
+            var handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
         #endregion Methods
 
         #region Image

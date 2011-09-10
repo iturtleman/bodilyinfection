@@ -1,0 +1,32 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:local="clr-namespace:AnimationEditor"
+	mc:Ignorable="d"
+	x:Class="AnimationEditor.EditFrame"
+	x:Name="UserControl">
+	<Grid x:Name="LayoutRoot">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>			
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="Auto"/>
+		</Grid.ColumnDefinitions>
+		<TextBox Text="{Binding File, FallbackValue=Filename}" ToolTip="Filename" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" IsReadOnly="True" />
+		<TextBox Text="{Binding Pause, FallbackValue=Pause between frames, Mode=TwoWay}" ToolTip="Pause Between Frames" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" />
+		<TextBox Text="{Binding AnimationPeg, FallbackValue=AnimationPeg, Mode=TwoWay}" ToolTip="AnimationPeg" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1" />
+		<TextBox Text="{Binding Width, FallbackValue=Width}" ToolTip="Width" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="1" IsReadOnly="True" />
+		<TextBox Text="{Binding Height, FallbackValue=Height}" ToolTip="Height" HorizontalAlignment="Left" Grid.Row="5" Grid.Column="1" IsReadOnly="True" />
+		<TextBox Text="{Binding ClearColor, FallbackValue=Clear color for Sprite}" ToolTip="Clear color for Sprite" HorizontalAlignment="Left" Grid.Row="6" Grid.Column="1" IsReadOnly="True" />
+		<Image Source="{Binding Image}" Grid.RowSpan="{Binding RowDefinitions.Count, ElementName=LayoutRoot, Mode=OneWay}"/>
+	</Grid>
+</UserControl>

@@ -19,7 +19,7 @@ namespace AnimationEditor
         /// <summary>
         /// Image Texture
         /// </summary>
-        public BitmapImage Image { get; set; }
+        public BitmapSource Image { get; set; }
 
         /// <summary>
         /// Amount of time to pause between this frame and next. (In Milliseconds)

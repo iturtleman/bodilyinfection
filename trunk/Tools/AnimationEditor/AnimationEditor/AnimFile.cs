@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Data;
+using System.Collections.ObjectModel;
 
 namespace AnimationEditor
 {
@@ -10,7 +11,7 @@ namespace AnimationEditor
     {
         static int count = 0;
 
-        public AnimFile(List<Frame> frames)
+        public AnimFile(ObservableCollection<Frame> frames)
         {
             Filename = string.Format("Untitled{0}", count++);
             Frames = frames;
@@ -24,7 +25,7 @@ namespace AnimationEditor
         /// <summary>
         /// Animation's frames
         /// </summary>
-        public List<Frame> Frames { get; set; }
+        public ObservableCollection<Frame> Frames { get; set; }
     }
 
     //public class FramesToViews : IValueConverter
