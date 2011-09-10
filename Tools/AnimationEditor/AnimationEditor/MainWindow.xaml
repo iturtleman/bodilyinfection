@@ -21,6 +21,7 @@
         <CommandBinding Command="Save" CanExecute="CanSave" Executed="SaveFile"/>
         <CommandBinding Command="SaveAs" CanExecute="CanSave" Executed="SaveFileAs"/>
         <CommandBinding Command="{x:Static local:MainWindow.CommandCreateSpriteSheet}" CanExecute="Yes" Executed="CreateSpriteSheet"/>
+		<CommandBinding Command="{x:Static local:MainWindow.CommandCreateAnimation}" CanExecute="Yes" Executed="CreateAnimation"/>
         <CommandBinding Command="{x:Static local:MainWindow.CommandSaveAndExit}" CanExecute="Yes" Executed="SaveAndExit"/>
         <CommandBinding Command="{x:Static local:MainWindow.CommandImportSpriteSheet}" CanExecute="Yes" Executed="ImportSpriteSheet"/>
         <CommandBinding Command="{x:Static local:MainWindow.CommandImportImage}" CanExecute="Yes" Executed="ImportImage"/>
@@ -41,7 +42,7 @@
                 <MenuItem Command="SaveAs"/>
                 <Separator/>
                 <MenuItem Header="Create Animation" />
-                <MenuItem Header="Create Sprite Sheet" Command="{x:Static local:MainWindow.CommandCreateSpriteSheet}"/>
+                <MenuItem Header="Create Sprite Sheet" Command="{x:Static local:MainWindow.CommandCreateAnimation}"/>
                 <Separator/>
                 <MenuItem Header="Exit" Command="{x:Static local:MainWindow.CommandSaveAndExit}"/>
             </MenuItem>
@@ -59,9 +60,17 @@
             </MenuItem>
         </Menu>
         <TabControl Margin="0" x:Name="Files" Grid.Row="1">
-            <TabItem x:Name="tabItem" Header="{Binding Filename, FallbackValue=Untitled.anim}">
-                <local:FileAnimationEditor DataContext="{Binding DataContext, ElementName=tabItem}"/>
-            </TabItem>
+        	<TabControl.ItemTemplate>
+        		<DataTemplate>
+		        	<TextBlock Text="{Binding Filename}"/>
+				</DataTemplate>
+			</TabControl.ItemTemplate>
+			<TabControl.ContentTemplate>
+				<DataTemplate>
+					<local:FileAnimationEditor DataContext="{Binding}"/>
+				</DataTemplate>
+			</TabControl.ContentTemplate>
+        	<local:AnimFile Filename="Untitled0"/>
         </TabControl>
         <ListBox x:Name="SpriteSheets" ItemsSource="{Binding SpriteFrameData, ElementName=window}" IsSynchronizedWithCurrentItem="True" Margin="0" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" HorizontalContentAlignment="Center" Grid.Row="1" Grid.Column="1"/>
         <ListBox x:Name="SpriteSheetItems" ItemsSource="{Binding SelectedValue.Frames, Converter={StaticResource ShowItems}, ElementName=SpriteSheets, Mode=OneWay}" Margin="0" HorizontalContentAlignment="Center" Grid.Row="1" dd:DragDrop.DropHandler="{Binding}" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" HorizontalAlignment="Right" Visibility="{Binding SelectedIndex, Converter={StaticResource ShowItems}, ElementName=SpriteSheets}" SelectionMode="Multiple">

@@ -12,10 +12,28 @@ namespace AnimationEditor
     {
         static int count = 0;
 
+        public AnimFile()
+        {
+            Filename = string.Format("Untitled{0}", count++);
+            Frames = new ObservableCollection<Frame>();
+        }
+
         public AnimFile(ObservableCollection<Frame> frames)
         {
             Filename = string.Format("Untitled{0}", count++);
             Frames = frames;
+        }
+
+        public AnimFile(System.Windows.Controls.ItemCollection itemCollection)
+        {
+            Filename = string.Format("Untitled{0}", count++);
+            Frames = new ObservableCollection<Frame>();
+            foreach (var frame in itemCollection)
+            {
+                Frame f = frame as Frame;
+                if (f != null)
+                    Frames.Add(f);
+            }
         }
 
         /// <summary>
