@@ -45,23 +45,47 @@ namespace AnimationEditor
         #region EventHandlers
         void EditFrame_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (SpriteFrames.SelectedIndex > -1)
+            try
             {
-                Frame f = SpriteFrames.SelectedValue as Frame;
-                if (f != null)
+                if (SpriteFrames.SelectedIndex > -1)
                 {
-                    Workspace.Children.Add(new EditFrame(f) { HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center });
+                    Frame f = SpriteFrames.SelectedValue as Frame;
+                    if (f != null)
+                    {
+                        Workspace.Children.Add(new EditFrame(f) { HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center });
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Edit frame Exception:{0}",ex.GetBaseException().Message));
             }
         }
 
         void ShowSpriteSheetButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            try
+            //try
             {
                 if (SpriteFrames.Items != null)
                 {
-                    ItemCollection frames = (SpriteFrames.Items);
+                    //if (DataContext == null)
+                    //{
+                    //    var Files = storage.mainWindow.Files;
+                    //    ItemCollection items = SpriteFrames.Items;
+                    //    if (Files.HasItems && Files.Items.Count > 0)
+                    //    {
+                    //        (Files.SelectedItem as TabItem).DataContext = new AnimFile(items);
+                    //    }
+                    //    else
+                    //    {
+                    //        Files.Items.Clear();
+                    //        FileAnimationEditor fae = new FileAnimationEditor();
+                    //        fae.DataContext = new AnimFile(items);
+                    //        Files.ItemsSource = new List<FileAnimationEditor>() { fae };
+                    //        Files.SelectedIndex = 0;
+                    //    }
+                    //}
+                    ObservableCollection<Frame> frames = (DataContext as AnimFile).Frames;
 
                     if (frames != null)
                     {
@@ -127,47 +151,54 @@ namespace AnimationEditor
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.InnerException.Message);
-            }
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(string.Format("Show Sprite Sheet Exception:{0}",ex.GetBaseException().Message));
+            //}
         }
 
         void SaveSpriteSheetButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            UIElement element = Sheet as UIElement;
-
-            //get sheet's render size
-            Size size = element.RenderSize;
-
-            //render grid into a bitmap
-            RenderTargetBitmap rtb = new RenderTargetBitmap(pow, pow, DpiX, DpiY, PixelFormats.Pbgra32);
-            element.Measure(size);
-            element.Arrange(new Rect(size));
-            rtb.Render(element);
-            png = new PngBitmapEncoder();
-            png.Frames.Add(BitmapFrame.Create(rtb));
-
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Png Files(*.png)|*.png";
-            if (sfd.ShowDialog() == true)
+            //try
             {
-                using (Stream s = File.Create(sfd.FileName))
-                {
-                    png.Save(s);
-                }
+                UIElement element = Sheet as UIElement;
 
-                doc.Save(string.Format("{0}.spsh", sfd.FileName));
+                //get sheet's render size
+                Size size = element.RenderSize;
 
-                //pass around new filename
-                AnimFile anim = (DataContext as AnimFile);
-                anim.Filename = sfd.SafeFileName;
-                foreach (var f in anim.Frames)
+                //render grid into a bitmap
+                RenderTargetBitmap rtb = new RenderTargetBitmap(pow, pow, DpiX, DpiY, PixelFormats.Pbgra32);
+                element.Measure(size);
+                element.Arrange(new Rect(size));
+                rtb.Render(element);
+                png = new PngBitmapEncoder();
+                png.Frames.Add(BitmapFrame.Create(rtb));
+
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "Png Files(*.png)|*.png";
+                if (sfd.ShowDialog() == true)
                 {
-                    f.File = sfd.SafeFileName;
+                    using (Stream s = File.Create(sfd.FileName))
+                    {
+                        png.Save(s);
+                    }
+
+                    doc.Save(string.Format("{0}.spsh", sfd.FileName));
+
+                    //pass around new filename
+                    AnimFile anim = (DataContext as AnimFile);
+                    anim.Filename = sfd.SafeFileName;
+                    foreach (var f in anim.Frames)
+                    {
+                        f.File = sfd.SafeFileName;
+                    }
                 }
+                ToggleSpriteSheetVisible();
             }
-            ToggleSpriteSheetVisible();
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(string.Format("Save Spritesheet Exception:{0}",ex.GetBaseException().Message));
+            //}
         }
 
         void CancelButton_MouseUp(object sender, MouseButtonEventArgs e)

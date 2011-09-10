@@ -46,6 +46,7 @@ namespace AnimationEditor
         }
 
         public readonly static RoutedUICommand CommandCreateSpriteSheet;
+        public readonly static RoutedUICommand CommandCreateAnimation;
         public readonly static RoutedUICommand CommandSaveAndExit;
         public readonly static RoutedUICommand CommandImportSpriteSheet;
         public readonly static RoutedUICommand CommandImportImage;
@@ -57,6 +58,11 @@ namespace AnimationEditor
             CommandCreateSpriteSheet.InputGestures.Add(
                 new KeyGesture(Key.E, ModifierKeys.Control));
 
+            CommandCreateAnimation = new RoutedUICommand("CreateAnimation",
+                "Create Animation", typeof(MainWindow));
+            CommandCreateAnimation.InputGestures.Add(
+                new KeyGesture(Key.R, ModifierKeys.Control));
+
             CommandSaveAndExit = new RoutedUICommand("SaveAndExit",
                 "Exit", typeof(MainWindow));
             CommandSaveAndExit.InputGestures.Add(
@@ -65,12 +71,12 @@ namespace AnimationEditor
             CommandImportSpriteSheet = new RoutedUICommand("ImportSpriteSheet",
                 "Import Sprite Sheet", typeof(MainWindow));
             CommandImportSpriteSheet.InputGestures.Add(
-                new KeyGesture(Key.E, ModifierKeys.Control));
+                new KeyGesture(Key.U, ModifierKeys.Control));
 
             CommandImportImage = new RoutedUICommand("ImportImage",
                             "Import Sprite Sheet", typeof(MainWindow));
             CommandImportImage.InputGestures.Add(
-                new KeyGesture(Key.E, ModifierKeys.Control));
+                new KeyGesture(Key.I, ModifierKeys.Control));
         }
 
         #region MenuFunctions
@@ -98,7 +104,7 @@ namespace AnimationEditor
 
         public void SaveFile(Object sender, ExecutedRoutedEventArgs e)
         {
-            AnimFile file = ((Files.SelectedItem as TabItem).DataContext as AnimFile);
+            AnimFile file = Files.SelectedItem as AnimFile;
             if (file != null)
                 Save(file);
         }
@@ -107,7 +113,7 @@ namespace AnimationEditor
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Animation files(*.anim)|*.anim";
-            AnimFile file = ((Files.SelectedItem as TabItem).DataContext as AnimFile);
+            AnimFile file = Files.SelectedItem as AnimFile;
             if (file != null && sfd.ShowDialog() == true)
             {
                 XDocument doc = file.CreateAnimFile(sfd.SafeFileName);
