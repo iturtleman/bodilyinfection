@@ -125,7 +125,7 @@ namespace BodilyInfection
 
         /// <summary>
         /// Retrieves all sprites with the specified type.
-        /// @TODO Get only sprites within a certain distance of a point, for efficiency's sake.
+        /// @todo Get only sprites within a certain distance of a point, for efficiency's sake.
         ///     Possibly could make use of Bruce's collision code.
         /// </summary>
         /// <param name="typename">The type name to select by.</param>
