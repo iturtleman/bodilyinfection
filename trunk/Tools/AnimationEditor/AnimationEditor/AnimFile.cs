@@ -60,13 +60,18 @@ namespace AnimationEditor
             foreach (Frame frame in Frames)
             {
                 XElement elem = new XElement("Frame");
-                elem.SetAttributeValue("SpriteSheet", frame.File.Remove(frame.File.LastIndexOf('.')));
+                string file = frame.File.EndsWith(".anim") || frame.File.EndsWith(".png") || frame.File.EndsWith(".jpg") || frame.File.EndsWith(".bmp") ? frame.File.Remove(frame.File.LastIndexOf('.')) : filename;
+                elem.SetAttributeValue("SpriteSheet", file);
                 elem.SetAttributeValue("FrameDelay", frame.Pause);
                 elem.SetAttributeValue("Width", frame.Width);
                 elem.SetAttributeValue("Height", frame.Height);
                 elem.SetAttributeValue("TLPos", frame.StartPos);
                 elem.SetAttributeValue("AnimationPeg", frame.AnimationPeg);
                 //add collision data here
+                foreach (var item in frame.Collisions)
+                {
+                    elem.Add(item.GetLine());
+                }
 
                 doc.Root.Add(elem);
             }

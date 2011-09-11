@@ -60,6 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Collision.cs" />
+    <Compile Include="CollisionCircle.cs" />
+    <Compile Include="CollisionRect.cs" />
     <Compile Include="EditFrame.xaml.cs">
       <DependentUpon>EditFrame.xaml</DependentUpon>
     </Compile>

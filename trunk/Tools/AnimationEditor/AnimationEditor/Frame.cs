@@ -5,11 +5,17 @@ using System.Text;
 using System.Windows.Media.Imaging;
 using System.Windows;
 using System.Windows.Media;
+using System.Collections.ObjectModel;
 
 namespace AnimationEditor
 {
     public class Frame
     {
+        public Frame()
+        {
+            Collisions = new ObservableCollection<Collision>();
+        }
+
         #region Properties
         /// <summary>
         /// File from which the Frame is obtained
@@ -51,6 +57,8 @@ namespace AnimationEditor
         /// Color that should be transparent
         /// </summary>
         public Color ClearColor { get; set; }
+
+        public ObservableCollection<Collision> Collisions { get; set; }
         #endregion
 
         public override string ToString()
