@@ -87,7 +87,7 @@ namespace AnimationEditor
                     //}
                     ObservableCollection<Frame> frames = (DataContext as AnimFile).Frames;
 
-                    if (frames != null)
+                    if (frames != null && frames.Count>0)
                     {
                         //find maxheight and width
                         int maxHeight = 0;

@@ -40,6 +40,28 @@ namespace AnimationEditor
             SpriteSheetItems.SelectAll();
         }
 
+        void ButtonClose_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        public void ButtonClose_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled = true;
+            var result = MessageBox.Show("Save File?", "Save", MessageBoxButton.YesNoCancel);
+            if (result != MessageBoxResult.Cancel)
+            {
+                //save
+                if (result == MessageBoxResult.Yes)
+                {
+                    AnimFile file = Files.SelectedItem as AnimFile;
+                    if (file != null)
+                        Save(file);
+                }
+                Files.Items.Remove((sender as Grid).DataContext);
+            }
+        }
+
         void CloseFrames_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SpriteSheets.SelectedIndex = -1;
@@ -61,7 +83,7 @@ namespace AnimationEditor
             CommandCreateAnimation = new RoutedUICommand("CreateAnimation",
                 "Create Animation", typeof(MainWindow));
             CommandCreateAnimation.InputGestures.Add(
-                new KeyGesture(Key.R, ModifierKeys.Control));
+                new KeyGesture(Key.N, ModifierKeys.Control));
 
             CommandSaveAndExit = new RoutedUICommand("SaveAndExit",
                 "Exit", typeof(MainWindow));
@@ -74,7 +96,7 @@ namespace AnimationEditor
                 new KeyGesture(Key.U, ModifierKeys.Control));
 
             CommandImportImage = new RoutedUICommand("ImportImage",
-                            "Import Sprite Sheet", typeof(MainWindow));
+                "Import Sprite Sheet", typeof(MainWindow));
             CommandImportImage.InputGestures.Add(
                 new KeyGesture(Key.I, ModifierKeys.Control));
         }
@@ -98,7 +120,7 @@ namespace AnimationEditor
             loadAnimDialog.Filter = "Animation files (*.anim)|*.anim|All files (*.*)|*.*";
             if (loadAnimDialog.ShowDialog() == true)
             {
-                ParseAnimfile(loadAnimDialog.OpenFile());
+                ParseAnimfile(loadAnimDialog.OpenFile(), loadAnimDialog.SafeFileName);
             }
         }
 
@@ -123,12 +145,12 @@ namespace AnimationEditor
 
         public void CreateAnimation(Object sender, ExecutedRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Files.Items.Add(new AnimFile());
         }
 
         public void CreateSpriteSheet(Object sender, ExecutedRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Files.Items.Add(new AnimFile());
         }
 
         public void SaveAndExit(Object sender, ExecutedRoutedEventArgs e)
@@ -201,7 +223,7 @@ namespace AnimationEditor
             {
                 if (File.Exists(file.Filename))
                 {
-                    string name =file.Filename.EndsWith(".anim") ? file.Filename : string.Format("{0}.anim", file.Filename);
+                    string name = file.Filename.EndsWith(".anim") ? file.Filename : string.Format("{0}.anim", file.Filename);
                     XDocument doc = file.CreateAnimFile(name);
                     doc.Save(name);
                     file.Filename = name;
@@ -220,9 +242,73 @@ namespace AnimationEditor
             }
         }
 
-        private void ParseAnimfile(Stream stream)
+        private void ParseAnimfile(Stream stream, string filename)
         {
-            throw new NotImplementedException();
+
+            ObservableCollection<Frame> frames = new ObservableCollection<Frame>();
+            XDocument doc = XDocument.Load(stream);
+            try
+            {
+                string spritesheetfile;
+                string spritesheetfilelast="";
+                string safename="";
+                foreach (var elem in doc.Descendants("Frame"))
+                {
+                    string file = elem.Attribute("SpriteSheet").Value;
+                    spritesheetfile = string.Format("{0}.png", elem.Attribute("SpriteSheet").Value);
+
+                    //find the file
+                    if (!File.Exists(spritesheetfile))
+                    {
+                        if (spritesheetfile != safename)
+                        {
+                            OpenFileDialog ofd = new OpenFileDialog();
+                            ofd.InitialDirectory = @"C:\Users\Ivan Lloyd\Dropbox\GameDesign\BodilyInfection\BodilyInfection\BodilyInfectionContent\Sprites";
+                            ofd.Title = string.Format("Select Spritesheet for \"{0}\"", filename);
+                            ofd.Multiselect = true;
+                            ofd.Filter = "Image Files(*.BMP;*PNG;*.JPG;*.GIF)|*.BMP;*.PNG;*.JPG;*.GIF|All files (*.*)|*.*";
+                            if (ofd.ShowDialog() == true)
+                            {
+                                spritesheetfile = ofd.FileName;
+                                spritesheetfilelast = ofd.FileName;
+                                safename = ofd.SafeFileName;
+                            }
+                        }
+                        else
+                        {
+                            spritesheetfile = spritesheetfilelast;
+                        }
+                    }
+
+                    BitmapImage spritesheet = new BitmapImage();
+                    spritesheet.BeginInit();
+                    spritesheet.StreamSource = new StreamReader(spritesheetfile).BaseStream;
+                    spritesheet.EndInit();
+
+                    Point TL = Point.Parse(elem.Attribute("TLPos").Value);
+                    int w = int.Parse(elem.Attribute("Width").Value);
+                    int h = int.Parse(elem.Attribute("Height").Value);
+
+                    CroppedBitmap img = new CroppedBitmap(spritesheet, new Int32Rect((int)TL.X, (int)TL.Y, w, h));
+
+                    frames.Add(new Frame()
+                        {
+                            File = file,
+                            Pause = long.Parse(elem.Attribute("FrameDelay").Value),
+                            Width = w,
+                            Height = h,
+                            StartPos = TL,
+                            AnimationPeg = Point.Parse(elem.Attribute("AnimationPeg").Value),
+                            Image = img
+                        }
+                    );
+                }
+                Files.Items.Add(new AnimFile(frames, filename));
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(string.Format("Exception: {0}\n", e.GetBaseException().Message));
+            }
         }
 
         private void ParseSpriteSheet(string FileName)
@@ -244,7 +330,7 @@ namespace AnimationEditor
                 string[] spos = frame.Attribute("TLPos").Value.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 Point TL = new Point(int.Parse(spos[0]), int.Parse(spos[1]));
                 CroppedBitmap img = new CroppedBitmap(spritesheet, new Int32Rect((int)TL.X, (int)TL.Y, w, h));
-                string file = FileName.Substring(FileName.LastIndexOf('\\')+1);
+                string file = FileName.Substring(FileName.LastIndexOf('\\') + 1);
                 file = file.Remove(file.LastIndexOf('.'));
                 frames.Add(new Frame()
                 {
