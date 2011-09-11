@@ -12,7 +12,7 @@ namespace BodilyInfection
 
         public Background(string p, string p_2)
         {
-            // TODO: Complete member initialization
+            // todo: Complete member initialization
             this.p = p;
             this.p_2 = p_2;
         }
