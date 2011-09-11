@@ -36,6 +36,12 @@ namespace AnimationEditor
             }
         }
 
+        public AnimFile(ObservableCollection<Frame> frames, string filename)
+        {
+            Frames = frames;
+            Filename = filename;
+        }
+
         /// <summary>
         /// Name of anim file
         /// </summary>

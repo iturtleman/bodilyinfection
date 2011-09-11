@@ -41,8 +41,8 @@
                 <MenuItem Command="Save"/>
                 <MenuItem Command="SaveAs"/>
                 <Separator/>
-                <MenuItem Header="Create Animation" />
-                <MenuItem Header="Create Sprite Sheet" Command="{x:Static local:MainWindow.CommandCreateAnimation}"/>
+                <MenuItem Header="Create Animation" Command="{x:Static local:MainWindow.CommandCreateAnimation}"/>
+                <MenuItem Header="Create Sprite Sheet" Command="{x:Static local:MainWindow.CommandCreateSpriteSheet}"/>
                 <Separator/>
                 <MenuItem Header="Exit" Command="{x:Static local:MainWindow.CommandSaveAndExit}"/>
             </MenuItem>
@@ -62,7 +62,25 @@
         <TabControl Margin="0" x:Name="Files" Grid.Row="1">
         	<TabControl.ItemTemplate>
         		<DataTemplate>
-		        	<TextBlock Text="{Binding Filename}"/>
+        			<Grid>
+        				<Grid.ColumnDefinitions>
+        					<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto"/>  				
+						</Grid.ColumnDefinitions>
+        				<TextBlock Grid.Column="0" Text="{Binding Filename}" Margin="0,0,6,0"/>
+        				<Grid x:Name="ButtonClose" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Top" ToolTipService.ToolTip="Close" Visibility="Visible" Grid.Column="1" MouseDown="ButtonClose_MouseLeftButtonDown" MouseUp="ButtonClose_MouseLeftButtonUp" DataContext="{Binding}">
+        					<Border x:Name="CloseBox" BorderBrush="Black" BorderThickness="1" CornerRadius="1" MinWidth="16" MinHeight="16" MaxWidth="16" MaxHeight="16">
+        						<Border.Background>
+        							<RadialGradientBrush RadiusY="1.25" RadiusX="0.75">
+        								<GradientStop Color="#FFF24014"/>
+        								<GradientStop Color="#FFB6300E" Offset="1"/>
+        							</RadialGradientBrush>
+        						</Border.Background>
+        					</Border>
+        					<TextBlock Text="x" Margin="0,-7,0,0" FontSize="13.333" HorizontalAlignment="Center" VerticalAlignment="Center" MaxHeight="16"/>
+        				</Grid>
+						
+					</Grid>
 				</DataTemplate>
 			</TabControl.ItemTemplate>
 			<TabControl.ContentTemplate>
