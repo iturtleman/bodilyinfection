@@ -26,6 +26,16 @@ namespace BodilyInfection
                 if (mActor.Animations[mActor.CurrentAnimation].NumFrames > 1) mAnimating = true;
 
             }
+
+            Random r = new Random();
+            Collision_BoundingCircle b = new Collision_BoundingCircle(r.Next(), new Vector2(0, 0), 10, this);
+
+            foreach (Animation a in mActor.Animations)
+            {
+                foreach(SpriteFrame frame in a.Frames){
+                    frame.CollisionData.Add(b);
+                }
+            }
         }
 
         #region Properties
@@ -181,7 +191,7 @@ namespace BodilyInfection
         /// <summary>
         /// This Sprite's Actor.
         /// </summary>
-        private Actor mActor;
+        protected Actor mActor;
 
         #endregion Variables
 

@@ -29,6 +29,10 @@ namespace BodilyInfection
         private Vector2 shipVelocity;
         private float shipSpeed;
         private PlayerIndex gamepad;
+        private bool temporaryShield = false;
+        private int temporaryShieldCount = 0;
+        private int temporaryShieldMax = 200;
+
 
 
         public void Update()
@@ -73,10 +77,42 @@ namespace BodilyInfection
                 }
             }
 
-            if (Collision.collisionData.Count > 0 && Collision.collisionData[this.GetCollision()[0]].Count > 0)
+            if (!temporaryShield)
             {
-                Pos.X = 50;
-                Pos.Y = 50;
+                if (Collision.collisionData.Count > 0)
+                {
+                    foreach (CollisionObject co in this.GetCollision())
+                    {
+                        if (Collision.collisionData.ContainsKey(co))
+                        {
+                            foreach (CollisionObject collision in Collision.collisionData[co])
+                            {
+                                if (collision.parentObject.GetType() == typeof(Virus))
+                                {
+                                    Pos.X = 50;
+                                    Pos.Y = 50;
+                                    temporaryShield = true;
+
+                                    mActor.CurrentAnimation = 1;
+                                    mActor.Frame = 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                temporaryShieldCount++;
+                if (temporaryShieldCount > temporaryShieldMax)
+                {
+                    temporaryShield = false;
+                    temporaryShieldCount = 0;
+
+                    mActor.CurrentAnimation = 0;
+                    mActor.Frame = 0;
+                }
+                // DoChangeAnimation
             }
 
             shipVelocity *= 0.95f;

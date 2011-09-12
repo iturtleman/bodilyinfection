@@ -13,7 +13,7 @@
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
-    <XnaProfile>HiDef</XnaProfile>
+    <XnaProfile>Reach</XnaProfile>
     <XnaCrossPlatformGroupID>d4926560-0336-452b-b0e4-328031025ec4</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
     <ApplicationIcon>Game.ico</ApplicationIcon>
@@ -171,10 +171,6 @@
   <ItemGroup>
     <None Include="..\BodilyInfectionContent\Sprites\rbc.anim">
       <Link>Content\Sprites\rbc.anim</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="..\BodilyInfectionContent\Sprites\ship.anim">
-      <Link>Content\Sprites\ship.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="..\BodilyInfectionContent\Sprites\sun.anim">
