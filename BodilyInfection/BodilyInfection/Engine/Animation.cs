@@ -74,6 +74,16 @@ namespace BodilyInfection
 
                 /** Set the animation Peg*/
                 sf.AnimationPeg = new Vector2(pegX + (float)sf.Image.Width / 2, pegY + (float)sf.Image.Height / 2);
+                
+                //foreach (var collision in doc.Descendants("Collision")) {
+                //    if ( collision.Attribute("Type") == "Circle" ) {
+                //        string[] posNode = collision.Attribute("Position").ToString().Split(",");
+                //     CollisionObject colobj = new Collision_BoundingCircle( 1,
+                //         new Vector2(float.Parse(posNode[0]), float.Parse(posNode[1])),
+                //         float.Parse(collision.Attribute("radius").ToString()),                
+                //    }
+                //}              
+               
 
                 Frames.Add(sf);
                 count++;
