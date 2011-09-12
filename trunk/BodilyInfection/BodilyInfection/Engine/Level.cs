@@ -72,21 +72,25 @@ namespace BodilyInfection
 
         #endregion Variables
 
-        #region Methods
-
-        #region Actions
+        #region Updating
         internal void Load()
         {
             LoadBehavior();
         }
         internal void Update()
         {
+            Collision.update();
             UpdateBehavior();
-            foreach(Sprite sp in mSprites){
+            foreach (Sprite sp in mSprites)
+            {
                 sp.UpdateBehavior();
             }
         }
-        #endregion Actions
+        #endregion Updating
+
+        #region Methods
+
+
 
         #region Draw
         internal void Draw(Microsoft.Xna.Framework.GameTime gameTime)
@@ -160,7 +164,7 @@ namespace BodilyInfection
 
         public void AddActor(string name, Actor actor)
         {
-            mActors[name]= actor;
+            mActors[name] = actor;
         }
 
         public void RemoveActor(string name)

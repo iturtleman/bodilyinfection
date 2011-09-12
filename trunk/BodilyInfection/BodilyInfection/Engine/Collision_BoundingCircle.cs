@@ -104,7 +104,7 @@ namespace BodilyInfection
                 drawPoints[i].Color = Color.Red;
             }
 
-            This.Game.device.DrawUserPrimitives(PrimitiveType.LineStrip, drawPoints, 0, numOfPoints);
+            This.Game.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineStrip, drawPoints, 0, numOfPoints);
         }
     }
 }

@@ -16,12 +16,12 @@ namespace BodilyInfection
         public static int gridCellHeight { get; set; }
         public static int gridCellWidth { get; set; }
         public static Dictionary<CollisionObject, List<CollisionObject>> collisionData;
-
-        public static bool showGrid { get; set; }
-        public static bool showCollisionData { get; set; }
+        public static bool ShowCollisionData { get; set; }
 
         public static void createGrid(int bottomLeftX, int bottomLeftY, int topRightX, int topRightY)
         {
+            gridPoints.Clear();
+
             for (float i = bottomLeftX; i <= topRightX; i += gridCellWidth) //vertical
             {
                 VertexPositionColor[] line1 = new VertexPositionColor[2];
@@ -78,7 +78,7 @@ namespace BodilyInfection
                     list.RemoveAt(0);
                     for (int k = 0; k < list.Count; k++)
                     {
-                        if ( front.detectCollision(list[k]) )
+                        if (front.detectCollision(list[k]))
                         {
                             if (collisionData.ContainsKey(front))
                                 collisionData[front].Add(list[k]);
@@ -153,18 +153,25 @@ namespace BodilyInfection
 
         public static void Draw()
         {
-            if (showGrid)
-                for (int i = 0; i < gridPoints.Count; i++)
-                    This.Game.device.DrawUserPrimitives(PrimitiveType.LineList, gridPoints[i], 0, 1);
+            if (ShowCollisionData)
+            {
+                /*for (int i = 0; i < gridPoints.Count; i++)
+                    This.Game.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineList, gridPoints[i], 0, 1);
 
-            if (showCollisionData)
                 foreach (WorldObject c in This.Game.CurrentLevel.mSprites)
                 {
                     foreach (CollisionObject collisionObject in c.GetCollision())
                     {
                         collisionObject.draw();
                     }
-                }
+                }*/
+            }
+        }
+
+        public static void update()
+        {
+            fillBucket();
+            detectCollisions();
         }
 
         public static float distanceSquared(float x1, float y1, float x2, float y2)

@@ -117,7 +117,7 @@ namespace BodilyInfection
             drawPoints[4].Position = new Vector3(parentObject.Pos.X + topLeftPointOffset.X, parentObject.Pos.Y + topLeftPointOffset.Y, 0f);
             drawPoints[4].Color = Color.Red;
 
-            This.Game.device.DrawUserPrimitives(PrimitiveType.LineStrip, drawPoints, 0, 4);
+            This.Game.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineStrip, drawPoints, 0, 4);
         }
     }
 }

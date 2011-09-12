@@ -58,6 +58,12 @@ namespace BodilyInfection
         #endregion Behaviors
 
         #region Methods
+
+        internal override List<CollisionObject> GetCollision()
+        {
+            return GetAnimation().CollisionData;
+        }
+
         /// <summary>
         ///     changes to the specified animation beginning at 0
         /// </summary>
