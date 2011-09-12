@@ -111,6 +111,11 @@
     <Compile Include="Engine\Animation.cs" />
     <Compile Include="Engine\Background.cs" />
     <Compile Include="Engine\Collision.cs" />
+    <Compile Include="Engine\CollisionObject.cs" />
+    <Compile Include="Engine\Collision_AABB.cs" />
+    <Compile Include="Engine\Collision_BoundingCircle.cs" />
+    <Compile Include="Engine\Collision_BoundingEllipse.cs" />
+    <Compile Include="Engine\Collision_OBB.cs" />
     <Compile Include="Engine\Level.cs" />
     <Compile Include="LevelFunctions.cs" />
     <Compile Include="LoadResources.cs" />
