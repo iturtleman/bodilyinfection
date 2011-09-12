@@ -55,7 +55,7 @@ namespace BodilyInfection
         /// <summary>
         /// The collision data for this sprite.
         /// </summary>
-        public List<Collision> CollisionData = new List<Collision>();
+        public List<CollisionObject> CollisionData = new List<CollisionObject>();
         #endregion
     }
 }

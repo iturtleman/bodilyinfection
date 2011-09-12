@@ -7,6 +7,7 @@ namespace BodilyInfection
 {
     class Level
     {
+
         #region Constructor
         public Level()
         {
@@ -57,7 +58,7 @@ namespace BodilyInfection
         /// <summary>
         /// Vector of all WorldObjects drawn on the level.
         /// </summary>
-        protected List<WorldObject> mSprites = new List<WorldObject>();
+        internal List<WorldObject> mSprites = new List<WorldObject>();
 
         /// <summary>
         /// This level's actors. 

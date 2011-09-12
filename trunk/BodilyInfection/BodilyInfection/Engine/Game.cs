@@ -27,7 +27,7 @@ namespace BodilyInfection
         /// <summary>
         /// Decides whether or not to draw bounding boxes
         /// </summary>
-        public static bool ShowCollisions { get { return Collision.ShowCollisions; } set { Collision.ShowCollisions=value; } }
+        public static bool showCollisionData { get { return Collision.showCollisionData; } set { Collision.showCollisionData = value; } }
         /// <summary>
         /// Decides whether or not to draw FPS
         /// </summary>
@@ -90,6 +90,7 @@ namespace BodilyInfection
 
         #region premade things
         internal GraphicsDeviceManager graphics;
+        internal GraphicsDevice device;
         internal SpriteBatch spriteBatch;
         #endregion
 
@@ -98,6 +99,7 @@ namespace BodilyInfection
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            device = graphics.GraphicsDevice;
         }
         #endregion Constructor
 

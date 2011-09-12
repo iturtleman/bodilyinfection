@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace BodilyInfection
 {
-    abstract class WorldObject
+    abstract public class WorldObject
     {
         
 
@@ -85,5 +85,10 @@ namespace BodilyInfection
         /// </summary>
         protected int ZOrder;
         #endregion Variables
+
+        internal IEnumerable<CollisionObject> GetCollision()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

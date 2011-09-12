@@ -1,0 +1,123 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace BodilyInfection
+{
+    public class Collision_AABB : CollisionObject
+    {
+        /// <summary>
+        /// Initializes a Bounding Circle.
+        /// </summary>
+        public Collision_AABB(int _id, Vector2 _topLeftPointOffset, Vector2 _bottomRightPointOffset, WorldObject _parentObject)
+        {
+            topLeftPointOffset = _topLeftPointOffset;
+            bottomRightPointOffset = _bottomRightPointOffset;
+            id = _id;
+            parentObject = _parentObject;
+            type = 'a';
+        }
+
+        /// <summary>
+        /// Offset of topLeftPoint from sprite anchor.
+        /// </summary>
+        public Vector2 topLeftPointOffset { get; set; }
+
+        /// <summary>
+        /// Offset of bottomLeftPoint from sprite anchor.
+        /// </summary>
+        public Vector2 bottomRightPointOffset { get; set; }
+
+        /// <summary>
+        /// Return Top Left Point of AABB (topLeftPointOffset + ParentObject.location)
+        /// </summary>
+        public Vector2 calcTopLeftPoint
+        {
+            get
+            {
+                return topLeftPointOffset + parentObject.Pos;
+            }
+        }
+
+        /// <summary>
+        /// Return Top Left Point of AABB (topLeftPointOffset + ParentObject.location)
+        /// </summary>
+        public Vector2 calcBottomRightPoint
+        {
+            get
+            {
+                return bottomRightPointOffset + parentObject.Pos;
+            }
+        }
+
+        /// <summary>
+        /// Determines which grid cells the object is in
+        /// </summary>
+        public override List<Vector2> gridLocations()
+        {
+            int bottomLeftX = (int)(parentObject.Pos.X + topLeftPointOffset.X) / (int)Collision.gridCellWidth;
+            int bottomLeftY = (int)(parentObject.Pos.Y + bottomRightPointOffset.Y) / (int)Collision.gridCellHeight;
+            int topRightX = (int)(parentObject.Pos.X + bottomRightPointOffset.X) / (int)Collision.gridCellWidth;
+            int topRightY = (int)(parentObject.Pos.Y + topLeftPointOffset.Y) / (int)Collision.gridCellHeight;
+
+            List<Vector2> gridLocations = new List<Vector2>();
+            for (int i = bottomLeftX; i <= topRightX; i++) //cols
+            {
+                for (int j = bottomLeftY; j <= topRightY; j++) //rows
+                {
+                    Vector2 location = new Vector2(i, j);
+                }
+            }
+
+            return gridLocations;
+        }
+
+        /// <summary>
+        /// Add this CollisionObject to bucket.
+        /// </summary>
+        public override void addToBucket()
+        {
+            int bottomLeftX = (int)(parentObject.Pos.X + topLeftPointOffset.X) / (int)Collision.gridCellWidth;
+            int bottomLeftY = (int)(parentObject.Pos.Y + bottomRightPointOffset.Y) / (int)Collision.gridCellHeight;
+            int topRightX = (int)(parentObject.Pos.X + bottomRightPointOffset.X) / (int)Collision.gridCellWidth;
+            int topRightY = (int)(parentObject.Pos.Y + topLeftPointOffset.Y) / (int)Collision.gridCellHeight;
+
+            for (int i = bottomLeftX; i <= topRightX; i++) //cols
+            {
+                for (int j = bottomLeftY; j <= topRightY; j++) //rows
+                {
+                    Vector2 location = new Vector2(i, j);
+                    if (Collision.bucket.ContainsKey(location))
+                        Collision.bucket[location].Add(this);
+                    else
+                    {
+                        List<CollisionObject> possibleCollisions = new List<CollisionObject>();
+                        possibleCollisions.Add(this);
+                        Collision.bucket.Add(location, possibleCollisions);
+                    }
+                }
+            }
+        }
+
+        public override void draw()
+        {
+            VertexPositionColor[] drawPoints = new VertexPositionColor[5];
+
+            drawPoints[0].Position = new Vector3(parentObject.Pos.X + topLeftPointOffset.X, parentObject.Pos.Y + topLeftPointOffset.Y, 0f);
+            drawPoints[0].Color = Color.Red;
+            drawPoints[1].Position = new Vector3(parentObject.Pos.X + topLeftPointOffset.X, parentObject.Pos.Y + bottomRightPointOffset.Y, 0f);
+            drawPoints[1].Color = Color.Red;
+            drawPoints[2].Position = new Vector3(parentObject.Pos.X + bottomRightPointOffset.X, parentObject.Pos.Y + bottomRightPointOffset.Y, 0f);
+            drawPoints[2].Color = Color.Red;
+            drawPoints[3].Position = new Vector3(parentObject.Pos.X + bottomRightPointOffset.X, parentObject.Pos.Y + topLeftPointOffset.Y, 0f);
+            drawPoints[3].Color = Color.Red;
+            drawPoints[4].Position = new Vector3(parentObject.Pos.X + topLeftPointOffset.X, parentObject.Pos.Y + topLeftPointOffset.Y, 0f);
+            drawPoints[4].Color = Color.Red;
+
+            This.Game.device.DrawUserPrimitives(PrimitiveType.LineStrip, drawPoints, 0, 4);
+        }
+    }
+}
