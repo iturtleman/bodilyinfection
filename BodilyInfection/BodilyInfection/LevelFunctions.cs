@@ -26,6 +26,11 @@ namespace BodilyInfection
         {
             Level l = This.Game.CurrentLevel;
 
+            //Initialize Collision Cell Size
+            Collision.gridCellHeight = 40;
+            Collision.gridCellWidth = 40;
+            Collision.createGrid(0, 0, 800, 800);
+
             /// load background
             l.Background = new Background("default", "bg.bmp");//mBackground = LoadImage("Backgrounds/bg.bmp");
 

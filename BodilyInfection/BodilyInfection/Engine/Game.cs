@@ -27,7 +27,7 @@ namespace BodilyInfection
         /// <summary>
         /// Decides whether or not to draw bounding boxes
         /// </summary>
-        public static bool showCollisionData { get { return Collision.showCollisionData; } set { Collision.showCollisionData = value; } }
+        public static bool ShowCollisionData { get { return Collision.ShowCollisionData; } set { Collision.ShowCollisionData = value; } }
         /// <summary>
         /// Decides whether or not to draw FPS
         /// </summary>
@@ -90,7 +90,6 @@ namespace BodilyInfection
 
         #region premade things
         internal GraphicsDeviceManager graphics;
-        internal GraphicsDevice device;
         internal SpriteBatch spriteBatch;
         #endregion
 
@@ -99,7 +98,6 @@ namespace BodilyInfection
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            device = graphics.GraphicsDevice;
         }
         #endregion Constructor
 
@@ -156,8 +154,15 @@ namespace BodilyInfection
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
+            if (Keyboard.GetState().IsKeyDown(Keys.F11))
+            {
+                ShowCollisionData = !ShowCollisionData;
+            }
+
 
             #endregion Handle input
+
+
 
             if (CurrentLevel != null)
                 CurrentLevel.Update();

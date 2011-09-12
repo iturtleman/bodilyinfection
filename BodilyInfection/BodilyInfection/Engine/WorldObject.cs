@@ -86,9 +86,6 @@ namespace BodilyInfection
         protected int ZOrder;
         #endregion Variables
 
-        internal IEnumerable<CollisionObject> GetCollision()
-        {
-            throw new NotImplementedException();
-        }
+        internal abstract List<CollisionObject> GetCollision();
     }
 }
