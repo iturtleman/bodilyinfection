@@ -32,8 +32,10 @@
 					<RowDefinition Height="Auto"/>
 					<RowDefinition Height="Auto"/>
 					<RowDefinition Height="Auto"/>
+					<RowDefinition/>
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
 					<ColumnDefinition Width="Auto"/>
 					<ColumnDefinition Width="Auto"/>
 					<ColumnDefinition Width="Auto"/>
@@ -49,13 +51,13 @@
 					</Border>
 					<TextBlock Text="x" Margin="0,-7,0,0" FontSize="13.333" HorizontalAlignment="Center" VerticalAlignment="Center" MaxHeight="16"/>
 				</Grid>
-				<TextBox Text="{Binding File, Converter={StaticResource FilenameClipper}, FallbackValue=Filename}" ToolTip="Filename" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" IsReadOnly="True" />
+				<TextBox Text="{Binding File, Converter={StaticResource FilenameClipper}, FallbackValue=Filename}" ToolTip="Frame's Source File" HorizontalAlignment="Left" Grid.Row="1" IsReadOnly="True" Grid.Column="1" />
 				<TextBox Text="{Binding Pause, FallbackValue=Pause between frames, Mode=TwoWay}" ToolTip="Pause Between Frames" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" />
 				<TextBox Text="{Binding AnimationPeg, FallbackValue=AnimationPeg, Mode=TwoWay}" ToolTip="AnimationPeg" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1" />
-				<TextBox Text="{Binding Width, FallbackValue=Width}" ToolTip="Width" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="1" IsReadOnly="True" />
-				<TextBox Text="{Binding Height, FallbackValue=Height}" ToolTip="Height" HorizontalAlignment="Left" Grid.Row="5" Grid.Column="1" IsReadOnly="True" />
-				<TextBox Text="{Binding ClearColor, FallbackValue=Clear color for Sprite}" ToolTip="Clear color for Sprite" HorizontalAlignment="Left" Grid.Row="6" Grid.Column="1" IsReadOnly="True" />
-				<Grid Grid.ColumnSpan="2" HorizontalAlignment="Left" >
+				<TextBox Text="{Binding Width, FallbackValue=Width}" ToolTip="Width" HorizontalAlignment="Left" Grid.Row="4" IsReadOnly="True" Grid.Column="1" />
+				<TextBox Text="{Binding Height, FallbackValue=Height}" ToolTip="Height" HorizontalAlignment="Left" Grid.Row="5" IsReadOnly="True" Grid.Column="1" />
+				<TextBox Text="{Binding ClearColor, FallbackValue=Clear color for Sprite}" ToolTip="Clear color for Sprite" HorizontalAlignment="Left" Grid.Row="6" IsReadOnly="True" Grid.Column="1" />
+				<Grid Grid.ColumnSpan="3" HorizontalAlignment="Left" >
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="Auto"/>
 						<ColumnDefinition Width="Auto"/>
@@ -89,10 +91,18 @@
 						<TextBlock Text="+Circ" Margin="0" FontSize="13.333" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 					</Border>
 				</Grid>
-				<Grid Grid.Column="0" HorizontalAlignment="Left" Grid.Row="1" Grid.RowSpan="{Binding RowDefinitions.Count, ElementName=LayoutRoot, Mode=OneWay}">
-					<Image x:Name="FrameImage" Source="{Binding Image}"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
-					<Canvas x:Name="CollisionData" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-				</Grid>
+				<ScrollViewer Grid.Column="3" Grid.Row="1" Grid.RowSpan="{Binding RowDefinitions.Count, ElementName=LayoutRoot, Mode=OneWay}" MaxHeight="400" MaxWidth="500" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+					<Grid>
+						<Image x:Name="FrameImage" Source="{Binding Image}"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
+						<Canvas x:Name="CollisionData" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+					</Grid>
+				</ScrollViewer>
+				<TextBox Text="Filename:" ToolTip="Frame's Source File" Grid.Row="1" IsReadOnly="True" TextAlignment="Right" />
+				<TextBox Text="Pause:" ToolTip="Pause Between Frames" Grid.Row="2" TextAlignment="Right" />
+				<TextBox Text="AnimPeg:" ToolTip="AnimationPeg" Grid.Row="3" TextAlignment="Right" />
+				<TextBox Text="Width:" ToolTip="Width" Grid.Row="4" IsReadOnly="True" TextAlignment="Right" />
+				<TextBox Text="Height:" ToolTip="Height" Grid.Row="5" IsReadOnly="True" TextAlignment="Right" />
+				<TextBox Text="ClearCol:" ToolTip="Clear color for Sprite" Grid.Row="6" IsReadOnly="True" d:LayoutOverrides="GridBox" TextAlignment="Right" />
 			</Grid>
 		</Border>
 		<Canvas Background="#01000000" x:Name="DrawingScreen" Visibility="Collapsed"/>

@@ -91,7 +91,7 @@
         	<local:AnimFile Filename="Untitled0"/>
         </TabControl>
         <ListBox x:Name="SpriteSheets" ItemsSource="{Binding SpriteFrameData, ElementName=window}" IsSynchronizedWithCurrentItem="True" Margin="0" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" HorizontalContentAlignment="Center" Grid.Row="1" Grid.Column="1"/>
-        <ListBox x:Name="SpriteSheetItems" ItemsSource="{Binding SelectedValue.Frames, Converter={StaticResource ShowItems}, ElementName=SpriteSheets, Mode=OneWay}" Margin="0" HorizontalContentAlignment="Center" Grid.Row="1" dd:DragDrop.DropHandler="{Binding}" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" HorizontalAlignment="Right" Visibility="{Binding SelectedIndex, Converter={StaticResource ShowItems}, ElementName=SpriteSheets}" SelectionMode="Multiple">
+        <ListBox x:Name="SpriteSheetItems" ItemsSource="{Binding SelectedValue.Frames, Converter={StaticResource ShowItems}, ElementName=SpriteSheets, Mode=OneWay}" Margin="0" HorizontalContentAlignment="Center" Grid.Row="1" dd:DragDrop.DropHandler="{Binding}" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" HorizontalAlignment="Right" Visibility="{Binding SelectedIndex, Converter={StaticResource ShowItems}, ElementName=SpriteSheets}" SelectionMode="Multiple" MaxWidth="450">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="3" CornerRadius="3">
