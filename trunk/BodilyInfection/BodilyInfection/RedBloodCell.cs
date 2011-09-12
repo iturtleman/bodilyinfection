@@ -25,6 +25,8 @@ namespace BodilyInfection
 
 
         private Vector2 movementVelocity;// { get; set; }
+        public bool Wounded { get; set; }
+        private int health = 10;
 
         public void Update()
         {
@@ -64,6 +66,32 @@ namespace BodilyInfection
             {
                 movementVelocity.Y *= -1;
                 Pos.Y = MinY;
+            }
+
+            if (Collision.collisionData.Count > 0)
+            {
+                foreach (CollisionObject co in this.GetCollision())
+                {
+                    if (Collision.collisionData.ContainsKey(co))
+                    {
+                        foreach (CollisionObject collision in Collision.collisionData[co])
+                        {
+                            if (collision.parentObject.GetType() == typeof(Virus))
+                            {
+                                if (Wounded)
+                                {
+                                    throw new NotImplementedException();
+                                    //mActor.CurrentAnimation = 1;
+                                    //mActor.Frame = 0;
+                                }
+                            }
+                            /*else if (collision.parentObject.GetType() == typeof(Bullet))
+                            {
+
+                            }*/
+                        }
+                    }
+                }
             }
         }
     }

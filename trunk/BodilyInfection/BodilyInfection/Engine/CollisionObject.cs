@@ -102,5 +102,9 @@ namespace BodilyInfection
         }
 
         public abstract void draw();
+
+        public override int GetHashCode(){
+            return id;
+        }
     }
 }

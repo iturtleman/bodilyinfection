@@ -62,6 +62,26 @@ namespace BodilyInfection
 
             // Bleed off velocity over time.
             currentVelocity *= 0.15f;
+
+            if (Collision.collisionData.Count > 0)
+            {
+                foreach (CollisionObject co in this.GetCollision())
+                {
+                    if (Collision.collisionData.ContainsKey(co))
+                    {
+                        foreach (CollisionObject collision in Collision.collisionData[co])
+                        {
+                            if (collision.parentObject.GetType() == typeof(RedBloodCell))
+                            {
+                                if ((collision.parentObject as RedBloodCell).Wounded)
+                                {
+                                    // Delete self!
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         #endregion
