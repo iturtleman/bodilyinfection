@@ -52,7 +52,7 @@ namespace AnimationEditor
                     Frame f = SpriteFrames.SelectedValue as Frame;
                     if (f != null)
                     {
-                        Workspace.Children.Add(new EditFrame(f) { HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center });
+                        Workspace.Children.Add(new EditFrame(f) { HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top });
                     }
                 }
             }
