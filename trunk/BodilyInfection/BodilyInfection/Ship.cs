@@ -38,22 +38,8 @@ namespace BodilyInfection
             if (currentState.IsConnected)
             {
 
-                // Create some velocity if the right trigger is down.
-                //Vector2 shipVelocityAdd = Vector2.Zero;
-
-
                 Pos.X += shipSpeed * currentState.ThumbSticks.Left.X;
                 Pos.Y += shipSpeed * -currentState.ThumbSticks.Left.Y;
-
-                // Now scale our direction by how hard the trigger is down.
-                //shipVelocityAdd *= currentState.ThumbSticks.Left.X;
-
-                // Finally, add this vector to our velocity.
-                // shipVelocity += shipVelocityAdd;
-
-                //if (currentState.ThumbSticks.Left.X != 0 || currentState.ThumbSticks.Left.Y != 0)
-                //    GamePad.SetVibration(PlayerIndex.One, 1, 1);
-                //else GamePad.SetVibration(PlayerIndex.One, 0, 0);
 
 
                 // In case you get lost, press A to warp back to the center.
@@ -64,10 +50,6 @@ namespace BodilyInfection
                     shipVelocity = Vector2.Zero;
                 }
 
-                //Pos += shipVelocity;
-
-                // Bleed off velocity over time.
-                //shipVelocity *= 0.95f;
             }
             else /* Move with arrow keys */
             {
@@ -90,6 +72,13 @@ namespace BodilyInfection
                     Pos.X += shipSpeed;
                 }
             }
+
+            if (Collision.collisionData.Count > 0 && Collision.collisionData[this.GetCollision()[0]].Count > 0)
+            {
+                Pos.X = 50;
+                Pos.Y = 50;
+            }
+
             shipVelocity *= 0.95f;
         }
     }

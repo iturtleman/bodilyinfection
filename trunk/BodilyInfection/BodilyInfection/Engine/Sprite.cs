@@ -15,7 +15,7 @@ namespace BodilyInfection
             //mDrawn = false;
             mActor = actor;
             mLastUpdate = new GameTime();
-            LoadBehavior=()=>{ };
+            LoadBehavior = () => { };
             UpdateBehavior = () => { };
             EndBehavior = () => { };
             //add to current level
@@ -24,6 +24,7 @@ namespace BodilyInfection
             if (mActor.Animations[mActor.CurrentAnimation].Built)
             {
                 if (mActor.Animations[mActor.CurrentAnimation].NumFrames > 1) mAnimating = true;
+
             }
         }
 
@@ -37,7 +38,7 @@ namespace BodilyInfection
         ///     the sprite's speed
         /// </summary>
         public float AnimationSpeed { get; set; }
-        
+
         #endregion Properties
 
         #region Behaviors
@@ -123,7 +124,7 @@ namespace BodilyInfection
                     Vector2 npos = frame.AnimationPeg;
                     //move current position to difference of two
                     Pos += (ppos - npos);
-                    mLastUpdate = new GameTime(gameTime.TotalGameTime,gameTime.ElapsedGameTime);
+                    mLastUpdate = new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime);
                 }
             }
             if (mVisible == true)

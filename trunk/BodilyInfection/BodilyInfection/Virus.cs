@@ -31,7 +31,7 @@ namespace BodilyInfection
 
         public void Update()
         {
-            Sprite ship = This.Game.CurrentLevel.GetSprite("rbc");
+            Sprite ship = This.Game.CurrentLevel.GetSprite("ship");
             Vector2 minVector = ship.Pos;
             float minDistance = (Pos - ship.Pos).Length();
 

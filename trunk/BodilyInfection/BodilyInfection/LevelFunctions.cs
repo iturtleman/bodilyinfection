@@ -39,9 +39,10 @@ namespace BodilyInfection
             l.AddAnimation(new Animation("sun.anim"));
             l.AddAnimation(new Animation("rbc.anim"));
             l.AddAnimation(new Animation("virusPulse.anim"));
+            l.AddAnimation(new Animation("ship.anim"));
 
             /** load sprites */
-            Sprite vikings1 = new RedBloodCell("viking1", new Actor(l.GetAnimation("viking.anim")));
+            Sprite vikings1 = new RedBloodCell("rbc", new Actor(l.GetAnimation("rbc.anim")));
             vikings1.Pos = new Vector2(0, 0);
             vikings1.AnimationSpeed= 1;
 
@@ -53,7 +54,7 @@ namespace BodilyInfection
             sun.Pos = new Vector2(480, 50);
             sun.AnimationSpeed = 1;
 
-            Sprite rbc = new Ship("rbc", new Actor(l.GetAnimation("rbc.anim")));
+            Sprite rbc = new Ship("ship", new Actor(l.GetAnimation("ship.anim")));
             rbc.Pos = new Vector2(50, 50);
             rbc.AnimationSpeed = 1;
         }
