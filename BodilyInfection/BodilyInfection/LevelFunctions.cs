@@ -53,10 +53,10 @@ namespace BodilyInfection
             //Sprite rbc = new Ship("ship", new Actor(l.GetAnimation("ship.anim")));
             Actor shipActor = new Actor(l.GetAnimation("rbc.anim"));
             shipActor.Animations.Add(l.GetAnimation("viking.anim"));
-            Sprite rbc = new Ship("ship", shipActor);
+            Sprite ship = new Ship("ship", shipActor);
             
-            rbc.Pos = new Vector2(50, 50);
-            rbc.AnimationSpeed = 1;
+            ship.Pos = new Vector2(50, 50);
+            ship.AnimationSpeed = 1;
         }
 
         internal static void LevelWorldUpdate()

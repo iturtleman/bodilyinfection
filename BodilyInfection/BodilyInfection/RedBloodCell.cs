@@ -31,7 +31,7 @@ namespace BodilyInfection
         public void Update()
         {
 
-            // Move the sprite by speed, scaled by elapsed time.
+            // Move the sprite by speed.
             Pos.X += movementVelocity.X;
 
             Pos.Y += movementVelocity.Y;
@@ -80,15 +80,17 @@ namespace BodilyInfection
                             {
                                 if (Wounded)
                                 {
+                                    // Virus enters RBC
                                     throw new NotImplementedException();
                                     //mActor.CurrentAnimation = 1;
                                     //mActor.Frame = 0;
                                 }
                             }
-                            /*else if (collision.parentObject.GetType() == typeof(Bullet))
+                            else if (collision.parentObject.GetType() == typeof(Bullet))
                             {
-
-                            }*/
+                                // RBC becomes infectable.
+                                throw new NotImplementedException();
+                            }
                         }
                     }
                 }

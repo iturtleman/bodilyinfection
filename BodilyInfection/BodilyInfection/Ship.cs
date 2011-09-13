@@ -22,6 +22,9 @@ namespace BodilyInfection
             this.gamepad = input;
             shipVelocity = Vector2.Zero;
             shipSpeed = 10.0f;
+            rotationAngle = 0.0f;
+            lThumbstick = Vector2.Zero;
+            rThumbstick = Vector2.Zero;
 
             UpdateBehavior += new Behavior(Update);
         }
@@ -32,6 +35,9 @@ namespace BodilyInfection
         private bool temporaryShield = false;
         private int temporaryShieldCount = 0;
         private int temporaryShieldMax = 200;
+        private float rotationAngle;
+        private Vector2 lThumbstick;
+        private Vector2 rThumbstick;
 
 
 
@@ -44,7 +50,24 @@ namespace BodilyInfection
 
                 Pos.X += shipSpeed * currentState.ThumbSticks.Left.X;
                 Pos.Y += shipSpeed * -currentState.ThumbSticks.Left.Y;
+                
 
+                // Used to decide rotation angle.
+                lThumbstick.X = currentState.ThumbSticks.Left.X;
+                lThumbstick.Y = currentState.ThumbSticks.Left.Y;
+
+
+                // Used to figure out the direction to shoot.
+                rThumbstick.X = currentState.ThumbSticks.Right.X;
+                rThumbstick.Y = currentState.ThumbSticks.Right.X;
+
+                if (lThumbstick.Length() > .2f)
+                    rotationAngle = -(float)Math.Atan2(lThumbstick.Y, lThumbstick.X);
+
+                // Draw Method
+                //sb.Draw(shipTexture, shipPosition, null, Color.White, rotationAngle, origin, 1.0f , SpriteEffects.None, 0.0f);
+
+                this.mAngle = (180 *rotationAngle) / 3.14159f;
 
                 // In case you get lost, press A to warp back to the center.
                 if (currentState.Buttons.A == ButtonState.Pressed)
