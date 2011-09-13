@@ -69,7 +69,7 @@ namespace BodilyInfection
 
                 //Image's width and height
                 sf.Width = int.Parse(frame.Attribute("Width").Value);
-                sf.Width = int.Parse(frame.Attribute("Height").Value);
+                sf.Height = int.Parse(frame.Attribute("Height").Value);
 
                 var point = frame.Attribute("AnimationPeg").Value.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 float pegX = float.Parse(point.First());

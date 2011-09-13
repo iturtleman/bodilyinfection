@@ -108,6 +108,7 @@ namespace BodilyInfection
         ///  Resets the Sprite's animation to the first frame.
         /// </summary>
         public void Rewind() { mActor.Frame = 0; }
+        #endregion Methods
 
         #region Draw
         /// <summary>
@@ -139,7 +140,8 @@ namespace BodilyInfection
             }
             if (mVisible == true)
             {
-                This.Game.spriteBatch.Draw(mActor.Animations[mActor.CurrentAnimation].Frames[mActor.Frame].Image, Pos, Color.White);
+                SpriteFrame f=mActor.Animations[mActor.CurrentAnimation].Frames[mActor.Frame];
+                This.Game.spriteBatch.Draw(f.Image, Pos, new Rectangle((int)f.StartPos.X, (int)f.StartPos.Y, f.Width, f.Height), Color.White);
             }
         }
 
@@ -168,8 +170,6 @@ namespace BodilyInfection
         /// <returns></returns>
         //public vector<Collision> getCollisionData();
         #endregion Collision
-
-        #endregion Methods
 
         #region Variables
 
