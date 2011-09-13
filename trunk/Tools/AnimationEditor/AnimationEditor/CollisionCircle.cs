@@ -19,11 +19,18 @@ namespace AnimationEditor
             radius = circ.Width;
         }
 
+        public CollisionCircle(Point p, float r)
+        {
+            center = p;
+            radius = r;
+        }
+
         public override XElement GetLine()
         {
             XElement e = new XElement("Collision");
             e.SetAttributeValue("Type", "Circle");
-            e.SetAttributeValue("Center", center);
+            e.SetAttributeValue("Pos", center);
+            e.SetAttributeValue("Radius", radius);
             return e;
         }
     }

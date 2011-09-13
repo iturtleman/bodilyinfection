@@ -12,6 +12,17 @@ namespace BodilyInfection
         /// <summary>
         /// Initializes a Bounding Circle.
         /// </summary>
+        public Collision_AABB(int _id, Vector2 _topLeftPointOffset, Vector2 _bottomRightPointOffset)
+        {
+            topLeftPointOffset = _topLeftPointOffset;
+            bottomRightPointOffset = _bottomRightPointOffset;
+            id = _id;
+            type = 'a';
+        }
+
+        /// <summary>
+        /// Initializes a Bounding Circle.
+        /// </summary>
         public Collision_AABB(int _id, Vector2 _topLeftPointOffset, Vector2 _bottomRightPointOffset, WorldObject _parentObject)
         {
             topLeftPointOffset = _topLeftPointOffset;

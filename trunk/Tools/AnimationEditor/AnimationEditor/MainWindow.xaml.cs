@@ -247,11 +247,11 @@ namespace AnimationEditor
 
             ObservableCollection<Frame> frames = new ObservableCollection<Frame>();
             XDocument doc = XDocument.Load(stream);
-            try
+  //          try
             {
                 string spritesheetfile;
-                string spritesheetfilelast="";
-                string safename="";
+                string spritesheetfilelast = "";
+                string safename = "";
                 foreach (var elem in doc.Descendants("Frame"))
                 {
                     string file = elem.Attribute("SpriteSheet").Value;
@@ -291,6 +291,30 @@ namespace AnimationEditor
 
                     CroppedBitmap img = new CroppedBitmap(spritesheet, new Int32Rect((int)TL.X, (int)TL.Y, w, h));
 
+                    ObservableCollection<Collision> cols = new ObservableCollection<Collision>();
+
+                    foreach (var collision in elem.Descendants("Collision"))
+                    {
+                        if (collision.Attribute("Type").Value == "Circle")
+                        {
+                            cols.Add( 
+                                new CollisionCircle(
+                                    Point.Parse(collision.Attribute("Pos").Value),
+                                    float.Parse(collision.Attribute("Radius").Value)
+                                )
+                            );
+                        }
+                        else if (collision.Attribute("Type").Value == "Rectangle")
+                        {
+                            cols.Add(
+                                new CollisionRect(
+                                    Point.Parse(collision.Attribute("TLPos").Value),
+                                    Point.Parse(collision.Attribute("BRPos").Value)
+                                )
+                            );
+                        }
+                    }
+
                     frames.Add(new Frame()
                         {
                             File = file,
@@ -299,16 +323,17 @@ namespace AnimationEditor
                             Height = h,
                             StartPos = TL,
                             AnimationPeg = Point.Parse(elem.Attribute("AnimationPeg").Value),
-                            Image = img
+                            Image = img,
+                            Collisions = cols
                         }
                     );
                 }
                 Files.Items.Add(new AnimFile(frames, filename));
             }
-            catch (Exception e)
-            {
-                MessageBox.Show(string.Format("Exception: {0}\n", e.GetBaseException().Message));
-            }
+            //catch (Exception e)
+            //{
+            //    MessageBox.Show(string.Format("Exception: {0}\n", e.GetBaseException().Message));
+            //}
         }
 
         private void ParseSpriteSheet(string FileName)
@@ -327,8 +352,7 @@ namespace AnimationEditor
             {
                 int h = int.Parse(frame.Attribute("Height").Value);
                 int w = int.Parse(frame.Attribute("Width").Value);
-                string[] spos = frame.Attribute("TLPos").Value.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                Point TL = new Point(int.Parse(spos[0]), int.Parse(spos[1]));
+                Point TL = Point.Parse(frame.Attribute("TLPos").Value);
                 CroppedBitmap img = new CroppedBitmap(spritesheet, new Int32Rect((int)TL.X, (int)TL.Y, w, h));
                 string file = FileName.Substring(FileName.LastIndexOf('\\') + 1);
                 file = file.Remove(file.LastIndexOf('.'));

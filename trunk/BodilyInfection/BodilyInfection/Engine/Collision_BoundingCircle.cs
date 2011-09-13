@@ -12,6 +12,17 @@ namespace BodilyInfection
         /// <summary>
         /// Initializes a Bounding Circle.
         /// </summary>
+        public Collision_BoundingCircle(int _id, Vector2 _centerPointOffset, float _radius)
+        {
+            centerPointOffset = _centerPointOffset;
+            radius = _radius;
+            id = _id;
+            type = 'c';
+        }
+
+        /// <summary>
+        /// Initializes a Bounding Circle.
+        /// </summary>
         public Collision_BoundingCircle(int _id, Vector2 _centerPointOffset, float _radius, WorldObject _parentObject)
         {
             centerPointOffset = _centerPointOffset;
