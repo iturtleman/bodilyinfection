@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bullet.cs" />
     <Compile Include="Engine\Actor.cs" />
     <Compile Include="Engine\Animation.cs" />
     <Compile Include="Engine\Background.cs" />
