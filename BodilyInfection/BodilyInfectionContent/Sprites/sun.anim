@@ -5,6 +5,7 @@
     Width="0"
     Height="0"
     AnimationPeg="0,0"
+TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -16,6 +17,7 @@
     Width="0"
     Height="0"
     AnimationPeg="0,0"
+TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -27,6 +29,7 @@
     Width="0"
     Height="0"
     AnimationPeg="0,0"
+TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -38,6 +41,7 @@
     Width="0"
     Height="0"
     AnimationPeg="0,0"
+TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->

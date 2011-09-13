@@ -57,33 +57,54 @@ namespace BodilyInfection
             {
                 SpriteFrame sf = new SpriteFrame();
 
-                ///image \todo Make this get the subsection etc
+                string[] sp = frame.Attribute("TLPos").Value.Split(',');
+                sf.StartPos = new Vector2(float.Parse(sp[0]), float.Parse(sp[1]));
+
+                ///image
                 string file = frame.Attribute("SpriteSheet").Value;
                 sf.Image = This.Game.Content.Load<Texture2D>(@"Sprites\" + file);
 
                 /** sets frame delay */
-                sf.Pause= int.Parse(frame.Attribute("FrameDelay").Value);
+                sf.Pause = int.Parse(frame.Attribute("FrameDelay").Value);
 
                 //Image's width and height
                 sf.Width = int.Parse(frame.Attribute("Width").Value);
                 sf.Width = int.Parse(frame.Attribute("Height").Value);
 
-                var point = frame.Attribute("AnimationPeg").Value.Split(new char[]{','},StringSplitOptions.RemoveEmptyEntries);
+                var point = frame.Attribute("AnimationPeg").Value.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 float pegX = float.Parse(point.First());
                 float pegY = float.Parse(point.Last());
 
                 /** Set the animation Peg*/
                 sf.AnimationPeg = new Vector2(pegX + (float)sf.Image.Width / 2, pegY + (float)sf.Image.Height / 2);
-                
-                //foreach (var collision in doc.Descendants("Collision")) {
-                //    if ( collision.Attribute("Type") == "Circle" ) {
-                //        string[] posNode = collision.Attribute("Position").ToString().Split(",");
-                //     CollisionObject colobj = new Collision_BoundingCircle( 1,
-                //         new Vector2(float.Parse(posNode[0]), float.Parse(posNode[1])),
-                //         float.Parse(collision.Attribute("radius").ToString()),                
-                //    }
-                //}              
-               
+
+                int idCount = 0;
+                foreach (var collision in frame.Descendants("Collision"))
+                {
+                    if (collision.Attribute("Type").Value == "Circle")
+                    {
+                        string[] pt = collision.Attribute("Pos").Value.Split(',');
+                        Collision_BoundingCircle circ = new Collision_BoundingCircle(
+                            idCount++,
+                            new Vector2(float.Parse(pt[0]), float.Parse(pt[1])),
+                            float.Parse(collision.Attribute("Radius").Value));
+                    }
+                    else if (collision.Attribute("Type").Value == "Rectangle")
+                    {
+                        string[] tl = collision.Attribute("TLPos").Value.Split(',');
+                        float tlx = float.Parse(tl[0]);
+                        float tly = float.Parse(tl[1]);
+                        string[] br = collision.Attribute("BRPos").Value.Split(',');
+                        float brx = float.Parse(tl[0]);
+                        float bry = float.Parse(tl[1]);
+                        Collision_AABB circ = new Collision_AABB(
+                            idCount++,
+                            new Vector2(tlx, tly),
+                            new Vector2(brx, bry)
+                            );
+                    }
+                }
+
 
                 Frames.Add(sf);
                 count++;

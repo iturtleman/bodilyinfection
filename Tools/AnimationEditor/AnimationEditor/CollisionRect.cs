@@ -21,13 +21,19 @@ namespace AnimationEditor
             Height = h;
         }
 
+        public CollisionRect(Point tl, Point br)
+        {
+            TL = tl;
+            Width = br.X - tl.X;
+            Height = br.Y - tl.Y;
+        }
+
         public override XElement GetLine()
         {
             XElement e = new XElement("Collision");
             e.SetAttributeValue("Type", "Rectangle");
-            e.SetAttributeValue("TL", TL);
-            e.SetAttributeValue("Width", Width);
-            e.SetAttributeValue("Height", Height);
+            e.SetAttributeValue("TLPos", TL);
+            e.SetAttributeValue("BRPos", new Point(TL.X + Width, TL.Y + Height));
             return e;
         }
     }

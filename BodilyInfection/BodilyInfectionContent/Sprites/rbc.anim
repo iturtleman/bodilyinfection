@@ -2,9 +2,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0047"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -13,9 +14,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0052"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -24,9 +26,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0057"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -35,9 +38,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0062"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -46,9 +50,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0067"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -57,9 +62,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0072"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -68,9 +74,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0077"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -79,9 +86,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0082"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -90,9 +98,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0087"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -101,9 +110,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0092"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -112,9 +122,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0097"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -123,9 +134,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0102"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -134,9 +146,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0107"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -145,9 +158,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0112"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -156,9 +170,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0117"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -167,9 +182,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0122"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -178,9 +194,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0127"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -189,9 +206,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0132"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
@@ -200,9 +218,10 @@
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0137"
     FrameDelay="20"
-    Width="0"
-    Height="0"
+    Width="26"
+    Height="26"
     AnimationPeg="0,0"
+TLPos="0,0" 
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
