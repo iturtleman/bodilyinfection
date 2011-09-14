@@ -78,7 +78,7 @@ namespace BodilyInfection
         /// <summary>
         /// Add this CollisionObject to bucket.
         /// </summary>
-        public override void addToBucket()
+        public override void addToBucket(WorldObject worldObject)
         {
             int bottomLeftX = (int)(parentObject.Pos.X + centerPointOffset.X - radius) / (int)Collision.gridCellWidth;
             int bottomLeftY = (int)(parentObject.Pos.Y + centerPointOffset.Y - radius) / (int)Collision.gridCellHeight;
@@ -91,11 +91,11 @@ namespace BodilyInfection
                 {
                     Vector2 location = new Vector2(i, j);
                     if (Collision.bucket.ContainsKey(location))
-                        Collision.bucket[location].Add(this);
+                        Collision.bucket[location].Add(worldObject);
                     else
                     {
-                        List<CollisionObject> possibleCollisions = new List<CollisionObject>();
-                        possibleCollisions.Add(this);
+                        List<WorldObject> possibleCollisions = new List<WorldObject>();
+                        possibleCollisions.Add(worldObject);
                         Collision.bucket.Add(location, possibleCollisions);
                     }
                 }
