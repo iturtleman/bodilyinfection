@@ -35,6 +35,8 @@ namespace BodilyInfection
         private bool temporaryShield = false;
         private int temporaryShieldCount = 0;
         private int temporaryShieldMax = 200;
+        private int shootSpeed = 50;
+        private int shootCount = 0;
         private float rotationAngle;
         private Vector2 lThumbstick;
         private Vector2 rThumbstick;
@@ -47,27 +49,51 @@ namespace BodilyInfection
             GamePadState currentState = GamePad.GetState(gamepad);
             if (currentState.IsConnected)
             {
-
+                #region Movement
                 Pos.X += shipSpeed * currentState.ThumbSticks.Left.X;
                 Pos.Y += shipSpeed * -currentState.ThumbSticks.Left.Y;
-                
+                #endregion
 
+                #region Shooting
+                // Used to figure out the direction to shoot.
+                rThumbstick.X = currentState.ThumbSticks.Right.X;
+                rThumbstick.Y = currentState.ThumbSticks.Right.Y;
+
+                if (rThumbstick.Length() != 0)
+                {
+                    if (shootCount == 0 || shootCount > 50)
+                    {
+                        Vector2 shootDir = rThumbstick;
+                        shootDir.Normalize();
+
+                        Sprite bullet = new Bullet("bullet",
+                            new Actor(This.Game.CurrentLevel.GetAnimation("rbc.anim")),
+                            shootDir * 3);
+                        shootCount++;
+                    }
+                    if (shootCount > shootSpeed)
+                    {
+                        shootCount = 0;
+                    }
+                }
+                #endregion
+
+                #region Rotation
                 // Used to decide rotation angle.
                 lThumbstick.X = currentState.ThumbSticks.Left.X;
                 lThumbstick.Y = currentState.ThumbSticks.Left.Y;
 
-
-                // Used to figure out the direction to shoot.
-                rThumbstick.X = currentState.ThumbSticks.Right.X;
-                rThumbstick.Y = currentState.ThumbSticks.Right.X;
-
-                if (lThumbstick.Length() > .2f)
+                if ((lThumbstick.X != 0 || lThumbstick.Y != 0) && lThumbstick.Length() > .3f)
+                {
+                    //if (lThumbstick.Length() > .2f)
                     rotationAngle = -(float)Math.Atan2(lThumbstick.Y, lThumbstick.X);
 
-                // Draw Method
-                //sb.Draw(shipTexture, shipPosition, null, Color.White, rotationAngle, origin, 1.0f , SpriteEffects.None, 0.0f);
+                    // Draw Method
+                    //sb.Draw(shipTexture, shipPosition, null, Color.White, rotationAngle, origin, 1.0f , SpriteEffects.None, 0.0f);
 
-                this.mAngle = (180 *rotationAngle) / 3.14159f;
+                    this.Angle = rotationAngle;//(180 *rotationAngle) / (float)Math.PI;
+                }
+                #endregion
 
                 // In case you get lost, press A to warp back to the center.
                 if (currentState.Buttons.A == ButtonState.Pressed)

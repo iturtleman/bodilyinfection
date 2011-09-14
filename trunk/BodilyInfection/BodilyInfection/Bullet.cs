@@ -14,14 +14,6 @@ namespace BodilyInfection
         {
             Sprite ship = This.Game.CurrentLevel.GetSprite("ship");
             Pos = ship.Pos;
-
-            // Get the game pad state.
-            currentState = GamePad.GetState(gamepad);
-
-            // Save X and Y values of thumbstick at the time of bullet creation
-            rThumbstick.X = currentState.ThumbSticks.Right.X;
-            rThumbstick.Y = currentState.ThumbSticks.Right.Y;
-
         }
 
         public Bullet(string name, Actor actor, Vector2 velocity)
@@ -32,18 +24,12 @@ namespace BodilyInfection
         }
 
         private Vector2 movementVelocity;
-        private PlayerIndex gamepad;
-        GamePadState currentState;
-        Vector2 rThumbstick;
 
         public void Update()
         {
-            if (currentState.IsConnected)
-            {
-                // Fire in straight line from position of ship when bullet was created. (scaled by velocity)
-                Pos.X += movementVelocity.X * rThumbstick.X;
-                Pos.Y += movementVelocity.Y * rThumbstick.Y;
-            }
+            // Fire in straight line from position of ship when bullet was created. (scaled by velocity)
+            Pos.X += movementVelocity.X;
+            Pos.Y += movementVelocity.Y;
 
             if (Collision.collisionData.Count > 0)
             {
@@ -57,7 +43,7 @@ namespace BodilyInfection
                                 collision.Item2.GetType() == typeof(RedBloodCell))
                             {
                                 // Bullet disappears, it's hit something
-                                throw new NotImplementedException();
+                                //throw new NotImplementedException();
                             }
                         }
                     }

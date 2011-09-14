@@ -70,6 +70,7 @@ namespace BodilyInfection
         /// </summary>
         protected List<Animation> mAnims = new List<Animation>();
 
+        protected List<WorldObject> ToAdd = new List<WorldObject>();
         #endregion Variables
 
         #region Updating
@@ -85,6 +86,11 @@ namespace BodilyInfection
             {
                 sp.UpdateBehavior();
             }
+            foreach (var item in ToAdd)
+            {
+                mSprites.Add(item);
+            }
+            ToAdd.Clear();
         }
         #endregion Updating
 
@@ -120,7 +126,7 @@ namespace BodilyInfection
         #region Management
         public void AddSprite(Sprite sp)
         {
-            mSprites.Add(sp);
+            ToAdd.Add(sp);
         }
 
         public Sprite GetSprite(string name)

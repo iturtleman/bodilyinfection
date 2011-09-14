@@ -56,10 +56,16 @@ namespace BodilyInfection
                     a -= 360;
             }
         }
+
         /// <summary>
         /// The current (x,y) position
         /// </summary>
         public Vector2 Pos = new Vector2(0, 0);
+
+        /// <summary>
+        /// Sprite's scale for drawing
+        /// </summary>
+        public Vector2 Scale = new Vector2(1, 1);
 
         #endregion Properties
 
@@ -68,6 +74,7 @@ namespace BodilyInfection
         /// Sprite's name
         /// </summary>
         protected string mName;
+
         /// <summary>
         /// Determine if Object should be visible
         /// </summary>
@@ -76,10 +83,12 @@ namespace BodilyInfection
         /// Transparency!
         /// </summary>
         protected float mTransparency;
+
         /// <summary>
         /// Angle of rotation
         /// </summary>
         protected float mAngle;
+
         /// <summary>
         /// Stacking order. Determines what draws on top.
         /// </summary>
