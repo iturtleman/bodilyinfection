@@ -39,6 +39,7 @@ namespace BodilyInfection
             l.AddAnimation(new Animation("sun.anim"));
             l.AddAnimation(new Animation("rbc.anim"));
             l.AddAnimation(new Animation("virusPulse.anim"));
+            l.AddAnimation(new Animation("shield.anim"));
             //l.AddAnimation(new Animation("ship.anim"));
 
             /** load sprites */
@@ -51,8 +52,8 @@ namespace BodilyInfection
             sun.AnimationSpeed = 1;
 
             //Sprite rbc = new Ship("ship", new Actor(l.GetAnimation("ship.anim")));
-            Actor shipActor = new Actor(l.GetAnimation("rbc.anim"));
-            shipActor.Animations.Add(l.GetAnimation("viking.anim"));
+            Actor shipActor = new Actor(l.GetAnimation("viking.anim"));
+            shipActor.Animations.Add(l.GetAnimation("rbc.anim"));
             Sprite ship = new Ship("ship", shipActor);
             
             ship.Pos = new Vector2(50, 50);
