@@ -32,7 +32,7 @@ namespace BodilyInfection
         /// <summary>
         /// Add this CollisionObject to bucket.
         /// </summary>
-        public abstract void addToBucket();
+        public abstract void addToBucket(WorldObject worldObject);
 
         /// <summary>
         /// Call correct detectCollision function.

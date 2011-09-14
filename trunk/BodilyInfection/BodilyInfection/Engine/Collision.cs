@@ -11,11 +11,13 @@ namespace BodilyInfection
 {
     public static class Collision
     {
-        public static Dictionary<Vector2, List<CollisionObject>> bucket;
+        public static Dictionary<Vector2, List<WorldObject>> bucket;
         private static List<VertexPositionColor[]> gridPoints = new List<VertexPositionColor[]>();
         public static int gridCellHeight { get; set; }
         public static int gridCellWidth { get; set; }
-        public static Dictionary<CollisionObject, List<CollisionObject>> collisionData;
+
+        //Tuple value defs: 1=Key's Collision Object;  2=WorldObject that collided with Key;  3=Value 2's Key that Collided
+        public static Dictionary<WorldObject, List<Tuple<CollisionObject, WorldObject, CollisionObject>>> collisionData;
         public static bool ShowCollisionData { get; set; }
 
         public static void createGrid(int bottomLeftX, int bottomLeftY, int topRightX, int topRightY)
@@ -47,55 +49,55 @@ namespace BodilyInfection
 
         public static void fillBucket()
         {
-            bucket = new Dictionary<Vector2, List<CollisionObject>>();
+            bucket = new Dictionary<Vector2, List<WorldObject>>();
 
-            foreach (WorldObject c in This.Game.CurrentLevel.mSprites)
+            foreach (WorldObject worldObject in This.Game.CurrentLevel.mSprites)
             {
-                foreach (CollisionObject collisionObject in c.GetCollision())
+                foreach (CollisionObject collisionObject in worldObject.GetCollision())
                 {
-                    collisionObject.addToBucket();
+                    collisionObject.addToBucket(worldObject);
                 }
             }
         }
 
         public static void detectCollisions()
         {
-            collisionData = new Dictionary<CollisionObject, List<CollisionObject>>();
+            collisionData = new Dictionary<WorldObject, List<Tuple<CollisionObject, WorldObject, CollisionObject>>>();
 
-            KeyValuePair<Vector2, List<CollisionObject>> bucketElem;
+            KeyValuePair<Vector2, List<WorldObject>> bucketElem;
             while (bucket.Count > 0)
             {
                 bucketElem = bucket.First();
                 bucket.Remove(bucketElem.Key);
-                List<CollisionObject> list = bucketElem.Value;
+                List<WorldObject> list = bucketElem.Value;
 
                 if (list.Count <= 1)
                     continue;
 
                 while (list.Count > 1)
                 {
-                    CollisionObject front = list.First();
+                    WorldObject front = list.First();
                     list.RemoveAt(0);
                     for (int k = 0; k < list.Count; k++)
                     {
-                        if (front.detectCollision(list[k]))
+                        List<Tuple<CollisionObject, CollisionObject>> detectedCollisions = detectCollision(front,list[k]);
+                        if (detectedCollisions.Count != 0)
                         {
-                            if (collisionData.ContainsKey(front))
-                                collisionData[front].Add(list[k]);
-                            else
+                            if (!collisionData.ContainsKey(front))
                             {
-                                List<CollisionObject> collisions = new List<CollisionObject>();
-                                collisions.Add(list[k]);
+                                List<Tuple<CollisionObject, WorldObject, CollisionObject>> collisions = new List<Tuple<CollisionObject, WorldObject, CollisionObject>>();
                                 collisionData.Add(front, collisions);
                             }
-
-                            if (collisionData.ContainsKey(list[k]))
-                                collisionData[list[k]].Add(front);
-                            else
+                            if (!collisionData.ContainsKey(list[k]))
                             {
-                                List<CollisionObject> collisions = new List<CollisionObject>();
-                                collisions.Add(front);
+                                List<Tuple<CollisionObject, WorldObject, CollisionObject>> collisions = new List<Tuple<CollisionObject, WorldObject, CollisionObject>>();
                                 collisionData.Add(list[k], collisions);
+                            }
+
+                            foreach (Tuple<CollisionObject, CollisionObject> tuple in detectedCollisions)
+                            {
+                                collisionData[front].Add(new Tuple<CollisionObject, WorldObject, CollisionObject>(tuple.Item1, list[k], tuple.Item2));
+                                collisionData[list[k]].Add(new Tuple<CollisionObject, WorldObject, CollisionObject>(tuple.Item2, front, tuple.Item1));
                             }
                         }
                     }
@@ -179,6 +181,25 @@ namespace BodilyInfection
             float a = x1 - x2;
             float b = y1 - y2;
             return a * a + b * b;
+        }
+
+        public static List<Tuple<CollisionObject, CollisionObject>> detectCollision(WorldObject w1, WorldObject w2)
+        {
+            List<Tuple<CollisionObject, CollisionObject>> output = new List<Tuple<CollisionObject, CollisionObject>>();
+
+            List<CollisionObject> w1CollisionObj = w1.GetCollision();
+            List<CollisionObject> w2CollisionObj = w2.GetCollision();
+
+            foreach (CollisionObject cw1 in w1CollisionObj)
+                foreach (CollisionObject cw2 in w2CollisionObj)
+                {
+                    if (cw1.detectCollision(cw2))
+                    {
+                        output.Add(new Tuple<CollisionObject,CollisionObject>(cw1,cw2));
+                    }
+                }
+
+            return output;
         }
 
         /// <summary>

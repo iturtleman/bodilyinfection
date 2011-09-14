@@ -67,13 +67,13 @@ namespace BodilyInfection
             {
                 foreach (CollisionObject co in this.GetCollision())
                 {
-                    if (Collision.collisionData.ContainsKey(co))
+                    if (Collision.collisionData.ContainsKey(this))
                     {
-                        foreach (CollisionObject collision in Collision.collisionData[co])
+                        foreach (Tuple<CollisionObject, WorldObject, CollisionObject> collision in Collision.collisionData[this])
                         {
-                            if (collision.parentObject.GetType() == typeof(RedBloodCell))
+                            if (collision.Item2.GetType() == typeof(RedBloodCell))
                             {
-                                if ((collision.parentObject as RedBloodCell).Wounded)
+                                if ((collision.Item2 as RedBloodCell).Wounded)
                                 {
                                     // Delete self!
                                 }

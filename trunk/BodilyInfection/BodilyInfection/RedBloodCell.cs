@@ -72,11 +72,11 @@ namespace BodilyInfection
             {
                 foreach (CollisionObject co in this.GetCollision())
                 {
-                    if (Collision.collisionData.ContainsKey(co))
+                    if (Collision.collisionData.ContainsKey(this))
                     {
-                        foreach (CollisionObject collision in Collision.collisionData[co])
+                        foreach (Tuple<CollisionObject, WorldObject, CollisionObject> collision in Collision.collisionData[this])
                         {
-                            if (collision.parentObject.GetType() == typeof(Virus))
+                            if (collision.Item2.GetType() == typeof(Virus))
                             {
                                 if (Wounded)
                                 {
@@ -86,7 +86,7 @@ namespace BodilyInfection
                                     //mActor.Frame = 0;
                                 }
                             }
-                            else if (collision.parentObject.GetType() == typeof(Bullet))
+                            else if (collision.Item2.GetType() == typeof(Bullet))
                             {
                                 // RBC becomes infectable.
                                 throw new NotImplementedException();
