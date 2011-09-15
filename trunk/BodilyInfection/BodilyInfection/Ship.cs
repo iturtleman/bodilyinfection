@@ -41,7 +41,6 @@ namespace BodilyInfection
 
         public void Update(GameTime gameTime)
         {
-            go(this);
             // Get the game pad state.
             GamePadState currentState = GamePad.GetState(gamepad);
             if (currentState.IsConnected)

@@ -44,7 +44,7 @@ namespace BodilyInfection
             char[] types_cArray = new char[2];
             types_cArray[0] = type;
             types_cArray[1] = collisionObject.type;
-            string types = new string(types_cArray) ;
+            string types = new string(types_cArray);
 
             switch (types) //[0] = this.type; [1] = collisionObject.type
             {
