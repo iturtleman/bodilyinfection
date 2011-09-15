@@ -22,7 +22,6 @@ namespace BodilyInfection
             this.gamepad = input;
             shipVelocity = Vector2.Zero;
             shipSpeed = 10.0f;
-            rotationAngle = 0.0f;
             lThumbstick = Vector2.Zero;
             rThumbstick = Vector2.Zero;
 
@@ -32,19 +31,17 @@ namespace BodilyInfection
         private Vector2 shipVelocity;
         private float shipSpeed;
         private PlayerIndex gamepad;
-        private bool temporaryShield = false;
-        private int temporaryShieldCount = 0;
-        private int temporaryShieldMax = 200;
-        private int shootSpeed = 50;
-        private int shootCount = 0;
-        private float rotationAngle;
+        private bool shieldOn = false;
+        private TimeSpan shieldDuration = new TimeSpan(0, 0, 0, 4, 0);
+        private TimeSpan shieldEndTime = TimeSpan.MinValue;
+        private TimeSpan shootCooldown = new TimeSpan(0, 0, 0, 0, 500);
+        private TimeSpan cooldownEndTime = TimeSpan.MinValue;
         private Vector2 lThumbstick;
         private Vector2 rThumbstick;
 
-
-
-        public void Update()
+        public void Update(GameTime gameTime)
         {
+            go(this);
             // Get the game pad state.
             GamePadState currentState = GamePad.GetState(gamepad);
             if (currentState.IsConnected)
@@ -61,19 +58,17 @@ namespace BodilyInfection
 
                 if (rThumbstick.Length() != 0)
                 {
-                    if (shootCount == 0 || shootCount > 50)
+                    if (gameTime.TotalGameTime > cooldownEndTime)
                     {
                         Vector2 shootDir = rThumbstick;
                         shootDir.Normalize();
 
                         Sprite bullet = new Bullet("bullet",
-                            new Actor(This.Game.CurrentLevel.GetAnimation("rbc.anim")),
-                            shootDir * 3);
-                        shootCount++;
-                    }
-                    if (shootCount > shootSpeed)
-                    {
-                        shootCount = 0;
+                            new Actor(This.Game.CurrentLevel.GetAnimation("antibody.anim")),
+                            shootDir * 15);
+                        bullet.Pos = Pos;
+                        bullet.AnimationSpeed = 1;
+                        cooldownEndTime = gameTime.TotalGameTime + shootCooldown;
                     }
                 }
                 #endregion
@@ -86,12 +81,7 @@ namespace BodilyInfection
                 if ((lThumbstick.X != 0 || lThumbstick.Y != 0) && lThumbstick.Length() > .3f)
                 {
                     //if (lThumbstick.Length() > .2f)
-                    rotationAngle = -(float)Math.Atan2(lThumbstick.Y, lThumbstick.X);
-
-                    // Draw Method
-                    //sb.Draw(shipTexture, shipPosition, null, Color.White, rotationAngle, origin, 1.0f , SpriteEffects.None, 0.0f);
-
-                    this.Angle = rotationAngle;//(180 *rotationAngle) / (float)Math.PI;
+                    this.Angle = -(float)Math.Atan2(lThumbstick.Y, lThumbstick.X);
                 }
                 #endregion
 
@@ -107,6 +97,7 @@ namespace BodilyInfection
             else /* Move with arrow keys */
             {
                 KeyboardState keys = Keyboard.GetState();
+                Vector2 velocity = Pos;
                 if (keys.IsKeyDown(Keys.Up))
                 {
                     Pos.Y -= shipSpeed;
@@ -124,9 +115,23 @@ namespace BodilyInfection
                 {
                     Pos.X += shipSpeed;
                 }
+                
+                velocity = Pos - velocity;
+                velocity.Normalize();
+                this.Angle = -(float)Math.Atan2(Pos.Y, Pos.X);
+
+                if (keys.IsKeyDown(Keys.Space) && gameTime.TotalGameTime > cooldownEndTime)
+                {
+                    Sprite bullet = new Bullet("bullet",
+                            new Actor(This.Game.CurrentLevel.GetAnimation("antibody.anim")),
+                            velocity * 15);
+                    bullet.Pos = Pos;
+                    bullet.AnimationSpeed = 1;
+                    cooldownEndTime = gameTime.TotalGameTime + shootCooldown;
+                }
             }
 
-            if (!temporaryShield)
+            if (!shieldOn)
             {
                 if (Collision.collisionData.Count > 0)
                 {
@@ -140,10 +145,11 @@ namespace BodilyInfection
                                 {
                                     Pos.X = 50;
                                     Pos.Y = 50;
-                                    temporaryShield = true;
+                                    shieldOn = true;
 
                                     mActor.CurrentAnimation = 1;
                                     mActor.Frame = 0;
+                                    shieldEndTime = gameTime.TotalGameTime + shieldDuration;
                                 }
                             }
                         }
@@ -152,16 +158,13 @@ namespace BodilyInfection
             }
             else
             {
-                temporaryShieldCount++;
-                if (temporaryShieldCount > temporaryShieldMax)
+                if (gameTime.TotalGameTime > shieldEndTime)
                 {
-                    temporaryShield = false;
-                    temporaryShieldCount = 0;
+                    shieldOn = false;
 
                     mActor.CurrentAnimation = 0;
                     mActor.Frame = 0;
                 }
-                // DoChangeAnimation
             }
 
             shipVelocity *= 0.95f;

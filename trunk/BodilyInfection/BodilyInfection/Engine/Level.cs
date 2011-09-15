@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace BodilyInfection
 {
@@ -11,9 +12,9 @@ namespace BodilyInfection
         #region Constructor
         public Level()
         {
-            LoadBehavior = () => { };
-            UpdateBehavior = () => { };
-            EndBehavior = () => { };
+            LoadBehavior = (GameTime gameTime) => { };
+            UpdateBehavior = (GameTime gameTime) => { };
+            EndBehavior = (GameTime gameTime) => { };
         }
         public Level(string n, Behavior loadBehave, Behavior updateBehave, Behavior endBehavior)
         {
@@ -76,15 +77,15 @@ namespace BodilyInfection
         #region Updating
         internal void Load()
         {
-            LoadBehavior();
+            LoadBehavior(null);
         }
-        internal void Update()
+        internal void Update(GameTime gameTime)
         {
             Collision.update();
-            UpdateBehavior();
+            UpdateBehavior(gameTime);
             foreach (Sprite sp in mSprites)
             {
-                sp.UpdateBehavior();
+                sp.UpdateBehavior(gameTime);
             }
             foreach (var item in ToAdd)
             {

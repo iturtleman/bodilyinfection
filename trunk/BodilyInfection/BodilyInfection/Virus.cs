@@ -29,7 +29,7 @@ namespace BodilyInfection
 
         #region Methods
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             Sprite ship = This.Game.CurrentLevel.GetSprite("ship");
             Vector2 minVector = ship.Pos;

@@ -9,7 +9,7 @@ namespace BodilyInfection
 {
     internal static class LevelFunctions
     {
-        internal static void DoNothing() { }
+        internal static void DoNothing(GameTime gameTime) { }
 
         /// <summary>
         /// Returns left thumb state for given player
@@ -22,7 +22,7 @@ namespace BodilyInfection
             return state;
         }
 
-        internal static void LevelWorldLoad()
+        internal static void LevelWorldLoad(GameTime gameTime)
         {
             Level l = This.Game.CurrentLevel;
 
@@ -39,6 +39,7 @@ namespace BodilyInfection
             l.AddAnimation(new Animation("sun.anim"));
             l.AddAnimation(new Animation("rbc.anim"));
             l.AddAnimation(new Animation("virusPulse.anim"));
+            l.AddAnimation(new Animation("antibody.anim"));
             l.AddAnimation(new Animation("shield.anim"));
             //l.AddAnimation(new Animation("ship.anim"));
 
@@ -52,15 +53,15 @@ namespace BodilyInfection
             sun.AnimationSpeed = 1;
 
             //Sprite rbc = new Ship("ship", new Actor(l.GetAnimation("ship.anim")));
-            Actor shipActor = new Actor(l.GetAnimation("viking.anim"));
-            shipActor.Animations.Add(l.GetAnimation("rbc.anim"));
+            Actor shipActor = new Actor(l.GetAnimation("rbc.anim"));
+            shipActor.Animations.Add(l.GetAnimation("antibody.anim"));
             Sprite ship = new Ship("ship", shipActor);
             
             ship.Pos = new Vector2(50, 50);
             ship.AnimationSpeed = 1;
         }
 
-        internal static void LevelWorldUpdate()
+        internal static void LevelWorldUpdate(GameTime gameTime)
         {
             Level LevelWorld = This.Game.CurrentLevel;
 
