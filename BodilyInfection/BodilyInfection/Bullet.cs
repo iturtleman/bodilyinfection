@@ -25,7 +25,7 @@ namespace BodilyInfection
 
         private Vector2 movementVelocity;
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             // Fire in straight line from position of ship when bullet was created. (scaled by velocity)
             Pos.X += movementVelocity.X;

@@ -42,6 +42,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Sprites\antibody.anim">
+      <Name>antibody</Name>
+    </None>
     <None Include="Sprites\sun.anim">
       <Name>sun</Name>
       <SubType>Designer</SubType>
@@ -477,6 +480,13 @@
   <ItemGroup>
     <Compile Include="Sprites\virusPulse.png">
       <Name>virusPulse</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprites\antibody.png">
+      <Name>antibody</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 namespace BodilyInfection
 {
     /// \todo move this somewhere else
-    public delegate void Behavior();
+    public delegate void Behavior(GameTime gameTime);
 
     /// <summary>
     /// High-level controller for the game
@@ -165,7 +165,7 @@ namespace BodilyInfection
 
 
             if (CurrentLevel != null)
-                CurrentLevel.Update();
+                CurrentLevel.Update(gameTime);
 
             #region FPS
             if (gameTime.ElapsedGameTime.Milliseconds > 0)

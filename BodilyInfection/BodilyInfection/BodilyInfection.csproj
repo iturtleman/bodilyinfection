@@ -170,6 +170,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\BodilyInfectionContent\Sprites\antibody.anim">
+      <Link>Content\Sprites\antibody.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="..\BodilyInfectionContent\Sprites\rbc.anim">
       <Link>Content\Sprites\rbc.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

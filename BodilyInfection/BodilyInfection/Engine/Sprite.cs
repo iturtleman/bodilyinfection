@@ -15,9 +15,9 @@ namespace BodilyInfection
             //mDrawn = false;
             mActor = actor;
             mLastUpdate = new GameTime();
-            LoadBehavior = () => { };
-            UpdateBehavior = () => { };
-            EndBehavior = () => { };
+            LoadBehavior = (GameTime gameTime) => { };
+            UpdateBehavior = (GameTime gameTime) => { };
+            EndBehavior = (GameTime gameTime) => { };
             //add to current level
             This.Game.CurrentLevel.AddSprite(this);
 

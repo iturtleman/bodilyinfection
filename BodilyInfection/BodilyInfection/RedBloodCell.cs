@@ -28,7 +28,7 @@ namespace BodilyInfection
         public bool Wounded { get; set; }
         private int health = 10;
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
 
             // Move the sprite by speed.
@@ -89,7 +89,7 @@ namespace BodilyInfection
                             else if (collision.Item2.GetType() == typeof(Bullet))
                             {
                                 // RBC becomes infectable.
-                                throw new NotImplementedException();
+                                //throw new NotImplementedException();
                             }
                         }
                     }
