@@ -76,7 +76,15 @@ namespace BodilyInfection
                                 if ((collision.Item2 as RedBloodCell).Wounded)
                                 {
                                     // Delete self!
+                                    // infect rbc
                                 }
+                            }
+
+                            if (collision.Item2.GetType() == typeof(Bullet))
+                            {
+                                    // Delete self!
+                                    // Kill Virus.
+                                    This.Game.CurrentLevel.RemoveSprite(this);
                             }
                         }
                     }

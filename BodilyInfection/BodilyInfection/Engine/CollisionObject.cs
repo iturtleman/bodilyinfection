@@ -37,19 +37,19 @@ namespace BodilyInfection
         /// <summary>
         /// Call correct detectCollision function.
         /// </summary>
-        public bool detectCollision(CollisionObject collisionObject)
+        public bool detectCollision(WorldObject w1, CollisionObject c2, WorldObject w2)
         {
             bool returnValue = true;
 
             char[] types_cArray = new char[2];
             types_cArray[0] = type;
-            types_cArray[1] = collisionObject.type;
+            types_cArray[1] = c2.type;
             string types = new string(types_cArray);
 
             switch (types) //[0] = this.type; [1] = collisionObject.type
             {
                 case "cc":
-                    returnValue = Collision.detectCollision((Collision_BoundingCircle)this, (Collision_BoundingCircle)collisionObject);
+                    returnValue = Collision.detectCollision(w1, (Collision_BoundingCircle)this, w2, (Collision_BoundingCircle)c2);
                     break;
                 case "aa":
                     //returnValue = Collision.detectCollision((Collision_AABB)this, (Collision_AABB)collisionObject);
@@ -61,10 +61,10 @@ namespace BodilyInfection
                     //returnValue = Collision.detectCollision((Collision_OBB)this, (Collision_OBB)collisionObject);
                     break;
                 case "ca":
-                    returnValue = Collision.detectCollision((Collision_AABB)collisionObject, (Collision_BoundingCircle)this);
+                    returnValue = Collision.detectCollision(w2, (Collision_AABB)c2, w1, (Collision_BoundingCircle)this);
                     break;
                 case "ac":
-                    returnValue = Collision.detectCollision((Collision_AABB)this, (Collision_BoundingCircle)collisionObject);
+                    returnValue = Collision.detectCollision(w1, (Collision_AABB)this, w2, (Collision_BoundingCircle)c2);
                     break;
                 case "co":
                     //returnValue = Collision.detectCollision((Collision_BoundingCircle)this, (Collision_OBB)collisionObject);
@@ -100,7 +100,7 @@ namespace BodilyInfection
 
             return returnValue;
         }
-
+        
         public abstract void draw();
 
         public override int GetHashCode(){

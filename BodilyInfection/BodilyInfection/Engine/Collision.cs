@@ -170,6 +170,7 @@ namespace BodilyInfection
             }
         }
 
+        
         public static void update()
         {
             fillBucket();
@@ -193,7 +194,7 @@ namespace BodilyInfection
             foreach (CollisionObject cw1 in w1CollisionObj)
                 foreach (CollisionObject cw2 in w2CollisionObj)
                 {
-                    if (cw1.detectCollision(cw2))
+                    if (cw1.detectCollision(w1, cw2, w2))
                     {
                         output.Add(new Tuple<CollisionObject,CollisionObject>(cw1,cw2));
                     }
@@ -205,10 +206,10 @@ namespace BodilyInfection
         /// <summary>
         /// Determine if Collision_BoundingCircle and Collision_BoundingCircle collide
         /// </summary>
-        public static bool detectCollision(Collision_BoundingCircle c1, Collision_BoundingCircle c2)
+        public static bool detectCollision(WorldObject w1, Collision_BoundingCircle c1, WorldObject w2, Collision_BoundingCircle c2)
         {
-            float ds = Collision.distanceSquared((c1.parentObject.Pos.X + c1.centerPointOffset.X), (c1.parentObject.Pos.Y + c1.centerPointOffset.Y),
-                                                 (c2.parentObject.Pos.X + c2.centerPointOffset.X), (c2.parentObject.Pos.Y + c2.centerPointOffset.Y));
+            float ds = Collision.distanceSquared((w1.Pos.X + c1.centerPointOffset.X), (w1.Pos.Y + c1.centerPointOffset.Y),
+                                                 (w2.Pos.X + c2.centerPointOffset.X), (w2.Pos.Y + c2.centerPointOffset.Y));
             float r = c1.radius + c2.radius;
             return (ds <= r * r);
         }
@@ -216,11 +217,11 @@ namespace BodilyInfection
         /// <summary>
         /// Determine if CollisionObject and Collision_BoundingCircle collide
         /// </summary>
-        public static bool detectCollision(Collision_AABB a1, Collision_BoundingCircle c1)
+        public static bool detectCollision(WorldObject w1, Collision_AABB a1, WorldObject w2, Collision_BoundingCircle c1)
         {
-            Vector2 centerPoint = c1.calcCenterPoint;
-            Vector2 topLeftPoint = a1.calcTopLeftPoint;
-            Vector2 bottomRightPoint = a1.calcBottomRightPoint;
+            Vector2 centerPoint = c1.centerPointOffset + w2.Pos;
+            Vector2 topLeftPoint = a1.topLeftPointOffset + w1.Pos;
+            Vector2 bottomRightPoint = a1.bottomRightPointOffset + w1.Pos;
 
             int regionCode = 0;
 

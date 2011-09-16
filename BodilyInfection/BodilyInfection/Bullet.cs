@@ -52,7 +52,7 @@ namespace BodilyInfection
                                 collision.Item2.GetType() == typeof(RedBloodCell))
                             {
                                 // Do some damage!
-                                //This.Game.CurrentLevel.RemoveSprite(this);
+                                This.Game.CurrentLevel.RemoveSprite(this);
                                 // Somehow it only deletes the bullet when the *ship* runs over something... no idea why.
                             }
                         }
