@@ -73,49 +73,9 @@ namespace BodilyInfection
         {
             Level LevelWorld = This.Game.CurrentLevel;
 
-            Sprite player = LevelWorld.GetSprite("rbc");
+            Sprite player = LevelWorld.GetSprite("ship");
 
             Background bg = LevelWorld.Background;
-
-            /*if (player != null)
-            {
-                GamePadState currentState = GamePad.GetState(PlayerIndex.One);
-                if (currentState.IsConnected)
-                {
-                    player.Pos += GetLeftThumbState(PlayerIndex.One);
-                }
-                else // Move with arrow keys
-                {
-                    KeyboardState keys = Keyboard.GetState();
-                    float shipSpeed = 5;
-                    if (keys.IsKeyDown(Keys.Up))
-                    {
-                        player.Pos.Y -= shipSpeed;
-                    }
-                    else if (keys.IsKeyDown(Keys.Down))
-                    {
-                        player.Pos.Y += shipSpeed;
-                    }
-
-                    if (keys.IsKeyDown(Keys.Left))
-                    {
-                        player.Pos.X -= shipSpeed;
-                    }
-                    else if (keys.IsKeyDown(Keys.Right))
-                    {
-                        player.Pos.X += shipSpeed;
-                    }
-                }
-            }*/
-
-            //if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.X < 0)
-            //    bg.X -= 1;
-            //if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.X > 0)
-            //    bg.X += 1;
-            //if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.Y < 0)
-            //    bg.Y += 1;
-            //if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.Y > 0)
-            //    bg.Y -= 1;
         }
     }
 }
