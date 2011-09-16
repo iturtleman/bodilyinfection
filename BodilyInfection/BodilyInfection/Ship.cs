@@ -53,7 +53,7 @@ namespace BodilyInfection
                 #region Shooting
                 // Used to figure out the direction to shoot.
                 rThumbstick.X = currentState.ThumbSticks.Right.X;
-                rThumbstick.Y = currentState.ThumbSticks.Right.Y;
+                rThumbstick.Y = -currentState.ThumbSticks.Right.Y;
 
                 if (rThumbstick.Length() != 0)
                 {
@@ -68,6 +68,7 @@ namespace BodilyInfection
                         bullet.Pos = Pos;
                         bullet.AnimationSpeed = 1;
                         cooldownEndTime = gameTime.TotalGameTime + shootCooldown;
+                        //this.Angle = (float)Math.Atan2(rThumbstick.X, -rThumbstick.Y);
                     }
                 }
                 #endregion
@@ -75,12 +76,12 @@ namespace BodilyInfection
                 #region Rotation
                 // Used to decide rotation angle.
                 lThumbstick.X = currentState.ThumbSticks.Left.X;
-                lThumbstick.Y = currentState.ThumbSticks.Left.Y;
+                lThumbstick.Y = -currentState.ThumbSticks.Left.Y;
 
-                if ((lThumbstick.X != 0 || lThumbstick.Y != 0) && lThumbstick.Length() > .3f)
+                if ((lThumbstick.X != 0 || lThumbstick.Y != 0) /*&& lThumbstick.Length() > .3f*/)
                 {
                     //if (lThumbstick.Length() > .2f)
-                    this.Angle = -(float)Math.Atan2(lThumbstick.Y, lThumbstick.X);
+                    this.Angle = (float)Math.Atan2(lThumbstick.Y, lThumbstick.X) + ((float)Math.PI / 2);
                 }
                 #endregion
 
