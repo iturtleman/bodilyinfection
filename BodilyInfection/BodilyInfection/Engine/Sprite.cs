@@ -33,7 +33,10 @@ namespace BodilyInfection
             foreach (Animation a in mActor.Animations)
             {
                 foreach(SpriteFrame frame in a.Frames){
-                    frame.CollisionData.Add(b);
+                    if (frame.CollisionData.Count == 0)
+                    {
+                        frame.CollisionData.Add(b);
+                    }
                 }
             }
         }

@@ -72,6 +72,7 @@ namespace BodilyInfection
         protected List<Animation> mAnims = new List<Animation>();
 
         protected List<WorldObject> ToAdd = new List<WorldObject>();
+        protected List<WorldObject> ToRemove = new List<WorldObject>();
         #endregion Variables
 
         #region Updating
@@ -87,6 +88,11 @@ namespace BodilyInfection
             {
                 sp.UpdateBehavior(gameTime);
             }
+            foreach (var item in ToRemove)
+            {
+                mSprites.Remove(item);
+            }
+            ToRemove.Clear();
             foreach (var item in ToAdd)
             {
                 mSprites.Add(item);
@@ -151,7 +157,7 @@ namespace BodilyInfection
 
         public void RemoveSprite(Sprite sp)
         {
-            mSprites.Remove(sp);
+            ToRemove.Add(sp);
         }
 
         public void AddAnimation(Animation anim)
