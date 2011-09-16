@@ -82,6 +82,7 @@ namespace BodilyInfection
         }
         internal void Update(GameTime gameTime)
         {
+            mSprites.Sort();
             Collision.update();
             UpdateBehavior(gameTime);
             foreach (Sprite sp in mSprites)
