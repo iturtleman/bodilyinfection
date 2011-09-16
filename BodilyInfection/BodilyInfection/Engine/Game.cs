@@ -163,7 +163,6 @@ namespace BodilyInfection
             #endregion Handle input
 
 
-
             if (CurrentLevel != null)
                 CurrentLevel.Update(gameTime);
 

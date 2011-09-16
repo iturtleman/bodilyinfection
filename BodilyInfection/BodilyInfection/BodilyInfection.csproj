@@ -178,6 +178,10 @@
       <Link>Content\Sprites\rbc.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="..\BodilyInfectionContent\Sprites\shield.anim">
+      <Link>Content\Sprites\shield.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="..\BodilyInfectionContent\Sprites\ship.anim">
       <Link>Content\Sprites\ship.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

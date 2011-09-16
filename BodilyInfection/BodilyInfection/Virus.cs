@@ -31,9 +31,9 @@ namespace BodilyInfection
 
         public void Update(GameTime gameTime)
         {
-            Sprite ship = This.Game.CurrentLevel.GetSprite("ship");
-            if (ship != null)
+            if (This.Game.CurrentLevel.GetSprite("ship") != null)
             {
+                Sprite ship = This.Game.CurrentLevel.GetSprite("ship");
                 Vector2 minVector = ship.Pos;
                 float minDistance = (Pos - ship.Pos).Length();
 
@@ -41,6 +41,7 @@ namespace BodilyInfection
                 // attack range.
                 List<Sprite> rbcs = This.Game.CurrentLevel.GetSpritesByType("RedBloodCell");
                 foreach (Sprite sp in rbcs)
+
                 {
                     float newLength = (Pos - sp.Pos).Length();
                     if (newLength < minDistance && newLength < attackDistance)
@@ -93,8 +94,8 @@ namespace BodilyInfection
                     }
                 }
             }
-        }
 
         #endregion
-    }
+        }
+       }
 }

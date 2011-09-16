@@ -31,7 +31,7 @@ namespace BodilyInfection
         private Vector2 shipVelocity;
         private float shipSpeed;
         private PlayerIndex gamepad;
-        private bool shieldOn = false;
+        private bool shieldOn = false;   //ctrlf
         private TimeSpan shieldDuration = new TimeSpan(0, 0, 0, 4, 0);
         private TimeSpan shieldEndTime = TimeSpan.MinValue;
         private TimeSpan shootCooldown = new TimeSpan(0, 0, 0, 0, 100/*500*/);
@@ -151,6 +151,7 @@ namespace BodilyInfection
                                     mActor.CurrentAnimation = 1;
                                     mActor.Frame = 0;
                                     shieldEndTime = gameTime.TotalGameTime + shieldDuration;
+                                    //This.Game.CurrentLevel.RemoveSprite(this);
 
                                 }
                             }
