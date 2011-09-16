@@ -502,13 +502,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="antibody.png">
-      <Name>antibody</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Sprites\shield.anim">
       <Name>shield</Name>
       <Importer>XmlImporter</Importer>
