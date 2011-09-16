@@ -84,10 +84,10 @@ namespace BodilyInfection
                     if (collision.Attribute("Type").Value == "Circle")
                     {
                         string[] pt = collision.Attribute("Pos").Value.Split(',');
-                        Collision_BoundingCircle circ = new Collision_BoundingCircle(
+                        sf.CollisionData.Add(new Collision_BoundingCircle(
                             idCount++,
                             new Vector2(float.Parse(pt[0]), float.Parse(pt[1])),
-                            float.Parse(collision.Attribute("Radius").Value));
+                            float.Parse(collision.Attribute("Radius").Value)));
                     }
                     else if (collision.Attribute("Type").Value == "Rectangle")
                     {
@@ -97,11 +97,11 @@ namespace BodilyInfection
                         string[] br = collision.Attribute("BRPos").Value.Split(',');
                         float brx = float.Parse(tl[0]);
                         float bry = float.Parse(tl[1]);
-                        Collision_AABB circ = new Collision_AABB(
+                        sf.CollisionData.Add( new Collision_AABB(
                             idCount++,
                             new Vector2(tlx, tly),
                             new Vector2(brx, bry)
-                            );
+                            ));
                     }
                 }
 
