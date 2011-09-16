@@ -31,6 +31,15 @@ namespace BodilyInfection
             Pos.X += movementVelocity.X;
             Pos.Y += movementVelocity.Y;
 
+            if (Pos.X > This.Game.GraphicsDevice.Viewport.Width ||
+                Pos.Y > This.Game.GraphicsDevice.Viewport.Height ||
+                Pos.X < 0 ||
+                Pos.Y < 0)
+            {
+                This.Game.CurrentLevel.RemoveSprite(this);
+            }
+
+
             if (Collision.collisionData.Count > 0)
             {
                 foreach (CollisionObject co in this.GetCollision())
@@ -42,8 +51,9 @@ namespace BodilyInfection
                             if (collision.Item2.GetType() == typeof(Virus) ||
                                 collision.Item2.GetType() == typeof(RedBloodCell))
                             {
-                                // Bullet disappears, it's hit something
-                                //throw new NotImplementedException();
+                                // Do some damage!
+                                //This.Game.CurrentLevel.RemoveSprite(this);
+                                // Somehow it only deletes the bullet when the *ship* runs over something... no idea why.
                             }
                         }
                     }
