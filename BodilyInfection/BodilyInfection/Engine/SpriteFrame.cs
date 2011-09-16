@@ -22,8 +22,7 @@ namespace BodilyInfection
         public long Pause { get; set; }
 
         /// <summary>
-        /// The offeset from position to place
-        /// the image. Defaults to (0,0)
+        /// The offeset from center of the sprite of the image. Defaults to (0,0)
         /// </summary>
         public Vector2 AnimationPeg { get; set; }
 

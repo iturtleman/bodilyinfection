@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace BodilyInfection
 {
-    abstract public class WorldObject
+    abstract public class WorldObject : IComparable<WorldObject>
     {
         
 
@@ -17,6 +17,7 @@ namespace BodilyInfection
             mTransparency = 1;
             mAngle = 0;
         }
+
         #region Methods
         /// <summary>
         /// Draws the obejct
@@ -63,6 +64,11 @@ namespace BodilyInfection
         public Vector2 Pos = new Vector2(0, 0);
 
         /// <summary>
+        /// Stacking order. Determines what draws on top.
+        /// </summary>
+        public int ZOrder;
+
+        /// <summary>
         /// Sprite's scale for drawing
         /// </summary>
         public Vector2 Scale = new Vector2(1, 1);
@@ -88,13 +94,18 @@ namespace BodilyInfection
         /// Angle of rotation
         /// </summary>
         protected float mAngle;
-
-        /// <summary>
-        /// Stacking order. Determines what draws on top.
-        /// </summary>
-        protected int ZOrder;
         #endregion Variables
 
         internal abstract List<CollisionObject> GetCollision();
+
+        /// <summary>
+        /// Allows sorting
+        /// </summary>
+        /// <param name="other">value with which to compare</param>
+        /// <returns></returns>
+        public int CompareTo(WorldObject other)
+        {
+            return ZOrder.CompareTo(other.ZOrder);
+        }
     }
 }
