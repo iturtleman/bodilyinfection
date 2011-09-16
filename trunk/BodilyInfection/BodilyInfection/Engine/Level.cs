@@ -90,7 +90,7 @@ namespace BodilyInfection
             }
             foreach (var item in ToRemove)
             {
-                mSprites.Remove(item);
+                 mSprites.Remove(item);
             }
             ToRemove.Clear();
             foreach (var item in ToAdd)

@@ -43,28 +43,6 @@ namespace BodilyInfection
         public Vector2 bottomRightPointOffset { get; set; }
 
         /// <summary>
-        /// Return Top Left Point of AABB (topLeftPointOffset + ParentObject.location)
-        /// </summary>
-        public Vector2 calcTopLeftPoint
-        {
-            get
-            {
-                return topLeftPointOffset + parentObject.Pos;
-            }
-        }
-
-        /// <summary>
-        /// Return Top Left Point of AABB (topLeftPointOffset + ParentObject.location)
-        /// </summary>
-        public Vector2 calcBottomRightPoint
-        {
-            get
-            {
-                return bottomRightPointOffset + parentObject.Pos;
-            }
-        }
-
-        /// <summary>
         /// Determines which grid cells the object is in
         /// </summary>
         public override List<Vector2> gridLocations()

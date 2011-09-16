@@ -27,8 +27,8 @@ namespace BodilyInfection
             Level l = This.Game.CurrentLevel;
 
             //Initialize Collision Cell Size
-            Collision.gridCellHeight = 40;
-            Collision.gridCellWidth = 40;
+            Collision.gridCellHeight = 4000;
+            Collision.gridCellWidth = 4000;
             Collision.createGrid(0, 0, 800, 800);
 
             /// load background
@@ -41,11 +41,13 @@ namespace BodilyInfection
             l.AddAnimation(new Animation("virusPulse.anim"));
             l.AddAnimation(new Animation("antibody.anim"));
             l.AddAnimation(new Animation("shield.anim"));
-            //l.AddAnimation(new Animation("ship.anim"));
+            l.AddAnimation(new Animation("ship.anim"));
 
             /** load sprites */
+
+
             Sprite vikings1 = new RedBloodCell("rbc", new Actor(l.GetAnimation("rbc.anim")));
-            vikings1.Pos = new Vector2(0, 0);
+            vikings1.Pos = new Vector2(550, 550);
             vikings1.AnimationSpeed= 1;
 
             Sprite sun = new Virus("sun", new Actor(l.GetAnimation("virusPulse.anim")));
@@ -53,7 +55,7 @@ namespace BodilyInfection
             sun.AnimationSpeed = 1;
 
             //Sprite rbc = new Ship("ship", new Actor(l.GetAnimation("ship.anim")));
-            Actor shipActor = new Actor(l.GetAnimation("rbc.anim"));
+            Actor shipActor = new Actor(l.GetAnimation("ship.anim"));
             shipActor.Animations.Add(l.GetAnimation("antibody.anim"));
             Sprite ship = new Ship("ship", shipActor);
             

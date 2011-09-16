@@ -34,7 +34,7 @@ namespace BodilyInfection
         private bool shieldOn = false;
         private TimeSpan shieldDuration = new TimeSpan(0, 0, 0, 4, 0);
         private TimeSpan shieldEndTime = TimeSpan.MinValue;
-        private TimeSpan shootCooldown = new TimeSpan(0, 0, 0, 0, 500);
+        private TimeSpan shootCooldown = new TimeSpan(0, 0, 0, 0, 100/*500*/);
         private TimeSpan cooldownEndTime = TimeSpan.MinValue;
         private Vector2 lThumbstick;
         private Vector2 rThumbstick;
@@ -119,6 +119,8 @@ namespace BodilyInfection
                 velocity.Normalize();
                 this.Angle = -(float)Math.Atan2(Pos.Y, Pos.X);
 
+                Vector2 shootDirKeys = Pos;
+
                 if (keys.IsKeyDown(Keys.Space) && gameTime.TotalGameTime > cooldownEndTime)
                 {
                     Sprite bullet = new Bullet("bullet",
@@ -149,6 +151,7 @@ namespace BodilyInfection
                                     mActor.CurrentAnimation = 1;
                                     mActor.Frame = 0;
                                     shieldEndTime = gameTime.TotalGameTime + shieldDuration;
+
                                 }
                             }
                         }

@@ -25,7 +25,6 @@ namespace BodilyInfection
             {
                 if (mActor.Animations[mActor.CurrentAnimation].NumFrames > 1) mAnimating = true;
             }
-
         }
 
         #region Properties

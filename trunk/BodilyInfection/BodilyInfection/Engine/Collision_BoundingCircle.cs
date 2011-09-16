@@ -38,17 +38,6 @@ namespace BodilyInfection
         public Vector2 centerPointOffset { get; set; }
 
         /// <summary>
-        /// Return Center Point of Circle (centerPointOffset + ParentObject.location)
-        /// </summary>
-        public Vector2 calcCenterPoint
-        {
-            get
-            {
-                return centerPointOffset + parentObject.Pos;
-            }
-        }
-
-        /// <summary>
         /// Radius of circle.
         /// </summary>
         public float radius { get; set; }
@@ -80,10 +69,10 @@ namespace BodilyInfection
         /// </summary>
         public override void addToBucket(WorldObject worldObject)
         {
-            int bottomLeftX = (int)(parentObject.Pos.X + centerPointOffset.X - radius) / (int)Collision.gridCellWidth;
-            int bottomLeftY = (int)(parentObject.Pos.Y + centerPointOffset.Y - radius) / (int)Collision.gridCellHeight;
-            int topRightX = (int)(parentObject.Pos.X + centerPointOffset.X + radius) / (int)Collision.gridCellWidth;
-            int topRightY = (int)(parentObject.Pos.Y + centerPointOffset.Y + radius) / (int)Collision.gridCellHeight;
+            int bottomLeftX = (int)(worldObject.Pos.X + centerPointOffset.X - radius) / (int)Collision.gridCellWidth;
+            int bottomLeftY = (int)(worldObject.Pos.Y + centerPointOffset.Y - radius) / (int)Collision.gridCellHeight;
+            int topRightX = (int)(worldObject.Pos.X + centerPointOffset.X + radius) / (int)Collision.gridCellWidth;
+            int topRightY = (int)(worldObject.Pos.Y + centerPointOffset.Y + radius) / (int)Collision.gridCellHeight;
 
             for (int i = bottomLeftX; i <= topRightX; i++) //cols
             {

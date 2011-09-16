@@ -84,8 +84,10 @@ Content\Sprites\RedBloodCell\Shortspin\rbc_spin0132.xnb
 Content\Sprites\RedBloodCell\Shortspin\rbc_spin0137.xnb
 Content\Sprites\virusPulse.xnb
 Content\Sprites\antibody.xnb
+Content\Sprites\compass_body.xnb
+Content\antibody.xnb
 Content\Sprites\antibody.anim
 Content\Sprites\rbc.anim
-Content\Sprites\sun.anim
+Content\Sprites\ship.anim
 Content\Sprites\viking.anim
 Content\Sprites\virusPulse.anim
