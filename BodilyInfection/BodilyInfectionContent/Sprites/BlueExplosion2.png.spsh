@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SpriteSheet>
+  <Frame Height="30" Width="30" TLPos="0,0" />
+  <Frame Height="30" Width="30" TLPos="30,0" />
+  <Frame Height="30" Width="30" TLPos="60,0" />
+  <Frame Height="30" Width="30" TLPos="0,30" />
+  <Frame Height="30" Width="30" TLPos="30,30" />
+  <Frame Height="30" Width="30" TLPos="60,30" />
+  <Frame Height="30" Width="30" TLPos="0,60" />
+  <Frame Height="30" Width="30" TLPos="30,60" />
+  <Frame Height="30" Width="30" TLPos="60,60" />
+  <Frame Height="30" Width="30" TLPos="0,90" />
+  <Frame Height="30" Width="30" TLPos="30,90" />
+  <Frame Height="30" Width="30" TLPos="60,90" />
+  </SpriteSheet>

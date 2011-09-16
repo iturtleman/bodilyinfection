@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Animation>
+  <Frame SpriteSheet="BlueExplosion2" FrameDelay="20" Width="30" Height="30" TLPos="0,0" AnimationPeg="0,0"  >
+    <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
+  </Frame>
+  <Frame SpriteSheet="BlueExplosion2" FrameDelay="20" Width="30" Height="30" TLPos="30,0" AnimationPeg="0,0" >
+    <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
+  </Frame>
+  <Frame SpriteSheet="BlueExplosion2" FrameDelay="20" Width="30" Height="30" TLPos="60,0" AnimationPeg="0,0" >
+    <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
+  </Frame>  
+  <Frame SpriteSheet="BlueExplosion2" FrameDelay="20" Width="30" Height="30" TLPos="0,30" AnimationPeg="0,0"  >
+    <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
+  </Frame>
+  <Frame SpriteSheet="BlueExplosion2" FrameDelay="20" Width="30" Height="30" TLPos="30,30" AnimationPeg="0,0" >
+    <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
+  </Frame>
+  <Frame SpriteSheet="BlueExplosion2" FrameDelay="20" Width="30" Height="30" TLPos="60,30" AnimationPeg="0,0" >
+    <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
+  </Frame>  
+  <Frame SpriteSheet="BlueExplosion2" FrameDelay="20" Width="30" Height="30" TLPos="0,60" AnimationPeg="0,0"  >
+    <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
+  </Frame>
+  <Frame SpriteSheet="BlueExplosion2" FrameDelay="20" Width="30" Height="30" TLPos="30,60" AnimationPeg="0,0" >
+    <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
+  </Frame>
+  <Frame SpriteSheet="BlueExplosion2" FrameDelay="20" Width="30" Height="30" TLPos="60,60" AnimationPeg="0,0" >
+    <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
+  </Frame>  
+  <Frame SpriteSheet="BlueExplosion2" FrameDelay="20" Width="30" Height="30" TLPos="0,90" AnimationPeg="0,0"  >
+    <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
+  </Frame>
+  <Frame SpriteSheet="BlueExplosion2" FrameDelay="20" Width="30" Height="30" TLPos="30,90" AnimationPeg="0,0" >
+    <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
+  </Frame>
+  <Frame SpriteSheet="BlueExplosion2" FrameDelay="20" Width="30" Height="30" TLPos="60,90" AnimationPeg="0,0" >
+    <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
+</Animation>
