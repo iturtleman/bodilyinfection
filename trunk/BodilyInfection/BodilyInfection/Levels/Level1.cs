@@ -14,7 +14,7 @@ namespace BodilyInfection.Levels
         internal static TimeSpan PreviousSpawn = new TimeSpan(0, 0, 0, 0, 0);
         #endregion Timer Variables
 
-        private static int EnemiesDefeatedWinCondition = 30;
+        private static int EnemiesDefeatedWinCondition = 100;
 
         internal static void Load(GameTime gameTime)
         {
@@ -54,9 +54,11 @@ namespace BodilyInfection.Levels
             Text livesText = new Text("livesText", "Text", "Lives Remaining:");
             livesText.Pos = new Vector2(This.Game.GraphicsDevice.Viewport.Width - livesText.GetAnimation().Width - 50, 0);
             livesText.DisplayColor = Color.Red;
-            Text lives = new Text("lives", "Text", (ship as Ship).RemainingLives.ToString());
+            Text lives = new Text("lives", "Text", (ship as Ship).RemainingLives.ToString());        
             lives.Pos = new Vector2(This.Game.GraphicsDevice.Viewport.Width - 50, 0);
             lives.DisplayColor = Color.Red;
+            
+            
         }
 
         internal static void Update(GameTime gameTime)
@@ -65,6 +67,7 @@ namespace BodilyInfection.Levels
 
             Sprite player = LevelWorld.GetSprite("ship");
             Sprite lives = LevelWorld.GetSprite("lives");
+            
             if (lives != null && player != null)
             {
                 (lives as Text).Content = (player as Ship).RemainingLives.ToString();
