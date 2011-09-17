@@ -19,11 +19,15 @@ namespace BodilyInfection
         public Ship(string name, Actor actor, PlayerIndex input)
             : base(name, actor)
         {
+            RemainingLives = DefaultLives;
             this.gamepad = input;
             shipVelocity = Vector2.Zero;
             shipSpeed = 10.0f;
             lThumbstick = Vector2.Zero;
             rThumbstick = Vector2.Zero;
+            shieldEndTime = shieldDuration;
+            EnableShield();
+
 
             UpdateBehavior += new Behavior(Update);
         }
@@ -38,6 +42,9 @@ namespace BodilyInfection
         private TimeSpan cooldownEndTime = TimeSpan.MinValue;
         private Vector2 lThumbstick;
         private Vector2 rThumbstick;
+        public int RemainingLives = 0;
+        public readonly int DefaultLives = 4;
+
 
         public void Update(GameTime gameTime)
         {
@@ -145,16 +152,20 @@ namespace BodilyInfection
                             {
                                 if (collision.Item2.GetType() == typeof(Virus))
                                 {
-                                    if (!((Virus)collision.Item2).Harmless)
+                                    if (!shieldOn && !((Virus)collision.Item2).Harmless)
                                     {
                                         Pos.X = 50;
                                         Pos.Y = 50;
-                                        shieldOn = true;
 
-                                        mActor.CurrentAnimation = 1;
-                                        mActor.Frame = 0;
+                                        EnableShield();
                                         shieldEndTime = gameTime.TotalGameTime + shieldDuration;
                                         //This.Game.CurrentLevel.RemoveSprite(this);
+                                        RemainingLives--;
+                                        if (RemainingLives <= 0)
+                                        {
+                                            LevelFunctions.ToGameOver(null);
+                                        }
+                                        break;
                                     }
                                 }
                             }
@@ -166,14 +177,27 @@ namespace BodilyInfection
             {
                 if (gameTime.TotalGameTime > shieldEndTime)
                 {
-                    shieldOn = false;
-
-                    mActor.CurrentAnimation = 0;
-                    mActor.Frame = 0;
+                    DisableShield();
                 }
             }
 
             shipVelocity *= 0.95f;
+        }
+
+        private void EnableShield()
+        {
+            shieldOn = true;
+
+            mActor.CurrentAnimation = 1;
+            mActor.Frame = 0;
+        }
+
+        private void DisableShield()
+        {
+            shieldOn = false;
+
+            mActor.CurrentAnimation = 0;
+            mActor.Frame = 0;
         }
     }
 }

@@ -21,9 +21,12 @@ namespace BodilyInfection
             //add to current level
             This.Game.CurrentLevel.AddSprite(this);
 
-            if (mActor.Animations[mActor.CurrentAnimation].Built)
+            if (mActor != null)
             {
-                if (mActor.Animations[mActor.CurrentAnimation].NumFrames > 1) mAnimating = true;
+                if (mActor.Animations[mActor.CurrentAnimation].Built)
+                {
+                    if (mActor.Animations[mActor.CurrentAnimation].NumFrames > 1) mAnimating = true;
+                }
             }
         }
 
