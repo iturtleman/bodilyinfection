@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
 
 namespace BodilyInfection
 {
@@ -24,6 +25,7 @@ namespace BodilyInfection
         }
 
         private Vector2 movementVelocity;
+        Stopwatch timer = new Stopwatch();
 
         public void Update(GameTime gameTime)
         {
@@ -48,12 +50,25 @@ namespace BodilyInfection
                     {
                         foreach (Tuple<CollisionObject, WorldObject, CollisionObject> collision in Collision.collisionData[this])
                         {
-                            if (collision.Item2.GetType() == typeof(Virus) ||
-                                collision.Item2.GetType() == typeof(RedBloodCell))
+                            if (collision.Item2.GetType() == typeof(Virus))
                             {
                                 // Do some damage!
                                 This.Game.CurrentLevel.RemoveSprite(this);
                                 // Somehow it only deletes the bullet when the *ship* runs over something... no idea why.
+                            }
+                            if (collision.Item2.GetType() == typeof(RedBloodCell))
+                            {
+                                //Remove Bullet
+                                This.Game.CurrentLevel.RemoveSprite(this);
+
+                                //Notify that RBC was hit via vibration.
+                                //GamePad.SetVibration(PlayerIndex.One, 1.0f, 1.0f);
+
+                                //timer.Start(); 
+                                //while ((timer.ElapsedMilliseconds / 1000) > 1000000) { }
+
+                                //    GamePad.SetVibration(PlayerIndex.One, 0.0f, 0.0f);
+                                //    timer.Reset();
                             }
                         }
                     }
