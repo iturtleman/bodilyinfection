@@ -9,6 +9,14 @@ namespace BodilyInfection
 {
     internal static class LevelFunctions
     {
+        #region Timer Variables
+
+        internal static TimeSpan SpawnWaitTime = new TimeSpan(0, 0, 0, 4, 0);
+        internal static TimeSpan NextRespawn = new TimeSpan(0, 0, 0, 0, 0);
+        internal static TimeSpan PreviousSpawn = new TimeSpan(0, 0, 0, 0, 0);
+
+        #endregion Timer Variables
+
         internal static void DoNothing(GameTime gameTime) { }
 
         /// <summary>
@@ -21,6 +29,36 @@ namespace BodilyInfection
             Vector2 state = new Vector2(GamePad.GetState(p).ThumbSticks.Left.X, -GamePad.GetState(p).ThumbSticks.Left.Y);
             return state;
         }
+
+
+        /// <summary>
+        /// Spawns Viruses at random locations on the screen.
+        /// </summary>
+        /// <param name="gameTime"></param>
+        public static void SpawnEnemies(GameTime gameTime, Level l) 
+        {
+
+            //if ((NextRespawn < new TimeSpan(0, 0, 0, 5, 0)))
+            //    NextRespawn += new TimeSpan(0, 0, 0, 1, 0);
+
+            if (gameTime.TotalGameTime >= SpawnWaitTime + PreviousSpawn ) 
+            {
+                Random rand = new Random();
+
+                for (int i = 0; i < 15; i++)
+                {    
+                    Sprite virus2 = new Virus("virus2", new Actor(l.GetAnimation("virusPulse.anim")));
+                    virus2.Pos = new Vector2(rand.Next(0, This.Game.GraphicsDevice.Viewport.Width), rand.Next(0, This.Game.GraphicsDevice.Viewport.Height));
+                    virus2.AnimationSpeed = 1;
+                }
+
+                PreviousSpawn = gameTime.TotalGameTime;
+                NextRespawn = gameTime.TotalGameTime + SpawnWaitTime;
+            }
+
+            
+        }
+
 
         internal static void LevelWorldLoad(GameTime gameTime)
         {
@@ -52,9 +90,8 @@ namespace BodilyInfection
 
             Random rand = new Random();
 
-            for (int i = 0; i < 100; i++ )
+            for (int i = 0; i < 15; i++)
             {
-                
                 Sprite virus2 = new Virus("virus2", new Actor(l.GetAnimation("virusPulse.anim")));
                 virus2.Pos = new Vector2(rand.Next(0, This.Game.GraphicsDevice.Viewport.Width), rand.Next(0, This.Game.GraphicsDevice.Viewport.Height));
                 virus2.AnimationSpeed = 1;
@@ -76,6 +113,8 @@ namespace BodilyInfection
             Sprite player = LevelWorld.GetSprite("ship");
 
             Background bg = LevelWorld.Background;
+
+            SpawnEnemies(gameTime, LevelWorld);
         }
     }
 }
