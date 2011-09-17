@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Animation>
+  <Frame SpriteSheet="infectedRBC" FrameDelay="20" Width="26" Height="26" TLPos="0,0" AnimationPeg="0,0" >
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
+  </Frame>
+</Animation>
