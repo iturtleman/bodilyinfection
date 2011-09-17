@@ -14,6 +14,7 @@ namespace BodilyInfection
         internal static TimeSpan SpawnWaitTime = new TimeSpan(0, 0, 0, 4, 0);
         internal static TimeSpan NextRespawn = new TimeSpan(0, 0, 0, 0, 0);
         internal static TimeSpan PreviousSpawn = new TimeSpan(0, 0, 0, 0, 0);
+        internal static Random rand = new Random();
 
         #endregion Timer Variables
 
@@ -42,7 +43,7 @@ namespace BodilyInfection
 
             if (gameTime.TotalGameTime >= SpawnWaitTime + PreviousSpawn ) 
             {
-                Random rand = new Random();
+                
 
                 for (int i = 0; i < numEnemies; i++)
                 {    
@@ -59,17 +60,30 @@ namespace BodilyInfection
         }
 
         /// <summary>
-        /// For use in LevelWorldLoad, Spawn's one initial set of enemies
+        /// For use in LevelWorldLoad, spawns one initial set of enemies
         /// </summary>
         /// <param name="gameTime"></param>
         public static void SpawnInitialEnemies(Level l, int numEnemies)
         {
-            Random rand = new Random();
             for (int i = 0; i < numEnemies; i++)
             {
                 Sprite virus2 = new Virus("virus2", new Actor(l.GetAnimation("virusPulse.anim")));
                 virus2.Pos = new Vector2(rand.Next(0, This.Game.GraphicsDevice.Viewport.Width), rand.Next(0, This.Game.GraphicsDevice.Viewport.Height));
                 virus2.AnimationSpeed = 1;
+            }
+        }
+
+        /// <summary>
+        /// For use in LevelWorldLoad, spawns one initial set of rbcs.
+        /// </summary>
+        /// <param name="gameTime"></param>
+        public static void SpawnInitialRBC(Level l, int numRBCs)
+        {
+            for (int i = 0; i < numRBCs; i++)
+            {
+                Sprite rbc = new RedBloodCell("rbc", new Actor(l.GetAnimation("rbc.anim")));
+                rbc.Pos = new Vector2(rand.Next(0, This.Game.GraphicsDevice.Viewport.Width), rand.Next(0, This.Game.GraphicsDevice.Viewport.Height));
+                rbc.AnimationSpeed = 1;
             }
         }
 
@@ -98,12 +112,11 @@ namespace BodilyInfection
             /** load sprites */
 
 
-            Sprite vikings1 = new RedBloodCell("rbc", new Actor(l.GetAnimation("rbc.anim")));
-            vikings1.Pos = new Vector2(550, 550);
-            vikings1.AnimationSpeed= 1;
+            //Sprite vikings1 = new RedBloodCell("rbc", new Actor(l.GetAnimation("rbc.anim")));
+            //vikings1.Pos = new Vector2(550, 550);
+            //vikings1.AnimationSpeed= 1;
 
-            Random rand = new Random();
-
+            SpawnInitialRBC(l, 2);
             SpawnInitialEnemies(l, 15);
 
             //Sprite rbc = new Ship("ship", new Actor(l.GetAnimation("ship.anim")));
