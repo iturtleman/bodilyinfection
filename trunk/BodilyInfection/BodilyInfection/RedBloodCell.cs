@@ -95,9 +95,8 @@ namespace BodilyInfection
                         {
                             if (collision.Item2.GetType() == typeof(Virus))
                             {
-                                if (Wounded && !((Virus)collision.Item2).Harmless)
+                                if (Wounded && !Infected && !((Virus)collision.Item2).Harmless)
                                 {
-                                    This.Game.CurrentLevel.RemoveSprite(collision.Item2 as Sprite);
                                     Infected = true;
                                 }
                             }

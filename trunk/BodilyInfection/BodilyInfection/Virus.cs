@@ -85,7 +85,7 @@ namespace BodilyInfection
                 {
                     foreach (Sprite sp in rbcs)
                     {
-                        if (sp != null && (sp as RedBloodCell).Wounded)
+                        if (sp != null && (sp as RedBloodCell).Wounded && !(sp as RedBloodCell).Infected)
                         {
                             float newLength = (Pos - sp.Pos).Length();
                             if (newLength < minDistance && newLength < attackDistance)
@@ -125,11 +125,9 @@ namespace BodilyInfection
                             {
                                 if (collision.Item2.GetType() == typeof(RedBloodCell))
                                 {
-                                    if ((collision.Item2 as RedBloodCell).Wounded)
+                                    if ((collision.Item2 as RedBloodCell).Wounded && !(collision.Item2 as RedBloodCell).Infected)
                                     {
-                                        // Delete self!
                                         This.Game.CurrentLevel.RemoveSprite(this);
-                                        // infect rbc (done in RedBloodCell.cs)
                                     }
                                 }
 
