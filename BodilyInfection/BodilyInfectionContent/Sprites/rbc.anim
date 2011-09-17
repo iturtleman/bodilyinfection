@@ -9,7 +9,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0052"
@@ -21,7 +21,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0057"
@@ -33,7 +33,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0062"
@@ -45,7 +45,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0067"
@@ -57,7 +57,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0072"
@@ -69,7 +69,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0077"
@@ -81,7 +81,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0082"
@@ -93,7 +93,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0087"
@@ -105,7 +105,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0092"
@@ -117,7 +117,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0097"
@@ -129,7 +129,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0102"
@@ -141,7 +141,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0107"
@@ -153,7 +153,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0112"
@@ -165,7 +165,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0117"
@@ -177,7 +177,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0122"
@@ -189,7 +189,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0127"
@@ -201,7 +201,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0132"
@@ -213,7 +213,7 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
   <Frame
     SpriteSheet="RedBloodCell/Shortspin/rbc_spin0137"
@@ -225,6 +225,6 @@ TLPos="0,0"
     >
     <!--List of all collision data for a frame-->
     <!--Collision data can be Rectangle or Circle. Rectangles with the TLPos and BRPos defined are AABB if TRPos and BLPos are also defined the rectangle is an oriented bounding box-->
-    <Collision Type="Circle" Pos="0.0,0.0" Radius="13.0"/>
+    <Collision Type="Circle" Pos="13.0,13.0" Radius="13.0"/>
   </Frame>
 </Animation>

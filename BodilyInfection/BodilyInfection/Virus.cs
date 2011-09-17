@@ -125,7 +125,8 @@ namespace BodilyInfection
                                     if ((collision.Item2 as RedBloodCell).Wounded)
                                     {
                                         // Delete self!
-                                        // infect rbc
+                                        This.Game.CurrentLevel.RemoveSprite(this);
+                                        // infect rbc (done in RedBloodCell.cs)
                                     }
                                 }
 

@@ -81,7 +81,9 @@ namespace BodilyInfection
         {
             for (int i = 0; i < numRBCs; i++)
             {
-                Sprite rbc = new RedBloodCell("rbc", new Actor(l.GetAnimation("rbc.anim")));
+                Actor rbcActor = new Actor(l.GetAnimation("rbc.anim"));
+                Sprite rbc = new RedBloodCell("rbc", rbcActor );
+                rbcActor.Animations.Add(l.GetAnimation("infectedrbc.anim"));
                 rbc.Pos = new Vector2(rand.Next(0, This.Game.GraphicsDevice.Viewport.Width), rand.Next(0, This.Game.GraphicsDevice.Viewport.Height));
                 rbc.AnimationSpeed = 1;
             }
@@ -104,6 +106,7 @@ namespace BodilyInfection
             l.AddAnimation(new Animation("viking.anim"));
             l.AddAnimation(new Animation("sun.anim"));
             l.AddAnimation(new Animation("rbc.anim"));
+            l.AddAnimation(new Animation("infectedrbc.anim"));
             l.AddAnimation(new Animation("virusPulse.anim"));
             l.AddAnimation(new Animation("antibody.anim"));
             l.AddAnimation(new Animation("shield.anim"));
