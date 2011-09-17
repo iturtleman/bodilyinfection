@@ -29,7 +29,8 @@ namespace BodilyInfection
         public bool Infected { get; set; }
         private int health = 20;
         public TimeSpan timeToExplode = new TimeSpan(0, 0, 5);  // on infection, it takes 5 seconds for virus to come out.
-        TimeSpan timeOfInfection;                               
+        TimeSpan timeOfInfection;
+        Random rand = new Random();                    
 
         public void Update(GameTime gameTime)
         {
@@ -79,7 +80,8 @@ namespace BodilyInfection
                 }
                 if (gameTime.TotalGameTime > timeOfInfection + timeToExplode)
                 {
-                    LevelFunctions.SpawnEnemies(delegate() { return new Virus("virus2", new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"))); }, 5, Pos);
+                    Vector2 spawningPosition = new Vector2(Pos.X + rand.Next(26, 46), Pos.Y + rand.Next(26, 56));
+                    LevelFunctions.SpawnEnemies(delegate() { return new Virus("virus2", new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"))); }, 5, spawningPosition);
                     This.Game.CurrentLevel.RemoveSprite(this);
                 }
             }
