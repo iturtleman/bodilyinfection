@@ -35,17 +35,16 @@ namespace BodilyInfection
         /// Spawns Viruses at random locations on the screen.
         /// </summary>
         /// <param name="gameTime"></param>
-        public static void SpawnEnemies(GameTime gameTime, Level l) 
+        public static void SpawnEnemiesRecurring(GameTime gameTime, Level l, int numEnemies) 
         {
 
-            //if ((NextRespawn < new TimeSpan(0, 0, 0, 5, 0)))
-            //    NextRespawn += new TimeSpan(0, 0, 0, 1, 0);
+
 
             if (gameTime.TotalGameTime >= SpawnWaitTime + PreviousSpawn ) 
             {
                 Random rand = new Random();
 
-                for (int i = 0; i < 15; i++)
+                for (int i = 0; i < numEnemies; i++)
                 {    
                     Sprite virus2 = new Virus("virus2", new Actor(l.GetAnimation("virusPulse.anim")));
                     virus2.Pos = new Vector2(rand.Next(0, This.Game.GraphicsDevice.Viewport.Width), rand.Next(0, This.Game.GraphicsDevice.Viewport.Height));
@@ -57,6 +56,21 @@ namespace BodilyInfection
             }
 
             
+        }
+
+        /// <summary>
+        /// For use in LevelWorldLoad, Spawn's one initial set of enemies
+        /// </summary>
+        /// <param name="gameTime"></param>
+        public static void SpawnInitialEnemies(Level l, int numEnemies)
+        {
+            Random rand = new Random();
+            for (int i = 0; i < numEnemies; i++)
+            {
+                Sprite virus2 = new Virus("virus2", new Actor(l.GetAnimation("virusPulse.anim")));
+                virus2.Pos = new Vector2(rand.Next(0, This.Game.GraphicsDevice.Viewport.Width), rand.Next(0, This.Game.GraphicsDevice.Viewport.Height));
+                virus2.AnimationSpeed = 1;
+            }
         }
 
 
@@ -90,12 +104,7 @@ namespace BodilyInfection
 
             Random rand = new Random();
 
-            for (int i = 0; i < 15; i++)
-            {
-                Sprite virus2 = new Virus("virus2", new Actor(l.GetAnimation("virusPulse.anim")));
-                virus2.Pos = new Vector2(rand.Next(0, This.Game.GraphicsDevice.Viewport.Width), rand.Next(0, This.Game.GraphicsDevice.Viewport.Height));
-                virus2.AnimationSpeed = 1;
-            }
+            SpawnInitialEnemies(l, 15);
 
             //Sprite rbc = new Ship("ship", new Actor(l.GetAnimation("ship.anim")));
             Actor shipActor = new Actor(l.GetAnimation("ship.anim"));
@@ -114,7 +123,7 @@ namespace BodilyInfection
 
             Background bg = LevelWorld.Background;
 
-            SpawnEnemies(gameTime, LevelWorld);
+            SpawnEnemiesRecurring(gameTime, LevelWorld, 15);
         }
     }
 }
