@@ -30,6 +30,11 @@ namespace BodilyInfection.Levels
             l.AddAnimation(new Animation("antibody.anim"));
             l.AddAnimation(new Animation("shield.anim"));
             l.AddAnimation(new Animation("ship.anim"));
+            l.AddAnimation(new Animation("cannon.anim"));
+
+            /** load music */
+            This.Game.AudioManager.AddBackgroundMusic("slow_view");
+            This.Game.AudioManager.PlayBackgroundMusic("slow_view");
 
             /** load sprites */
 
@@ -42,13 +47,13 @@ namespace BodilyInfection.Levels
                 return rbc;
             }, 2);
             LevelFunctions.SpawnEnemies(delegate() { return new Virus("virus", new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"))); }, 15);
-
+            
+             
             // Load ship
-            Actor shipActor = new Actor(l.GetAnimation("ship.anim"));
-            shipActor.Animations.Add(l.GetAnimation("shield.anim"));
-            Sprite ship = new Ship("ship", shipActor);
+            Sprite ship = new Ship("ship", new Actor(l.GetAnimation("ship.anim")));
 
-            ship.Pos = new Vector2(50, 50);
+            l.PlayerSpawnPoint = new Vector2(50, 50);
+            ship.Pos = l.PlayerSpawnPoint;
             ship.AnimationSpeed = 1;
 
             Text livesText = new Text("livesText", "Text", "Lives Remaining:");
@@ -57,8 +62,6 @@ namespace BodilyInfection.Levels
             Text lives = new Text("lives", "Text", (ship as Ship).RemainingLives.ToString());        
             lives.Pos = new Vector2(This.Game.GraphicsDevice.Viewport.Width - 50, 0);
             lives.DisplayColor = Color.Red;
-            
-            
         }
 
         internal static void Update(GameTime gameTime)

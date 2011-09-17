@@ -52,6 +52,14 @@ namespace BodilyInfection
             }
         }
 
+        internal AudioManager AudioManager
+        {
+            get
+            {
+                return mAudioManager;
+            }
+        }
+
         /// <summary>
         /// Gets the index of the current level being played.
         /// </summary>
@@ -85,6 +93,7 @@ namespace BodilyInfection
         #endregion FPS calc
 
         int mCurrentLevel;/**< Current Level index. */
+        AudioManager mAudioManager = new AudioManager();
         List<Level> mLevels = new List<Level>();
         Dictionary<string, Behavior> mLevelBehaviors = new Dictionary<string, Behavior>();
         #endregion Variables

@@ -115,6 +115,7 @@
     <Compile Include="Bullet.cs" />
     <Compile Include="Engine\Actor.cs" />
     <Compile Include="Engine\Animation.cs" />
+    <Compile Include="Engine\AudioManager.cs" />
     <Compile Include="Engine\Background.cs" />
     <Compile Include="Engine\Collision.cs" />
     <Compile Include="Engine\CollisionObject.cs" />
@@ -183,6 +184,10 @@
       <Link>Content\Sprites\antibody.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+    </None>
+    <None Include="..\BodilyInfectionContent\Sprites\cannon.anim">
+      <Link>Content\Sprites\cannon.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="..\BodilyInfectionContent\Sprites\infectedrbc.anim">
       <Link>Content\Sprites\infectedrbc.anim</Link>

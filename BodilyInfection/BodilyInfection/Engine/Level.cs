@@ -85,11 +85,14 @@ namespace BodilyInfection
 
         protected List<WorldObject> ToAdd = new List<WorldObject>();
         protected List<WorldObject> ToRemove = new List<WorldObject>();
+
+        public Vector2 PlayerSpawnPoint = new Vector2(50, 50);
         #endregion Variables
 
         #region Updating
         internal void Load()
         {
+            This.Game.AudioManager.Stop();
             EnemiesDefeated = 0;
             LoadBehavior(null);
         }
