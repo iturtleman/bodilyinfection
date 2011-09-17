@@ -19,12 +19,15 @@ namespace BodilyInfection
         public Ship(string name, Actor actor, PlayerIndex input)
             : base(name, actor)
         {
+            Sprite cannon = new Cannon(name+"_cannon", new Actor(This.Game.CurrentLevel.GetAnimation("cannon.anim")), name, input);
+
             RemainingLives = DefaultLives;
             this.gamepad = input;
             shipVelocity = Vector2.Zero;
             shipSpeed = 10.0f;
             lThumbstick = Vector2.Zero;
             rThumbstick = Vector2.Zero;
+            shieldName = Name + "_shield";
             shieldEndTime = shieldDuration;
             EnableShield();
 
@@ -35,7 +38,8 @@ namespace BodilyInfection
         private Vector2 shipVelocity;
         private float shipSpeed;
         private PlayerIndex gamepad;
-        private bool shieldOn = false;   //ctrlf
+        private bool shieldOn = false;
+        private string shieldName = null;
         private TimeSpan shieldDuration = new TimeSpan(0, 0, 0, 4, 0);
         private TimeSpan shieldEndTime = TimeSpan.MinValue;
         private TimeSpan shootCooldown = new TimeSpan(0, 0, 0, 0, 100/*500*/);
@@ -154,12 +158,10 @@ namespace BodilyInfection
                                 {
                                     if (!shieldOn && !((Virus)collision.Item2).Harmless)
                                     {
-                                        Pos.X = 50;
-                                        Pos.Y = 50;
+                                        Pos = This.Game.CurrentLevel.PlayerSpawnPoint;
 
                                         EnableShield();
                                         shieldEndTime = gameTime.TotalGameTime + shieldDuration;
-                                        //This.Game.CurrentLevel.RemoveSprite(this);
                                         RemainingLives--;
                                         if (RemainingLives <= 0)
                                         {
@@ -187,17 +189,88 @@ namespace BodilyInfection
         private void EnableShield()
         {
             shieldOn = true;
-
-            mActor.CurrentAnimation = 1;
-            mActor.Frame = 0;
+            Sprite shield = new Shield(shieldName, new Actor(This.Game.CurrentLevel.GetAnimation("shield.anim")), Name);
         }
 
         private void DisableShield()
         {
             shieldOn = false;
+            This.Game.CurrentLevel.RemoveSprite(This.Game.CurrentLevel.GetSprite(shieldName));
+        }
+    }
 
-            mActor.CurrentAnimation = 0;
-            mActor.Frame = 0;
+    class Cannon : Sprite
+    {
+        private string shipName;
+        private PlayerIndex gamepad;
+
+        public Cannon(string name, Actor actor, string shipName, PlayerIndex input)
+            : base(name, actor)
+        {
+            this.shipName = shipName;
+            gamepad = input;
+            UpdateBehavior += Update;
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            Sprite ship = This.Game.CurrentLevel.GetSprite(shipName);
+            if (ship == null)
+            {
+                // Ship is gone, make self invisible
+                mVisible = false;
+                return;
+            }
+            else
+            {
+                mVisible = true;
+                Pos = ship.Pos - ship.GetAnimation().AnimationPeg + GetAnimation().AnimationPeg;
+
+                #region Rotation
+                GamePadState currentState = GamePad.GetState(gamepad);
+                if (currentState.IsConnected)
+                {
+                    Vector2 rThumbstick;
+                    // Used to decide rotation angle.
+                    rThumbstick.X = currentState.ThumbSticks.Right.X;
+                    rThumbstick.Y = -currentState.ThumbSticks.Right.Y;
+
+                    if ((rThumbstick.X != 0 || rThumbstick.Y != 0) /*&& lThumbstick.Length() > .3f*/)
+                    {
+                        //if (lThumbstick.Length() > .2f)
+                        this.Angle = (float)Math.Atan2(rThumbstick.Y, rThumbstick.X) + ((float)Math.PI / 2);
+                    }
+                }
+                #endregion
+            }
+        }
+    }
+
+    class Shield : Sprite
+    {
+        private string shipName;
+
+        public Shield(string name, Actor actor, string shipName)
+            : base(name, actor)
+        {
+            this.shipName = shipName;
+            UpdateBehavior += Update;
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            Sprite ship = This.Game.CurrentLevel.GetSprite(shipName);
+            if (ship == null)
+            {
+                // Ship is gone, make self invisible
+                mVisible = false;
+                return;
+            }
+            else
+            {
+                mVisible = true;
+                Pos = ship.Pos - ship.GetAnimation().AnimationPeg + GetAnimation().AnimationPeg;
+            }
         }
     }
 }

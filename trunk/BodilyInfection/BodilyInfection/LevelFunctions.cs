@@ -47,7 +47,8 @@ namespace BodilyInfection
                 Sprite virus = constructEnemy();
                 double radius = Math.Max(virus.GetAnimation().Height, virus.GetAnimation().Width) * numEnemies / 4.0;
                 double x = rand.NextDouble() * radius * 2 - radius;
-                double y = Math.Sqrt(radius * radius - x * x) * (rand.Next(0, 1) - 1);
+                int mod = (rand.Next(0, 2) - 1);
+                double y = Math.Sqrt(radius * radius - x * x) * mod;
                 virus.Pos = position + new Vector2((float)x, (float)y);
                 virus.AnimationSpeed = 1;
             }

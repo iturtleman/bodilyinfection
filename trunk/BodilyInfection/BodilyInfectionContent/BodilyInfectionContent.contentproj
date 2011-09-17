@@ -66,6 +66,10 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <None Include="Sprites\cannon.anim">
+      <SubType>Designer</SubType>
+      <Name>cannon</Name>
+    </None>
     <None Include="Sprites\viking.anim">
       <Name>viking</Name>
     </None>
@@ -501,14 +505,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Sprites\ship.anim">
-      <Name>ship</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Sprites\shield.anim">
       <Name>shield</Name>
       <Importer>XmlImporter</Importer>
@@ -536,6 +532,20 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprites\compass_cannon.png">
+      <Name>compass_cannon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Audio\slow_view.mp3">
+      <Name>slow_view</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
