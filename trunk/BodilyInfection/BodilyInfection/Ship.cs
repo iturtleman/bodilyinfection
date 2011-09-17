@@ -145,15 +145,17 @@ namespace BodilyInfection
                             {
                                 if (collision.Item2.GetType() == typeof(Virus))
                                 {
-                                    Pos.X = 50;
-                                    Pos.Y = 50;
-                                    shieldOn = true;
+                                    if (!((Virus)collision.Item2).Harmless)
+                                    {
+                                        Pos.X = 50;
+                                        Pos.Y = 50;
+                                        shieldOn = true;
 
-                                    mActor.CurrentAnimation = 1;
-                                    mActor.Frame = 0;
-                                    shieldEndTime = gameTime.TotalGameTime + shieldDuration;
-                                    //This.Game.CurrentLevel.RemoveSprite(this);
-
+                                        mActor.CurrentAnimation = 1;
+                                        mActor.Frame = 0;
+                                        shieldEndTime = gameTime.TotalGameTime + shieldDuration;
+                                        //This.Game.CurrentLevel.RemoveSprite(this);
+                                    }
                                 }
                             }
                         }

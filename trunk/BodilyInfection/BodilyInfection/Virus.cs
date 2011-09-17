@@ -12,13 +12,35 @@ namespace BodilyInfection
             : base(name, actor)
         {
             UpdateBehavior += new Behavior(Update);
+            Harmless = true;
+            Invincible = true;
+            Frozen = true;
+
+            birth = TimeSpan.Zero;
         }
+
+        #region Properties
+        // Virus is Harmless for very small amount of time after spawn.
+        // To allow player to get away from being killed by a spawning enemy
+        public bool Harmless { get; set; }
+        public bool Invincible { get; set; }
+        public bool Frozen { get; set; }
+
+
+        #endregion Properties
 
         #region Variables
 
         private Vector2 currentVelocity;
 
         private float movementSpeed = 2;
+
+
+        private TimeSpan lifeSpan;
+
+        private TimeSpan harmlessTime = new TimeSpan(0, 0, 0, 0, 500);
+
+        private TimeSpan birth;
 
         /// <summary>
         /// The maximum distance in pixels the virus can "see" when detecting a nearby RedBloodCell
@@ -36,36 +58,60 @@ namespace BodilyInfection
                 Sprite ship = This.Game.CurrentLevel.GetSprite("ship");
                 Vector2 minVector = ship.Pos;
                 float minDistance = (Pos - ship.Pos).Length();
+                
 
+
+                #region harmless timing
+                if (birth == TimeSpan.Zero)
+                {
+                    birth = gameTime.TotalGameTime;
+                }
+
+                lifeSpan = gameTime.TotalGameTime - birth;
+
+                if (lifeSpan > harmlessTime)
+                {
+                    Harmless = false;
+                    Invincible = false;
+                    Frozen = false;
+                }
+                #endregion harmless timing
+
+                #region follow rbc
                 // Check the RedBloodCells to see if any are closer than the ship and within
                 // attack range.
                 List<Sprite> rbcs = This.Game.CurrentLevel.GetSpritesByType("RedBloodCell");
-                foreach (Sprite sp in rbcs)
-
+                if (Frozen == false)
                 {
-                    float newLength = (Pos - sp.Pos).Length();
-                    if (newLength < minDistance && newLength < attackDistance)
+                    foreach (Sprite sp in rbcs)
                     {
-                        minDistance = newLength;
-                        minVector = sp.Pos;
+                        float newLength = (Pos - sp.Pos).Length();
+                        if (newLength < minDistance && newLength < attackDistance)
+                        {
+                            minDistance = newLength;
+                            minVector = sp.Pos;
+                        }
                     }
                 }
+                #endregion follow rbc
 
+                #region follow ship
                 Vector2 dirToShip = minVector - Pos;
 
-                // Find out what direction we should be thrusting, 
-                // using rotation and scale by speed.
                 dirToShip.Normalize();
                 dirToShip *= movementSpeed;
 
-                // Finally, add this vector to our velocity.
-                currentVelocity += dirToShip;
+                if (Frozen == false)
+                {
+                    currentVelocity += dirToShip;
 
-                Pos += currentVelocity;
+                    Pos += currentVelocity;
 
-                // Bleed off velocity over time.
-                currentVelocity *= 0.15f;
+                    currentVelocity *= 0.15f;
+                }
+                #endregion follow ship
 
+                #region collision checking
                 if (Collision.collisionData.Count > 0)
                 {
                     foreach (CollisionObject co in this.GetCollision())
@@ -83,16 +129,19 @@ namespace BodilyInfection
                                     }
                                 }
 
-                                if (collision.Item2.GetType() == typeof(Bullet))
+                                if (collision.Item2.GetType() == typeof(Bullet) && (Invincible == false))
                                 {
                                     // Delete self!
                                     // Kill Virus.
                                     This.Game.CurrentLevel.RemoveSprite(this);
                                 }
+
+
                             }
                         }
                     }
                 }
+                #endregion collision checking
             }
 
         #endregion

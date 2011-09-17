@@ -183,6 +183,7 @@
     <None Include="..\BodilyInfectionContent\Sprites\rbc.anim">
       <Link>Content\Sprites\rbc.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="..\BodilyInfectionContent\Sprites\shield.anim">
       <Link>Content\Sprites\shield.anim</Link>
@@ -200,6 +201,7 @@
     <None Include="..\BodilyInfectionContent\Sprites\virusPulse.anim">
       <Link>Content\Sprites\virusPulse.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
