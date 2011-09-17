@@ -180,6 +180,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
+    <None Include="..\BodilyInfectionContent\Sprites\infectedrbc.anim">
+      <Link>Content\Sprites\infectedrbc.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="..\BodilyInfectionContent\Sprites\rbc.anim">
       <Link>Content\Sprites\rbc.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

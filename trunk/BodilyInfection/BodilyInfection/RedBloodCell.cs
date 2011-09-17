@@ -20,53 +20,84 @@ namespace BodilyInfection
         {
             movementVelocity = velocity;
             UpdateBehavior += new Behavior(Update);
+            Wounded = false;
+            Infected = false;
         }
 
 
 
         private Vector2 movementVelocity;// { get; set; }
         public bool Wounded { get; set; }
-        private int health = 10;
+        public bool Infected { get; set; }
+        private int health = 20;
+        public TimeSpan timeToExplode = new TimeSpan(0, 0, 5);  // on infection, it takes 5 seconds for virus to come out.
+        TimeSpan timeOfInfection;                               
 
         public void Update(GameTime gameTime)
         {
+            if (!Infected)
+            {
+                // Move the sprite by speed.
+                Pos.X += movementVelocity.X;
 
-            // Move the sprite by speed.
-            Pos.X += movementVelocity.X;
+                Pos.Y += movementVelocity.Y;
 
-            Pos.Y += movementVelocity.Y;
+                int MaxX =
+                    This.Game.GraphicsDevice.Viewport.Width;
+                int MinX = 0;
+                int MaxY =
+                    This.Game.GraphicsDevice.Viewport.Height;
+                int MinY = 0;
+
+                // Check for bounce.
+                if (Pos.X > MaxX)
+                {
+                    movementVelocity.X *= -1;
+                    Pos.X = MaxX;
+                }
+
+                else if (Pos.X < MinX)
+                {
+                    movementVelocity.X *= -1;
+                    Pos.X = MinX;
+                }
+
+                if (Pos.Y > MaxY)
+                {
+                    movementVelocity.Y *= -1;
+                    Pos.Y = MaxY;
+                }
+
+                else if (Pos.Y < MinY)
+                {
+                    movementVelocity.Y *= -1;
+                    Pos.Y = MinY;
+                }
+            }
+
+            else // this is the infect/multiply code
+            {
+                if (timeOfInfection == TimeSpan.Zero)
+                {
+                    timeOfInfection = gameTime.TotalGameTime;
+                }
+
+                if (gameTime.TotalGameTime > timeOfInfection + timeToExplode)
+                {
+                    This.Game.CurrentLevel.RemoveSprite(this);
+                    int numVirusesinExplosion = 3;
+                    for (int i = 0; i < numVirusesinExplosion; i++)
+                    {
+                        Sprite virus = new Virus("virus", new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim")));
+                        virus.Pos = this.Pos;
+                        virus.AnimationSpeed = 1;
+                    }
+                }
+
+
+
+            }
             
-            int MaxX =
-                This.Game.GraphicsDevice.Viewport.Width;
-            int MinX = 0;
-            int MaxY =
-                This.Game.GraphicsDevice.Viewport.Height;
-            int MinY = 0;
-
-            // Check for bounce.
-            if (Pos.X > MaxX)
-            {
-                movementVelocity.X *= -1;
-                Pos.X = MaxX;
-            }
-
-            else if (Pos.X < MinX)
-            {
-                movementVelocity.X *= -1;
-                Pos.X = MinX;
-            }
-
-            if (Pos.Y > MaxY)
-            {
-                movementVelocity.Y *= -1;
-                Pos.Y = MaxY;
-            }
-
-            else if (Pos.Y < MinY)
-            {
-                movementVelocity.Y *= -1;
-                Pos.Y = MinY;
-            }
 
             if (Collision.collisionData.Count > 0)
             {
@@ -78,18 +109,30 @@ namespace BodilyInfection
                         {
                             if (collision.Item2.GetType() == typeof(Virus))
                             {
-                                if (Wounded)
+                                if (Wounded && !((Virus)collision.Item2).Harmless)
                                 {
                                     // Virus enters RBC
-                                    throw new NotImplementedException();
-                                    //mActor.CurrentAnimation = 1;
-                                    //mActor.Frame = 0;
+                                    Infected = true;
                                 }
                             }
                             else if (collision.Item2.GetType() == typeof(Bullet))
                             {
-                                // RBC becomes infectable.
-                                //throw new NotImplementedException();
+                                if (!Wounded)
+                                {
+                                    // RBC becomes infectable.
+                                    Wounded = true;
+                                    mActor.CurrentAnimation = 1;
+                                    mActor.Frame = 0;
+                                }
+
+                                else
+                                {
+                                    health--;
+                                    if (health == 0)
+                                    {
+                                        This.Game.CurrentLevel.RemoveSprite(this);
+                                    }
+                                }
                             }
                         }
                     }
