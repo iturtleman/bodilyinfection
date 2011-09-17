@@ -27,6 +27,12 @@ namespace BodilyInfection
         #endregion
 
         #region Constructors
+        public Animation()
+        {
+            NumFrames = 0;
+            Built = false;
+        }
+
         public Animation(string filename) : this(filename, filename) { }
 
         public Animation(string filename, string name)
@@ -112,99 +118,6 @@ namespace BodilyInfection
             NumFrames = count;
         }
 
-        #region old
-
-        //using (StreamReader stream = new StreamReader(filename))
-        //{
-        //    while (!stream.EndOfStream)
-        //    {
-        //        buffer = stream.ReadLine();
-        //
-        //        //make sure the first char is not # or whitespace
-        //        if (buffer.Length > 0 && !buffer.StartsWith("#") && !String.IsNullOrWhiteSpace(buffer))
-        //        {
-        //            if (buffer.StartsWith("NumFrames:"))
-        //            {
-        //                NumFrames = int.Parse(buffer.Trim().Split().Last());
-        //                Built = true;
-        //            }
-        //            else
-        //            {
-        //                string[] frameInfo = buffer.Split(new char[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
-        //
-        //                /** File name */
-        //                file = frameInfo[0];
-        //                /** Pause time */
-        //                pause = Int32.Parse(frameInfo[1]);
-        //                /** transparency #'s R G B */
-        //                for (int x = 0; x < 3; x++)
-        //                {
-        //                    int value = Int32.Parse(frameInfo[1 + x]);
-        //                    if (value >= 0 && value <= 255)
-        //                    {
-        //                        transparency[x] = value;
-        //                    }
-        //                    else
-        //                    {
-        //                        transparency[x] = 0;
-        //                        Console.WriteLine("{0}\nInvalid visibility value!", value);
-        //                    }
-        //
-        //                    /** AnimationPeg offset*/
-        //                    float pegX = float.Parse(frameInfo[5]);
-        //                    float pegY = float.Parse(frameInfo[6]);
-        //
-        //                    /** Collision data */
-        //                    string[] collisiondata = frameInfo[7].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-        //                    int index=0;
-        //                    string c = collisiondata[index++];
-        //                    if (c == "(")
-        //                    {
-        //                        c = collisiondata[index++];
-        //                        while (c != ")")
-        //                        {
-        //                            if (c == "n")
-        //                            {
-        //                                c = collisiondata[index++];
-        //                                continue;
-        //                            }
-        //                            else if (c == "c")
-        //                            {
-        //                                double xOffset = double.Parse(collisiondata[index++]);
-        //                                double yOffset = double.Parse(collisiondata[index++]);
-        //                                double radius = double.Parse(collisiondata[index++]);
-        //                                //Frames[count].CollisionData.Add(new CollisionCircle(Vector2(xOffset, yOffset), radius));
-        //                            }
-        //                            else if (c == "r")
-        //                            {
-        //                                double xOffset = double.Parse(collisiondata[index++]);
-        //                                double yOffset = double.Parse(collisiondata[index++]);
-        //                                double width = double.Parse(collisiondata[index++]);
-        //                                double height = double.Parse(collisiondata[index++]);
-        //                                //Frames[count].CollisionData.Add(new CollisionRectangle(Vector2(xOffset, yOffset), width, height));
-        //                            }
-        //                            c = collisiondata[index++];
-        //                        }
-        //                    }
-        //
-        //                    SpriteFrame sf = new SpriteFrame();
-        //
-        //                    sf.image =This.Game.Content.Load<Texture2D>(@"Sprites\"+file);
-        //                    
-        //                    /** sets frame delay */
-        //                    sf.Pause = pause;
-        //
-        //                    /** Set the animation Peg*/
-        //                    sf.AnimationPeg = new Vector2(pegX + (float)sf.image.Width / 2, pegY + (float)sf.image.Height / 2);
-        //
-        //                    Frames.Add(sf);
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-        #endregion old
-
         #endregion
 
         #region Compare
@@ -280,6 +193,15 @@ namespace BodilyInfection
         const int _multiplier = 89;
 
         #endregion Compare
+    }
 
+    class DummyAnimation : Animation
+    {
+        public DummyAnimation(string name)
+        {
+            Name = name;
+            Built = true;
+            Frames.Add(new SpriteFrame());
+        }
     }
 }

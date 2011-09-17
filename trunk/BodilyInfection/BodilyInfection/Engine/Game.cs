@@ -13,6 +13,7 @@ namespace BodilyInfection
 {
     /// \todo move this somewhere else
     public delegate void Behavior(GameTime gameTime);
+    public delegate bool Condition();
 
     /// <summary>
     /// High-level controller for the game
@@ -113,6 +114,11 @@ namespace BodilyInfection
             // todo: Add your initialization logic here
 
             base.Initialize();
+
+            //Initialize Collision Cell Size
+            Collision.gridCellHeight = 40;
+            Collision.gridCellWidth = 40;
+            Collision.createGrid(0, 0, 800, 800);
         }
 
         /// <summary>
@@ -127,7 +133,7 @@ namespace BodilyInfection
             // todo: use this.Content to load your game content here
             LoadResources();
 
-            SetCurrentLevel("World");
+            SetCurrentLevel("TitleScreen");
         }
         #endregion Initialization
 
@@ -202,7 +208,7 @@ namespace BodilyInfection
         /// Sets the current level.
         /// </summary>
         /// <param name="name"></param>
-        void SetCurrentLevel(string name)
+        public void SetCurrentLevel(string name)
         {
             for (int i = 0, count = mLevels.Count; i < count; i++)
             {

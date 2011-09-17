@@ -16,11 +16,13 @@ namespace BodilyInfection
             UpdateBehavior = (GameTime gameTime) => { };
             EndBehavior = (GameTime gameTime) => { };
         }
-        public Level(string n, Behavior loadBehave, Behavior updateBehave, Behavior endBehavior)
+        public Level(string n, Behavior loadBehavior, Behavior updateBehavior, Behavior endBehavior, Condition winCondition)
         {
             mName = n;
-            LoadBehavior = loadBehave;
-            UpdateBehavior = updateBehave;
+            LoadBehavior = loadBehavior;
+            UpdateBehavior = updateBehavior;
+            EndBehavior = endBehavior;
+            WinCondition = winCondition;
         }
         #endregion Constructor
 
@@ -39,6 +41,11 @@ namespace BodilyInfection
         public Behavior EndBehavior { get; set; }
         #endregion Behaviors
 
+        /// <summary>
+        /// A Condition to check if the level has been won
+        /// </summary>
+        public Condition WinCondition { get; set; }
+
         #region Properties
         /// <summary>
         /// Get's level's name
@@ -48,6 +55,11 @@ namespace BodilyInfection
         /// Gets and Sets Level's current Background
         /// </summary>
         public Background Background { get; set; }
+
+        /// <summary>
+        /// A count of the enemies defeated in this level
+        /// </summary>
+        public int EnemiesDefeated { get; set; }
         #endregion Properties
 
         #region Variables
@@ -78,10 +90,18 @@ namespace BodilyInfection
         #region Updating
         internal void Load()
         {
+            EnemiesDefeated = 0;
             LoadBehavior(null);
         }
+
         internal void Update(GameTime gameTime)
         {
+            if (WinCondition())
+            {
+                mSprites.Clear();
+                EndBehavior(gameTime);
+                return;
+            }
             mSprites.Sort();
             Collision.update();
             UpdateBehavior(gameTime);

@@ -24,9 +24,7 @@ namespace BodilyInfection
             Infected = false;
         }
 
-
-
-        private Vector2 movementVelocity;// { get; set; }
+        private Vector2 movementVelocity;
         public bool Wounded { get; set; }
         public bool Infected { get; set; }
         private int health = 20;
@@ -55,7 +53,6 @@ namespace BodilyInfection
                     movementVelocity.X *= -1;
                     Pos.X = MaxX;
                 }
-
                 else if (Pos.X < MinX)
                 {
                     movementVelocity.X *= -1;
@@ -74,28 +71,17 @@ namespace BodilyInfection
                     Pos.Y = MinY;
                 }
             }
-
             else // this is the infect/multiply code
             {
                 if (timeOfInfection == TimeSpan.Zero)
                 {
                     timeOfInfection = gameTime.TotalGameTime;
                 }
-
                 if (gameTime.TotalGameTime > timeOfInfection + timeToExplode)
                 {
+                    LevelFunctions.SpawnEnemies(delegate() { return new Virus("virus2", new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"))); }, 5, Pos);
                     This.Game.CurrentLevel.RemoveSprite(this);
-                    int numVirusesinExplosion = 3;
-                    for (int i = 0; i < numVirusesinExplosion; i++)
-                    {
-                        Sprite virus = new Virus("virus", new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim")));
-                        virus.Pos = this.Pos;
-                        virus.AnimationSpeed = 1;
-                    }
                 }
-
-
-
             }
             
 
@@ -111,7 +97,7 @@ namespace BodilyInfection
                             {
                                 if (Wounded && !((Virus)collision.Item2).Harmless)
                                 {
-                                    // Virus enters RBC
+                                    This.Game.CurrentLevel.RemoveSprite(collision.Item2 as Sprite);
                                     Infected = true;
                                 }
                             }
@@ -128,7 +114,7 @@ namespace BodilyInfection
                                 else
                                 {
                                     health--;
-                                    if (health == 0)
+                                    if (health <= 0)
                                     {
                                         This.Game.CurrentLevel.RemoveSprite(this);
                                     }

@@ -85,11 +85,14 @@ namespace BodilyInfection
                 {
                     foreach (Sprite sp in rbcs)
                     {
-                        float newLength = (Pos - sp.Pos).Length();
-                        if (newLength < minDistance && newLength < attackDistance)
+                        if (sp != null && (sp as RedBloodCell).Wounded)
                         {
-                            minDistance = newLength;
-                            minVector = sp.Pos;
+                            float newLength = (Pos - sp.Pos).Length();
+                            if (newLength < minDistance && newLength < attackDistance)
+                            {
+                                minDistance = newLength;
+                                minVector = sp.Pos;
+                            }
                         }
                     }
                 }
@@ -132,9 +135,8 @@ namespace BodilyInfection
 
                                 if (collision.Item2.GetType() == typeof(Bullet) && (Invincible == false))
                                 {
-                                    // Delete self!
-                                    // Kill Virus.
                                     This.Game.CurrentLevel.RemoveSprite(this);
+                                    This.Game.CurrentLevel.EnemiesDefeated++;
                                 }
 
 

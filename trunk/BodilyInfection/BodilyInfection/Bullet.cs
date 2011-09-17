@@ -52,9 +52,7 @@ namespace BodilyInfection
                         {
                             if (collision.Item2.GetType() == typeof(Virus))
                             {
-                                // Do some damage!
                                 This.Game.CurrentLevel.RemoveSprite(this);
-                                // Somehow it only deletes the bullet when the *ship* runs over something... no idea why.
                             }
                             if (collision.Item2.GetType() == typeof(RedBloodCell))
                             {
