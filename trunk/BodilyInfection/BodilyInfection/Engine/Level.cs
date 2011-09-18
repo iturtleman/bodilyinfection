@@ -140,9 +140,10 @@ namespace BodilyInfection
             /** Draw Sprites*/
             DrawSprites(gameTime);
 
+            This.Game.spriteBatch.End();
+
             /** Draw Boundary Data */
             Collision.Draw();
-            This.Game.spriteBatch.End();
         }
         internal void DrawSprites(Microsoft.Xna.Framework.GameTime gameTime)
         {

@@ -1,79 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Animation>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="0,0" AnimationPeg="0,0"  >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="32,0" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="64,0" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="96,0" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="128,0" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame> 
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="0,32" AnimationPeg="0,0"  >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="32,32" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="64,32" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="96,32" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="128,32" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
    <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="0,64" AnimationPeg="0,0"  >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="32,64" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="64,64" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="96,64" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="128,64" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame> 
     <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="0,96" AnimationPeg="0,0"  >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="32,96" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="64,96" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="96,96" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="128,96" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame> 
       <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="0,128" AnimationPeg="0,0"  >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="32,128" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="64,128" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="96,128" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame>
   <Frame SpriteSheet="xplosion17" FrameDelay="20" Width="32" Height="32" TLPos="128,128" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="16.0, 16.0" Radius="16.0"/>
+    
   </Frame> 
   
 </Animation>
