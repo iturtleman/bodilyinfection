@@ -25,9 +25,9 @@ namespace BodilyInfection
             Vector3 normal = Vector3.Normalize(new Vector3(cornerOffset2.Y - cornerOffset1.Y, cornerOffset1.X - cornerOffset2.X,0));
             drawPoints = new VertexPositionColor[5];
             drawPoints[0].Position = new Vector3(cornerOffset1.X, cornerOffset1.Y, 0f);
-            drawPoints[0].Color = Color.Red;
+            drawPoints[0].Color = Color.Yellow;
             drawPoints[1].Position = new Vector3(cornerOffset2.X, cornerOffset2.Y, 0f);
-            drawPoints[1].Color = Color.Red;
+            drawPoints[1].Color = Color.Yellow;
             drawPoints[2].Position = new Vector3(cornerOffset2.X + normal.X*thickness, cornerOffset2.Y + normal.Y*thickness, 0f);
             drawPoints[2].Color = Color.Red;
             drawPoints[3].Position = new Vector3(cornerOffset1.X + normal.X * thickness, cornerOffset1.Y + normal.Y * thickness, 0f);
@@ -161,7 +161,7 @@ namespace BodilyInfection
             {
                 pass.Apply();
 
-                This.Game.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineStrip, drawPoints, 0, 4);
+                This.Game.GraphicsDevice.DrawUserPrimitives<VertexPositionColor>(PrimitiveType.LineStrip, drawPoints, 0, 4);
             }
         }
     }

@@ -29,9 +29,9 @@ namespace BodilyInfection
             {
                 VertexPositionColor[] line1 = new VertexPositionColor[2];
                 line1[0].Position = new Vector3(i, bottomLeftY, 0f);
-                line1[0].Color = Color.DarkBlue;
+                line1[0].Color = Color.Gray;
                 line1[1].Position = new Vector3(i, topRightY, 0f);
-                line1[1].Color = Color.DarkBlue;
+                line1[1].Color = Color.Gray;
 
                 gridPoints.Add(line1);
             }
@@ -40,9 +40,9 @@ namespace BodilyInfection
             {
                 VertexPositionColor[] line2 = new VertexPositionColor[2];
                 line2[0].Position = new Vector3(bottomLeftX, i, 0f);
-                line2[0].Color = Color.DarkBlue;
+                line2[0].Color = Color.Gray;
                 line2[1].Position = new Vector3(topRightX, i, 0f);
-                line2[1].Color = Color.DarkBlue;
+                line2[1].Color = Color.Gray;
 
                 gridPoints.Add(line2);
             }
@@ -164,6 +164,7 @@ namespace BodilyInfection
                 basicEffect.View = Matrix.CreateLookAt(new Vector3(This.Game.GraphicsDevice.Viewport.X + width / 2, This.Game.GraphicsDevice.Viewport.Y + height / 2, -10),
                                                        new Vector3(This.Game.GraphicsDevice.Viewport.X + width / 2, This.Game.GraphicsDevice.Viewport.Y + height / 2, 0), new Vector3(0, -1, 0));
                 basicEffect.Projection = Matrix.CreateOrthographic(This.Game.GraphicsDevice.Viewport.Width, This.Game.GraphicsDevice.Viewport.Height, 1, 20);
+                basicEffect.VertexColorEnabled = true;
 
 
                 drawGraph();
