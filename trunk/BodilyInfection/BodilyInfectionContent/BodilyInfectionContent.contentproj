@@ -79,6 +79,9 @@
       <SubType>Designer</SubType>
       <Name>cannon</Name>
     </None>
+    <None Include="Sprites\infected.anim">
+      <Name>infected</Name>
+    </None>
     <None Include="Sprites\viking.anim">
       <Name>viking</Name>
     </None>
@@ -132,6 +135,9 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
+    <None Include="Sprites\vulnerable.anim">
+      <Name>vulnerable</Name>
+    </None>
     <None Include="Sprites\xplosion17.anim">
       <Name>xplosion17</Name>
     </None>
@@ -576,6 +582,20 @@
   <ItemGroup>
     <Compile Include="Sprites\BlueExplosion2.png">
       <Name>BlueExplosion2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprites\infected.png">
+      <Name>infected</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprites\vulnerable.png">
+      <Name>vulnerable</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

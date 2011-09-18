@@ -104,16 +104,18 @@ namespace BodilyInfection
                                 if (Wounded && !Infected && !((Virus)collision.Item2).Harmless)
                                 {
                                     Infected = true;
+                                    mActor.Frame = 0;
+                                    mActor.CurrentAnimation = 1;
                                 }
                             }
                             else if (collision.Item2.GetType() == typeof(Bullet))
                             {
                                 if (!Wounded)
                                 {
-                                    // RBC becomes infectable.
+                                    // RBC becomes vulnerable.
                                     Wounded = true;
-                                    mActor.CurrentAnimation = 1;
                                     mActor.Frame = 0;
+                                    mActor.CurrentAnimation = 2;
                                 }
 
                                 else

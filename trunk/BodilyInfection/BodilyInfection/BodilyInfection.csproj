@@ -201,6 +201,11 @@
       <Link>Content\Sprites\cannon.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="..\BodilyInfectionContent\Sprites\infected.anim">
+      <Link>Content\Sprites\infected.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="..\BodilyInfectionContent\Sprites\infectedrbc.anim">
       <Link>Content\Sprites\infectedrbc.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -227,6 +232,10 @@
       <Link>Content\Sprites\virusPulse.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+    </None>
+    <None Include="..\BodilyInfectionContent\Sprites\vulnerable.anim">
+      <Link>Content\Sprites\vulnerable.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="..\BodilyInfectionContent\Sprites\xplosion17.anim">
       <Link>Content\Sprites\xplosion17.anim</Link>
