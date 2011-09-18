@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace BodilyInfection
 {
@@ -87,6 +88,9 @@ namespace BodilyInfection
         protected List<WorldObject> ToRemove = new List<WorldObject>();
 
         public Vector2 PlayerSpawnPoint = new Vector2(50, 50);
+
+        public Camera Camera = new Camera();
+
         #endregion Variables
 
         #region Updating
@@ -132,12 +136,10 @@ namespace BodilyInfection
         #region Draw
         internal void Draw(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            This.Game.spriteBatch.Begin();
-            /** Draw BG */
-            /*if (Background != null)
-                Background.Draw(gameTime);*/
+            This.Game.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
+                null, null, null, null,
+                Camera.GetTransformation(This.Game.GraphicsDevice));
 
-            /** Draw Sprites*/
             DrawSprites(gameTime);
 
             This.Game.spriteBatch.End();

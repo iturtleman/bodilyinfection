@@ -19,7 +19,7 @@ namespace BodilyInfection
         public Ship(string name, Actor actor, PlayerIndex input)
             : base(name, actor)
         {
-            Sprite cannon = new Cannon(name+"_cannon", new Actor(This.Game.CurrentLevel.GetAnimation("cannon.anim")), name, input);
+            Sprite cannon = new Cannon(name + "_cannon", new Actor(This.Game.CurrentLevel.GetAnimation("cannon.anim")), name, input);
             cannon.ZOrder = ZOrder + 1;
 
             RemainingLives = DefaultLives;
@@ -131,7 +131,7 @@ namespace BodilyInfection
                 {
                     Pos.X += shipSpeed;
                 }
-                
+
                 velocity = Pos - velocity;
                 velocity.Normalize();
                 this.Angle = -(float)Math.Atan2(Pos.Y, Pos.X);
@@ -143,7 +143,7 @@ namespace BodilyInfection
                     Sprite bullet = new Bullet("bullet",
                             new Actor(This.Game.CurrentLevel.GetAnimation("antibody.anim")),
                             velocity * 15);
-                    bullet.Pos = Pos;
+                    bullet.Pos = Pos + GetAnimation().AnimationPeg - bullet.GetAnimation().AnimationPeg;
                     bullet.AnimationSpeed = 1;
                     cooldownEndTime = gameTime.TotalGameTime + shootCooldown;
                 }

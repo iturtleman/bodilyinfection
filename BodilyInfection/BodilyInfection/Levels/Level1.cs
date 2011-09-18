@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using BodilyInfection.Engine;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace BodilyInfection.Levels
 {
@@ -57,8 +58,8 @@ namespace BodilyInfection.Levels
                 virusActor.Animations.Add(l.GetAnimation("BlueExplosion2.anim"));
                 return new Virus("virus", virusActor); 
             }, 15);
-            
-             
+
+
             // Load ship
             Actor shipActor = new Actor(l.GetAnimation("ship.anim"));
             shipActor.Animations.Add(l.GetAnimation("xplosion17.anim"));
@@ -71,7 +72,7 @@ namespace BodilyInfection.Levels
             livesText.Pos = new Vector2(This.Game.GraphicsDevice.Viewport.X + This.Game.GraphicsDevice.Viewport.Width - livesText.GetAnimation().Width - 50,
                                         This.Game.GraphicsDevice.Viewport.Y);
             livesText.DisplayColor = Color.Red;
-            Text lives = new Text("lives", "Text", (ship as Ship).RemainingLives.ToString());        
+            Text lives = new Text("lives", "Text", (ship as Ship).RemainingLives.ToString());
             lives.Pos = new Vector2(This.Game.GraphicsDevice.Viewport.X + This.Game.GraphicsDevice.Viewport.Width - 50,
                                     This.Game.GraphicsDevice.Viewport.Y);
             lives.DisplayColor = Color.Red;
@@ -83,7 +84,7 @@ namespace BodilyInfection.Levels
 
             Sprite player = LevelWorld.GetSprite("ship");
             Sprite lives = LevelWorld.GetSprite("lives");
-            
+
             if (lives != null && player != null)
             {
                 (lives as Text).Content = (player as Ship).RemainingLives.ToString();
@@ -100,6 +101,32 @@ namespace BodilyInfection.Levels
                 }, 5);
 
                 PreviousSpawn = gameTime.TotalGameTime;
+            }
+
+            //move the viewport if we need to
+            Viewport viewport = This.Game.GraphicsDevice.Viewport;
+            Vector2 cameraPos = This.Game.CurrentLevel.Camera.Pos;
+            int borderWidth = 100;
+            if (player != null)
+            {
+                Vector2 difference = player.Pos - cameraPos;
+                if (difference.X < viewport.X + borderWidth)
+                {
+                    cameraPos.X -= borderWidth - (difference.X);
+                }
+                else if (difference.X > viewport.X + viewport.Width - borderWidth)
+                {
+                    cameraPos.X += borderWidth - (viewport.Width - (difference.X));
+                }
+                if (difference.Y < viewport.Y + borderWidth)
+                {
+                    cameraPos.Y -= borderWidth -(difference.Y);
+                }
+                else if (difference.Y > viewport.Y + viewport.Height - borderWidth)
+                {
+                    cameraPos.Y += borderWidth - (viewport.Height - (difference.Y));
+                }
+                This.Game.CurrentLevel.Camera.Pos = cameraPos;
             }
         }
 
