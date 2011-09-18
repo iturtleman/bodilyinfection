@@ -108,6 +108,10 @@ namespace BodilyInfection
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 600;
+            graphics.IsFullScreen = false;
         }
         #endregion Constructor
 
@@ -123,6 +127,11 @@ namespace BodilyInfection
             // todo: Add your initialization logic here
 
             base.Initialize();
+
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 600;
+            graphics.IsFullScreen = false;
+            graphics.ApplyChanges();
 
             //Initialize Collision Cell Size
             Collision.gridCellHeight = 40;
