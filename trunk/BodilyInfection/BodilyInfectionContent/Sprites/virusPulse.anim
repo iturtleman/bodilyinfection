@@ -1,321 +1,321 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Animation>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="-7.5, -7.5" AnimationPeg="-7.5, -7.5"  >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="-7.5, -7.5" AnimationPeg="15, 15"  >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,0" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,0" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,0" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,0" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,0" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,0" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,0" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,0" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,0" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,0" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,0" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,0" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,0" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,0" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,0" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,0" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,0" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,0" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,0" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,0" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,30" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,30" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,30" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,30" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,30" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,30" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,30" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,30" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,30" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,30" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,30" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,30" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,30" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,30" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,30" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,30" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,30" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,30" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,30" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,30" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,30" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,30" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,60" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,60" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,60" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,60" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,60" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,60" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,60" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,60" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,60" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,60" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,60" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,60" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,60" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,60" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,60" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,60" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,60" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,60" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,60" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,60" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,60" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,60" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,90" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,90" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,90" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,90" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,90" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,90" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,90" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,90" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,90" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,90" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,90" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,90" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,90" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,90" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,90" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,90" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,90" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,90" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,90" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,90" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,90" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,90" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,120" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,120" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,120" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,120" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,120" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,120" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,120" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,120" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,120" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,120" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,120" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,120" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,120" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,120" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,120" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,120" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,120" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,120" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,120" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,120" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,120" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,120" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,150" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,150" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,150" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,150" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,150" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,150" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,150" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,150" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,150" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,150" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,150" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,150" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,150" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,150" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,150" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,150" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,150" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,150" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,150" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,150" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,150" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,150" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,180" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,180" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,180" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,180" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,180" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,180" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,180" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,180" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,180" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,180" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,180" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,180" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,180" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,180" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,180" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,180" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,180" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,180" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,180" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,180" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,180" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,180" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,210" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,210" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,210" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,210" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,210" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,210" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,210" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,210" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,210" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,210" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,210" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,210" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,210" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,210" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,210" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,210" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,210" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,210" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,210" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,210" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,210" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,210" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,240" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,240" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,240" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,240" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,240" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,240" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,240" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,240" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,240" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,240" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,240" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,240" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,240" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,240" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,240" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="210,240" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,240" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="240,240" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,240" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="270,240" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,240" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="300,240" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,270" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="0,270" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,270" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="30,270" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,270" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="60,270" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,270" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="90,270" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,270" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="120,270" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,270" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="150,270" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
-  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,270" AnimationPeg="-7.5, -7.5" >
+  <Frame SpriteSheet="virusPulse" FrameDelay="20" Width="30" Height="30" TLPos="180,270" AnimationPeg="15, 15" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
   </Frame>
 </Animation>
