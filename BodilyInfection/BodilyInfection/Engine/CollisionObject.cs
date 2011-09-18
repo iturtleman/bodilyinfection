@@ -35,6 +35,11 @@ namespace BodilyInfection
         public abstract void addToBucket(WorldObject worldObject);
 
         /// <summary>
+        /// Holds the points that make up the linestrip for drawing
+        /// </summary>
+        public VertexPositionColor[] drawPoints;
+
+        /// <summary>
         /// Call correct detectCollision function.
         /// </summary>
         public bool detectCollision(WorldObject w1, CollisionObject c2, WorldObject w2)
@@ -101,7 +106,7 @@ namespace BodilyInfection
             return returnValue;
         }
         
-        public abstract void draw();
+        public abstract void draw(WorldObject world);
 
         public override int GetHashCode(){
             return id;

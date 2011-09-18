@@ -18,6 +18,18 @@ namespace BodilyInfection
             radius = _radius;
             id = _id;
             type = 'c';
+
+
+            //create collision object's points for drawing
+            int numOfPoints = (int)(radius * 2);
+            drawPoints = new VertexPositionColor[numOfPoints + 1];
+            for (int i = 0; i <= numOfPoints; i++)
+            {
+                drawPoints[i].Position = new Vector3(radius * (float)Math.Cos(((double)i / (double)numOfPoints) * (Math.PI * 2))
+                                                   , radius * (float)Math.Sin(((double)i / (double)numOfPoints) * (Math.PI * 2))
+                                                   , 0f);
+                drawPoints[i].Color = Color.Red;
+            }
         }
 
         /// <summary>
@@ -91,20 +103,15 @@ namespace BodilyInfection
             }
         }
 
-        public override void draw()
+        public override void draw(WorldObject world)
         {
-            int numOfPoints = (int)(radius * 2);
-            VertexPositionColor[] drawPoints = new VertexPositionColor[numOfPoints + 1];
+            Collision.basicEffect.World = Matrix.CreateTranslation(new Vector3(world.Pos,0) );
 
-            for(int i=0; i<=numOfPoints; i++)
+            foreach (EffectPass pass in Collision.basicEffect.CurrentTechnique.Passes)
             {
-                drawPoints[i].Position = new Vector3(parentObject.Pos.X + radius * (float)Math.Cos(((double)i / (double)numOfPoints) * (Math.PI * 2))
-                                                   , parentObject.Pos.Y + radius * (float)Math.Sin(((double)i / (double)numOfPoints) * (Math.PI * 2))
-                                                   , 0f);
-                drawPoints[i].Color = Color.Red;
+                pass.Apply();
+                This.Game.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineStrip, drawPoints, 0, drawPoints.Length-1);
             }
-
-            This.Game.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineStrip, drawPoints, 0, numOfPoints);
         }
     }
 }

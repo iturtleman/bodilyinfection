@@ -18,6 +18,20 @@ namespace BodilyInfection
             bottomRightPointOffset = _bottomRightPointOffset;
             id = _id;
             type = 'a';
+
+
+            //create collision object's points for drawing
+            drawPoints = new VertexPositionColor[5];
+            drawPoints[0].Position = new Vector3(topLeftPointOffset.X, topLeftPointOffset.Y, 0f);
+            drawPoints[0].Color = Color.Red;
+            drawPoints[1].Position = new Vector3(topLeftPointOffset.X, bottomRightPointOffset.Y, 0f);
+            drawPoints[1].Color = Color.Red;
+            drawPoints[2].Position = new Vector3(bottomRightPointOffset.X, bottomRightPointOffset.Y, 0f);
+            drawPoints[2].Color = Color.Red;
+            drawPoints[3].Position = new Vector3(bottomRightPointOffset.X, topLeftPointOffset.Y, 0f);
+            drawPoints[3].Color = Color.Red;
+            drawPoints[4].Position = new Vector3(topLeftPointOffset.X, topLeftPointOffset.Y, 0f);
+            drawPoints[4].Color = Color.Red;
         }
 
         /// <summary>
@@ -91,22 +105,17 @@ namespace BodilyInfection
             }
         }
 
-        public override void draw()
+        public override void draw(WorldObject world)
         {
-            VertexPositionColor[] drawPoints = new VertexPositionColor[5];
+            Collision.basicEffect.World = Matrix.CreateTranslation(new Vector3(world.Pos,0) );
 
-            drawPoints[0].Position = new Vector3(parentObject.Pos.X + topLeftPointOffset.X, parentObject.Pos.Y + topLeftPointOffset.Y, 0f);
-            drawPoints[0].Color = Color.Red;
-            drawPoints[1].Position = new Vector3(parentObject.Pos.X + topLeftPointOffset.X, parentObject.Pos.Y + bottomRightPointOffset.Y, 0f);
-            drawPoints[1].Color = Color.Red;
-            drawPoints[2].Position = new Vector3(parentObject.Pos.X + bottomRightPointOffset.X, parentObject.Pos.Y + bottomRightPointOffset.Y, 0f);
-            drawPoints[2].Color = Color.Red;
-            drawPoints[3].Position = new Vector3(parentObject.Pos.X + bottomRightPointOffset.X, parentObject.Pos.Y + topLeftPointOffset.Y, 0f);
-            drawPoints[3].Color = Color.Red;
-            drawPoints[4].Position = new Vector3(parentObject.Pos.X + topLeftPointOffset.X, parentObject.Pos.Y + topLeftPointOffset.Y, 0f);
-            drawPoints[4].Color = Color.Red;
+            foreach (EffectPass pass in Collision.basicEffect.CurrentTechnique.Passes)
+            {
+                pass.Apply();
+                
 
-            This.Game.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineStrip, drawPoints, 0, 4);
+                This.Game.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineStrip, drawPoints, 0, 4);
+            }
         }
     }
 }
