@@ -68,10 +68,12 @@ namespace BodilyInfection.Levels
             ship.Pos = l.PlayerSpawnPoint;
             ship.AnimationSpeed = 1;
             Text livesText = new Text("livesText", "Text", "Lives Remaining:");
-            livesText.Pos = new Vector2(This.Game.GraphicsDevice.Viewport.Width - livesText.GetAnimation().Width - 50, 0);
+            livesText.Pos = new Vector2(This.Game.GraphicsDevice.Viewport.X + This.Game.GraphicsDevice.Viewport.Width - livesText.GetAnimation().Width - 50,
+                                        This.Game.GraphicsDevice.Viewport.Y);
             livesText.DisplayColor = Color.Red;
             Text lives = new Text("lives", "Text", (ship as Ship).RemainingLives.ToString());        
-            lives.Pos = new Vector2(This.Game.GraphicsDevice.Viewport.Width - 50, 0);
+            lives.Pos = new Vector2(This.Game.GraphicsDevice.Viewport.X + This.Game.GraphicsDevice.Viewport.Width - 50,
+                                    This.Game.GraphicsDevice.Viewport.Y);
             lives.DisplayColor = Color.Red;
         }
 
