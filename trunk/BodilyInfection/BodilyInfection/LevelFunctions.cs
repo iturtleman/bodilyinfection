@@ -35,7 +35,7 @@ namespace BodilyInfection
         public static void SpawnEnemies(EnemyFactory constructEnemy, int numEnemies)
         {
             for (int i = 0; i < numEnemies; i++)
-            {
+            {             
                 Sprite virus = constructEnemy();
                 virus.Pos = new Vector2(rand.Next(0, This.Game.GraphicsDevice.Viewport.Width), rand.Next(0, This.Game.GraphicsDevice.Viewport.Height));
                 virus.AnimationSpeed = 1;

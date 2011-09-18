@@ -79,7 +79,13 @@ namespace BodilyInfection
                 }
                 if (gameTime.TotalGameTime > timeOfInfection + timeToExplode)
                 {
-                    LevelFunctions.SpawnEnemies(delegate() { return new Virus("virus", new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"))); }, 5, Pos);
+                    LevelFunctions.SpawnEnemies(delegate() 
+                    {
+                        Actor virusActor = new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"));
+                        virusActor.Animations.Add(This.Game.CurrentLevel.GetAnimation("BlueExplosion2.anim"));
+                        return new Virus("virus", virusActor);
+                    }, 5, Pos);
+
                     This.Game.CurrentLevel.RemoveSprite(this);
                 }
             }

@@ -163,6 +163,7 @@ namespace BodilyInfection
                                 {
                                     if (!shieldOn && !((Virus)collision.Item2).Harmless)
                                     {
+                                        // mActor.CurrentAnimation = 1;
                                         Pos = This.Game.CurrentLevel.PlayerSpawnPoint;
 
                                         EnableShield();

@@ -15,6 +15,7 @@ namespace BodilyInfection
             Harmless = true;
             Invincible = true;
             Frozen = true;
+            IsDead = false;
 
             birth = TimeSpan.Zero;
         }
@@ -25,7 +26,7 @@ namespace BodilyInfection
         public bool Harmless { get; set; }
         public bool Invincible { get; set; }
         public bool Frozen { get; set; }
-
+        public bool IsDead { get; set; }
 
         #endregion Properties
 
@@ -35,10 +36,13 @@ namespace BodilyInfection
 
         private float movementSpeed = 2;
 
-
         private TimeSpan lifeSpan;
 
         private TimeSpan harmlessTime = new TimeSpan(0, 0, 0, 0, 500);
+
+        private TimeSpan timeOfDeath;
+
+        private TimeSpan explosionLength = new TimeSpan(0, 0, 0, 0, 250);
 
         private TimeSpan birth;
 
@@ -58,7 +62,7 @@ namespace BodilyInfection
                 Sprite ship = This.Game.CurrentLevel.GetSprite("ship");
                 Vector2 minVector = ship.Pos;
                 float minDistance = (Pos - ship.Pos).Length();
-                
+
 
 
                 #region harmless timing
@@ -114,6 +118,15 @@ namespace BodilyInfection
                 }
                 #endregion follow ship
 
+                #region explosion animation removal
+                if ((gameTime.TotalGameTime >= explosionLength + timeOfDeath) && IsDead)
+                {
+
+                    This.Game.CurrentLevel.EnemiesDefeated++;
+                    This.Game.CurrentLevel.RemoveSprite(this);
+                }
+                #endregion explosion animation removal
+
                 #region collision checking
                 if (Collision.collisionData.Count > 0)
                 {
@@ -131,13 +144,26 @@ namespace BodilyInfection
                                     }
                                 }
 
-                                if (collision.Item2.GetType() == typeof(Bullet) && (Invincible == false))
+                                if (collision.Item2.GetType() == typeof(Bullet))
                                 {
-                                    This.Game.CurrentLevel.RemoveSprite(this);
-                                    This.Game.CurrentLevel.EnemiesDefeated++;
+                                    if (!IsDead && !Invincible)
+                                    {
+                                        // virus is dead, snapshot time of death
+                                        Invincible = true;
+                                        Harmless = true;
+
+                                        timeOfDeath = gameTime.TotalGameTime;
+                                        IsDead = true;
+                                    }
+
+                                    if (IsDead)
+                                    {
+                                        // change the animation if the virus is dead
+                                        mActor.Frame = 0;
+                                        mActor.CurrentAnimation = 1;
+                                    }
+
                                 }
-
-
                             }
                         }
                     }
@@ -147,5 +173,5 @@ namespace BodilyInfection
 
         #endregion
         }
-       }
+    }
 }
