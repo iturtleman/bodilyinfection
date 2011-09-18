@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Animation>
+  <Frame bulletexplosionSheet="bulletexplosion" FrameDelay="20" Width="16" Height="16" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame bulletexplosionSheet="bulletexplosion" FrameDelay="20" Width="16" Height="16" TLPos="16,0" AnimationPeg="0,0" />
+  <Frame bulletexplosionSheet="bulletexplosion" FrameDelay="20" Width="16" Height="16" TLPos="32,0" AnimationPeg="0,0" />
+  <Frame bulletexplosionSheet="bulletexplosion" FrameDelay="20" Width="16" Height="16" TLPos="48,0" AnimationPeg="0,0" />
+  <Frame bulletexplosionSheet="bulletexplosion" FrameDelay="20" Width="16" Height="16" TLPos="0,16" AnimationPeg="0,0" />
+  <Frame bulletexplosionSheet="bulletexplosion" FrameDelay="20" Width="16" Height="16" TLPos="16,16" AnimationPeg="0,0" />
+  <Frame bulletexplosionSheet="bulletexplosion" FrameDelay="20" Width="16" Height="16" TLPos="32,16" AnimationPeg="0,0" />
+  <Frame bulletexplosionSheet="bulletexplosion" FrameDelay="20" Width="16" Height="16" TLPos="48,16" AnimationPeg="0,0" />
+  <Frame bulletexplosionSheet="bulletexplosion" FrameDelay="20" Width="16" Height="16" TLPos="0,32" AnimationPeg="0,0" />
+  <Frame bulletexplosionSheet="bulletexplosion" FrameDelay="20" Width="16" Height="16" TLPos="16,32" AnimationPeg="0,0" />
+  <Frame bulletexplosionSheet="bulletexplosion" FrameDelay="20" Width="16" Height="16" TLPos="32,32" AnimationPeg="0,0" />
+  <Frame bulletexplosionSheet="bulletexplosion" FrameDelay="20" Width="16" Height="16" TLPos="48,32" AnimationPeg="0,0" />
+  <Frame bulletexplosionSheet="bulletexplosion" FrameDelay="20" Width="16" Height="16" TLPos="0,48" AnimationPeg="0,0" />
+  <Frame bulletexplosionSheet="bulletexplosion" FrameDelay="20" Width="16" Height="16" TLPos="16,48" AnimationPeg="0,0" />
+  <Frame bulletexplosionSheet="bulletexplosion" FrameDelay="20" Width="16" Height="16" TLPos="32,48" AnimationPeg="0,0" />
+  <Frame bulletexplosionSheet="bulletexplosion" FrameDelay="20" Width="16" Height="16" TLPos="48,48" AnimationPeg="0,0" />
+  
+</Animation>
