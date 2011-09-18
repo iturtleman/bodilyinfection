@@ -16,7 +16,16 @@ namespace BodilyInfection
 
         internal static void ToGameOver(GameTime gameTime)
         {
-            This.Game.SetCurrentLevel("GameOver");
+            Condition oldWin = This.Game.CurrentLevel.WinCondition;
+            Behavior oldEnd = This.Game.CurrentLevel.EndBehavior;
+            This.Game.CurrentLevel.WinCondition = delegate { return true; };
+            This.Game.CurrentLevel.EndBehavior = delegate
+            {
+                // Replace the old win condition
+                This.Game.CurrentLevel.WinCondition = oldWin;
+                This.Game.CurrentLevel.EndBehavior = oldEnd;
+                This.Game.SetCurrentLevel("GameOver");
+            };
         }
 
         /// <summary>

@@ -10,6 +10,21 @@ using System.Xml.Linq;
 namespace BodilyInfection
 {
 
+    class AnimationDoesNotExistException : Exception
+    {
+        private string name;
+
+        public AnimationDoesNotExistException(string name)
+        {
+            this.name = name;
+        }
+
+        public override string ToString()
+        {
+            return String.Format("Animation {0} has not been loaded.", name);
+        }
+    }
+
     /// <summary>
     /// This class loads sets of images into
     /// an animation set.
@@ -24,6 +39,7 @@ namespace BodilyInfection
 
         #region Variables
         public List<SpriteFrame> Frames = new List<SpriteFrame>();
+
         #endregion
 
         #region Constructors
@@ -36,9 +52,14 @@ namespace BodilyInfection
         public Animation(string filename) : this(filename, filename) { }
 
         public Animation(string filename, string name)
+            : this(filename, name, "Sprites")
+        {
+        }
+
+        public Animation(string filename, string name, string contentSubfolder)
         {
             Name = name;
-            LoadAnimation(filename);
+            LoadAnimation(filename, contentSubfolder);
             Built = true;
         }
         #endregion
@@ -48,9 +69,9 @@ namespace BodilyInfection
         /// Loads the animations from a file.
         /// </summary>
         /// <param name="filename"></param>
-        private void LoadAnimation(string filename)
+        private void LoadAnimation(string filename, string contentSubfolder)
         {
-            filename = string.Format("Content/Sprites/{0}", filename);
+            filename = String.Format("Content/{0}/{1}", contentSubfolder, filename);
 
             if (!File.Exists(filename))
             {
@@ -68,7 +89,7 @@ namespace BodilyInfection
 
                 ///image
                 string file = frame.Attribute("SpriteSheet").Value;
-                sf.Image = This.Game.Content.Load<Texture2D>(@"Sprites\" + file);
+                sf.Image = This.Game.Content.Load<Texture2D>(String.Format("{0}/{1}", contentSubfolder, file));
 
                 /** sets frame delay */
                 sf.Pause = int.Parse(frame.Attribute("FrameDelay").Value);
@@ -209,6 +230,19 @@ namespace BodilyInfection
         const int _multiplier = 89;
 
         #endregion Compare
+    }
+
+    class BackgroundAnimation : Animation
+    {
+        public BackgroundAnimation(string filename)
+            : this(filename, filename)
+        {
+        }
+
+        public BackgroundAnimation(string filename, string name)
+            : base(filename, name, "Backgrounds")
+        {
+        }
     }
 
     class DummyAnimation : Animation

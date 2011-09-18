@@ -20,8 +20,11 @@ namespace BodilyInfection.Levels
             levelCompleted = false;
 
             Level l = This.Game.CurrentLevel;
+            l.AddAnimation(new BackgroundAnimation("title.anim"));
 
-            Text text = new Text("title", "Text", "BodilyInfection Title Screen Placeholder");
+            l.Background = new Background("title", new Actor(l.GetAnimation("title.anim")));
+
+            /*Text text = new Text("title", "Text", "BodilyInfection Title Screen Placeholder");
             text.Pos = new Vector2((This.Game.GraphicsDevice.Viewport.Width / 2) - (text.GetAnimation().Width / 2), 150);
             text.DisplayColor = Color.Blue;
 
@@ -36,7 +39,7 @@ namespace BodilyInfection.Levels
                 description.Pos.Y + description.GetAnimation().Height + 5);
             sigh.DisplayColor = Color.Peru;
             
-            l.AddSprite(text);
+            l.AddSprite(text);*/
         }
 
         internal static void Update(GameTime gameTime)

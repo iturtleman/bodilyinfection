@@ -21,7 +21,8 @@ namespace BodilyInfection.Levels
             Level l = This.Game.CurrentLevel;
 
             /// load background
-            l.Background = new Background("default", "bg.bmp");
+            l.AddAnimation(new BackgroundAnimation("level1bg.anim"));
+            l.Background = new Background("level1bg", new Actor(l.GetAnimation("level1bg.anim")));
 
             /** load animations */
             l.AddAnimation(new Animation("rbc.anim"));

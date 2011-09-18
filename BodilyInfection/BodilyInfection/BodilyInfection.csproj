@@ -180,6 +180,14 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\BodilyInfectionContent\Backgrounds\level1bg.anim">
+      <Link>Content\Backgrounds\level1bg.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\BodilyInfectionContent\Backgrounds\title.anim">
+      <Link>Content\Backgrounds\title.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="..\BodilyInfectionContent\Sprites\antibody.anim">
       <Link>Content\Sprites\antibody.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

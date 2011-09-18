@@ -41,11 +41,6 @@ namespace BodilyInfection
         public Behavior EndBehavior { get; set; }
         #endregion Behaviors
 
-        /// <summary>
-        /// A Condition to check if the level has been won
-        /// </summary>
-        public Condition WinCondition { get; set; }
-
         #region Properties
         /// <summary>
         /// Get's level's name
@@ -60,6 +55,11 @@ namespace BodilyInfection
         /// A count of the enemies defeated in this level
         /// </summary>
         public int EnemiesDefeated { get; set; }
+
+        /// <summary>
+        /// A Condition to check if the level has been won
+        /// </summary>
+        public Condition WinCondition { get; set; }
         #endregion Properties
 
         #region Variables
@@ -81,7 +81,7 @@ namespace BodilyInfection
         /// <summary>
         /// This level's Animations
         /// </summary>
-        protected List<Animation> mAnims = new List<Animation>();
+        protected Dictionary<string, Animation> mAnims = new Dictionary<string, Animation>();
 
         protected List<WorldObject> ToAdd = new List<WorldObject>();
         protected List<WorldObject> ToRemove = new List<WorldObject>();
@@ -134,8 +134,8 @@ namespace BodilyInfection
         {
             This.Game.spriteBatch.Begin();
             /** Draw BG */
-            if (Background != null)
-                Background.Draw();
+            /*if (Background != null)
+                Background.Draw(gameTime);*/
 
             /** Draw Sprites*/
             DrawSprites(gameTime);
@@ -186,17 +186,27 @@ namespace BodilyInfection
 
         public void AddAnimation(Animation anim)
         {
-            mAnims.Add(anim);
+            mAnims[anim.Name] = anim;
         }
 
         public Animation GetAnimation(string name)
         {
-            return mAnims.Find(delegate(Animation a) { return a.Name == name; });
+            if (mAnims.ContainsKey(name))
+            {
+                return mAnims[name];
+            }
+            else
+            {
+                throw new AnimationDoesNotExistException(name);
+            }
         }
 
         public void RemoveAnimation(Animation anim)
         {
-            mAnims.Remove(anim);
+            if (mAnims.ContainsKey(anim.Name))
+            {
+                mAnims.Remove(anim.Name);
+            }
         }
 
         public void AddActor(string name, Actor actor)
