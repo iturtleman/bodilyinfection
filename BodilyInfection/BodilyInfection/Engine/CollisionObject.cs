@@ -25,6 +25,13 @@ namespace BodilyInfection
         public WorldObject parentObject { get; set; }
 
         /// <summary>
+        /// Previous bucket locations
+        /// </summary>
+        public List<Vector2> bucketLocations;
+
+        public Vector2 previousPos;
+
+        /// <summary>
         /// Determines which grid cells the object is in
         /// </summary>
         public abstract List<Vector2> gridLocations();
@@ -44,7 +51,7 @@ namespace BodilyInfection
         /// </summary>
         public bool detectCollision(WorldObject w1, CollisionObject c2, WorldObject w2)
         {
-            bool returnValue = true;
+            bool returnValue = false;
 
             char[] types_cArray = new char[2];
             types_cArray[0] = type;
@@ -72,10 +79,10 @@ namespace BodilyInfection
                     returnValue = Collision.detectCollision(w1, (Collision_AABB)this, w2, (Collision_BoundingCircle)c2);
                     break;
                 case "co":
-                    //returnValue = Collision.detectCollision((Collision_BoundingCircle)this, (Collision_OBB)collisionObject);
+                    returnValue = Collision.detectCollision(w2, (Collision_OBB)c2, w1, (Collision_BoundingCircle)this);
                     break;
                 case "oc":
-                    //returnValue = Collision.detectCollision((Collision_OBB)this, (Collision_BoundingCircle)collisionObject);
+                    returnValue = Collision.detectCollision(w1, (Collision_OBB)this, w2, (Collision_BoundingCircle)c2);
                     break;
                 case "ce":
                     //returnValue = Collision.detectCollision((Collision_BoundingCircle)this, (Collision_BoundingEllipse)collisionObject);
