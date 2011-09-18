@@ -19,6 +19,7 @@ namespace BodilyInfection
         //Tuple value defs: 1=Key's Collision Object;  2=WorldObject that collided with Key;  3=Value 2's Key that Collided
         public static Dictionary<WorldObject, List<Tuple<CollisionObject, WorldObject, CollisionObject>>> collisionData;
         public static bool ShowCollisionData { get; set; }
+        public static BasicEffect basicEffect = new BasicEffect(This.Game.GraphicsDevice);
 
         public static void createGrid(int bottomLeftX, int bottomLeftY, int topRightX, int topRightY)
         {
@@ -80,7 +81,7 @@ namespace BodilyInfection
                     list.RemoveAt(0);
                     for (int k = 0; k < list.Count; k++)
                     {
-                        List<Tuple<CollisionObject, CollisionObject>> detectedCollisions = detectCollision(front,list[k]);
+                        List<Tuple<CollisionObject, CollisionObject>> detectedCollisions = detectCollision(front, list[k]);
                         if (detectedCollisions.Count != 0)
                         {
                             if (!collisionData.ContainsKey(front))
@@ -157,20 +158,38 @@ namespace BodilyInfection
         {
             if (ShowCollisionData)
             {
-                /*for (int i = 0; i < gridPoints.Count; i++)
-                    This.Game.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineList, gridPoints[i], 0, 1);
+                //basicEffect.World = Matrix.Identity;
+                float height = This.Game.GraphicsDevice.Viewport.Height;
+                float width = This.Game.GraphicsDevice.Viewport.Width;
+                basicEffect.View = Matrix.CreateLookAt(new Vector3(This.Game.GraphicsDevice.Viewport.X + width / 2, This.Game.GraphicsDevice.Viewport.Y + height / 2, -10),
+                                                       new Vector3(This.Game.GraphicsDevice.Viewport.X + width / 2, This.Game.GraphicsDevice.Viewport.Y + height / 2, 0), new Vector3(0, -1, 0));
+                basicEffect.Projection = Matrix.CreateOrthographic(This.Game.GraphicsDevice.Viewport.Width, This.Game.GraphicsDevice.Viewport.Height, 1, 20);
 
-                foreach (WorldObject c in This.Game.CurrentLevel.mSprites)
+
+                drawGraph();
+
+                foreach (WorldObject world in This.Game.CurrentLevel.mSprites)
                 {
-                    foreach (CollisionObject collisionObject in c.GetCollision())
+                    foreach (CollisionObject collisionObject in world.GetCollision())
                     {
-                        collisionObject.draw();
+                        collisionObject.draw(world);
                     }
-                }*/
+                }
             }
         }
 
-        
+        private static void drawGraph()
+        {
+            Collision.basicEffect.World = Matrix.Identity;
+
+            foreach (EffectPass pass in Collision.basicEffect.CurrentTechnique.Passes)
+            {
+                pass.Apply();
+                for (int i = 0; i < gridPoints.Count; i++)
+                    This.Game.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineList, gridPoints[i], 0, 1);
+            }
+        }
+
         public static void update()
         {
             fillBucket();
@@ -196,7 +215,7 @@ namespace BodilyInfection
                 {
                     if (cw1.detectCollision(w1, cw2, w2))
                     {
-                        output.Add(new Tuple<CollisionObject,CollisionObject>(cw1,cw2));
+                        output.Add(new Tuple<CollisionObject, CollisionObject>(cw1, cw2));
                     }
                 }
 
