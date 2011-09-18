@@ -10,11 +10,11 @@ namespace BodilyInfection
     class AudioManager
     {
         public Dictionary<string, SoundEffect> soundEffects = new Dictionary<string, SoundEffect>();
-        public Dictionary<string, Song> backgroundMusic = new Dictionary<string,Song>();
+        public Dictionary<string, Song> backgroundMusic = new Dictionary<string, Song>();
 
         public void AddBackgroundMusic(string name)
         {
-            if ( !backgroundMusic.ContainsKey(name))    // load fix
+            if (!backgroundMusic.ContainsKey(name))    // load fix
                 backgroundMusic.Add(name, This.Game.Content.Load<Song>("Audio/" + name));
         }
 
@@ -24,6 +24,7 @@ namespace BodilyInfection
             {
                 try
                 {
+                    MediaPlayer.IsRepeating = true;
                     MediaPlayer.Play(backgroundMusic[name]);
                 }
                 catch (InvalidOperationException)
@@ -43,10 +44,12 @@ namespace BodilyInfection
 
         public void Pause()
         {
-            if(MediaPlayer.State == MediaState.Playing){
+            if (MediaPlayer.State == MediaState.Playing)
+            {
                 MediaPlayer.Pause();
             }
-            else if(MediaPlayer.State == MediaState.Paused){
+            else if (MediaPlayer.State == MediaState.Paused)
+            {
                 MediaPlayer.Resume();
             }
         }
