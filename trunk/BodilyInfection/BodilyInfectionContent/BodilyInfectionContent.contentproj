@@ -42,6 +42,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Backgrounds\level1bg.anim">
+      <Name>level1bg</Name>
+    </None>
+    <None Include="Backgrounds\title.anim">
+      <Name>title</Name>
+    </None>
     <None Include="Sprites\antibody.anim">
       <Name>antibody</Name>
       <SubType>Designer</SubType>
@@ -551,6 +557,13 @@
       <Name>slow_view</Name>
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Backgrounds\title.jpg">
+      <Name>title</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>

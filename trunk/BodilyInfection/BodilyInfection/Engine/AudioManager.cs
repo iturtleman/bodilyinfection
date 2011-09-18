@@ -22,7 +22,14 @@ namespace BodilyInfection
         {
             if (backgroundMusic.ContainsKey(name))
             {
-                MediaPlayer.Play(backgroundMusic[name]);
+                try
+                {
+                    MediaPlayer.Play(backgroundMusic[name]);
+                }
+                catch (InvalidOperationException)
+                {
+                    MediaPlayer.Stop();
+                }
             }
         }
 

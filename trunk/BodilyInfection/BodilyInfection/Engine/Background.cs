@@ -5,18 +5,22 @@ using System.Text;
 
 namespace BodilyInfection
 {
-    class Background
+    class Background : Sprite
     {
-        private string p;
-        private string p_2;
 
-        public Background(string p, string p_2)
+        public Background(string name, Actor actor)
+            : this(name, actor, 0)
         {
-            // todo: Complete member initialization
-            this.p = p;
-            this.p_2 = p_2;
         }
-        internal void Draw()
+
+        public Background(string name, Actor actor, int layer)
+            :base(name, actor)
+        {
+            // Allows layering of background objects
+            ZOrder = int.MinValue + layer;
+        }
+
+        /*internal void Draw()
         {
             
         }
@@ -24,6 +28,6 @@ namespace BodilyInfection
         internal void DrawCollisions()
         {
             
-        }
+        }*/
     }
 }

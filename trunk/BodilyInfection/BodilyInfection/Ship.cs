@@ -20,6 +20,7 @@ namespace BodilyInfection
             : base(name, actor)
         {
             Sprite cannon = new Cannon(name+"_cannon", new Actor(This.Game.CurrentLevel.GetAnimation("cannon.anim")), name, input);
+            cannon.ZOrder = ZOrder + 1;
 
             RemainingLives = DefaultLives;
             this.gamepad = input;
@@ -42,7 +43,7 @@ namespace BodilyInfection
         private string shieldName = null;
         private TimeSpan shieldDuration = new TimeSpan(0, 0, 0, 4, 0);
         private TimeSpan shieldEndTime = TimeSpan.MinValue;
-        private TimeSpan shootCooldown = new TimeSpan(0, 0, 0, 0, 100/*500*/);
+        private TimeSpan shootCooldown = new TimeSpan(0, 0, 0, 0, 100);
         private TimeSpan cooldownEndTime = TimeSpan.MinValue;
         private Vector2 lThumbstick;
         private Vector2 rThumbstick;
@@ -52,6 +53,10 @@ namespace BodilyInfection
 
         public void Update(GameTime gameTime)
         {
+            if (shieldEndTime == TimeSpan.MinValue)
+            {
+                shieldEndTime = gameTime.TotalGameTime + shieldDuration;
+            }
             // Get the game pad state.
             GamePadState currentState = GamePad.GetState(gamepad);
             if (currentState.IsConnected)
@@ -190,6 +195,7 @@ namespace BodilyInfection
         {
             shieldOn = true;
             Sprite shield = new Shield(shieldName, new Actor(This.Game.CurrentLevel.GetAnimation("shield.anim")), Name);
+            shield.ZOrder = ZOrder + 2;
         }
 
         private void DisableShield()
@@ -224,7 +230,7 @@ namespace BodilyInfection
             else
             {
                 mVisible = true;
-                Pos = ship.Pos - ship.GetAnimation().AnimationPeg + GetAnimation().AnimationPeg;
+                Pos = ship.Pos + ship.GetAnimation().AnimationPeg - GetAnimation().AnimationPeg;
 
                 #region Rotation
                 GamePadState currentState = GamePad.GetState(gamepad);
@@ -269,7 +275,7 @@ namespace BodilyInfection
             else
             {
                 mVisible = true;
-                Pos = ship.Pos - ship.GetAnimation().AnimationPeg + GetAnimation().AnimationPeg;
+                Pos = ship.Pos + ship.GetAnimation().AnimationPeg - GetAnimation().AnimationPeg;
             }
         }
     }

@@ -118,9 +118,7 @@ namespace BodilyInfection
                 {
                     //obtain current peg 
                     Vector2 ppos = frame.AnimationPeg;
-                    mActor.Frame++;
-                    if (mActor.Frame > mActor.Animations[mActor.CurrentAnimation].NumFrames - 1)
-                        mActor.Frame = 0;
+                    mActor.Frame = (mActor.Frame + 1) % mActor.Animations[mActor.CurrentAnimation].NumFrames;
                     //update frame so we don't need to worry
                     frame = mActor.Animations[mActor.CurrentAnimation].Frames[mActor.Frame];
                     //obtain next peg
