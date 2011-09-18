@@ -109,6 +109,22 @@ namespace BodilyInfection
                             new Vector2(brx, bry)
                             ));
                     }
+                    else if (collision.Attribute("Type").Value == "OBB")
+                    {
+                        string[] c1 = collision.Attribute("Corner1").Value.Split(',');
+                        float c1x = float.Parse(c1[0]);
+                        float c1y = float.Parse(c1[1]);
+                        string[] c2 = collision.Attribute("Corner2").Value.Split(',');
+                        float c2x = float.Parse(c2[0]);
+                        float c2y = float.Parse(c2[1]);
+                        float thickness = float.Parse(collision.Attribute("Thickness").Value.ToString());
+                        sf.CollisionData.Add(new Collision_OBB(
+                            idCount++,
+                            new Vector2(c1x, c1y),
+                            new Vector2(c2x, c2y),
+                            thickness
+                            ));
+                    }
                 }
 
 

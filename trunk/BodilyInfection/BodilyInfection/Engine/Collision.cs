@@ -223,7 +223,7 @@ namespace BodilyInfection
         }
 
         /// <summary>
-        /// Determine if Collision_BoundingCircle and Collision_BoundingCircle collide
+        /// Determine if BoundingCircle and BoundingCircle collide
         /// </summary>
         public static bool detectCollision(WorldObject w1, Collision_BoundingCircle c1, WorldObject w2, Collision_BoundingCircle c2)
         {
@@ -234,7 +234,7 @@ namespace BodilyInfection
         }
 
         /// <summary>
-        /// Determine if CollisionObject and Collision_BoundingCircle collide
+        /// Determine if AABB and BoundingCircle collide
         /// </summary>
         public static bool detectCollision(WorldObject w1, Collision_AABB a1, WorldObject w2, Collision_BoundingCircle c1)
         {
@@ -291,6 +291,29 @@ namespace BodilyInfection
                         return true;
                     break;
             }
+
+
+            return false;
+        }
+
+        /// <summary>
+        /// Determine if OBB and BoundingCircle collide
+        /// </summary>
+        public static bool detectCollision(WorldObject w1, Collision_OBB o1, WorldObject w2, Collision_BoundingCircle c1)
+        {
+            Vector2 c1Center = c1.centerPointOffset + w2.Pos;
+            Vector2 o1Anchor = new Vector2(w1.Pos.X, w1.Pos.Y);
+
+            Vector2 drawPoint0 = new Vector2(o1.drawPoints[0].Position.X + o1Anchor.X, o1.drawPoints[0].Position.Y + o1Anchor.Y);
+            Vector2 drawPoint1 = new Vector2(o1.drawPoints[1].Position.X + o1Anchor.X, o1.drawPoints[1].Position.Y + o1Anchor.Y);
+            Vector2 drawPoint2 = new Vector2(o1.drawPoints[2].Position.X + o1Anchor.X, o1.drawPoints[2].Position.Y + o1Anchor.Y);
+
+            Vector2 C = drawPoint1 + Vector2.Dot(c1Center - drawPoint1, Vector2.Normalize(drawPoint1 - drawPoint0)) * Vector2.Normalize(drawPoint1 - drawPoint0);
+            Vector2 D = drawPoint1 + Vector2.Dot(c1Center - drawPoint1, Vector2.Normalize(drawPoint1 - drawPoint2)) * Vector2.Normalize(drawPoint1 - drawPoint2);
+
+            if (((distanceSquared(C.X, C.Y, drawPoint1.X, drawPoint1.Y) <= c1.radius * c1.radius) || (distanceSquared(C.X, C.Y, drawPoint0.X, drawPoint0.Y) <= c1.radius * c1.radius)) &&
+                ((distanceSquared(D.X, D.Y, drawPoint1.X, drawPoint1.Y) <= c1.radius * c1.radius) || (distanceSquared(D.X, D.Y, drawPoint2.X, drawPoint2.Y) <= c1.radius * c1.radius)))
+                return true;
 
 
             return false;
