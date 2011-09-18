@@ -14,7 +14,8 @@ namespace BodilyInfection
 
         public void AddBackgroundMusic(string name)
         {
-            backgroundMusic.Add(name, This.Game.Content.Load<Song>("Audio/" + name));
+            if ( !backgroundMusic.ContainsKey(name))    // load fix
+                backgroundMusic.Add(name, This.Game.Content.Load<Song>("Audio/" + name));
         }
 
         public void PlayBackgroundMusic(string name)
