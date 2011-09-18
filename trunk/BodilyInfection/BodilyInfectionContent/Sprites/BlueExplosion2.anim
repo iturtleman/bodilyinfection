@@ -35,4 +35,5 @@
   </Frame>
   <Frame SpriteSheet="BlueExplosion2" FrameDelay="20" Width="30" Height="30" TLPos="60,90" AnimationPeg="0,0" >
     <Collision Type="Circle" Pos="15.0, 15.0" Radius="15.0"/>
+  </Frame>
 </Animation>

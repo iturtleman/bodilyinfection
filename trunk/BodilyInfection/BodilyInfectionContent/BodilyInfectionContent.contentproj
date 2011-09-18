@@ -66,6 +66,9 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <None Include="Sprites\BlueExplosion2.anim">
+      <Name>BlueExplosion2</Name>
+    </None>
     <None Include="Sprites\cannon.anim">
       <SubType>Designer</SubType>
       <Name>cannon</Name>
@@ -123,6 +126,9 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
+    <None Include="Sprites\xplosion17.anim">
+      <Name>xplosion17</Name>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Backgrounds\abstract.jpg">
@@ -545,6 +551,20 @@
       <Name>slow_view</Name>
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprites\xplosion17.png">
+      <Name>xplosion17</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprites\BlueExplosion2.png">
+      <Name>BlueExplosion2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
