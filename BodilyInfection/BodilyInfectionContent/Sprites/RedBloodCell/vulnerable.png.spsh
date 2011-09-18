@@ -5,47 +5,18 @@
   <Frame Height="26" Width="26" TLPos="52,0" />
   <Frame Height="26" Width="26" TLPos="78,0" />
   <Frame Height="26" Width="26" TLPos="104,0" />
-  <Frame Height="26" Width="26" TLPos="130,0" />
-  <Frame Height="26" Width="26" TLPos="156,0" />
   <Frame Height="26" Width="26" TLPos="0,26" />
   <Frame Height="26" Width="26" TLPos="26,26" />
   <Frame Height="26" Width="26" TLPos="52,26" />
   <Frame Height="26" Width="26" TLPos="78,26" />
   <Frame Height="26" Width="26" TLPos="104,26" />
-  <Frame Height="26" Width="26" TLPos="130,26" />
-  <Frame Height="26" Width="26" TLPos="156,26" />
   <Frame Height="26" Width="26" TLPos="0,52" />
   <Frame Height="26" Width="26" TLPos="26,52" />
   <Frame Height="26" Width="26" TLPos="52,52" />
   <Frame Height="26" Width="26" TLPos="78,52" />
   <Frame Height="26" Width="26" TLPos="104,52" />
-  <Frame Height="26" Width="26" TLPos="130,52" />
-  <Frame Height="26" Width="26" TLPos="156,52" />
   <Frame Height="26" Width="26" TLPos="0,78" />
   <Frame Height="26" Width="26" TLPos="26,78" />
   <Frame Height="26" Width="26" TLPos="52,78" />
   <Frame Height="26" Width="26" TLPos="78,78" />
-  <Frame Height="26" Width="26" TLPos="104,78" />
-  <Frame Height="26" Width="26" TLPos="130,78" />
-  <Frame Height="26" Width="26" TLPos="156,78" />
-  <Frame Height="26" Width="26" TLPos="0,104" />
-  <Frame Height="26" Width="26" TLPos="26,104" />
-  <Frame Height="26" Width="26" TLPos="52,104" />
-  <Frame Height="26" Width="26" TLPos="78,104" />
-  <Frame Height="26" Width="26" TLPos="104,104" />
-  <Frame Height="26" Width="26" TLPos="130,104" />
-  <Frame Height="26" Width="26" TLPos="156,104" />
-  <Frame Height="26" Width="26" TLPos="0,130" />
-  <Frame Height="26" Width="26" TLPos="26,130" />
-  <Frame Height="26" Width="26" TLPos="52,130" />
-  <Frame Height="26" Width="26" TLPos="78,130" />
-  <Frame Height="26" Width="26" TLPos="104,130" />
-  <Frame Height="26" Width="26" TLPos="130,130" />
-  <Frame Height="26" Width="26" TLPos="156,130" />
-  <Frame Height="26" Width="26" TLPos="0,156" />
-  <Frame Height="26" Width="26" TLPos="26,156" />
-  <Frame Height="26" Width="26" TLPos="52,156" />
-  <Frame Height="26" Width="26" TLPos="78,156" />
-  <Frame Height="26" Width="26" TLPos="104,156" />
-  <Frame Height="26" Width="26" TLPos="130,156" />
 </SpriteSheet>
