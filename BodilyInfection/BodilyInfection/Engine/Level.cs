@@ -145,7 +145,7 @@ namespace BodilyInfection
             This.Game.spriteBatch.End();
 
             /** Draw Boundary Data */
-            Collision.Draw();
+            Collision.Draw(Camera.GetTransformation(This.Game.GraphicsDevice));
         }
         internal void DrawSprites(Microsoft.Xna.Framework.GameTime gameTime)
         {

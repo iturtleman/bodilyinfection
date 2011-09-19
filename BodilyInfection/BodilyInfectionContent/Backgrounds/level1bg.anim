@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Animation>
   <Frame SpriteSheet="bg" FrameDelay="20" Width="655" Height="480" TLPos="0,0" AnimationPeg="0,0" >
-    <Collision Type="OBB" Corner1="15.0,15.0" Corner2="30.0,45.0" Thickness="20.0"/>
-    <Collision Type="OBB" Corner1="400.0,400.0" Corner2="400.0,500.0" Thickness="200.0"/>
+    <Collision Type="OBB" Corner1="100.0,100.0" Corner2="500.0,100.0" Thickness="20.0"/>
+    <Collision Type="OBB" Corner1="500.0,100.0" Corner2="500.0,500.0" Thickness="20.0"/>
+    <Collision Type="OBB" Corner1="500.0,500.0" Corner2="100.0,500.0" Thickness="20.0"/>
   </Frame>
 </Animation>

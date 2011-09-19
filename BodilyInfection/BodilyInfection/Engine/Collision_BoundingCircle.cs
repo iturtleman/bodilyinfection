@@ -116,9 +116,9 @@ namespace BodilyInfection
             }
         }
 
-        public override void draw(WorldObject world)
+        public override void draw(WorldObject world, Matrix transformation)
         {
-            Collision.basicEffect.World = Matrix.CreateTranslation(new Vector3(world.Pos,0) );
+            Collision.basicEffect.World = Matrix.CreateTranslation(new Vector3(world.Pos,0)) * transformation;
 
             foreach (EffectPass pass in Collision.basicEffect.CurrentTechnique.Passes)
             {

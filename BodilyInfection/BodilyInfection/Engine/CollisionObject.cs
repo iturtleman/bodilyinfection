@@ -112,8 +112,8 @@ namespace BodilyInfection
 
             return returnValue;
         }
-        
-        public abstract void draw(WorldObject world);
+
+        public abstract void draw(WorldObject world, Matrix transformation);
 
         public override int GetHashCode(){
             return id;

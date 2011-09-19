@@ -178,10 +178,10 @@ namespace BodilyInfection
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
+            if (Keyboard.GetState().IsKeyDown(Keys.F12))
+                ShowCollisionData = true;
             if (Keyboard.GetState().IsKeyDown(Keys.F11))
-            {
-                ShowCollisionData = !ShowCollisionData;
-            }
+                ShowCollisionData = false;
 
 
             #endregion Handle input
