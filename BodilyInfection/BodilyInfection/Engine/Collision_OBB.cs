@@ -125,7 +125,7 @@ namespace BodilyInfection
                     else if (y > highestY)
                         highestY = y;
 
-                    int x = (int)(worldObject.Pos.X + drawPoints[i].Position.X) / (int)Collision.gridCellHeight;
+                    int x = (int)(worldObject.Pos.X + drawPoints[i].Position.X) / (int)Collision.gridCellWidth;
                     if (x < lowestX)
                         lowestX = x;
                     else if (x > highestX)
