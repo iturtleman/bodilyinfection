@@ -34,7 +34,7 @@ namespace BodilyInfection
         /// <summary>
         /// Determines which grid cells the object is in
         /// </summary>
-        public abstract List<Vector2> gridLocations();
+        public abstract List<Vector2> gridLocations(WorldObject worldObject);
 
         /// <summary>
         /// Add this CollisionObject to bucket.
