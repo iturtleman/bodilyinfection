@@ -46,6 +46,16 @@ namespace BodilyInfection
             }
         }
 
+        public void PlaySoundEffect(string name, float volume)
+        {
+            if (soundEffects.ContainsKey(name))
+            {
+                var sound = soundEffects[name].CreateInstance();
+                sound.Volume = volume;
+                sound.Play();
+            }
+        }
+
         public void Pause()
         {
             if (MediaPlayer.State == MediaState.Playing)
