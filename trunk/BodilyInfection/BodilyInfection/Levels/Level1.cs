@@ -39,8 +39,23 @@ namespace BodilyInfection.Levels
             l.AddAnimation(new Animation("RedExplosion2.anim"));
 
             /** load music */
-            This.Game.AudioManager.AddBackgroundMusic("slow_view");
-            This.Game.AudioManager.PlayBackgroundMusic("slow_view");
+            var audioMan = This.Game.AudioManager;
+            //bg
+            audioMan.AddBackgroundMusic("level1_bg");
+            audioMan.PlayBackgroundMusic("level1_bg");
+            //ship spawn
+            audioMan.AddSoundEffect("ship_spawn");
+            //ship explode
+            audioMan.AddSoundEffect("ship_explosion");
+            //gun
+            audioMan.AddSoundEffect("gun1");
+            //rbc die
+            audioMan.AddSoundEffect("rbc_die");
+            //rbc infected
+            audioMan.AddSoundEffect("rbc_infect");
+            //virus explode
+            audioMan.AddSoundEffect("virus_explode");
+
 
             /** load sprites */
 

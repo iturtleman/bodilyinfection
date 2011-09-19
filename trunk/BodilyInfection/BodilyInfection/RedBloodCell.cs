@@ -81,6 +81,7 @@ namespace BodilyInfection
                 if (timeOfInfection == TimeSpan.Zero)
                 {
                     timeOfInfection = gameTime.TotalGameTime;
+                    This.Game.AudioManager.PlaySoundEffect("rbc_infect");
                 }
                 if (gameTime.TotalGameTime > timeOfInfection + timeToExplode)
                 {
@@ -90,7 +91,7 @@ namespace BodilyInfection
                         virusActor.Animations.Add(This.Game.CurrentLevel.GetAnimation("BlueExplosion2.anim"));
                         return new Virus("virus", virusActor);
                     }, 5, Pos);
-
+                    This.Game.AudioManager.PlaySoundEffect("rbc_die");
                     This.Game.CurrentLevel.RemoveSprite(this);
                 }
             }

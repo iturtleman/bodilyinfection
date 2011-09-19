@@ -14,8 +14,7 @@ namespace BodilyInfection
 
         public void AddBackgroundMusic(string name)
         {
-            if (!backgroundMusic.ContainsKey(name))    // load fix
-                backgroundMusic.Add(name, This.Game.Content.Load<Song>("Audio/" + name));
+            backgroundMusic[name] = This.Game.Content.Load<Song>("Audio/" + name);
         }
 
         public void PlayBackgroundMusic(string name)
@@ -32,6 +31,11 @@ namespace BodilyInfection
                     MediaPlayer.Stop();
                 }
             }
+        }
+
+        public void AddSoundEffect(string name)
+        {
+            soundEffects[name] = This.Game.Content.Load<SoundEffect>("Audio/" + name);
         }
 
         public void PlaySoundEffect(string name)
