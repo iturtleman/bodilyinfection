@@ -20,6 +20,7 @@ namespace BodilyInfection
         {
             movementVelocity = velocity;
             UpdateBehavior += new Behavior(Update);
+            CollisionBehavior += new Behavior(ActOnCollisions);
             Wounded = false;
             Infected = false;
             Dead = false;
@@ -103,8 +104,10 @@ namespace BodilyInfection
                     This.Game.CurrentLevel.RemoveSprite(this);
             }
             #endregion explosion/deletion code
+        }
 
-
+        public void ActOnCollisions(GameTime gameTime)
+        {
             if (Collision.collisionData.Count > 0)
             {
                 foreach (CollisionObject co in this.GetCollision())

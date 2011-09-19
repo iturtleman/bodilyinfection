@@ -35,6 +35,7 @@ namespace BodilyInfection
 
 
             UpdateBehavior += new Behavior(Update);
+            CollisionBehavior += new Behavior(ActOnCollisions);
         }
 
         Sprite cannon;
@@ -169,22 +170,32 @@ namespace BodilyInfection
             }
             #endregion explosion/deletion code
 
+            if (shieldOn && gameTime.TotalGameTime > shieldEndTime)
+            {
+                DisableShield();
+            }
+
+            shipVelocity *= 0.95f;
+        }
+
+        private void ActOnCollisions(GameTime gameTime)
+        {
             if (Collision.collisionData.Count > 0)
+            {
+                foreach (CollisionObject co in this.GetCollision())
                 {
-                    foreach (CollisionObject co in this.GetCollision())
+                    if (Collision.collisionData.ContainsKey(this))
                     {
-                        if (Collision.collisionData.ContainsKey(this))
+                        foreach (Tuple<CollisionObject, WorldObject, CollisionObject> collision in Collision.collisionData[this])
                         {
-                            foreach (Tuple<CollisionObject, WorldObject, CollisionObject> collision in Collision.collisionData[this])
+                            if (collision.Item2.GetType() == typeof(Virus))
                             {
-                                if (collision.Item2.GetType() == typeof(Virus))
+                                if (!shieldOn && !((Virus)collision.Item2).Harmless && !Dead)
                                 {
-                                    if (!shieldOn && !((Virus)collision.Item2).Harmless && !Dead)
-                                    {
-                                        This.Game.CurrentLevel.GetSprite("ship_cannon").mVisible = false;
-                                        timeOfDeath = gameTime.TotalGameTime;
-                                        SetAnimation(1);
-                                        StartAnim();
+                                    This.Game.CurrentLevel.GetSprite("ship_cannon").mVisible = false;
+                                    timeOfDeath = gameTime.TotalGameTime;
+                                    SetAnimation(1);
+                                    StartAnim();
 
                                         Dead = true;
 
@@ -194,27 +205,22 @@ namespace BodilyInfection
                                         //break;
                                     }
                                 }
-                                else if (collision.Item2.Name == "level1bg")
-                                {
-                                    Vector2 corner1 = new Vector2(collision.Item3.drawPoints[0].Position.X,
-                                                                  collision.Item3.drawPoints[0].Position.Y);
-                                    Vector2 corner2 = new Vector2(collision.Item3.drawPoints[1].Position.X,
-                                                                  collision.Item3.drawPoints[1].Position.Y);
-                                    Vector2 onBorder = corner1 + (Vector2.Dot(Pos - corner1, Vector2.Normalize(corner1 - corner2)) *
-                                                                 Vector2.Normalize(corner1 - corner2));
-                                    Vector2 normal = Vector2.Normalize(corner2 - corner1);
-                                    Pos = onBorder + ((Collision_BoundingCircle)collision.Item1).radius * (new Vector2(-normal.Y, normal.X));
-                                }
+                            }
+                            else if (collision.Item2.Name == "level1bg")
+                            {
+                                Vector2 corner1 = new Vector2(collision.Item3.drawPoints[0].Position.X,
+                                                                collision.Item3.drawPoints[0].Position.Y);
+                                Vector2 corner2 = new Vector2(collision.Item3.drawPoints[1].Position.X,
+                                                                collision.Item3.drawPoints[1].Position.Y);
+                                Vector2 onBorder = corner1 + (Vector2.Dot(Pos - corner1, Vector2.Normalize(corner1 - corner2)) *
+                                                                Vector2.Normalize(corner1 - corner2));
+                                Vector2 normal = Vector2.Normalize(corner2 - corner1);
+                                Pos = onBorder + ((Collision_BoundingCircle)collision.Item1).radius * (new Vector2(-normal.Y, normal.X));
                             }
                         }
                     }
                 }
-                if (shieldOn && gameTime.TotalGameTime > shieldEndTime)
-                {
-                    DisableShield();
-                }
-
-            shipVelocity *= 0.95f;
+            }
         }
 
         private void FireBullet(GameTime gameTime, Vector2 shootDir)
@@ -232,6 +238,7 @@ namespace BodilyInfection
         {
             shieldOn = true;
             Sprite shield = new Shield(shieldName, new Actor(This.Game.CurrentLevel.GetAnimation("shield.anim")), Name);
+            Pos = shield.Pos + shield.GetAnimation().AnimationPeg - GetAnimation().AnimationPeg;
             shield.ZOrder = ZOrder + 2;
         }
 

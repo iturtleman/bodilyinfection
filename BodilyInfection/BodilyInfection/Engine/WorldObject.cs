@@ -25,7 +25,20 @@ namespace BodilyInfection
         /// <param name="gameTime">The gametime for the drawing frame.</param>
         public abstract void Draw(Microsoft.Xna.Framework.GameTime gameTime);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public void DoCollisions(GameTime gameTime)
+        {
+            if (mCollidesWithBackground)
+            {
+                // do background collisions
+            }
+            CollisionBehavior(gameTime);
+        }
         #endregion Methods
+
+        internal Behavior CollisionBehavior = (GameTime gameTime) => { };
 
         #region Properties
         /// <summary>
@@ -94,6 +107,8 @@ namespace BodilyInfection
         /// Angle of rotation
         /// </summary>
         protected float mAngle;
+
+        private bool mCollidesWithBackground = true;
         #endregion Variables
 
         internal abstract List<CollisionObject> GetCollision();
