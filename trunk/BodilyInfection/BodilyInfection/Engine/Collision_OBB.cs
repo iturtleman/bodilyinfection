@@ -27,7 +27,7 @@ namespace BodilyInfection
             drawPoints[0].Position = new Vector3(cornerOffset1.X, cornerOffset1.Y, 0f);
             drawPoints[0].Color = Color.Yellow;
             drawPoints[1].Position = new Vector3(cornerOffset2.X, cornerOffset2.Y, 0f);
-            drawPoints[1].Color = Color.Yellow;
+            drawPoints[1].Color = Color.Green;
             drawPoints[2].Position = new Vector3(cornerOffset2.X + normal.X*thickness, cornerOffset2.Y + normal.Y*thickness, 0f);
             drawPoints[2].Color = Color.Red;
             drawPoints[3].Position = new Vector3(cornerOffset1.X + normal.X * thickness, cornerOffset1.Y + normal.Y * thickness, 0f);
