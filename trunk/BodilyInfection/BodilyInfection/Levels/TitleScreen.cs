@@ -25,8 +25,8 @@ namespace BodilyInfection.Levels
             l.Background = new Background("title", new Actor(l.GetAnimation("title.anim")));
 
             /** load music */
-            This.Game.AudioManager.AddBackgroundMusic("slow_view");
-            This.Game.AudioManager.PlayBackgroundMusic("slow_view");
+            This.Game.AudioManager.AddBackgroundMusic("title");
+            This.Game.AudioManager.PlayBackgroundMusic("title");
         }
 
         internal static void Update(GameTime gameTime)
