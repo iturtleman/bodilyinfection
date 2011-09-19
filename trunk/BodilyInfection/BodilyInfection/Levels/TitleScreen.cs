@@ -24,22 +24,9 @@ namespace BodilyInfection.Levels
 
             l.Background = new Background("title", new Actor(l.GetAnimation("title.anim")));
 
-            /*Text text = new Text("title", "Text", "BodilyInfection Title Screen Placeholder");
-            text.Pos = new Vector2((This.Game.GraphicsDevice.Viewport.Width / 2) - (text.GetAnimation().Width / 2), 150);
-            text.DisplayColor = Color.Blue;
-
-            Text description = new Text("description", "Text", "Please press Start or Enter to continue.");
-
-            description.Pos = new Vector2((This.Game.GraphicsDevice.Viewport.Width / 2) - (description.GetAnimation().Width / 2),
-                text.Pos.Y + text.GetAnimation().Height);
-            description.DisplayColor = Color.PowderBlue;
-
-            Text sigh = new Text("!!!", "Text", "Eric, I need your title screen!");
-            sigh.Pos = new Vector2((This.Game.GraphicsDevice.Viewport.Width / 2) - (sigh.GetAnimation().Width / 2),
-                description.Pos.Y + description.GetAnimation().Height + 5);
-            sigh.DisplayColor = Color.Peru;
-            
-            l.AddSprite(text);*/
+            /** load music */
+            This.Game.AudioManager.AddBackgroundMusic("slow_view");
+            This.Game.AudioManager.PlayBackgroundMusic("slow_view");
         }
 
         internal static void Update(GameTime gameTime)
