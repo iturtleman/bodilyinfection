@@ -197,13 +197,12 @@ namespace BodilyInfection
                                     SetAnimation(1);
                                     StartAnim();
 
-                                        Dead = true;
+                                    Dead = true;
 
-                                        This.Game.AudioManager.PlaySoundEffect("ship_explosion");
+                                    This.Game.AudioManager.PlaySoundEffect("ship_explosion");
 
 
-                                        //break;
-                                    }
+                                    //break;
                                 }
                             }
                             else if (collision.Item2.Name == "level1bg")
