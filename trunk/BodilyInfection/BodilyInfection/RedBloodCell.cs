@@ -22,13 +22,18 @@ namespace BodilyInfection
             UpdateBehavior += new Behavior(Update);
             Wounded = false;
             Infected = false;
+            Dead = false;
         }
 
         private Vector2 movementVelocity;
         public bool Wounded { get; set; }
         public bool Infected { get; set; }
+        public bool Dead { get; set; }
+
         private int health = 20;
         public TimeSpan timeToExplode = new TimeSpan(0, 0, 5);  // on infection, it takes 5 seconds for virus to come out.
+        public TimeSpan timeOfDeath;
+        public TimeSpan explosionLength = new TimeSpan(0, 0, 0, 0, 500);
         TimeSpan timeOfInfection;
 
         public void Update(GameTime gameTime)
@@ -89,7 +94,15 @@ namespace BodilyInfection
                     This.Game.CurrentLevel.RemoveSprite(this);
                 }
             }
-            
+
+            #region explosion/deletion code
+            if (Dead && (gameTime.TotalGameTime >= explosionLength + timeOfDeath))
+            {
+                    //This.Game.CurrentLevel.EnemiesDefeated++;
+                    This.Game.CurrentLevel.RemoveSprite(this);
+            }
+            #endregion explosion/deletion code
+
 
             if (Collision.collisionData.Count > 0)
             {
@@ -104,8 +117,8 @@ namespace BodilyInfection
                                 if (Wounded && !Infected && !((Virus)collision.Item2).Harmless)
                                 {
                                     Infected = true;
-                                    mActor.Frame = 0;
-                                    mActor.CurrentAnimation = 1;
+                                    SetAnimation(1);
+                                    StartAnim();
                                 }
                             }
                             else if (collision.Item2.GetType() == typeof(Bullet))
@@ -114,8 +127,8 @@ namespace BodilyInfection
                                 {
                                     // RBC becomes vulnerable.
                                     Wounded = true;
-                                    mActor.Frame = 0;
-                                    mActor.CurrentAnimation = 2;
+                                    SetAnimation(2);
+                                    StartAnim();
                                 }
 
                                 else
@@ -123,7 +136,13 @@ namespace BodilyInfection
                                     health--;
                                     if (health <= 0)
                                     {
-                                        This.Game.CurrentLevel.RemoveSprite(this);
+                                        Dead = true;
+
+                                        timeOfDeath = gameTime.TotalGameTime;
+
+                                        // change the animation if the rbc is dead
+                                        SetAnimation(3);
+                                        StartAnim();
                                     }
                                 }
                             }

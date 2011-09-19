@@ -36,6 +36,7 @@ namespace BodilyInfection.Levels
             l.AddAnimation(new Animation("xplosion17.anim"));
             l.AddAnimation(new Animation("BlueExplosion2.anim"));
             l.AddAnimation(new Animation("vulnerable.anim"));
+            l.AddAnimation(new Animation("RedExplosion2.anim"));
 
             /** load music */
             This.Game.AudioManager.AddBackgroundMusic("slow_view");
@@ -49,6 +50,7 @@ namespace BodilyInfection.Levels
                 Actor rbcActor = new Actor(l.GetAnimation("rbc.anim"));
                 rbcActor.Animations.Add(l.GetAnimation("infected.anim"));
                 rbcActor.Animations.Add(l.GetAnimation("vulnerable.anim"));
+                rbcActor.Animations.Add(l.GetAnimation("RedExplosion2.anim"));
                 Sprite rbc = new RedBloodCell("rbc", rbcActor);
                 return rbc;
             }, 2);

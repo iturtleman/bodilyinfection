@@ -79,7 +79,7 @@ namespace BodilyInfection
         /// changes to the specified animation beginning at 0.
         /// </summary>
         /// <param name="animation">The animation to select (begins at 0)</param>
-        public void SetAnimation(int animation) { mActor.CurrentAnimation = animation; }
+        public void SetAnimation(int animation) { mActor.CurrentAnimation = animation; mActor.Frame = 0;  }
 
         /// <summary>
         /// Pauses or resumes an animation.

@@ -220,6 +220,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
+    <None Include="..\BodilyInfectionContent\Sprites\RedExplosion2.anim">
+      <Link>Content\Sprites\RedExplosion2.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="..\BodilyInfectionContent\Sprites\shield.anim">
       <Link>Content\Sprites\shield.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -241,6 +245,7 @@
     <None Include="..\BodilyInfectionContent\Sprites\vulnerable.anim">
       <Link>Content\Sprites\vulnerable.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="..\BodilyInfectionContent\Sprites\xplosion17.anim">
       <Link>Content\Sprites\xplosion17.anim</Link>

@@ -10,7 +10,7 @@ namespace BodilyInfection.Levels
 {
     internal static class TitleScreen
     {
-        static readonly TimeSpan RequiredWaitTime = new TimeSpan(0, 0, 0, 1, 0);
+        static readonly TimeSpan RequiredWaitTime = new TimeSpan(0, 0, 0, 0, 0);
         static TimeSpan LevelInitTime = TimeSpan.MinValue;
         private static bool levelCompleted = false;
 
@@ -53,8 +53,7 @@ namespace BodilyInfection.Levels
             GamePadState currentState = GamePad.GetState(PlayerIndex.One);
             if (currentState.IsConnected)
             {
-                if (currentState.Buttons.Start == ButtonState.Pressed &&
-                    LevelInitTime + RequiredWaitTime < gameTime.TotalGameTime)
+                if (currentState.Buttons.Start == ButtonState.Pressed )
                 {
                     // Go to next
                     // Make awesome sound
@@ -64,8 +63,7 @@ namespace BodilyInfection.Levels
             else /* Move with arrow keys */
             {
                 KeyboardState keys = Keyboard.GetState();
-                if (keys.IsKeyDown(Keys.Enter) &&
-                    LevelInitTime + RequiredWaitTime < gameTime.TotalGameTime)
+                if (keys.IsKeyDown(Keys.Enter))
                 {
                     // Go to next
                     // Make awesome sound

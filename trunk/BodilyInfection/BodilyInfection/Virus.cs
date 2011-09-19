@@ -159,8 +159,8 @@ namespace BodilyInfection
                                     if (IsDead)
                                     {
                                         // change the animation if the virus is dead
-                                        mActor.Frame = 0;
-                                        mActor.CurrentAnimation = 1;
+                                        SetAnimation(1);
+                                        StartAnim();
                                     }
 
                                 }
