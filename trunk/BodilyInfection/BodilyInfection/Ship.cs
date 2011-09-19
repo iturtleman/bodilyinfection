@@ -230,7 +230,7 @@ namespace BodilyInfection
             bullet.Pos = Pos + GetAnimation().AnimationPeg - bullet.GetAnimation().AnimationPeg;
             bullet.AnimationSpeed = 1;
             cooldownEndTime = gameTime.TotalGameTime + shootCooldown;
-            This.Game.AudioManager.PlaySoundEffect("gun1");
+            This.Game.AudioManager.PlaySoundEffect("gun1", .3f);
         }
 
         private void EnableShield()
