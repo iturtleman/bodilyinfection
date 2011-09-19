@@ -66,6 +66,7 @@ namespace BodilyInfection
             collisionData = new Dictionary<WorldObject, List<Tuple<CollisionObject, WorldObject, CollisionObject>>>();
 
             KeyValuePair<Vector2, List<WorldObject>> bucketElem;
+            /*Dictionary<Vector2, List<WorldObject>> bucketCopy = new Dictionary<Vector2, List<WorldObject>>(bucket);*/
             while (bucket.Count > 0)
             {
                 bucketElem = bucket.First();
@@ -158,7 +159,6 @@ namespace BodilyInfection
         {
             if (ShowCollisionData)
             {
-                //basicEffect.World = Matrix.Identity;
                 float height = This.Game.GraphicsDevice.Viewport.Height;
                 float width = This.Game.GraphicsDevice.Viewport.Width;
                 basicEffect.View = Matrix.CreateLookAt(new Vector3(This.Game.GraphicsDevice.Viewport.X + width / 2, This.Game.GraphicsDevice.Viewport.Y + height / 2, -10),

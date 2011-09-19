@@ -69,12 +69,12 @@ namespace BodilyInfection
         /// <summary>
         /// Determines which grid cells the object is in
         /// </summary>
-        public override List<Vector2> gridLocations()
+        public override List<Vector2> gridLocations(WorldObject worldObject)
         {
-            int bottomLeftX = (int)(parentObject.Pos.X + centerPointOffset.X - radius) / (int)Collision.gridCellWidth;
-            int bottomLeftY = (int)(parentObject.Pos.Y + centerPointOffset.Y - radius) / (int)Collision.gridCellHeight;
-            int topRightX = (int)(parentObject.Pos.X + centerPointOffset.X + radius) / (int)Collision.gridCellWidth;
-            int topRightY = (int)(parentObject.Pos.Y + centerPointOffset.Y + radius) / (int)Collision.gridCellHeight;
+            int bottomLeftX = (int)(worldObject.Pos.X + centerPointOffset.X - radius) / (int)Collision.gridCellWidth;
+            int bottomLeftY = (int)(worldObject.Pos.Y + centerPointOffset.Y - radius) / (int)Collision.gridCellHeight;
+            int topRightX = (int)(worldObject.Pos.X + centerPointOffset.X + radius) / (int)Collision.gridCellWidth;
+            int topRightY = (int)(worldObject.Pos.Y + centerPointOffset.Y + radius) / (int)Collision.gridCellHeight;
 
             List<Vector2> gridLocations = new List<Vector2>();
             for (int i = bottomLeftX; i <= topRightX; i++) //cols
