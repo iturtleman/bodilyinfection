@@ -11,7 +11,6 @@ using Microsoft.Xna.Framework.Media;
 
 namespace BodilyInfection
 {
-    /// \todo move this somewhere else
     public delegate void Behavior(GameTime gameTime);
     public delegate bool Condition();
 
