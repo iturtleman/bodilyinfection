@@ -56,7 +56,6 @@ namespace BodilyInfection
 
         public bool Dead { get; set; }
 
-
         public void Update(GameTime gameTime)
         {
             if (shieldEndTime == TimeSpan.MinValue)
@@ -109,6 +108,7 @@ namespace BodilyInfection
                         Pos.X = 0;//This.Game.graphics.GraphicsDevice.Viewport.Width / 2;
                         Pos.Y = 0;// This.Game.graphics.GraphicsDevice.Viewport.Height / 2;
                         shipVelocity = Vector2.Zero;
+                        This.Game.AudioManager.PlaySoundEffect("ship_spawn");
                     }
 
                 }
@@ -150,6 +150,7 @@ namespace BodilyInfection
             #region explosion/deletion code
             if ((gameTime.TotalGameTime >= explosionLength + timeOfDeath) && Dead)
             {
+                This.Game.AudioManager.PlaySoundEffect("ship_spawn");
                 Pos = This.Game.CurrentLevel.PlayerSpawnPoint;
                 Dead = false;
                 This.Game.CurrentLevel.GetSprite("ship_cannon").mVisible = true;
@@ -187,6 +188,7 @@ namespace BodilyInfection
 
                                         Dead = true;
 
+                                        This.Game.AudioManager.PlaySoundEffect("ship_explosion");
 
 
                                         //break;
@@ -223,6 +225,7 @@ namespace BodilyInfection
             bullet.Pos = Pos + GetAnimation().AnimationPeg - bullet.GetAnimation().AnimationPeg;
             bullet.AnimationSpeed = 1;
             cooldownEndTime = gameTime.TotalGameTime + shootCooldown;
+            This.Game.AudioManager.PlaySoundEffect("gun1");
         }
 
         private void EnableShield()

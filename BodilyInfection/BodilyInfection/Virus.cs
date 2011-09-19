@@ -154,6 +154,7 @@ namespace BodilyInfection
 
                                         timeOfDeath = gameTime.TotalGameTime;
                                         IsDead = true;
+                                        This.Game.AudioManager.PlaySoundEffect("virus_explode");
                                     }
 
                                     if (IsDead)

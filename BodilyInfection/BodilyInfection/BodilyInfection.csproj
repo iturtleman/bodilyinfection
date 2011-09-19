@@ -203,6 +203,9 @@
       <Link>Content\Sprites\BlueExplosion2.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="..\BodilyInfectionContent\Sprites\bulletexplosion.anim">
+      <Link>Content\Sprites\bulletexplosion.anim</Link>
+    </None>
     <None Include="..\BodilyInfectionContent\Sprites\cannon.anim">
       <Link>Content\Sprites\cannon.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -233,10 +236,6 @@
       <Link>Content\Sprites\ship.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="..\BodilyInfectionContent\Sprites\viking.anim">
-      <Link>Content\Sprites\viking.anim</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="..\BodilyInfectionContent\Sprites\virusPulse.anim">
       <Link>Content\Sprites\virusPulse.anim</Link>
