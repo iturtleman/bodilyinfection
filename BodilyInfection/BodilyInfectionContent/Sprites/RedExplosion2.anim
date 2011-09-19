@@ -1,38 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Animation>
-  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="0,0" AnimationPeg="0,0"  >
-    <Collision Type="Circle" Pos="13.0, 13.0" Radius="13.0"/>
-  </Frame>
-  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="26,0" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="13.0, 13.0" Radius="13.0"/>
-  </Frame>
-  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="52,0" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="13.0, 13.0" Radius="13.0"/>
-  </Frame>  
-  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="0,26" AnimationPeg="0,0"  >
-    <Collision Type="Circle" Pos="13.0, 13.0" Radius="13.0"/>
-  </Frame>
-  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="26,26" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="13.0, 13.0" Radius="13.0"/>
-  </Frame>
-  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="52,26" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="13.0, 13.0" Radius="13.0"/>
-  </Frame>  
-  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="0,52" AnimationPeg="0,0"  >
-    <Collision Type="Circle" Pos="13.0, 13.0" Radius="13.0"/>
-  </Frame>
-  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="26,52" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="13.0, 13.0" Radius="13.0"/>
-  </Frame>
-  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="52,52" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="13.0, 13.0" Radius="13.0"/>
-  </Frame>  
-  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="0,78" AnimationPeg="0,0"  >
-    <Collision Type="Circle" Pos="13.0, 13.0" Radius="13.0"/>
-  </Frame>
-  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="26,78" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="13.0, 13.0" Radius="13.0"/>
-  </Frame>
-  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="52,78" AnimationPeg="0,0" >
-    <Collision Type="Circle" Pos="13.0, 13.0" Radius="13.0"/>
+  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="0,0" AnimationPeg="0,0"/>
+  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="26,0" AnimationPeg="0,0"/>
+  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="52,0" AnimationPeg="0,0"/>
+  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="0,26" AnimationPeg="0,0"/>
+  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="26,26" AnimationPeg="0,0"/>
+  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="52,26" AnimationPeg="0,0"/>
+  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="0,52" AnimationPeg="0,0"/>
+  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="26,52" AnimationPeg="0,0"/>
+  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="52,52" AnimationPeg="0,0"/>
+  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="0,78" AnimationPeg="0,0" />
+  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="26,78" AnimationPeg="0,0"/>
+  <Frame SpriteSheet="RedExplosion2" FrameDelay="20" Width="26" Height="26" TLPos="52,78" AnimationPeg="0,0"/>
 </Animation>

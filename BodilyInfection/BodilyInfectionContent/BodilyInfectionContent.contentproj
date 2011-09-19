@@ -85,6 +85,9 @@
     <None Include="Sprites\infected.anim">
       <Name>infected</Name>
     </None>
+    <None Include="Sprites\RedExplosion2.anim">
+      <Name>RedExplosion2</Name>
+    </None>
     <None Include="Sprites\viking.anim">
       <Name>viking</Name>
     </None>
@@ -606,6 +609,13 @@
   <ItemGroup>
     <Compile Include="Sprites\vulnerable.png">
       <Name>vulnerable</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprites\RedExplosion2.png">
+      <Name>RedExplosion2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

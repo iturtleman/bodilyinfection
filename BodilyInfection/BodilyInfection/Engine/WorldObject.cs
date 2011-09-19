@@ -84,7 +84,7 @@ namespace BodilyInfection
         /// <summary>
         /// Determine if Object should be visible
         /// </summary>
-        protected bool mVisible;
+        public bool mVisible;
         /// <summary>
         /// Transparency!
         /// </summary>
