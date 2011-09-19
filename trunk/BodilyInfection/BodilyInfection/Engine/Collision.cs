@@ -326,7 +326,7 @@ namespace BodilyInfection
             float CentertoDP2 = distanceSquared(c1Center.X, c1Center.Y, drawPoint2.X, drawPoint2.Y);
             float CentertoDP3 = distanceSquared(c1Center.X, c1Center.Y, drawPoint3.X, drawPoint3.Y);
 
-            if (((DP0toDP1 + .001f + c1.radius * 2 >= CtoDP0 + CtoDP1) && (DP2toDP1 + .001f + c1.radius * 2 >= DtoDP2 + DtoDP1)) ||
+            if (((DP0toDP1 + (c1.radius * 2) * (c1.radius * 2) + 100 >= CtoDP0 + CtoDP1) && (DP2toDP1 + (c1.radius * 2) * (c1.radius * 2) + 100 >= DtoDP2 + DtoDP1)) ||
                   (CentertoDP0 <= c1.radius * c1.radius) || (CentertoDP1 <= c1.radius * c1.radius) || (CentertoDP2 <= c1.radius * c1.radius) || (CentertoDP3 <= c1.radius * c1.radius))
                 return true;
 
