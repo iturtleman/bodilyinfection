@@ -154,7 +154,7 @@ namespace BodilyInfection
             #endregion
         }
 
-        public static void Draw()
+        public static void Draw(Matrix transformation)
         {
             if (ShowCollisionData)
             {
@@ -173,7 +173,7 @@ namespace BodilyInfection
                 {
                     foreach (CollisionObject collisionObject in world.GetCollision())
                     {
-                        collisionObject.draw(world);
+                        collisionObject.draw(world, transformation);
                     }
                 }
             }
