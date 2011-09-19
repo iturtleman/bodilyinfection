@@ -190,6 +190,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
+    <None Include="..\BodilyInfectionContent\Backgrounds\stomach.anim">
+      <Link>Content\Backgrounds\stomach.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="..\BodilyInfectionContent\Backgrounds\title.anim">
       <Link>Content\Backgrounds\title.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

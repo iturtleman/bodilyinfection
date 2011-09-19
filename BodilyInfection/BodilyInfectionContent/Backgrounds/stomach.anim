@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Animation>
+  <Frame SpriteSheet="Stomach/0041" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="Stomach/0043" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="Stomach/0045" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="Stomach/0047" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="Stomach/0049" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="Stomach/0051" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="Stomach/0053" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="Stomach/0055" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="Stomach/0057" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="Stomach/0059" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="Stomach/0061" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="Stomach/0063" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="Stomach/0065" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="Stomach/0067" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="Stomach/0069" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="Stomach/0071" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+</Animation>

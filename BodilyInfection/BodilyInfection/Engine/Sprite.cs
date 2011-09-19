@@ -20,7 +20,7 @@ namespace BodilyInfection
             EndBehavior = (GameTime gameTime) => { };
             //add to current level
             This.Game.CurrentLevel.AddSprite(this);
-
+            AnimationSpeed = 1;
             if (mActor != null)
             {
                 if (mActor.Animations[mActor.CurrentAnimation].Built)
