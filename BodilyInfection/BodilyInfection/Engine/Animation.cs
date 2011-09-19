@@ -75,8 +75,7 @@ namespace BodilyInfection
 
             if (!File.Exists(filename))
             {
-                Console.WriteLine(string.Format("Error opening \'{0}\'. The file does not exist.", filename));
-                return;
+                throw new Exception(String.Format("Animation file {0} does not exist.", filename));
             }
             XDocument doc = XDocument.Load(filename);
             int count = 0;

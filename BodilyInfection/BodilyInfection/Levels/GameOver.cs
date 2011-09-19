@@ -15,14 +15,19 @@ namespace BodilyInfection.Levels
         internal static void Load(GameTime gameTime)
         {
             levelCompleted = false;
-            Text text = new Text("title", "Text", "GAME OVER");
+            
+            Level l = This.Game.CurrentLevel;
+            l.AddAnimation(new BackgroundAnimation("gameover.anim"));
+            l.Background = new Background("gameover", new Actor(l.GetAnimation("gameover.anim")));
+
+            /*Text text = new Text("title", "Text", "GAME OVER");
             text.Pos = new Vector2((This.Game.GraphicsDevice.Viewport.Width / 2) - (text.GetAnimation().Width / 2), 150);
             text.DisplayColor = Color.White;
 
             Text next = new Text("next", "Text", "Press Start or Enter to go back to the title screen.");
             next.Pos = new Vector2((This.Game.GraphicsDevice.Viewport.Width / 2) - (next.GetAnimation().Width / 2),
                 text.Pos.Y + text.GetAnimation().Height);
-            next.DisplayColor = Color.White;
+            next.DisplayColor = Color.White;*/
         }
 
         internal static void Update(GameTime gameTime)

@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace BodilyInfection
 {
@@ -33,10 +34,11 @@ namespace BodilyInfection
             Pos.X += movementVelocity.X;
             Pos.Y += movementVelocity.Y;
 
-            if (Pos.X > This.Game.GraphicsDevice.Viewport.Width ||
-                Pos.Y > This.Game.GraphicsDevice.Viewport.Height ||
-                Pos.X < 0 ||
-                Pos.Y < 0)
+            Vector2 mod = Pos - This.Game.CurrentLevel.Camera.Pos;
+            if (mod.X > This.Game.GraphicsDevice.Viewport.Width ||
+                mod.Y > This.Game.GraphicsDevice.Viewport.Height ||
+                mod.X < 0 ||
+                mod.Y < 0)
             {
                 This.Game.CurrentLevel.RemoveSprite(this);
             }

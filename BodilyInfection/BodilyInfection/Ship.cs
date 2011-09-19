@@ -22,6 +22,7 @@ namespace BodilyInfection
             Sprite cannon = new Cannon(name + "_cannon", new Actor(This.Game.CurrentLevel.GetAnimation("cannon.anim")), name, input);
             cannon.ZOrder = ZOrder + 1;
 
+            shieldEndTime = TimeSpan.MinValue;
             RemainingLives = DefaultLives;
             this.gamepad = input;
             shipVelocity = Vector2.Zero;
