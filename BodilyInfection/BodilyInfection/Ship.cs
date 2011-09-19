@@ -201,7 +201,7 @@ namespace BodilyInfection
                                     Vector2 onBorder = corner1 + (Vector2.Dot(Pos - corner1, Vector2.Normalize(corner1 - corner2)) *
                                                                  Vector2.Normalize(corner1 - corner2));
                                     Vector2 normal = Vector2.Normalize(corner2 - corner1);
-                                    Pos = onBorder + /*((Collision_BoundingCircle)collision.Item1).radius/2*/50 * (new Vector2(-normal.Y, normal.X));
+                                    Pos = onBorder + ((Collision_BoundingCircle)collision.Item1).radius * (new Vector2(-normal.Y, normal.X));
                                 }
                             }
                         }

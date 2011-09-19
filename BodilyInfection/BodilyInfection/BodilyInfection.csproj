@@ -188,6 +188,7 @@
     <None Include="..\BodilyInfectionContent\Backgrounds\level1bg.anim">
       <Link>Content\Backgrounds\level1bg.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="..\BodilyInfectionContent\Backgrounds\title.anim">
       <Link>Content\Backgrounds\title.anim</Link>
