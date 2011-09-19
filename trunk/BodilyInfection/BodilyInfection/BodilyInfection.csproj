@@ -181,6 +181,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\BodilyInfectionContent\Backgrounds\gameover.anim">
+      <Link>Content\Backgrounds\gameover.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="..\BodilyInfectionContent\Backgrounds\level1bg.anim">
       <Link>Content\Backgrounds\level1bg.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -42,6 +42,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Backgrounds\gameover.anim">
+      <Name>gameover</Name>
+    </None>
     <None Include="Backgrounds\level1bg.anim">
       <Name>level1bg</Name>
     </None>
@@ -589,6 +592,13 @@
   <ItemGroup>
     <Compile Include="Sprites\infected.png">
       <Name>infected</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Backgrounds\gameover.png">
+      <Name>gameover</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
