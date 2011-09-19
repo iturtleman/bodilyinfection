@@ -4,6 +4,6 @@
     <Collision Type="OBB" Corner1="100.0,100.0" Corner2="500.0,100.0" Thickness="20.0"/>
     <Collision Type="OBB" Corner1="500.0,100.0" Corner2="500.0,500.0" Thickness="20.0"/>
     <Collision Type="OBB" Corner1="500.0,500.0" Corner2="100.0,500.0" Thickness="20.0"/>
-    <Collision Type="OBB" Corner1="100.0,500.0" Corner2="100.0,100.0" Thickness="20.0"/>
+    <Collision Type="OBB" Corner1="100.0,500.0" Corner2="500.0,100.0" Thickness="20.0"/>
   </Frame>
 </Animation>
