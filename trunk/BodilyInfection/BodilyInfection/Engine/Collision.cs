@@ -312,8 +312,17 @@ namespace BodilyInfection
             Vector2 C = drawPoint1 + Vector2.Dot(c1Center - drawPoint1, Vector2.Normalize(drawPoint1 - drawPoint0)) * Vector2.Normalize(drawPoint1 - drawPoint0);
             Vector2 D = drawPoint1 + Vector2.Dot(c1Center - drawPoint1, Vector2.Normalize(drawPoint1 - drawPoint2)) * Vector2.Normalize(drawPoint1 - drawPoint2);
 
-            if (((distanceSquared(C.X, C.Y, drawPoint1.X, drawPoint1.Y) <= c1.radius * c1.radius) || (distanceSquared(C.X, C.Y, drawPoint0.X, drawPoint0.Y) <= c1.radius * c1.radius)) &&
-                ((distanceSquared(D.X, D.Y, drawPoint1.X, drawPoint1.Y) <= c1.radius * c1.radius) || (distanceSquared(D.X, D.Y, drawPoint2.X, drawPoint2.Y) <= c1.radius * c1.radius)))
+            float CtoDP1 = distanceSquared(C.X, C.Y, drawPoint1.X, drawPoint1.Y);
+            float CtoDP0 = distanceSquared(C.X, C.Y, drawPoint0.X, drawPoint0.Y);
+            float DP0toDP1=distanceSquared(drawPoint1.X, drawPoint1.Y, drawPoint0.X, drawPoint0.Y);
+
+            float DtoDP1 = distanceSquared(D.X, D.Y, drawPoint1.X, drawPoint1.Y);
+            float DtoDP2 = distanceSquared(D.X, D.Y, drawPoint2.X, drawPoint2.Y);
+            float DP2toDP1=distanceSquared(drawPoint1.X, drawPoint1.Y, drawPoint2.X, drawPoint2.Y);
+
+
+            if (((CtoDP1 <= c1.radius * c1.radius) || (CtoDP0 <= c1.radius * c1.radius) || (DP0toDP1+.001f >= CtoDP0 + CtoDP1) &&
+                ((DtoDP1 <= c1.radius * c1.radius) || (DtoDP2 <= c1.radius * c1.radius) || (DP2toDP1+.001f >= DtoDP2 + DtoDP1))))
                 return true;
 
 

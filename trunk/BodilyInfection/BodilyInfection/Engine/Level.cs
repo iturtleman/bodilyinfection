@@ -110,7 +110,6 @@ namespace BodilyInfection
                 return;
             }
             mSprites.Sort();
-            Collision.update();
             UpdateBehavior(gameTime);
             foreach (Sprite sp in mSprites)
             {
@@ -126,6 +125,8 @@ namespace BodilyInfection
                 mSprites.Add(item);
             }
             ToAdd.Clear();
+            Collision.update();
+            //nwe function here
         }
         #endregion Updating
 

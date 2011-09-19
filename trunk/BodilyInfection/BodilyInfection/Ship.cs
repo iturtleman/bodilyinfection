@@ -168,9 +168,7 @@ namespace BodilyInfection
             }
             #endregion explosion/deletion code
 
-            if (!shieldOn)
-            {
-                if (Collision.collisionData.Count > 0)
+            if (Collision.collisionData.Count > 0)
                 {
                     foreach (CollisionObject co in this.GetCollision())
                     {
@@ -194,18 +192,25 @@ namespace BodilyInfection
                                         //break;
                                     }
                                 }
+                                else if (collision.Item2.Name == "level1bg")
+                                {
+                                    Vector2 corner1 = new Vector2(collision.Item3.drawPoints[0].Position.X,
+                                                                  collision.Item3.drawPoints[0].Position.Y);
+                                    Vector2 corner2 = new Vector2(collision.Item3.drawPoints[1].Position.X,
+                                                                  collision.Item3.drawPoints[1].Position.Y);
+                                    Vector2 onBorder = corner1 + (Vector2.Dot(Pos - corner1, Vector2.Normalize(corner1 - corner2)) *
+                                                                 Vector2.Normalize(corner1 - corner2));
+                                    Vector2 normal = Vector2.Normalize(corner1 - corner2);
+                                    Pos = onBorder + /*((Collision_BoundingCircle)collision.Item1).radius/2 **/ -(new Vector2(-normal.Y, normal.X));
+                                }
                             }
                         }
                     }
                 }
-            }
-            else
-            {
-                if (gameTime.TotalGameTime > shieldEndTime)
+                if (shieldOn && gameTime.TotalGameTime > shieldEndTime)
                 {
                     DisableShield();
                 }
-            }
 
             shipVelocity *= 0.95f;
         }
