@@ -205,16 +205,17 @@ namespace BodilyInfection
                                     //break;
                                 }
                             }
-                            else if (collision.Item2.Name == "level1bg")
+                            else if (collision.Item2.GetType() == typeof(Background))
                             {
                                 Vector2 corner1 = new Vector2(collision.Item3.drawPoints[0].Position.X,
-                                                                collision.Item3.drawPoints[0].Position.Y);
+                                                              collision.Item3.drawPoints[0].Position.Y);
                                 Vector2 corner2 = new Vector2(collision.Item3.drawPoints[1].Position.X,
-                                                                collision.Item3.drawPoints[1].Position.Y);
-                                Vector2 onBorder = corner1 + (Vector2.Dot(Pos - corner1, Vector2.Normalize(corner1 - corner2)) *
-                                                                Vector2.Normalize(corner1 - corner2));
-                                Vector2 normal = Vector2.Normalize(corner2 - corner1);
-                                Pos = onBorder + ((Collision_BoundingCircle)collision.Item1).radius * (new Vector2(-normal.Y, normal.X));
+                                                              collision.Item3.drawPoints[1].Position.Y);
+                                Vector2 c1toc2 = Vector2.Normalize(corner2 - corner1);
+                                Vector2 normal = new Vector2(-c1toc2.Y, c1toc2.X);
+                                Vector2 animPeg = this.GetAnimation().AnimationPeg;
+                                float radius = ((Collision_BoundingCircle)collision.Item1).radius;
+                                Pos = (radius - Vector2.Dot(normal, (Pos + animPeg - corner1))) * normal + Pos;
                             }
                         }
                     }
