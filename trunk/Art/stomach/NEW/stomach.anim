@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Animation>
+  <Frame SpriteSheet="0041" FrameDelay="20" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="0043" FrameDelay="20" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="0045" FrameDelay="20" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="0047" FrameDelay="20" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="0049" FrameDelay="20" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="0051" FrameDelay="20" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="0053" FrameDelay="20" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="0055" FrameDelay="20" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="0057" FrameDelay="20" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="0059" FrameDelay="20" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="0061" FrameDelay="20" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="0063" FrameDelay="20" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="0065" FrameDelay="20" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="0067" FrameDelay="20" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="0069" FrameDelay="20" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="0071" FrameDelay="20" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0" />
+</Animation>
