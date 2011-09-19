@@ -167,7 +167,7 @@ namespace BodilyInfection
                 basicEffect.VertexColorEnabled = true;
 
 
-                drawGraph();
+                drawGraph(transformation);
 
                 foreach (WorldObject world in This.Game.CurrentLevel.mSprites)
                 {
@@ -179,9 +179,9 @@ namespace BodilyInfection
             }
         }
 
-        private static void drawGraph()
+        private static void drawGraph(Matrix transformation)
         {
-            Collision.basicEffect.World = Matrix.Identity;
+            Collision.basicEffect.World = transformation;
 
             foreach (EffectPass pass in Collision.basicEffect.CurrentTechnique.Passes)
             {
@@ -326,10 +326,6 @@ namespace BodilyInfection
             float CentertoDP2 = distanceSquared(c1Center.X, c1Center.Y, drawPoint2.X, drawPoint2.Y);
             float CentertoDP3 = distanceSquared(c1Center.X, c1Center.Y, drawPoint3.X, drawPoint3.Y);
 
-
-            /*if ( ((CtoDP1 <= c1.radius * c1.radius) || (CtoDP0 <= c1.radius * c1.radius) || (DP0toDP1+.001f >= CtoDP0 + CtoDP1) &&
-                 ((DtoDP1 <= c1.radius * c1.radius) || (DtoDP2 <= c1.radius * c1.radius) || (DP2toDP1+.001f >= DtoDP2 + DtoDP1))) ||
-                  (CentertoDP0 <= c1.radius * c1.radius) || (CentertoDP1 <= c1.radius * c1.radius) || (CentertoDP2 <= c1.radius * c1.radius) || (CentertoDP3 <= c1.radius * c1.radius))*/
             if (((DP0toDP1 + .001f + c1.radius * 2 >= CtoDP0 + CtoDP1) && (DP2toDP1 + .001f + c1.radius * 2 >= DtoDP2 + DtoDP1)) ||
                   (CentertoDP0 <= c1.radius * c1.radius) || (CentertoDP1 <= c1.radius * c1.radius) || (CentertoDP2 <= c1.radius * c1.radius) || (CentertoDP3 <= c1.radius * c1.radius))
                 return true;

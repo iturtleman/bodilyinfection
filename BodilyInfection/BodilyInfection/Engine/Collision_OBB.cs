@@ -19,6 +19,7 @@ namespace BodilyInfection
             thickness = _thickness;
             id = _id;
             type = 'o';
+            previousPos = new Vector2(100017, 100017);
 
 
             //create collision object's points for drawing
@@ -47,6 +48,7 @@ namespace BodilyInfection
             id = _id;
             parentObject = _parentObject;
             type = 'o';
+            previousPos = new Vector2(100017, 100017);
 
 
             //create collision object's points for drawing
@@ -107,12 +109,24 @@ namespace BodilyInfection
         /// </summary>
         public override void addToBucket(WorldObject worldObject)
         {
-            //if (previousPos == worldObject.Pos || previousPos == null)
-            //{
-            //    ;
-            //}
-            //else
-            //{
+            if (previousPos == worldObject.Pos)
+            {
+                foreach (Vector2 location in bucketLocations)
+                {
+                    if (Collision.bucket.ContainsKey(location))
+                    {
+                        Collision.bucket[location].Add(worldObject);
+                    }
+                    else
+                    {
+                        List<WorldObject> possibleCollisions = new List<WorldObject>();
+                        possibleCollisions.Add(worldObject);
+                        Collision.bucket.Add(location, possibleCollisions);
+                    }
+                }
+            }
+            else
+            {
                 int highestY = (int)(worldObject.Pos.Y + drawPoints[0].Position.Y) / (int)Collision.gridCellHeight;
                 int lowestY = highestY;
                 int highestX = (int)(worldObject.Pos.X + drawPoints[0].Position.X) / (int)Collision.gridCellHeight;
@@ -132,6 +146,7 @@ namespace BodilyInfection
                         highestX = x;
                 }
 
+                bucketLocations.Clear();
                 for (int i = lowestX; i <= highestX; i++) //cols
                 {
                     for (int j = lowestY; j <= highestY; j++) //rows
@@ -139,8 +154,11 @@ namespace BodilyInfection
                         if (true) //check if grid cell is inside box
                         {
                             Vector2 location = new Vector2(i, j);
+                            bucketLocations.Add(location);
                             if (Collision.bucket.ContainsKey(location))
+                            {
                                 Collision.bucket[location].Add(worldObject);
+                            }
                             else
                             {
                                 List<WorldObject> possibleCollisions = new List<WorldObject>();
@@ -150,7 +168,7 @@ namespace BodilyInfection
                         }
                     }
                 }
-            //}
+            }
         }
 
         public override void draw(WorldObject world, Matrix transformation)

@@ -27,9 +27,9 @@ namespace BodilyInfection
         /// <summary>
         /// Previous bucket locations
         /// </summary>
-        public List<Vector2> bucketLocations;
+        public List<Vector2> bucketLocations = new List<Vector2>();
 
-        public Vector2 previousPos;
+        public Vector2 previousPos = new Vector2();
 
         /// <summary>
         /// Determines which grid cells the object is in
