@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Animation>
-  <Frame SpriteSheet="gameover" FrameDelay="20" Width="720" Height="480" TLPos="0,0" AnimationPeg="0,0" >
+  <Frame SpriteSheet="gameover" FrameDelay="20" Width="800" Height="600" TLPos="0,0" AnimationPeg="0,0" >
   </Frame>
 </Animation>
