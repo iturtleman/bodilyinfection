@@ -128,49 +128,6 @@ namespace BodilyInfection
                 }
                 #endregion explosion animation removal
 
-                #region collision checking
-                if (Collision.collisionData.Count > 0)
-                {
-                    foreach (CollisionObject co in this.GetCollision())
-                    {
-                        if (Collision.collisionData.ContainsKey(this))
-                        {
-                            foreach (Tuple<CollisionObject, WorldObject, CollisionObject> collision in Collision.collisionData[this])
-                            {
-                                if (collision.Item2.GetType() == typeof(RedBloodCell))
-                                {
-                                    if ((collision.Item2 as RedBloodCell).Wounded && !(collision.Item2 as RedBloodCell).Infected)
-                                    {
-                                        This.Game.CurrentLevel.RemoveSprite(this);
-                                    }
-                                }
-
-                                if (collision.Item2.GetType() == typeof(Bullet))
-                                {
-                                    if (!IsDead && !Invincible)
-                                    {
-                                        // virus is dead, snapshot time of death
-                                        Invincible = true;
-                                        Harmless = true;
-
-                                        timeOfDeath = gameTime.TotalGameTime;
-                                        IsDead = true;
-                                        This.Game.AudioManager.PlaySoundEffect("virus_explode");
-                                    }
-
-                                    if (IsDead)
-                                    {
-                                        // change the animation if the virus is dead
-                                        SetAnimation(1);
-                                        StartAnim();
-                                    }
-
-                                }
-                            }
-                        }
-                    }
-                }
-                #endregion collision checking
             }
 
         #endregion
@@ -204,6 +161,7 @@ namespace BodilyInfection
 
                                     timeOfDeath = gameTime.TotalGameTime;
                                     IsDead = true;
+                                    This.Game.AudioManager.PlaySoundEffect("virus_explode");
                                 }
 
                                 if (IsDead)
