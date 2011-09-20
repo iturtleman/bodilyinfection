@@ -127,6 +127,8 @@
     <Compile Include="Engine\Level.cs" />
     <Compile Include="Engine\Text.cs" />
     <Compile Include="LevelFunctions.cs" />
+    <Compile Include="Levels\Level2.cs" />
+    <Compile Include="Levels\StageClear.cs" />
     <Compile Include="Levels\GameOver.cs" />
     <Compile Include="Levels\Level1.cs" />
     <Compile Include="Levels\TitleScreen.cs" />
@@ -184,11 +186,20 @@
     <None Include="..\BodilyInfectionContent\Backgrounds\gameover.anim">
       <Link>Content\Backgrounds\gameover.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="..\BodilyInfectionContent\Backgrounds\level1bg.anim">
       <Link>Content\Backgrounds\level1bg.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+    </None>
+    <None Include="..\BodilyInfectionContent\Backgrounds\lungs.anim">
+      <Link>Content\Backgrounds\lungs.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\BodilyInfectionContent\Backgrounds\stageclear.anim">
+      <Link>Content\Backgrounds\stageclear.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="..\BodilyInfectionContent\Backgrounds\stomach.anim">
       <Link>Content\Backgrounds\stomach.anim</Link>
