@@ -136,28 +136,47 @@ namespace BodilyInfection
 
         #region Methods
 
-
-
         #region Draw
         internal void Draw(Microsoft.Xna.Framework.GameTime gameTime)
         {
+            List<WorldObject> staticSprites = new List<WorldObject>();
+
+            #region Draw Sprites
             This.Game.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
                 null, null, null, null,
                 Camera.GetTransformation(This.Game.GraphicsDevice));
 
-            DrawSprites(gameTime);
+            foreach (var sprite in mSprites)
+            {
+                if (!sprite.Static)
+                {
+                    sprite.Draw(gameTime);
+                }
+                else
+                {
+                    staticSprites.Add(sprite);
+                }
+            }
 
             This.Game.spriteBatch.End();
+            #endregion
+
+            #region Draw Static Sprites
+            if (staticSprites.Count > 0)
+            {
+                This.Game.spriteBatch.Begin();
+
+                foreach (var sprite in staticSprites)
+                {
+                    sprite.Draw(gameTime);
+                }
+
+                This.Game.spriteBatch.End();
+            }
+            #endregion
 
             /** Draw Boundary Data */
             Collision.Draw(Camera.GetTransformation(This.Game.GraphicsDevice));
-        }
-        internal void DrawSprites(Microsoft.Xna.Framework.GameTime gameTime)
-        {
-            foreach (var sprite in mSprites)
-            {
-                sprite.Draw(gameTime);
-            }
         }
 
         #endregion Drawing

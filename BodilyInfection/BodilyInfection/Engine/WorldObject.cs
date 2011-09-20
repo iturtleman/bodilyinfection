@@ -86,6 +86,11 @@ namespace BodilyInfection
         /// </summary>
         public Vector2 Scale = new Vector2(1, 1);
 
+        /// <summary>
+        /// Determines whether or not the WorldObject is transformed by the camera or not
+        /// </summary>
+        public bool Static { get; set; }
+
         #endregion Properties
 
         #region Variables
