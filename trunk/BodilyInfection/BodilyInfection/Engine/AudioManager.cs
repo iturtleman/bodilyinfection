@@ -40,10 +40,7 @@ namespace BodilyInfection
 
         public void PlaySoundEffect(string name)
         {
-            if (soundEffects.ContainsKey(name))
-            {
-                soundEffects[name].Play();
-            }
+            PlaySoundEffect(name, 1f);
         }
 
         public void PlaySoundEffect(string name, float volume)

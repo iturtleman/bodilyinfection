@@ -117,34 +117,49 @@ namespace BodilyInfection
                 {
                     #region Movement
                     KeyboardState keys = Keyboard.GetState();
-                    Vector2 velocity = Pos;
+                    Vector2 velocity = new Vector2();
                     if (keys.IsKeyDown(Keys.Up))
                     {
-                        Pos.Y -= shipSpeed;
+                        velocity.Y -= 1;
                     }
                     else if (keys.IsKeyDown(Keys.Down))
                     {
-                        Pos.Y += shipSpeed;
+                        velocity.Y += 1;
                     }
 
                     if (keys.IsKeyDown(Keys.Left))
                     {
-                        Pos.X -= shipSpeed;
+                        velocity.X -= 1;
                     }
                     else if (keys.IsKeyDown(Keys.Right))
                     {
-                        Pos.X += shipSpeed;
+                        velocity.X += 1;
                     }
 
-                    velocity = Pos - velocity;
+                    if (keys.IsKeyDown(Keys.W))
+                    {
+                        Pos.Y -= shipSpeed;
+                    }
+                    else if (keys.IsKeyDown(Keys.S))
+                    {
+                        Pos.Y += shipSpeed;
+                    }
+
+                    if (keys.IsKeyDown(Keys.A))
+                    {
+                        Pos.X -= shipSpeed;
+                    }
+                    else if (keys.IsKeyDown(Keys.D))
+                    {
+                        Pos.X += shipSpeed;
+                    }
                     velocity.Normalize();
                     this.Angle = -(float)Math.Atan2(Pos.Y, Pos.X);
                     #endregion Movement
-                    Vector2 shootDirKeys = Pos;
 
-                    if (keys.IsKeyDown(Keys.Space) && gameTime.TotalGameTime > cooldownEndTime)
+                    if ((keys.IsKeyDown(Keys.Up) || keys.IsKeyDown(Keys.Down) || keys.IsKeyDown(Keys.Left) || keys.IsKeyDown(Keys.Right)) && gameTime.TotalGameTime > cooldownEndTime)
                     {
-                        FireBullet(gameTime, shootDirKeys);
+                        FireBullet(gameTime, velocity);
                     }
                 }
             }
@@ -199,7 +214,7 @@ namespace BodilyInfection
 
                                     Dead = true;
 
-                                    This.Game.AudioManager.PlaySoundEffect("ship_explosion");
+                                    This.Game.AudioManager.PlaySoundEffect("ship_explosion",.7f);
 
 
                                     //break;
@@ -266,7 +281,7 @@ namespace BodilyInfection
                                 shootDir * 15);
             bullet.Pos = Pos + GetAnimation().AnimationPeg - bullet.GetAnimation().AnimationPeg;
             cooldownEndTime = gameTime.TotalGameTime + shootCooldown;
-            This.Game.AudioManager.PlaySoundEffect("gun1", .3f);
+            This.Game.AudioManager.PlaySoundEffect("gun1", .1f);
         }
 
         private void EnableShield()
