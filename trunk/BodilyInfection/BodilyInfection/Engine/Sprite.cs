@@ -12,15 +12,16 @@ namespace BodilyInfection
         public Sprite(string name, Actor actor)
         {
             mName = name;
-            //mDrawn = false;
             mActor = actor;
             mLastUpdate = new GameTime();
+
             LoadBehavior = (GameTime gameTime) => { };
             UpdateBehavior = (GameTime gameTime) => { };
             EndBehavior = (GameTime gameTime) => { };
-            //add to current level
+
             This.Game.CurrentLevel.AddSprite(this);
             AnimationSpeed = 1;
+            
             if (mActor != null)
             {
                 if (mActor.Animations[mActor.CurrentAnimation].Built)

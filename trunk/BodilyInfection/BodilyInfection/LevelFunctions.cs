@@ -37,8 +37,9 @@ namespace BodilyInfection
             for (int i = 0; i < numEnemies; i++)
             {             
                 Sprite virus = constructEnemy();
-                virus.Pos = new Vector2(rand.Next(0, This.Game.GraphicsDevice.Viewport.Width), rand.Next(0, This.Game.GraphicsDevice.Viewport.Height));
-                virus.AnimationSpeed = 1;
+                virus.Pos = This.Game.CurrentLevel.Camera.Pos + 
+                    new Vector2(rand.Next(0, This.Game.GraphicsDevice.Viewport.Width),
+                        rand.Next(0, This.Game.GraphicsDevice.Viewport.Height));
             }
         }
 
@@ -59,7 +60,6 @@ namespace BodilyInfection
                 int mod = (rand.Next(0, 2) - 1);
                 double y = Math.Sqrt(radius * radius - x * x) * mod;
                 virus.Pos = position + new Vector2((float)x, (float)y);
-                virus.AnimationSpeed = 1;
             }
         }
     }

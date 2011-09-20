@@ -265,7 +265,6 @@ namespace BodilyInfection
                                 new Actor(This.Game.CurrentLevel.GetAnimation("antibody.anim")),
                                 shootDir * 15);
             bullet.Pos = Pos + GetAnimation().AnimationPeg - bullet.GetAnimation().AnimationPeg;
-            bullet.AnimationSpeed = 1;
             cooldownEndTime = gameTime.TotalGameTime + shootCooldown;
             This.Game.AudioManager.PlaySoundEffect("gun1", .3f);
         }

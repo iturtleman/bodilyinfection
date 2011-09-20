@@ -84,15 +84,16 @@ namespace BodilyInfection.Levels
            
             l.PlayerSpawnPoint = new Vector2(50, 50);
             ship.Pos = l.PlayerSpawnPoint;
-            ship.AnimationSpeed = 1;
             Text livesText = new Text("livesText", "Text", "Lives Remaining:");
             livesText.Pos = new Vector2(This.Game.GraphicsDevice.Viewport.X + This.Game.GraphicsDevice.Viewport.Width - livesText.GetAnimation().Width - 50,
                                         This.Game.GraphicsDevice.Viewport.Y);
             livesText.DisplayColor = Color.Red;
+            livesText.Static = true;
             Text lives = new Text("lives", "Text", (ship as Ship).RemainingLives.ToString());
             lives.Pos = new Vector2(This.Game.GraphicsDevice.Viewport.X + This.Game.GraphicsDevice.Viewport.Width - 50,
                                     This.Game.GraphicsDevice.Viewport.Y);
             lives.DisplayColor = Color.Red;
+            lives.Static = true;
         }
 
         internal static void Update(GameTime gameTime)
