@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Animation>
-  <Frame SpriteSheet="lungs/0003" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0005" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0007" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0009" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0011" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0013" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0015" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0017" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0019" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0021" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0023" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0025" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0027" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0029" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0031" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0033" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0035" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0037" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0039" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0041" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
-  <Frame SpriteSheet="lungs/0043" FrameDelay="20" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0003" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0005" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0007" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0009" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0011" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0013" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0015" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0017" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0019" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0021" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0023" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0025" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0027" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0029" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0031" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0033" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0035" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0037" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0039" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0041" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
+  <Frame SpriteSheet="lungs/0043" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
 </Animation>
