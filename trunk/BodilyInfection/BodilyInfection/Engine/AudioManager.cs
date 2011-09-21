@@ -14,7 +14,13 @@ namespace BodilyInfection
 
         public void AddBackgroundMusic(string name)
         {
-            backgroundMusic[name] = This.Game.Content.Load<Song>("Audio/" + name);
+            try{
+                backgroundMusic[name] = This.Game.Content.Load<Song>("Audio/" + name);
+            }
+            catch (NoAudioHardwareException)
+            {
+                // Ignore it...
+            }
         }
 
         public void PlayBackgroundMusic(string name)
@@ -35,7 +41,14 @@ namespace BodilyInfection
 
         public void AddSoundEffect(string name)
         {
-            soundEffects[name] = This.Game.Content.Load<SoundEffect>("Audio/" + name);
+            try
+            {
+                soundEffects[name] = This.Game.Content.Load<SoundEffect>("Audio/" + name);
+            }
+            catch (NoAudioHardwareException)
+            {
+                // Ignore it...
+            }
         }
 
         public void PlaySoundEffect(string name)
