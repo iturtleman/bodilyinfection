@@ -12,20 +12,21 @@ namespace BodilyInfection.Levels
     {
         static bool levelCompleted = false;
 
-        internal static void Load(Level lastLevel)
+        internal static void Load()
         {
             levelCompleted = false;
-            
-            Level l = This.Game.CurrentLevel;
+
+            Level l = This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel;
             l.AddAnimation(new BackgroundAnimation("gameover.anim"));
             l.Background = new Background("gameover", new Actor(l.GetAnimation("gameover.anim")));
 
-            (This.Game as BodilyInfection).Score = 0;
-            (This.Game as BodilyInfection).NumberOfLives = (This.Game as BodilyInfection).DefaultNumberOfLives;
+            GameData.Score = 0;
+            GameData.NumberOfLives = GameData.DefaultNumberOfLives;
         }
 
-        internal static void Update(GameTime gameTime)
+        internal static void Update()
         {
+            GameTime gameTime = This.gameTime;
             Level l = This.Game.CurrentLevel;
 
             GamePadState currentState = GamePad.GetState(PlayerIndex.One);

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using BodilyInfection.Engine;
 using Microsoft.Xna.Framework.Graphics;
+using BodilyInfection.Engine;
 
 namespace BodilyInfection.Levels
 {
@@ -17,9 +17,11 @@ namespace BodilyInfection.Levels
 
         private static int EnemiesDefeatedWinCondition = 100;
 
-        internal static void Load(Level lastLevel)
+        internal static void Load()
         {
-            BodilyInfectionLevel l = This.Game.CurrentLevel as BodilyInfectionLevel;
+            BodilyInfectionLevel l = (This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel) as BodilyInfectionLevel;
+
+            l.EnemiesDefeated = 0;
 
             /// load background
             l.AddAnimation(new BackgroundAnimation("lungs.anim"));
@@ -37,26 +39,7 @@ namespace BodilyInfection.Levels
             l.AddAnimation(new Animation("BlueExplosion2.anim"));
             l.AddAnimation(new Animation("vulnerable.anim"));
             l.AddAnimation(new Animation("RedExplosion2.anim"));
-
-            /** load music */
-            var audioMan = This.Game.AudioManager;
-            //bg
-            audioMan.AddBackgroundMusic("level1_bg");
-            audioMan.PlayBackgroundMusic("level1_bg");
-            //ship spawn
-            audioMan.AddSoundEffect("ship_spawn");
-            //ship explode
-            audioMan.AddSoundEffect("ship_explosion");
-            //gun
-            audioMan.AddSoundEffect("gun1");
-            //rbc die
-            audioMan.AddSoundEffect("rbc_die");
-            //rbc infected
-            audioMan.AddSoundEffect("rbc_infect");
-            //virus explode
-            audioMan.AddSoundEffect("virus_explode");
-
-
+            
             /** load sprites */
 
             // Spawn initial RedBloodCells and Viruses
@@ -71,7 +54,7 @@ namespace BodilyInfection.Levels
             }, 2);
             LevelFunctions.SpawnEnemies(delegate()
             {
-                Actor virusActor = new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"));
+                Actor virusActor = new Actor(l.GetAnimation("virusPulse.anim"));
                 virusActor.Animations.Add(l.GetAnimation("BlueExplosion2.anim"));
                 return new Virus("virus", virusActor);
             }, 15);
@@ -86,10 +69,31 @@ namespace BodilyInfection.Levels
             ship.Pos = l.PlayerSpawnPoint;
 
             LevelFunctions.MakeHUD();
+
+            /** load music */
+            var audioMan = This.Game.AudioManager;
+
+            //ship spawn
+            audioMan.AddSoundEffect("ship_spawn");
+            //ship explode
+            audioMan.AddSoundEffect("ship_explosion");
+            //gun
+            audioMan.AddSoundEffect("gun1");
+            //rbc die
+            audioMan.AddSoundEffect("rbc_die");
+            //rbc infected
+            audioMan.AddSoundEffect("rbc_infect");
+            //virus explode
+            audioMan.AddSoundEffect("virus_explode");
+
+            //bg
+            audioMan.AddBackgroundMusic("level1_bg");
+            audioMan.PlayBackgroundMusic("level1_bg");
         }
 
-        internal static void Update(GameTime gameTime)
+        internal static void Update()
         {
+            GameTime gameTime = This.gameTime;
             if (gameTime.TotalGameTime >= SpawnWaitTime + PreviousSpawn)
             {
                 LevelFunctions.SpawnEnemies(delegate()
@@ -105,7 +109,7 @@ namespace BodilyInfection.Levels
 
         internal static bool CompletionCondition()
         {
-            return This.Game.CurrentLevel.EnemiesDefeated >= EnemiesDefeatedWinCondition;
+            return (This.Game.CurrentLevel as BodilyInfectionLevel).EnemiesDefeated >= EnemiesDefeatedWinCondition;
         }
     }
 }

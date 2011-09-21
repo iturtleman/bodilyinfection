@@ -10,7 +10,7 @@ namespace BodilyInfection
         /// </summary>
         static void Main(string[] args)
         {
-            This.Game = new BodilyInfection();
+            This.Game = new Game();
             This.Game.Run();
         }
     }

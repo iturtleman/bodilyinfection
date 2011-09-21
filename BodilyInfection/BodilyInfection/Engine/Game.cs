@@ -11,9 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace BodilyInfection
 {
-    internal delegate void LoadBehavior(Level lastlevel);
-    internal delegate void UpdateBehavior(GameTime gameTime);
-    internal delegate void UnloadBehavior();
+    public delegate void Behavior();
     public delegate bool Condition();
 
     /// <summary>
@@ -36,7 +34,7 @@ namespace BodilyInfection
         public bool ShowFPS { get; set; }
 
         /// <summary>
-        /// Gets or sets the current level being played.
+        /// Gets the current level being played.
         /// </summary>
         internal Level CurrentLevel
         {
@@ -45,6 +43,24 @@ namespace BodilyInfection
                 if (mCurrentLevel < mLevels.Count)
                 {
                     return mLevels[mCurrentLevel];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the next level to be played (the one loading)
+        /// </summary>
+        internal Level NextLevel
+        {
+            get
+            {
+                if (mNextLevel >= 0 && mNextLevel < mLevels.Count)
+                {
+                    return mLevels[mNextLevel];
                 }
                 else
                 {
@@ -92,7 +108,10 @@ namespace BodilyInfection
         /// </summary>
         int currentFPS;
         #endregion FPS calc
-
+        /// <summary>
+        /// The next level (for loading)
+        /// </summary>
+        int mNextLevel = -1;
         int mCurrentLevel;/**< Current Level index. */
         AudioManager mAudioManager = new AudioManager();
         List<Level> mLevels = new List<Level>();
@@ -100,7 +119,12 @@ namespace BodilyInfection
         /// <summary>
         /// Used to detect keypresses (down-up)
         /// </summary>
-        private KeyboardState mLastKeyState;
+        internal KeyboardState mLastKeyState;
+
+        /// <summary>
+        /// Used to detect gamepad State (down-up)
+        /// </summary>
+        internal GamePadState mLastPadState;
         #endregion Variables
 
         #region premade things
@@ -179,28 +203,31 @@ namespace BodilyInfection
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            This.gameTime = gameTime;
+
             #region Handle input
             // Allows the game to exit
             KeyboardState keyState = Keyboard.GetState();
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyState.IsKeyDown(Keys.Escape))
+            GamePadState padState = GamePad.GetState(PlayerIndex.One);
+            if (padState.Buttons.Back == ButtonState.Pressed || keyState.IsKeyDown(Keys.Escape))
                 this.Exit();
             if (mLastKeyState.IsKeyDown(Keys.F12) && keyState.IsKeyUp(Keys.F12))
                 ShowCollisionData = !ShowCollisionData;
-
-            mLastKeyState = keyState;
             #endregion Handle input
 
 
             if (CurrentLevel != null)
-                CurrentLevel.Update(gameTime);
+                CurrentLevel.Update();
 
             #region FPS
             if (gameTime.ElapsedGameTime.Milliseconds > 0)
                 currentFPS = 1000 / gameTime.ElapsedGameTime.Milliseconds;
             #endregion FPS
 
+            //store key and pad state
+            mLastPadState = padState;
+            mLastKeyState = keyState;
             base.Update(gameTime);
-
         }
 
         /// <summary>
@@ -232,28 +259,41 @@ namespace BodilyInfection
         /// <param name="name"></param>
         public void SetCurrentLevel(string name)
         {
-            Level oldLevel = CurrentLevel;
-            for (int i = 0, count = mLevels.Count; i < count; i++)
+            //if this is the expected level to load load it.
+            if (mNextLevel >= 0 && mLevels[mNextLevel].Name == name)
             {
-                if (mLevels[i].Name == name)
-                {
-                    mCurrentLevel = i;
-                    mLevels[mCurrentLevel].Load(oldLevel);
-                    return;
-                }
+                mCurrentLevel = mNextLevel;
             }
-            Console.WriteLine(string.Format("Level {0} does not exist", name));
+            //otherwise load the level with the given name
+            else
+            {
+                for (int i = 0, count = mLevels.Count; i < count; i++)
+                {
+                    if (mLevels[i].Name == name)
+                    {
+                        //reset next level so we don't do something stupid
+                        mNextLevel = -1;
+                        mCurrentLevel = i;
+                        mLevels[mCurrentLevel].Load();
+                        return;
+                    }
+                }
+                Console.WriteLine(string.Format("Level {0} does not exist", name));
+            }
         }
 
-        public void ReturnToLevel(string name)
+        /// <summary>
+        /// Loads the specified level
+        /// </summary>
+        /// <param name="name">name of the level to load</param>
+        public void LoadLevel(string name)
         {
             for (int i = 0, count = mLevels.Count; i < count; i++)
             {
                 if (mLevels[i].Name == name)
                 {
-                    mCurrentLevel = i;
-                    // Don't want to load anything, just return to how it was
-                    //mLevels[mCurrentLevel].Load();
+                    mNextLevel = i;
+                    mLevels[mNextLevel].Load();
                     return;
                 }
             }

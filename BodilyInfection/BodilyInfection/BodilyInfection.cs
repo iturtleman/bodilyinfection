@@ -12,18 +12,12 @@ namespace BodilyInfection
     /// Do anything required for Game-specific code here
     /// to avoid cluttering up the Engine
     /// </summary>
-    class BodilyInfection : Game
+    static class GameData
     {
-        public int Score { get; set; }
-        public int NumberOfLives { get; set; }
-        public readonly int DefaultNumberOfLives = 4;
+        public static int Score { get; set; }
+        public static int NumberOfLives { get; set; }
+        public static readonly int DefaultNumberOfLives = 4;
 
-        public BodilyInfection()
-            : base()
-        {
-            Score = 0;
-            NumberOfLives = DefaultNumberOfLives;
-        }
     }
 
     /// <summary>
@@ -33,14 +27,33 @@ namespace BodilyInfection
     {
         public Vector2 PlayerSpawnPoint = new Vector2(50, 50);
 
-        public BodilyInfectionLevel(string n, LoadBehavior loadBehavior, UpdateBehavior updateBehavior, UnloadBehavior endBehavior, Condition winCondition)
+        /// <summary>
+        /// A count of the enemies defeated in this level
+        /// </summary>
+        public int EnemiesDefeated { get; set; }
+
+        public BodilyInfectionLevel(string n, Behavior loadBehavior, Behavior updateBehavior, Behavior endBehavior, Condition winCondition)
             : base(n, loadBehavior, updateBehavior, endBehavior, winCondition)
         {
         }
 
-        internal override void Update(GameTime gameTime)
+        /// <summary>
+        /// A list of levels in the order they should be played through
+        /// </summary>
+        internal static List<string> LevelProgression = new List<string>()
         {
-            base.Update(gameTime);
+            "Stomach",
+            "Lungs",
+        };
+
+        /// <summary>
+        /// Retains progress through our levels
+        /// </summary>
+        internal static int CurrentStage = 0;
+
+        internal override void Update()
+        {
+            base.Update();
             //move the viewport if we need to
             Sprite player = GetSprite("ship");
             if (player != null)
@@ -68,6 +81,12 @@ namespace BodilyInfection
                 }
                 This.Game.CurrentLevel.Camera.Pos = cameraPos;
             }
+        }
+
+        internal static int NextLevel()
+        {
+            CurrentStage = (CurrentStage + 1) % LevelProgression.Count;
+            return CurrentStage;
         }
     }
 }

@@ -28,17 +28,17 @@ namespace BodilyInfection
         /// <summary>
         /// 
         /// </summary>
-        public void DoCollisions(GameTime gameTime)
+        public void DoCollisions()
         {
             if (mCollidesWithBackground)
             {
                 // do background collisions
             }
-            CollisionBehavior(gameTime);
+            CollisionBehavior();
         }
         #endregion Methods
 
-        internal UpdateBehavior CollisionBehavior = (GameTime gameTime) => { };
+        internal Behavior CollisionBehavior = () => { };
 
         #region Properties
         /// <summary>

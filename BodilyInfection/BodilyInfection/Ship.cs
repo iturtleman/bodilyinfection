@@ -20,22 +20,24 @@ namespace BodilyInfection
         public Ship(string name, Actor actor, PlayerIndex input)
             : base(name, actor)
         {
+            cannon = new Cannon(name + "_cannon", new Actor((This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel).GetAnimation("cannon.anim")), name, input);
+            cannon.ZOrder = ZOrder + 1;
+            shieldEndTime = TimeSpan.MinValue;
+            RemainingLives = DefaultLives;
             this.gamepad = input;
             shipVelocity = Vector2.Zero;
             shipSpeed = 10.0f;
             lThumbstick = Vector2.Zero;
             rThumbstick = Vector2.Zero;
             Dead = false;
-
-            cannon = new Cannon(name + "_cannon", new Actor(This.Game.CurrentLevel.GetAnimation("cannon.anim")), name, input);
-            cannon.ZOrder = ZOrder + 1;
-
-            shieldEndTime = TimeSpan.MinValue;
             shieldName = Name + "_shield";
+            shieldEndTime = shieldDuration;
+            Dead = false;
             EnableShield();
 
-            UpdateBehavior += new UpdateBehavior(Update);
-            CollisionBehavior += new UpdateBehavior(ActOnCollisions);
+
+            UpdateBehavior =Update;
+            CollisionBehavior =ActOnCollisions;
         }
         #endregion
 
@@ -54,12 +56,15 @@ namespace BodilyInfection
         private TimeSpan explosionLength = new TimeSpan(0, 0, 0, 0, 500);
         private Vector2 lThumbstick;
         private Vector2 rThumbstick;
+        public int RemainingLives = 0;
+        public readonly int DefaultLives = 4;
         #endregion
 
         public bool Dead { get; set; }
 
-        public void Update(GameTime gameTime)
+        public void Update()
         {
+            GameTime gameTime = This.gameTime;
             if (shieldEndTime == TimeSpan.MinValue)
             {
                 shieldEndTime = gameTime.TotalGameTime + shieldDuration;
@@ -166,20 +171,23 @@ namespace BodilyInfection
             #region explosion/deletion code
             if ((gameTime.TotalGameTime >= explosionLength + timeOfDeath) && Dead)
             {
-                This.Game.AudioManager.PlaySoundEffect("ship_spawn");
-                Pos = (This.Game.CurrentLevel as BodilyInfectionLevel).PlayerSpawnPoint;
-                Dead = false;
-                This.Game.CurrentLevel.GetSprite("ship_cannon").mVisible = true;
-                SetAnimation(0);
-                StartAnim();
-
-                EnableShield();
-                shieldEndTime = gameTime.TotalGameTime + shieldDuration;
-                (This.Game as BodilyInfection).NumberOfLives--;
-                if ((This.Game as BodilyInfection).NumberOfLives <= 0)
+                
+                GameData.NumberOfLives--;
+                if (GameData.NumberOfLives > 0)
                 {
-                    LevelFunctions.GoToGameOver(null);
+                    Pos = (This.Game.CurrentLevel as BodilyInfectionLevel).PlayerSpawnPoint;
+                    Dead = false;
+                    This.Game.CurrentLevel.GetSprite("ship_cannon").mVisible = true;
+                    SetAnimation(0);
+                    StartAnim();
+                    This.Game.AudioManager.PlaySoundEffect("ship_spawn");
+                    EnableShield();
+                    shieldEndTime = gameTime.TotalGameTime + shieldDuration;
                 }
+                else
+                {
+                    LevelFunctions.GoToGameOver();
+                } 
 
                 //cannon.mVisible = true;
             }
@@ -193,8 +201,9 @@ namespace BodilyInfection
             shipVelocity *= 0.95f;
         }
 
-        private void ActOnCollisions(GameTime gameTime)
+        private void ActOnCollisions()
         {
+            GameTime gameTime = This.gameTime;
             if (Collision.collisionData.Count > 0)
             {
                 foreach (CollisionObject co in this.GetCollision())
@@ -277,7 +286,7 @@ namespace BodilyInfection
         private void FireBullet(GameTime gameTime, Vector2 shootDir)
         {
             Sprite bullet = new Bullet("bullet",
-                                new Actor(This.Game.CurrentLevel.GetAnimation("antibody.anim")),
+                                new Actor((This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel).GetAnimation("antibody.anim")),
                                 shootDir * 15);
             bullet.Pos = Pos + GetAnimation().AnimationPeg - bullet.GetAnimation().AnimationPeg;
             cooldownEndTime = gameTime.TotalGameTime + shootCooldown;
@@ -287,7 +296,7 @@ namespace BodilyInfection
         private void EnableShield()
         {
             shieldOn = true;
-            Sprite shield = new Shield(shieldName, new Actor(This.Game.CurrentLevel.GetAnimation("shield.anim")), Name);
+            Sprite shield = new Shield(shieldName, new Actor((This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel).GetAnimation("shield.anim")), Name);
             Pos = shield.Pos + shield.GetAnimation().AnimationPeg - GetAnimation().AnimationPeg;
             shield.ZOrder = ZOrder + 2;
         }
@@ -295,7 +304,7 @@ namespace BodilyInfection
         private void DisableShield()
         {
             shieldOn = false;
-            This.Game.CurrentLevel.RemoveSprite(This.Game.CurrentLevel.GetSprite(shieldName));
+            This.Game.CurrentLevel.RemoveSprite((This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel).GetSprite(shieldName));
         }
     }
 
@@ -309,10 +318,10 @@ namespace BodilyInfection
         {
             this.shipName = shipName;
             gamepad = input;
-            UpdateBehavior += Update;
+            UpdateBehavior = Update;
         }
 
-        public void Update(GameTime gameTime)
+        public void Update()
         {
             Sprite ship = This.Game.CurrentLevel.GetSprite(shipName);
             if (ship != null)
@@ -347,10 +356,10 @@ namespace BodilyInfection
             : base(name, actor)
         {
             this.shipName = shipName;
-            UpdateBehavior += Update;
+            UpdateBehavior = Update;
         }
 
-        public void Update(GameTime gameTime)
+        public void Update()
         {
             Sprite ship = This.Game.CurrentLevel.GetSprite(shipName);
             if (ship == null)

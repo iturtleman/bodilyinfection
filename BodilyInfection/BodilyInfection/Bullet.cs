@@ -22,13 +22,13 @@ namespace BodilyInfection
             : base(name, actor)
         {
             movementVelocity = velocity;
-            UpdateBehavior += new UpdateBehavior(Update);
+            UpdateBehavior =Update;
         }
 
         private Vector2 movementVelocity;
         Stopwatch timer = new Stopwatch();
 
-        public void Update(GameTime gameTime)
+        public void Update()
         {
             // Fire in straight line from position of ship when bullet was created. (scaled by velocity)
             Pos.X += movementVelocity.X;

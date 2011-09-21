@@ -7,17 +7,17 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace BodilyInfection
 {
-    internal class Level
+    class Level
     {
 
         #region Constructor
         public Level()
         {
-            LoadBehavior = (Level last) => { };
-            UpdateBehavior = (GameTime gameTime) => { };
+            LoadBehavior = () => { };
+            UpdateBehavior = () => { };
             EndBehavior = () => { };
         }
-        public Level(string n, LoadBehavior loadBehavior, UpdateBehavior updateBehavior, UnloadBehavior endBehavior, Condition winCondition)
+        public Level(string n, Behavior loadBehavior, Behavior updateBehavior, Behavior endBehavior, Condition winCondition)
         {
             mName = n;
             LoadBehavior = loadBehavior;
@@ -31,15 +31,15 @@ namespace BodilyInfection
         /// <summary>
         /// Level's load action
         /// </summary>
-        public LoadBehavior LoadBehavior { get; set; }
+        public Behavior LoadBehavior { get; set; }
         /// <summary>
         /// Level's update Behavior
         /// </summary>
-        public UpdateBehavior UpdateBehavior { get; set; }
+        public Behavior UpdateBehavior { get; set; }
         /// <summary>
         /// Level's End Behavior
         /// </summary>
-        public UnloadBehavior EndBehavior { get; set; }
+        public Behavior EndBehavior { get; set; }
         #endregion Behaviors
 
         #region Properties
@@ -53,14 +53,14 @@ namespace BodilyInfection
         public Background Background { get; set; }
 
         /// <summary>
-        /// A count of the enemies defeated in this level
-        /// </summary>
-        public int EnemiesDefeated { get; set; }
-
-        /// <summary>
         /// A Condition to check if the level has been won
         /// </summary>
         public Condition WinCondition { get; set; }
+
+        /// <summary>
+        /// Tells whether the current level is loaded or not
+        /// </summary>
+        public bool Loaded { get; set; }
         #endregion Properties
 
         #region Variables
@@ -91,45 +91,63 @@ namespace BodilyInfection
 
         #endregion Variables
 
-        #region Updating
-        internal void Load(Level oldLevel)
+        
+        internal void Load()
         {
             This.Game.AudioManager.Stop();
-            EnemiesDefeated = 0;
-            LoadBehavior(oldLevel);
+            mSprites.Clear();
+            mActors.Clear();
+            mAnims.Clear();
+            LoadBehavior();
+            Loaded = true;
         }
 
-        internal virtual void Update(GameTime gameTime)
+        internal virtual void Update()
         {
-            if (WinCondition())
-            {
-                mSprites.Clear();
-                EndBehavior();
-                return;
-            }
             mSprites.Sort();
-            UpdateBehavior(gameTime);
-            foreach (Sprite sp in mSprites)
+            if (Loaded)
             {
-                sp.UpdateBehavior(gameTime);
+                UpdateBehavior();
+                foreach (Sprite sp in mSprites)
+                {
+                    if (!WinCondition())
+                        sp.UpdateBehavior();
+                    else
+                    {
+                        Unload();
+                        return;
+                    }
+                }
+                foreach (var item in ToRemove)
+                {
+                    mSprites.Remove(item);
+                }
+                ToRemove.Clear();
+                foreach (var item in ToAdd)
+                {
+                    mSprites.Add(item);
+                }
+                ToAdd.Clear();
+                Collision.update();
+                foreach (Sprite sp in mSprites)
+                {
+                    sp.DoCollisions();
+                }
             }
-            foreach (var item in ToRemove)
+            else
             {
-                 mSprites.Remove(item);
-            }
-            ToRemove.Clear();
-            foreach (var item in ToAdd)
-            {
-                mSprites.Add(item);
-            }
-            ToAdd.Clear();
-            Collision.update();
-            foreach (Sprite sp in mSprites)
-            {
-                sp.DoCollisions(gameTime);
+                /// \todo Show load screen
             }
         }
-        #endregion Updating
+
+        internal void Unload()
+        {
+            This.Game.AudioManager.Stop();
+            mSprites.Clear();
+            mActors.Clear();
+            mAnims.Clear();
+            EndBehavior();
+        }
 
         #region Methods
 
@@ -243,6 +261,11 @@ namespace BodilyInfection
             mActors.Remove(name);
         }
         #endregion Management
+
+        public override string ToString()
+        {
+            return Name;
+        }
         #endregion Methods
     }
 }

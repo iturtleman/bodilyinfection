@@ -11,8 +11,8 @@ namespace BodilyInfection
         public Virus(string name, Actor actor)
             : base(name, actor)
         {
-            UpdateBehavior += new UpdateBehavior(Update);
-            CollisionBehavior += new UpdateBehavior(ActOnCollisions);
+            UpdateBehavior = Update;
+            CollisionBehavior = ActOnCollisions;
             Harmless = true;
             Invincible = true;
             Frozen = true;
@@ -56,8 +56,10 @@ namespace BodilyInfection
 
         #region Methods
 
-        public void Update(GameTime gameTime)
+        public void Update()
         {
+            GameTime gameTime = This.gameTime;
+
             if (This.Game.CurrentLevel.GetSprite("ship") != null)
             {
                 Sprite ship = This.Game.CurrentLevel.GetSprite("ship");
@@ -122,8 +124,8 @@ namespace BodilyInfection
                 #region explosion animation removal
                 if ((gameTime.TotalGameTime >= explosionLength + timeOfDeath) && IsDead)
                 {
-                    (This.Game as BodilyInfection).Score++;
-                    This.Game.CurrentLevel.EnemiesDefeated++;
+                    GameData.Score++;
+                    (This.Game.CurrentLevel as BodilyInfectionLevel).EnemiesDefeated++;
                     This.Game.CurrentLevel.RemoveSprite(this);
                 }
                 #endregion explosion animation removal
@@ -133,8 +135,9 @@ namespace BodilyInfection
         #endregion
         }
 
-        private void ActOnCollisions(GameTime gameTime)
+        private void ActOnCollisions()
         {
+            GameTime gameTime = This.gameTime;
             if (Collision.collisionData.Count > 0)
             {
                 foreach (CollisionObject co in this.GetCollision())

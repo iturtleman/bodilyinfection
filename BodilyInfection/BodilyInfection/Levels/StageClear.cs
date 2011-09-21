@@ -12,45 +12,25 @@ namespace BodilyInfection.Levels
         static readonly TimeSpan RequiredWaitTime = new TimeSpan(0, 0, 0, 0, 0);
         static TimeSpan LevelInitTime = TimeSpan.MinValue;
         private static bool levelCompleted = false;
-        private static string nextLevel = null;
 
-        internal static void Load(Level lastLevel)
+        internal static void Load()
         {
-            for (int x = 0; x < LevelFunctions.LevelProgression.Count - 1; x++)
-            {
-                if (lastLevel.Name == LevelFunctions.LevelProgression[x])
-                {
-                    nextLevel = LevelFunctions.LevelProgression[x + 1];
-                }
-            }
-            // 
-            if (nextLevel == null)
-            {
-                if (lastLevel.Name == LevelFunctions.LevelProgression[LevelFunctions.LevelProgression.Count - 1])
-                {
-                    // Go to "game completed" screen
-                    nextLevel = "TitleScreen";
-                }
-                else
-                {
-                    nextLevel = "TitleScreen";
-                }
-            }
             LevelInitTime = TimeSpan.MinValue;
             levelCompleted = false;
 
-            Level l = This.Game.CurrentLevel;
+            Level l = This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel;
             l.AddAnimation(new BackgroundAnimation("stageclear.anim"));
 
             l.Background = new Background("stageclear", new Actor(l.GetAnimation("stageclear.anim")));
 
             /** load music */
-            //This.Game.AudioManager.AddBackgroundMusic("title");
-            //This.Game.AudioManager.PlayBackgroundMusic("title");
+            This.Game.AudioManager.AddBackgroundMusic("win");
+            This.Game.AudioManager.PlayBackgroundMusic("win");
         }
 
-        internal static void Update(GameTime gameTime)
+        internal static void Update()
         {
+            GameTime gameTime = This.gameTime;
             if (LevelInitTime == TimeSpan.MinValue)
             {
                 LevelInitTime = gameTime.TotalGameTime;
@@ -86,8 +66,7 @@ namespace BodilyInfection.Levels
 
         internal static void Unload()
         {
-            This.Game.SetCurrentLevel(nextLevel);
-            nextLevel = null;
+            This.Game.SetCurrentLevel(BodilyInfectionLevel.LevelProgression[BodilyInfectionLevel.NextLevel()]);
         }
     }
 }
