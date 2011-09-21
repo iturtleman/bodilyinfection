@@ -140,7 +140,7 @@ namespace BoundaryCreator
                     textBox1.Text = "Bad Formatting";
                 else
                 {
-                    string formattedFrame = frame.Trim().Remove(index-1);
+                    string formattedFrame = frame.Trim().Remove(index);
                     textBox1.Text += "  " + formattedFrame + ">" + Environment.NewLine;
                     textBox1.Text += collisionText;
                     textBox1.Text += "  </Frame>" + Environment.NewLine;
@@ -171,12 +171,17 @@ namespace BoundaryCreator
                 // File type selected in the dialog box.
                 // NOTE that the FilterIndex property is one-based.
 
-                StreamWriter sw = new StreamWriter(fs);
+                StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
                 sw.Write(textBox1.Text);
                 sw.Flush();
                 sw.Close();
                 fs.Close();
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
