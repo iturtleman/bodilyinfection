@@ -7,3 +7,12 @@ C:\Users\bruce\Desktop\Infection\Tools\BoundaryCreator\BoundaryCreator\obj\x86\D
 C:\Users\bruce\Desktop\Infection\Tools\BoundaryCreator\BoundaryCreator\obj\x86\Debug\BoundaryCreator.exe
 C:\Users\bruce\Desktop\Infection\Tools\BoundaryCreator\BoundaryCreator\obj\x86\Debug\BoundaryCreator.pdb
 C:\Users\bruce\Desktop\Infection\Tools\BoundaryCreator\BoundaryCreator\obj\x86\Debug\BoundaryCreator.Form1.resources
+H:\gamedev\infection\Tools\BoundaryCreator\BoundaryCreator\obj\x86\Debug\BoundaryCreator.exe
+H:\gamedev\infection\Tools\BoundaryCreator\BoundaryCreator\obj\x86\Debug\BoundaryCreator.pdb
+H:\gamedev\infection\Tools\BoundaryCreator\BoundaryCreator\bin\Debug\BoundaryCreator.exe
+H:\gamedev\infection\Tools\BoundaryCreator\BoundaryCreator\bin\Debug\BoundaryCreator.pdb
+H:\gamedev\infection\Tools\BoundaryCreator\BoundaryCreator\obj\x86\Debug\ResolveAssemblyReference.cache
+H:\gamedev\infection\Tools\BoundaryCreator\BoundaryCreator\obj\x86\Debug\BoundaryCreator.Form1.resources
+H:\gamedev\infection\Tools\BoundaryCreator\BoundaryCreator\obj\x86\Debug\BoundaryCreator.Properties.Resources.resources
+H:\gamedev\infection\Tools\BoundaryCreator\BoundaryCreator\obj\x86\Debug\GenerateResource.read.1.tlog
+H:\gamedev\infection\Tools\BoundaryCreator\BoundaryCreator\obj\x86\Debug\GenerateResource.write.1.tlog

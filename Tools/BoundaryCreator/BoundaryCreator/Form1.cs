@@ -14,6 +14,7 @@ namespace BoundaryCreator
     public partial class Form1 : Form
     {
         List<Tuple<float, float>> polygonPoints = new List<Tuple<float, float>>();
+        float thickness;
         List<Tuple<float, float, float, float, float>> separatedPoints = new List<Tuple<float, float, float, float, float>>();
         IEnumerable<string> animPre = new List<string>();
 
@@ -35,32 +36,38 @@ namespace BoundaryCreator
 
             string file = openFileDialog1.FileName;
             IEnumerable<string> lines = new List<string>();
-            try
-            {
+            thickness = -1.0f;
+            //try
+            //{
                 lines = File.ReadLines(file);
 
                 bool endPolygon = false;
 
                 foreach (string line in lines)
                 {
-                    if ((line[0] == '\\' && line[1] == '\\') || line.Length == 0)
+                    string trimmedLine = line.Trim();
+                    if (trimmedLine.Length == 0 || (trimmedLine[0] == '/' && trimmedLine[1] == '/'))
                         continue;
-                    if (line[0] == '#')
+                    if (trimmedLine[0] == '#')
                     {
                         endPolygon = true;
                         continue;
                     }
-
+                    if (thickness == -1.0f)
+                    {
+                        thickness = float.Parse(trimmedLine.ToString());
+                        continue;
+                    }
                     if (endPolygon)
                     {
-                        string[] points = line.Split(';');
+                        string[] points = trimmedLine.Split(';');
                         string[] point1 = points[0].Split(',');
                         string[] point2 = points[1].Split(',');
                         separatedPoints.Add(new Tuple<float, float, float, float, float>(float.Parse(point1[0]), float.Parse(point1[1]), float.Parse(point2[0]), float.Parse(point2[1]), float.Parse(points[2])));
                     }
                     else
                     {
-                        string[] point = line.Split(',');
+                        string[] point = trimmedLine.Split(',');
                         polygonPoints.Add(new Tuple<float, float>(float.Parse(point[0]), float.Parse(point[1])));
                     }
                 }
@@ -69,16 +76,16 @@ namespace BoundaryCreator
                 animPreFile.Enabled = true;
                 generate.Enabled = false;
                 save.Enabled = false;
-            }
-            catch {}
+            //}
+            //catch {}
         }
 
 
         private void animPreFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "AnimPre Files|*.animpre";
-            openFileDialog1.Title = "Select an AnimPre File";
+            openFileDialog1.Filter = "Anim Files|*.anim";
+            openFileDialog1.Title = "Select an Anim File";
             openFileDialog1.Multiselect = false;
             openFileDialog1.ShowDialog();
 
@@ -103,7 +110,7 @@ namespace BoundaryCreator
                 collisionText += "\"" + polygonPoints[i].Item1.ToString("0.0####") + "," + polygonPoints[i].Item2.ToString("0.0####") + "\"";
                 collisionText += " Corner2=";
                 collisionText += "\"" + polygonPoints[(i + 1) % count].Item1.ToString("0.0####") + "," + polygonPoints[(i + 1) % count].Item2.ToString("0.0####") + "\"";
-                collisionText += " Thickness=\"20.0\"/>" + Environment.NewLine;
+                collisionText += " Thickness=\"" + thickness.ToString("0.0####") + "\"/>" + Environment.NewLine;
             }
 
             count = separatedPoints.Count;

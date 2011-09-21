@@ -1,0 +1,15 @@
+//Thickness of Each OBB in Closed Polygon (float)
+15.5
+
+//Closed Polygon Start (Specify Clockwise)
+//X,Y
+5.0,5.0
+1.0,6.0
+1567.0,7.0591
+//closed polygon end
+
+#
+
+//begin individual boxes
+//X1,Y1;X2,Y2;Thickness
+100,100;200,200;30
