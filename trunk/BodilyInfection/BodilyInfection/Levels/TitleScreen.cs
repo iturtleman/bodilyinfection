@@ -14,7 +14,7 @@ namespace BodilyInfection.Levels
         static TimeSpan LevelInitTime = TimeSpan.MinValue;
         private static bool levelCompleted = false;
 
-        internal static void Load(GameTime gameTime)
+        internal static void Load(Level lastLevel)
         {
             LevelInitTime = TimeSpan.MinValue;
             levelCompleted = false;
@@ -24,7 +24,6 @@ namespace BodilyInfection.Levels
 
             l.Background = new Background("title", new Actor(l.GetAnimation("title.anim")));
 
-            /** load music */
             This.Game.AudioManager.AddBackgroundMusic("title");
             This.Game.AudioManager.PlayBackgroundMusic("title");
         }
@@ -64,9 +63,10 @@ namespace BodilyInfection.Levels
             return levelCompleted;
         }
 
-        internal static void Unload(GameTime gameTime)
+        internal static void Unload()
         {
-            This.Game.SetCurrentLevel("World");
+            // Always go the first level
+            This.Game.SetCurrentLevel(LevelFunctions.LevelProgression[0]);
         }
     }
 }

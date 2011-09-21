@@ -7,17 +7,17 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace BodilyInfection
 {
-    class Level
+    internal class Level
     {
 
         #region Constructor
         public Level()
         {
-            LoadBehavior = (GameTime gameTime) => { };
+            LoadBehavior = (Level last) => { };
             UpdateBehavior = (GameTime gameTime) => { };
-            EndBehavior = (GameTime gameTime) => { };
+            EndBehavior = () => { };
         }
-        public Level(string n, Behavior loadBehavior, Behavior updateBehavior, Behavior endBehavior, Condition winCondition)
+        public Level(string n, LoadBehavior loadBehavior, UpdateBehavior updateBehavior, UnloadBehavior endBehavior, Condition winCondition)
         {
             mName = n;
             LoadBehavior = loadBehavior;
@@ -31,15 +31,15 @@ namespace BodilyInfection
         /// <summary>
         /// Level's load action
         /// </summary>
-        public Behavior LoadBehavior { get; set; }
+        public LoadBehavior LoadBehavior { get; set; }
         /// <summary>
         /// Level's update Behavior
         /// </summary>
-        public Behavior UpdateBehavior { get; set; }
+        public UpdateBehavior UpdateBehavior { get; set; }
         /// <summary>
         /// Level's End Behavior
         /// </summary>
-        public Behavior EndBehavior { get; set; }
+        public UnloadBehavior EndBehavior { get; set; }
         #endregion Behaviors
 
         #region Properties
@@ -87,26 +87,24 @@ namespace BodilyInfection
         protected List<WorldObject> ToAdd = new List<WorldObject>();
         protected List<WorldObject> ToRemove = new List<WorldObject>();
 
-        public Vector2 PlayerSpawnPoint = new Vector2(50, 50);
-
         public Camera Camera = new Camera();
 
         #endregion Variables
 
         #region Updating
-        internal void Load()
+        internal void Load(Level oldLevel)
         {
             This.Game.AudioManager.Stop();
             EnemiesDefeated = 0;
-            LoadBehavior(null);
+            LoadBehavior(oldLevel);
         }
 
-        internal void Update(GameTime gameTime)
+        internal virtual void Update(GameTime gameTime)
         {
             if (WinCondition())
             {
                 mSprites.Clear();
-                EndBehavior(gameTime);
+                EndBehavior();
                 return;
             }
             mSprites.Sort();
@@ -130,7 +128,6 @@ namespace BodilyInfection
             {
                 sp.DoCollisions(gameTime);
             }
-            //nwe function here
         }
         #endregion Updating
 

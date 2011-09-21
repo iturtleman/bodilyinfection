@@ -38,7 +38,7 @@ namespace BodilyInfection
         }
         #endregion Methods
 
-        internal Behavior CollisionBehavior = (GameTime gameTime) => { };
+        internal UpdateBehavior CollisionBehavior = (GameTime gameTime) => { };
 
         #region Properties
         /// <summary>

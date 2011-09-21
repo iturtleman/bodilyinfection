@@ -22,7 +22,7 @@ namespace BodilyInfection
             : base(name, actor)
         {
             movementVelocity = velocity;
-            UpdateBehavior += new Behavior(Update);
+            UpdateBehavior += new UpdateBehavior(Update);
         }
 
         private Vector2 movementVelocity;
