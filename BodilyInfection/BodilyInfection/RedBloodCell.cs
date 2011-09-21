@@ -19,8 +19,8 @@ namespace BodilyInfection
             : base(name, actor)
         {
             movementVelocity = velocity;
-            UpdateBehavior += new Behavior(Update);
-            CollisionBehavior += new Behavior(ActOnCollisions);
+            UpdateBehavior += new UpdateBehavior(Update);
+            CollisionBehavior += new UpdateBehavior(ActOnCollisions);
             Wounded = false;
             Infected = false;
             Dead = false;

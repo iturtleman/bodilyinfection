@@ -15,9 +15,9 @@ namespace BodilyInfection
             mActor = actor;
             mLastUpdate = new GameTime();
 
-            LoadBehavior = (GameTime gameTime) => { };
+            LoadBehavior = (Level l) => { };
             UpdateBehavior = (GameTime gameTime) => { };
-            EndBehavior = (GameTime gameTime) => { };
+            EndBehavior = () => { };
 
             This.Game.CurrentLevel.AddSprite(this);
             AnimationSpeed = 1;
@@ -48,17 +48,17 @@ namespace BodilyInfection
         /// <summary>
         /// Sprite's Load Behavior
         /// </summary>
-        public Behavior LoadBehavior;
+        public LoadBehavior LoadBehavior;
 
         /// <summary>
         /// Sprite's Update Behavior
         /// </summary>
-        public Behavior UpdateBehavior;
+        public UpdateBehavior UpdateBehavior;
 
         /// <summary>
         /// Sprite's End Behavior
         /// </summary>
-        public Behavior EndBehavior;
+        public UnloadBehavior EndBehavior;
         #endregion Behaviors
 
         #region Methods

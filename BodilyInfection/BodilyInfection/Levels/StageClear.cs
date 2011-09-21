@@ -12,9 +12,30 @@ namespace BodilyInfection.Levels
         static readonly TimeSpan RequiredWaitTime = new TimeSpan(0, 0, 0, 0, 0);
         static TimeSpan LevelInitTime = TimeSpan.MinValue;
         private static bool levelCompleted = false;
+        private static string nextLevel = null;
 
-        internal static void Load(GameTime gameTime)
+        internal static void Load(Level lastLevel)
         {
+            for (int x = 0; x < LevelFunctions.LevelProgression.Count - 1; x++)
+            {
+                if (lastLevel.Name == LevelFunctions.LevelProgression[x])
+                {
+                    nextLevel = LevelFunctions.LevelProgression[x + 1];
+                }
+            }
+            // 
+            if (nextLevel == null)
+            {
+                if (lastLevel.Name == LevelFunctions.LevelProgression[LevelFunctions.LevelProgression.Count - 1])
+                {
+                    // Go to "game completed" screen
+                    nextLevel = "TitleScreen";
+                }
+                else
+                {
+                    nextLevel = "TitleScreen";
+                }
+            }
             LevelInitTime = TimeSpan.MinValue;
             levelCompleted = false;
 
@@ -63,10 +84,10 @@ namespace BodilyInfection.Levels
             return levelCompleted;
         }
 
-        internal static void Unload(GameTime gameTime)
+        internal static void Unload()
         {
-            
-            This.Game.SetCurrentLevel("level2");
+            This.Game.SetCurrentLevel(nextLevel);
+            nextLevel = null;
         }
     }
 }

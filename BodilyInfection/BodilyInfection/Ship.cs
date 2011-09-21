@@ -10,6 +10,7 @@ namespace BodilyInfection
 {
     class Ship : Sprite
     {
+        #region constructors
         public Ship(string name, Actor actor)
             : this(name, actor, PlayerIndex.One)
         {
@@ -19,25 +20,26 @@ namespace BodilyInfection
         public Ship(string name, Actor actor, PlayerIndex input)
             : base(name, actor)
         {
-            cannon = new Cannon(name + "_cannon", new Actor(This.Game.CurrentLevel.GetAnimation("cannon.anim")), name, input);
-            cannon.ZOrder = ZOrder + 1;
-            shieldEndTime = TimeSpan.MinValue;
-            RemainingLives = DefaultLives;
             this.gamepad = input;
             shipVelocity = Vector2.Zero;
             shipSpeed = 10.0f;
             lThumbstick = Vector2.Zero;
             rThumbstick = Vector2.Zero;
-            shieldName = Name + "_shield";
-            shieldEndTime = shieldDuration;
             Dead = false;
+
+            cannon = new Cannon(name + "_cannon", new Actor(This.Game.CurrentLevel.GetAnimation("cannon.anim")), name, input);
+            cannon.ZOrder = ZOrder + 1;
+
+            shieldEndTime = TimeSpan.MinValue;
+            shieldName = Name + "_shield";
             EnableShield();
 
-
-            UpdateBehavior += new Behavior(Update);
-            CollisionBehavior += new Behavior(ActOnCollisions);
+            UpdateBehavior += new UpdateBehavior(Update);
+            CollisionBehavior += new UpdateBehavior(ActOnCollisions);
         }
+        #endregion
 
+        #region variables
         Sprite cannon;
         private Vector2 shipVelocity;
         private float shipSpeed;
@@ -52,8 +54,7 @@ namespace BodilyInfection
         private TimeSpan explosionLength = new TimeSpan(0, 0, 0, 0, 500);
         private Vector2 lThumbstick;
         private Vector2 rThumbstick;
-        public int RemainingLives = 0;
-        public readonly int DefaultLives = 4;
+        #endregion
 
         public bool Dead { get; set; }
 
@@ -106,8 +107,7 @@ namespace BodilyInfection
                     // In case you get lost, press A to warp back to the center.
                     if (currentState.Buttons.A == ButtonState.Pressed)
                     {
-                        Pos.X = 0;//This.Game.graphics.GraphicsDevice.Viewport.Width / 2;
-                        Pos.Y = 0;// This.Game.graphics.GraphicsDevice.Viewport.Height / 2;
+                        Pos = (This.Game.CurrentLevel as BodilyInfectionLevel).PlayerSpawnPoint;
                         shipVelocity = Vector2.Zero;
                         This.Game.AudioManager.PlaySoundEffect("ship_spawn");
                     }
@@ -167,7 +167,7 @@ namespace BodilyInfection
             if ((gameTime.TotalGameTime >= explosionLength + timeOfDeath) && Dead)
             {
                 This.Game.AudioManager.PlaySoundEffect("ship_spawn");
-                Pos = This.Game.CurrentLevel.PlayerSpawnPoint;
+                Pos = (This.Game.CurrentLevel as BodilyInfectionLevel).PlayerSpawnPoint;
                 Dead = false;
                 This.Game.CurrentLevel.GetSprite("ship_cannon").mVisible = true;
                 SetAnimation(0);
@@ -175,10 +175,10 @@ namespace BodilyInfection
 
                 EnableShield();
                 shieldEndTime = gameTime.TotalGameTime + shieldDuration;
-                RemainingLives--;
-                if (RemainingLives <= 0)
+                (This.Game as BodilyInfection).NumberOfLives--;
+                if ((This.Game as BodilyInfection).NumberOfLives <= 0)
                 {
-                    LevelFunctions.ToGameOver(null);
+                    LevelFunctions.GoToGameOver(null);
                 }
 
                 //cannon.mVisible = true;

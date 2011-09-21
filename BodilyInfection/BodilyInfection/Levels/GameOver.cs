@@ -12,7 +12,7 @@ namespace BodilyInfection.Levels
     {
         static bool levelCompleted = false;
 
-        internal static void Load(GameTime gameTime)
+        internal static void Load(Level lastLevel)
         {
             levelCompleted = false;
             
@@ -20,14 +20,8 @@ namespace BodilyInfection.Levels
             l.AddAnimation(new BackgroundAnimation("gameover.anim"));
             l.Background = new Background("gameover", new Actor(l.GetAnimation("gameover.anim")));
 
-            /*Text text = new Text("title", "Text", "GAME OVER");
-            text.Pos = new Vector2((This.Game.GraphicsDevice.Viewport.Width / 2) - (text.GetAnimation().Width / 2), 150);
-            text.DisplayColor = Color.White;
-
-            Text next = new Text("next", "Text", "Press Start or Enter to go back to the title screen.");
-            next.Pos = new Vector2((This.Game.GraphicsDevice.Viewport.Width / 2) - (next.GetAnimation().Width / 2),
-                text.Pos.Y + text.GetAnimation().Height);
-            next.DisplayColor = Color.White;*/
+            (This.Game as BodilyInfection).Score = 0;
+            (This.Game as BodilyInfection).NumberOfLives = (This.Game as BodilyInfection).DefaultNumberOfLives;
         }
 
         internal static void Update(GameTime gameTime)
@@ -57,7 +51,7 @@ namespace BodilyInfection.Levels
             }
         }
 
-        internal static void Unload(GameTime gameTime)
+        internal static void Unload()
         {
             This.Game.SetCurrentLevel("TitleScreen");
         }

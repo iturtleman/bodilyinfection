@@ -11,7 +11,9 @@ using Microsoft.Xna.Framework.Media;
 
 namespace BodilyInfection
 {
-    public delegate void Behavior(GameTime gameTime);
+    internal delegate void LoadBehavior(Level lastlevel);
+    internal delegate void UpdateBehavior(GameTime gameTime);
+    internal delegate void UnloadBehavior();
     public delegate bool Condition();
 
     /// <summary>
@@ -94,7 +96,11 @@ namespace BodilyInfection
         int mCurrentLevel;/**< Current Level index. */
         AudioManager mAudioManager = new AudioManager();
         List<Level> mLevels = new List<Level>();
-        Dictionary<string, Behavior> mLevelBehaviors = new Dictionary<string, Behavior>();
+
+        /// <summary>
+        /// Used to detect keypresses (down-up)
+        /// </summary>
+        private KeyboardState mLastKeyState;
         #endregion Variables
 
         #region premade things
@@ -175,14 +181,13 @@ namespace BodilyInfection
         {
             #region Handle input
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            KeyboardState keyState = Keyboard.GetState();
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyState.IsKeyDown(Keys.Escape))
                 this.Exit();
-            if (Keyboard.GetState().IsKeyDown(Keys.F12))
-                ShowCollisionData = true;
-            if (Keyboard.GetState().IsKeyDown(Keys.F11))
-                ShowCollisionData = false;
+            if (mLastKeyState.IsKeyDown(Keys.F12) && keyState.IsKeyUp(Keys.F12))
+                ShowCollisionData = !ShowCollisionData;
 
-
+            mLastKeyState = keyState;
             #endregion Handle input
 
 
@@ -227,12 +232,28 @@ namespace BodilyInfection
         /// <param name="name"></param>
         public void SetCurrentLevel(string name)
         {
+            Level oldLevel = CurrentLevel;
             for (int i = 0, count = mLevels.Count; i < count; i++)
             {
                 if (mLevels[i].Name == name)
                 {
                     mCurrentLevel = i;
-                    mLevels[mCurrentLevel].Load();
+                    mLevels[mCurrentLevel].Load(oldLevel);
+                    return;
+                }
+            }
+            Console.WriteLine(string.Format("Level {0} does not exist", name));
+        }
+
+        public void ReturnToLevel(string name)
+        {
+            for (int i = 0, count = mLevels.Count; i < count; i++)
+            {
+                if (mLevels[i].Name == name)
+                {
+                    mCurrentLevel = i;
+                    // Don't want to load anything, just return to how it was
+                    //mLevels[mCurrentLevel].Load();
                     return;
                 }
             }

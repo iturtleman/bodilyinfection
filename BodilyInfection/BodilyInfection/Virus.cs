@@ -11,14 +11,14 @@ namespace BodilyInfection
         public Virus(string name, Actor actor)
             : base(name, actor)
         {
-            UpdateBehavior += new Behavior(Update);
+            UpdateBehavior += new UpdateBehavior(Update);
+            CollisionBehavior += new UpdateBehavior(ActOnCollisions);
             Harmless = true;
             Invincible = true;
             Frozen = true;
             IsDead = false;
 
             birth = TimeSpan.Zero;
-            CollisionBehavior += new Behavior(ActOnCollisions);
         }
 
         #region Properties
@@ -122,7 +122,7 @@ namespace BodilyInfection
                 #region explosion animation removal
                 if ((gameTime.TotalGameTime >= explosionLength + timeOfDeath) && IsDead)
                 {
-
+                    (This.Game as BodilyInfection).Score++;
                     This.Game.CurrentLevel.EnemiesDefeated++;
                     This.Game.CurrentLevel.RemoveSprite(this);
                 }
