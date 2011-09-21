@@ -15,11 +15,11 @@ namespace BodilyInfection
             mActor = actor;
             mLastUpdate = new GameTime();
 
-            LoadBehavior = (Level l) => { };
-            UpdateBehavior = (GameTime gameTime) => { };
+            LoadBehavior = () => { };
+            UpdateBehavior = () => { };
             EndBehavior = () => { };
 
-            This.Game.CurrentLevel.AddSprite(this);
+            (This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel).AddSprite(this);
             AnimationSpeed = 1;
             
             if (mActor != null)
@@ -48,17 +48,17 @@ namespace BodilyInfection
         /// <summary>
         /// Sprite's Load Behavior
         /// </summary>
-        public LoadBehavior LoadBehavior;
+        public Behavior LoadBehavior;
 
         /// <summary>
         /// Sprite's Update Behavior
         /// </summary>
-        public UpdateBehavior UpdateBehavior;
+        public Behavior UpdateBehavior;
 
         /// <summary>
         /// Sprite's End Behavior
         /// </summary>
-        public UnloadBehavior EndBehavior;
+        public Behavior EndBehavior;
         #endregion Behaviors
 
         #region Methods
@@ -101,6 +101,11 @@ namespace BodilyInfection
         ///  Resets the Sprite's animation to the first frame.
         /// </summary>
         public void Rewind() { mActor.Frame = 0; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
         #endregion Methods
 
         #region Draw

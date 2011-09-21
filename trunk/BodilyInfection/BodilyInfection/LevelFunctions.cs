@@ -17,13 +17,12 @@ namespace BodilyInfection
         internal static void DoNothing(GameTime gameTime) { }
 
         /// <summary>
-        /// A list of levels in the order they should be played through
+        /// A behavior that sends the player to the Stage Clear screen once the level is over.
         /// </summary>
-        internal static List<string> LevelProgression = new List<string>()
+        internal static void ToStageClear()
         {
-            "Stomach",
-            "Lungs",
-        };
+            This.Game.SetCurrentLevel("stageclear");
+        }
 
         internal static void MakeHUD()
         {
@@ -31,13 +30,13 @@ namespace BodilyInfection
             scoreText.Pos = new Vector2(50, This.Game.GraphicsDevice.Viewport.Y);
             scoreText.DisplayColor = Color.AliceBlue;
             scoreText.Static = true;
-            Text score = new Text("score", "Text", (This.Game as BodilyInfection).Score.ToString());
+            Text score = new Text("score", "Text", GameData.Score.ToString());
             score.Pos = new Vector2(scoreText.GetAnimation().Width + 50, This.Game.GraphicsDevice.Viewport.Y);
             score.DisplayColor = Color.AliceBlue;
             score.Static = true;
-            score.UpdateBehavior = delegate(GameTime gameTime)
+            score.UpdateBehavior = delegate()
             {
-                score.Content = (This.Game as BodilyInfection).Score.ToString();
+                score.Content = GameData.Score.ToString();
             };
 
             Text livesText = new Text("livesText", "Text", "Lives Remaining:");
@@ -45,36 +44,21 @@ namespace BodilyInfection
                                         This.Game.GraphicsDevice.Viewport.Y);
             livesText.DisplayColor = Color.Red;
             livesText.Static = true;
-            Text lives = new Text("lives", "Text", (This.Game as BodilyInfection).NumberOfLives.ToString());
+            Text lives = new Text("lives", "Text", GameData.NumberOfLives.ToString());
             lives.Pos = new Vector2(This.Game.GraphicsDevice.Viewport.X + This.Game.GraphicsDevice.Viewport.Width - 50,
                                     This.Game.GraphicsDevice.Viewport.Y);
             lives.DisplayColor = Color.Red;
             lives.Static = true;
-            lives.UpdateBehavior = delegate(GameTime gameTime)
+            lives.UpdateBehavior = delegate()
             {
-                lives.Content = (This.Game as BodilyInfection).NumberOfLives.ToString();
+                lives.Content = GameData.NumberOfLives.ToString();
             };
         }
 
-        /// <summary>
-        /// A behavior that sends the player to the Stage Clear screen once the level is over.
-        /// </summary>
-        internal static void ToStageClear()
-        {
-            This.Game.CurrentLevel.mSprites.Clear();
-            This.Game.SetCurrentLevel("stageclear");
-        }
-
-        /// <summary>
-        /// Forces the level to end and continue to the GameOver screen.
-        /// Since it overwrites the "win" condition and unloading behavior
-        /// for the current level, it must reset it back to normal after the level ends.
-        /// </summary>
-        /// <param name="gameTime"></param>
-        internal static void GoToGameOver(GameTime gameTime)
+        internal static void GoToGameOver()
         {
             Condition oldWin = This.Game.CurrentLevel.WinCondition;
-            UnloadBehavior oldEnd = This.Game.CurrentLevel.EndBehavior;
+            Behavior oldEnd = This.Game.CurrentLevel.EndBehavior;
             This.Game.CurrentLevel.WinCondition = delegate { return true; };
             This.Game.CurrentLevel.EndBehavior = delegate
             {
@@ -83,6 +67,7 @@ namespace BodilyInfection
                 This.Game.CurrentLevel.EndBehavior = oldEnd;
                 This.Game.SetCurrentLevel("GameOver");
             };
+            This.Game.AudioManager.Stop();
         }
 
         /// <summary>

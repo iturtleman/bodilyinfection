@@ -12,15 +12,15 @@ namespace BodilyInfection
         public RedBloodCell(string name, Actor actor)
             : this(name, actor, new Vector2(3.0f, 3.0f))
         {
-            
+
         }
 
         public RedBloodCell(string name, Actor actor, Vector2 velocity)
             : base(name, actor)
         {
             movementVelocity = velocity;
-            UpdateBehavior += new UpdateBehavior(Update);
-            CollisionBehavior += new UpdateBehavior(ActOnCollisions);
+            UpdateBehavior = Update;
+            CollisionBehavior = ActOnCollisions;
             Wounded = false;
             Infected = false;
             Dead = false;
@@ -37,8 +37,9 @@ namespace BodilyInfection
         public TimeSpan explosionLength = new TimeSpan(0, 0, 0, 0, 500);
         TimeSpan timeOfInfection;
 
-        public void Update(GameTime gameTime)
+        public void Update()
         {
+            GameTime gameTime = This.gameTime;
             if (!Infected)
             {
                 // Move the sprite by speed.
@@ -86,7 +87,7 @@ namespace BodilyInfection
                 }
                 if (gameTime.TotalGameTime > timeOfInfection + timeToExplode)
                 {
-                    LevelFunctions.SpawnEnemies(delegate() 
+                    LevelFunctions.SpawnEnemies(delegate()
                     {
                         Actor virusActor = new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"));
                         virusActor.Animations.Add(This.Game.CurrentLevel.GetAnimation("BlueExplosion2.anim"));
@@ -100,14 +101,15 @@ namespace BodilyInfection
             #region explosion/deletion code
             if (Dead && (gameTime.TotalGameTime >= explosionLength + timeOfDeath))
             {
-                    //This.Game.CurrentLevel.EnemiesDefeated++;
-                    This.Game.CurrentLevel.RemoveSprite(this);
+                //This.Game.CurrentLevel.EnemiesDefeated++;
+                This.Game.CurrentLevel.RemoveSprite(this);
             }
             #endregion explosion/deletion code
         }
 
-        public void ActOnCollisions(GameTime gameTime)
+        public void ActOnCollisions()
         {
+            GameTime gameTime = This.gameTime;
             if (Collision.collisionData.Count > 0)
             {
                 foreach (CollisionObject co in this.GetCollision())

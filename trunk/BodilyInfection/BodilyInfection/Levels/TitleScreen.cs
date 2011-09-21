@@ -14,22 +14,27 @@ namespace BodilyInfection.Levels
         static TimeSpan LevelInitTime = TimeSpan.MinValue;
         private static bool levelCompleted = false;
 
-        internal static void Load(Level lastLevel)
+        internal static void Load()
         {
             LevelInitTime = TimeSpan.MinValue;
             levelCompleted = false;
 
-            Level l = This.Game.CurrentLevel;
+            Level l = This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel;
             l.AddAnimation(new BackgroundAnimation("title.anim"));
 
             l.Background = new Background("title", new Actor(l.GetAnimation("title.anim")));
 
+            /** load music */
             This.Game.AudioManager.AddBackgroundMusic("title");
             This.Game.AudioManager.PlayBackgroundMusic("title");
+
+            GameData.Score = 0;
+            GameData.NumberOfLives = GameData.DefaultNumberOfLives;
         }
 
-        internal static void Update(GameTime gameTime)
+        internal static void Update()
         {
+            GameTime gameTime = This.gameTime;
             if (LevelInitTime == TimeSpan.MinValue)
             {
                 LevelInitTime = gameTime.TotalGameTime;
@@ -39,7 +44,7 @@ namespace BodilyInfection.Levels
             GamePadState currentState = GamePad.GetState(PlayerIndex.One);
             if (currentState.IsConnected)
             {
-                if (currentState.Buttons.Start == ButtonState.Pressed )
+                if (This.Game.mLastPadState.Buttons.Start == ButtonState.Released && currentState.Buttons.Start == ButtonState.Pressed )
                 {
                     // Go to next
                     // Make awesome sound
@@ -65,8 +70,13 @@ namespace BodilyInfection.Levels
 
         internal static void Unload()
         {
-            // Always go the first level
-            This.Game.SetCurrentLevel(LevelFunctions.LevelProgression[0]);
+            string levelname = BodilyInfectionLevel.LevelProgression[0];
+            This.Game.LoadLevel(levelname);
+
+            /// \todo display some stuff here about loading probably put it in a shared space
+
+
+            This.Game.SetCurrentLevel(levelname);
         }
     }
 }
