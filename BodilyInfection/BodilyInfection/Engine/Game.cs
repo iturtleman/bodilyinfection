@@ -140,7 +140,7 @@ namespace BodilyInfection
 
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 600;
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = true;
         }
         #endregion Constructor
 

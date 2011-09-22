@@ -15,7 +15,7 @@ namespace BodilyInfection.Levels
         internal static TimeSpan PreviousSpawn = new TimeSpan(0, 0, 0, 0, 0);
         #endregion Timer Variables
 
-        private static int EnemiesDefeatedWinCondition = 100;
+        private static int EnemiesDefeatedWinCondition = 200;
 
         internal static void Load()
         {
@@ -65,7 +65,7 @@ namespace BodilyInfection.Levels
             shipActor.Animations.Add(l.GetAnimation("xplosion17.anim"));
             Ship ship = new Ship("ship", shipActor);
             ///< \todo make ship's shield appear at the beginning
-            l.PlayerSpawnPoint = new Vector2(50, 50);
+            l.PlayerSpawnPoint = new Vector2(1000, 1300);
             ship.Pos = l.PlayerSpawnPoint;
 
             LevelFunctions.MakeHUD();
@@ -101,7 +101,7 @@ namespace BodilyInfection.Levels
                     Actor virusActor = new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"));
                     virusActor.Animations.Add(This.Game.CurrentLevel.GetAnimation("BlueExplosion2.anim"));
                     return new Virus("virus", virusActor);                 
-                }, 5);
+                }, 15);
 
                 PreviousSpawn = gameTime.TotalGameTime;
             }
