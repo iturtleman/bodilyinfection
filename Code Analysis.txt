@@ -1,0 +1,1 @@
+MSBUILD : warning : CA2237 : Microsoft.Usage : Add [Serializable] to 'AnimationDoesNotExistException' as this type implements ISerializable.
