@@ -214,7 +214,8 @@ namespace BodilyInfection
             foreach (CollisionObject cw1 in w1CollisionObj)
                 foreach (CollisionObject cw2 in w2CollisionObj)
                 {
-                    if (cw1.detectCollision(w1, cw2, w2))
+
+                    if (detectCollision(w1, (dynamic)cw1, w2, (dynamic)cw2))
                     {
                         output.Add(new Tuple<CollisionObject, CollisionObject>(cw1, cw2));
                     }
@@ -237,6 +238,10 @@ namespace BodilyInfection
         /// <summary>
         /// Determine if AABB and BoundingCircle collide
         /// </summary>
+        public static bool detectCollision(WorldObject w1, Collision_BoundingCircle c1, WorldObject w2, Collision_AABB a1)
+        {
+            return detectCollision(w2, a1, w1, c1);
+        }
         public static bool detectCollision(WorldObject w1, Collision_AABB a1, WorldObject w2, Collision_BoundingCircle c1)
         {
             Vector2 centerPoint = c1.centerPointOffset + w2.Pos;
@@ -300,6 +305,10 @@ namespace BodilyInfection
         /// <summary>
         /// Determine if OBB and BoundingCircle collide
         /// </summary>
+        public static bool detectCollision(WorldObject w1, Collision_BoundingCircle c1, WorldObject w2, Collision_OBB o1)
+        {
+            return detectCollision(w2, o1, w1, c1);
+        }
         public static bool detectCollision(WorldObject w1, Collision_OBB o1, WorldObject w2, Collision_BoundingCircle c1)
         {
             Vector2 c1Center = c1.centerPointOffset + w2.Pos;
