@@ -50,7 +50,7 @@ namespace BodilyInfection
         private string shieldName = null;
         private TimeSpan shieldDuration = new TimeSpan(0, 0, 0, 4, 0);
         private TimeSpan shieldEndTime = TimeSpan.MinValue;
-        private TimeSpan shootCooldown = new TimeSpan(0, 0, 0, 0, 100);
+        private TimeSpan shootCooldown = new TimeSpan(0, 0, 0, 0, 75);
         private TimeSpan cooldownEndTime = TimeSpan.MinValue;
         private TimeSpan timeOfDeath;
         private TimeSpan explosionLength = new TimeSpan(0, 0, 0, 0, 500);
@@ -110,12 +110,12 @@ namespace BodilyInfection
                     #endregion
 
                     // In case you get lost, press A to warp back to the center.
-                    if (currentState.Buttons.A == ButtonState.Pressed)
-                    {
-                        Pos = (This.Game.CurrentLevel as BodilyInfectionLevel).PlayerSpawnPoint;
-                        shipVelocity = Vector2.Zero;
-                        This.Game.AudioManager.PlaySoundEffect("ship_spawn");
-                    }
+                    //if (currentState.Buttons.A == ButtonState.Pressed)
+                    //{
+                    //   Pos = (This.Game.CurrentLevel as BodilyInfectionLevel).PlayerSpawnPoint;
+                    //    shipVelocity = Vector2.Zero;
+                    //    This.Game.AudioManager.PlaySoundEffect("ship_spawn");
+                    //}
 
                 }
                 else /* Move with arrow keys */

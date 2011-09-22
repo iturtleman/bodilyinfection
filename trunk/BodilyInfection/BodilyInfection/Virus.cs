@@ -35,7 +35,7 @@ namespace BodilyInfection
 
         private Vector2 currentVelocity;
 
-        private float movementSpeed = 2;
+        private float movementSpeed = 4;
 
         private TimeSpan lifeSpan;
 
