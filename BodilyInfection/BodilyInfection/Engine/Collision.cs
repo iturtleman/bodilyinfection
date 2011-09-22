@@ -342,5 +342,10 @@ namespace BodilyInfection
 
             return false;
         }
+
+        public static bool detectCollision(WorldObject w1, Collision_OBB c1, WorldObject w2, Collision_OBB a1)
+        {
+            return false;
+        }
     }
 }
