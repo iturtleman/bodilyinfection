@@ -14,7 +14,6 @@ namespace BodilyInfection
             UpdateBehavior = Update;
             CollisionBehavior = ActOnCollisions;
             Harmless = true;
-            Invincible = true;
             Frozen = true;
             IsDead = false;
 
@@ -25,7 +24,6 @@ namespace BodilyInfection
         // Virus is Harmless for very small amount of time after spawn.
         // To allow player to get away from being killed by a spawning enemy
         public bool Harmless { get; set; }
-        public bool Invincible { get; set; }
         public bool Frozen { get; set; }
         public bool IsDead { get; set; }
 
@@ -79,7 +77,6 @@ namespace BodilyInfection
                 if (lifeSpan > harmlessTime)
                 {
                     Harmless = false;
-                    Invincible = false;
                     Frozen = false;
                 }
                 #endregion harmless timing
@@ -146,6 +143,11 @@ namespace BodilyInfection
                     {
                         foreach (Tuple<CollisionObject, WorldObject, CollisionObject> collision in Collision.collisionData[this])
                         {
+                            if (collision.Item2.GetType() == typeof(Virus))
+                            {
+                                Pos += currentVelocity;     // accelerate when they collide with each other
+                            }
+
                             if (collision.Item2.GetType() == typeof(RedBloodCell))
                             {
                                 if ((collision.Item2 as RedBloodCell).Wounded && !(collision.Item2 as RedBloodCell).Infected)
@@ -156,10 +158,9 @@ namespace BodilyInfection
 
                             if (collision.Item2.GetType() == typeof(Bullet))
                             {
-                                if (!IsDead && !Invincible)
+                                if (!IsDead)
                                 {
                                     // virus is dead, snapshot time of death
-                                    Invincible = true;
                                     Harmless = true;
 
                                     timeOfDeath = gameTime.TotalGameTime;
