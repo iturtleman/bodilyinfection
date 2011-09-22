@@ -1,1 +1,0 @@
-please install xnafx40_redist.msi in order to run xna 4.0 games. Then run BodilyInfection.exe

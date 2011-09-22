@@ -92,7 +92,7 @@ namespace BodilyInfection
                         Actor virusActor = new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"));
                         virusActor.Animations.Add(This.Game.CurrentLevel.GetAnimation("BlueExplosion2.anim"));
                         return new Virus("virus", virusActor);
-                    }, 10, Pos);
+                    }, 20, Pos);
                     This.Game.AudioManager.PlaySoundEffect("rbc_die");
                     This.Game.CurrentLevel.RemoveSprite(this);
                 }
@@ -125,6 +125,7 @@ namespace BodilyInfection
                                     Infected = true;
                                     SetAnimation(1);
                                     StartAnim();
+                                    GameData.Score = GameData.Score - 1500;
                                 }
                             }
                             else if (collision.Item2.GetType() == typeof(Bullet))

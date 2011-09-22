@@ -57,15 +57,15 @@ namespace BodilyInfection.Levels
                 Actor virusActor = new Actor(l.GetAnimation("virusPulse.anim"));
                 virusActor.Animations.Add(l.GetAnimation("BlueExplosion2.anim"));
                 return new Virus("virus", virusActor); 
-            }, 15);
+            }, 0);
 
 
             // Load ship
             Actor shipActor = new Actor(l.GetAnimation("ship.anim"));
             shipActor.Animations.Add(l.GetAnimation("xplosion17.anim"));
             Ship ship = new Ship("ship", shipActor);
-            ///< \todo make ship's shield appear at the beginning
             l.PlayerSpawnPoint = new Vector2(1000, 1300);
+            l.Camera.Pos = 
             ship.Pos = l.PlayerSpawnPoint;
 
             LevelFunctions.MakeHUD();

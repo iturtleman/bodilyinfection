@@ -57,7 +57,7 @@ namespace BodilyInfection.Levels
                 Actor virusActor = new Actor(l.GetAnimation("virusPulse.anim"));
                 virusActor.Animations.Add(l.GetAnimation("BlueExplosion2.anim"));
                 return new Virus("virus", virusActor);
-            }, 15);
+            }, 0);
 
 
             // Load ship
@@ -65,7 +65,7 @@ namespace BodilyInfection.Levels
             shipActor.Animations.Add(l.GetAnimation("xplosion17.anim"));
             Sprite ship = new Ship("ship", shipActor);
 
-            l.PlayerSpawnPoint = new Vector2(50, 50);
+            l.PlayerSpawnPoint = new Vector2(1000, 450);
             ship.Pos = l.PlayerSpawnPoint;
 
             LevelFunctions.MakeHUD();
@@ -101,7 +101,7 @@ namespace BodilyInfection.Levels
                     Actor virusActor = new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"));
                     virusActor.Animations.Add(This.Game.CurrentLevel.GetAnimation("BlueExplosion2.anim"));
                     return new Virus("virus", virusActor);
-                }, 5);
+                }, 15);
 
                 PreviousSpawn = gameTime.TotalGameTime;
             }

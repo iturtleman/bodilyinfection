@@ -31,7 +31,6 @@ namespace BodilyInfection
             rThumbstick = Vector2.Zero;
             Dead = false;
             shieldName = Name + "_shield";
-            shieldEndTime = shieldDuration;
             Dead = false;
             EnableShield();
 
@@ -297,7 +296,7 @@ namespace BodilyInfection
         {
             shieldOn = true;
             Sprite shield = new Shield(shieldName, new Actor((This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel).GetAnimation("shield.anim")), Name);
-            Pos = shield.Pos + shield.GetAnimation().AnimationPeg - GetAnimation().AnimationPeg;
+            shield.Pos = Pos + GetAnimation().AnimationPeg - shield.GetAnimation().AnimationPeg;
             shield.ZOrder = ZOrder + 2;
         }
 
