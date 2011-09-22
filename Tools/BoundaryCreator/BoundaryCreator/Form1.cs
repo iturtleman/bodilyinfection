@@ -101,6 +101,8 @@ namespace BoundaryCreator
 
         private void generate_Click(object sender, EventArgs e)
         {
+            textBox1.Clear();
+
             //Create collision text
             string collisionText = "";
             int count = polygonPoints.Count;
