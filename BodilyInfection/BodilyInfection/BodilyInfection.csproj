@@ -130,6 +130,7 @@
     <Compile Include="Engine\Level.cs" />
     <Compile Include="Engine\Text.cs" />
     <Compile Include="LevelFunctions.cs" />
+    <Compile Include="Levels\Credits.cs" />
     <Compile Include="Levels\Lungs.cs" />
     <Compile Include="Levels\StageClear.cs" />
     <Compile Include="Levels\GameOver.cs" />
@@ -188,6 +189,11 @@
   <ItemGroup>
     <None Include="..\BodilyInfectionContent\Backgrounds\gameover.anim">
       <Link>Content\Backgrounds\gameover.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="..\BodilyInfectionContent\Backgrounds\credits.anim">
+      <Link>Content\Backgrounds\credits.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>

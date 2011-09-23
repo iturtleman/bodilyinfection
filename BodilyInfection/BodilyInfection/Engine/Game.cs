@@ -137,10 +137,10 @@ namespace BodilyInfection
         {
             graphics = new GraphicsDeviceManager(this);
             //remove this to make it strech
-            graphics.PreparingDeviceSettings+=new EventHandler<PreparingDeviceSettingsEventArgs>(graphics_PreparingDeviceSettings);
+            //graphics.PreparingDeviceSettings+=new EventHandler<PreparingDeviceSettingsEventArgs>(graphics_PreparingDeviceSettings);
             Content.RootDirectory = "Content";
-            graphics.PreferredBackBufferWidth = 800;
-            graphics.PreferredBackBufferHeight = 600;
+            graphics.PreferredBackBufferWidth = 1000;
+            graphics.PreferredBackBufferHeight = 750;
         }
         #endregion Constructor
 
@@ -157,9 +157,9 @@ namespace BodilyInfection
 
             base.Initialize();
 
-            graphics.PreferredBackBufferWidth = 800;
-            graphics.PreferredBackBufferHeight = 600;
-            graphics.IsFullScreen = true;
+            graphics.PreferredBackBufferWidth = 1000;
+            graphics.PreferredBackBufferHeight = 750;
+            graphics.IsFullScreen = false;
             graphics.ApplyChanges();
 
             //Initialize Collision Cell Size

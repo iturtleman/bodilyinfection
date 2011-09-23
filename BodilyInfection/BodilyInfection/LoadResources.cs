@@ -15,6 +15,7 @@ namespace BodilyInfection
             mLevels.Add(new BodilyInfectionLevel("GameOver", Levels.GameOver.Load, Levels.GameOver.Update, Levels.GameOver.Unload, Levels.GameOver.CompletionCondition));
             mLevels.Add(new BodilyInfectionLevel("Stomach", Levels.Stomach.Load, Levels.Stomach.Update, LevelFunctions.ToStageClear, Levels.Stomach.CompletionCondition));
             mLevels.Add(new BodilyInfectionLevel("Lungs", Levels.Lungs.Load, Levels.Lungs.Update, LevelFunctions.ToStageClear, Levels.Lungs.CompletionCondition));
+            mLevels.Add(new BodilyInfectionLevel("Credits", Levels.Credits.Load, Levels.Credits.Update, Levels.Credits.Unload, Levels.Credits.CompletionCondition));
         }
     }
 }
