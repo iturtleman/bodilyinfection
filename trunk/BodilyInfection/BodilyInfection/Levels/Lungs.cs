@@ -15,7 +15,7 @@ namespace BodilyInfection.Levels
         internal static TimeSpan PreviousSpawn = new TimeSpan(0, 0, 0, 0, 0);
         #endregion Timer Variables
 
-        private static int EnemiesDefeatedWinCondition = 1;
+        private static int EnemiesDefeatedWinCondition = 1500;
 
         internal static void Load()
         {
