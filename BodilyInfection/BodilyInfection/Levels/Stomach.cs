@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using BodilyInfection.Engine;
+using Microsoft.Xna.Framework.Input;
 
 namespace BodilyInfection.Levels
 {
@@ -25,7 +26,7 @@ namespace BodilyInfection.Levels
             GameData.NumberOfLives = GameData.DefaultNumberOfLives;
 
             l.EnemiesDefeated = 0;
-            l.waveNumber = 0;
+            l.waveNumber = 5;
 
             /// load background
             l.Background = new Background("stomach", "stomach.anim");
@@ -37,7 +38,13 @@ namespace BodilyInfection.Levels
             l.AddAnimation(new Animation("antibody.anim"));
             l.AddAnimation(new Animation("shield.anim"));
             l.AddAnimation(new Animation("ship.anim"));
+            l.AddAnimation(new Animation("ship2.anim"));
+            l.AddAnimation(new Animation("ship3.anim"));
+            l.AddAnimation(new Animation("ship4.anim"));
             l.AddAnimation(new Animation("cannon.anim"));
+            l.AddAnimation(new Animation("cannon2.anim"));
+            l.AddAnimation(new Animation("cannon3.anim"));
+            l.AddAnimation(new Animation("cannon4.anim"));
             l.AddAnimation(new Animation("xplosion17.anim"));
             l.AddAnimation(new Animation("BlueExplosion2.anim"));
             l.AddAnimation(new Animation("vulnerable.anim"));
@@ -48,11 +55,35 @@ namespace BodilyInfection.Levels
             // Load ship
             Actor shipActor = new Actor(l.GetAnimation("ship.anim"));
             shipActor.Animations.Add(l.GetAnimation("xplosion17.anim"));
-            Ship ship = new Ship("ship", shipActor);
+            Ship ship = new Ship("ship", shipActor, PlayerIndex.One);
             l.PlayerSpawnPoint = new Vector2(1000, 1300);
             l.Camera.Pos = l.PlayerSpawnPoint - new Vector2(This.Game.GraphicsDevice.Viewport.Width / 2,
                 This.Game.GraphicsDevice.Viewport.Height / 2);
             ship.Pos = l.PlayerSpawnPoint;
+
+            // Load ship
+            if (GamePad.GetState(PlayerIndex.Two).IsConnected)
+            {
+                shipActor = new Actor(l.GetAnimation("ship2.anim"));
+                shipActor.Animations.Add(l.GetAnimation("xplosion17.anim"));
+                ship = new Ship("ship2", shipActor, PlayerIndex.Two, "compass_cannon");
+                l.PlayerSpawnPoint = new Vector2(1000, 1300);
+                l.Camera.Pos = l.PlayerSpawnPoint - new Vector2(This.Game.GraphicsDevice.Viewport.Width / 2,
+                    This.Game.GraphicsDevice.Viewport.Height / 2);
+                ship.Pos = l.PlayerSpawnPoint;
+            }
+
+            // Load ship
+            if (GamePad.GetState(PlayerIndex.Three).IsConnected)
+            {
+                shipActor = new Actor(l.GetAnimation("ship3.anim"));
+                shipActor.Animations.Add(l.GetAnimation("xplosion17.anim"));
+                ship = new Ship("ship3", shipActor, PlayerIndex.Three, "compass_cannon");
+                l.PlayerSpawnPoint = new Vector2(1000, 1300);
+                l.Camera.Pos = l.PlayerSpawnPoint - new Vector2(This.Game.GraphicsDevice.Viewport.Width / 2,
+                    This.Game.GraphicsDevice.Viewport.Height / 2);
+                ship.Pos = l.PlayerSpawnPoint;
+            }
 
             // Spawn initial RedBloodCells and Viruses
             LevelFunctions.Spawn(delegate()

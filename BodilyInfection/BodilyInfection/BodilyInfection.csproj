@@ -229,9 +229,22 @@
     </None>
     <None Include="..\BodilyInfectionContent\Sprites\bulletexplosion.anim">
       <Link>Content\Sprites\bulletexplosion.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="..\BodilyInfectionContent\Sprites\cannon.anim">
       <Link>Content\Sprites\cannon.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\BodilyInfectionContent\Sprites\cannon2.anim">
+      <Link>Content\Sprites\cannon2.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\BodilyInfectionContent\Sprites\cannon3.anim">
+      <Link>Content\Sprites\cannon3.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\BodilyInfectionContent\Sprites\cannon4.anim">
+      <Link>Content\Sprites\cannon4.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="..\BodilyInfectionContent\Sprites\infected.anim">
@@ -260,6 +273,18 @@
       <Link>Content\Sprites\ship.anim</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+    </None>
+    <None Include="..\BodilyInfectionContent\Sprites\ship2.anim">
+      <Link>Content\Sprites\ship2.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\BodilyInfectionContent\Sprites\ship3.anim">
+      <Link>Content\Sprites\ship3.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\BodilyInfectionContent\Sprites\ship4.anim">
+      <Link>Content\Sprites\ship4.anim</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="..\BodilyInfectionContent\Sprites\virusPulse.anim">
       <Link>Content\Sprites\virusPulse.anim</Link>

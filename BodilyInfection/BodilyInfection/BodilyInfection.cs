@@ -62,8 +62,8 @@ namespace BodilyInfection
             {
                 Viewport viewport = This.Game.GraphicsDevice.Viewport;
                 Vector2 cameraPos = This.Game.CurrentLevel.Camera.Pos;
-                int borderWidth = viewport.Width/2;
-                int borderHeight = viewport.Height/2;
+                int borderWidth = 200;//viewport.Width/2;
+                int borderHeight = 200;//viewport.Height/2;
 
                 Vector2 difference = player.Pos - cameraPos;
                 if (difference.X < viewport.X + borderWidth)
