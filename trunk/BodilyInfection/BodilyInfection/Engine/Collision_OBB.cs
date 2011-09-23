@@ -146,12 +146,43 @@ namespace BodilyInfection
                         highestX = x;
                 }
 
+
+                Vector2 o1Anchor = new Vector2(worldObject.Pos.X, worldObject.Pos.Y);
+                Vector2 drawPoint0 = new Vector2(drawPoints[0].Position.X + o1Anchor.X, drawPoints[0].Position.Y + o1Anchor.Y);
+                Vector2 drawPoint1 = new Vector2(drawPoints[1].Position.X + o1Anchor.X, drawPoints[1].Position.Y + o1Anchor.Y);
+                Vector2 drawPoint2 = new Vector2(drawPoints[2].Position.X + o1Anchor.X, drawPoints[2].Position.Y + o1Anchor.Y);
+                Vector2 drawPoint3 = new Vector2(drawPoints[3].Position.X + o1Anchor.X, drawPoints[3].Position.Y + o1Anchor.Y);
                 bucketLocations.Clear();
                 for (int i = lowestX; i <= highestX; i++) //cols
                 {
                     for (int j = lowestY; j <= highestY; j++) //rows
                     {
-                        if (true) //check if grid cell is inside box
+                        float slope0to1, slope1to2;
+                        bool isInGrid = false;
+                        try
+                        {
+                            slope0to1 = (drawPoint0.Y - drawPoint1.Y) / (drawPoint0.X - drawPoint1.X);
+                            //slope1to2 = (drawPoint1.Y - drawPoint2.Y) / (drawPoint1.X - drawPoint2.X);
+
+                            /*if ((slope0to1 * (i * Collision.gridCellWidth) + (drawPoint0.Y - (slope0to1 * (drawPoint0.X))) < ((j + 1) * Collision.gridCellHeight) && slope0to1 * (i * Collision.gridCellWidth) + (drawPoint0.Y - (slope0to1 * (drawPoint0.X))) > (j * Collision.gridCellHeight)) ||
+                                (slope0to1 * (i * Collision.gridCellWidth) + (drawPoint3.Y - (slope0to1 * (drawPoint3.X))) < ((j + 1) * Collision.gridCellHeight) && slope0to1 * (i * Collision.gridCellWidth) + (drawPoint3.Y - (slope0to1 * (drawPoint3.X))) > (j * Collision.gridCellHeight)) ||
+                                (slope1to2 * (i * Collision.gridCellWidth) + (drawPoint1.Y - (slope1to2 * (drawPoint1.X))) < ((j + 1) * Collision.gridCellHeight) && slope1to2 * (i * Collision.gridCellWidth) + (drawPoint1.Y - (slope1to2 * (drawPoint1.X))) > (j * Collision.gridCellHeight)) ||
+                                (slope1to2 * (i * Collision.gridCellWidth) + (drawPoint2.Y - (slope1to2 * (drawPoint2.X))) < ((j + 1) * Collision.gridCellHeight) && slope1to2 * (i * Collision.gridCellWidth) + (drawPoint2.Y - (slope1to2 * (drawPoint2.X))) > (j * Collision.gridCellHeight)))
+                            {*/
+                            if ((slope0to1 * (i * Collision.gridCellWidth) + (drawPoint0.Y - (slope0to1 * (drawPoint0.X))) < ((j + 1) * Collision.gridCellHeight) && slope0to1 * (i * Collision.gridCellWidth) + (drawPoint0.Y - (slope0to1 * (drawPoint0.X))) > (j * Collision.gridCellHeight)) ||
+                                (slope0to1 * ((i+1) * Collision.gridCellWidth) + (drawPoint0.Y - (slope0to1 * (drawPoint0.X))) < ((j + 1) * Collision.gridCellHeight) && slope0to1 * ((i+1) * Collision.gridCellWidth) + (drawPoint0.Y - (slope0to1 * (drawPoint0.X))) > (j * Collision.gridCellHeight)) ||
+                                (((j * Collision.gridCellHeight) - drawPoint0.Y) / slope0to1 + drawPoint0.X < ((i + 1) * Collision.gridCellWidth) && ((j * Collision.gridCellHeight) - drawPoint0.Y) / slope0to1 + drawPoint0.X > (i * Collision.gridCellWidth)) ||
+                                ((((j+1) * Collision.gridCellHeight) - drawPoint0.Y) / slope0to1 + drawPoint0.X < ((i + 1) * Collision.gridCellWidth) && (((j+1) * Collision.gridCellHeight) - drawPoint0.Y) / slope0to1 + drawPoint0.X > (i * Collision.gridCellWidth))
+                                )
+                            {
+                                isInGrid = true;
+                            }
+                        }
+                        catch 
+                        { 
+                            isInGrid = true; 
+                        }
+                        if (isInGrid) //check if grid cell is colliding with box
                         {
                             Vector2 location = new Vector2(i, j);
                             bucketLocations.Add(location);
@@ -168,6 +199,7 @@ namespace BodilyInfection
                         }
                     }
                 }
+                previousPos = worldObject.Pos;
             }
         }
 
