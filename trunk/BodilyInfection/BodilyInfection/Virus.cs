@@ -114,7 +114,7 @@ namespace BodilyInfection
 
                     Pos += currentVelocity;
 
-                    currentVelocity *= 0.15f;
+                    currentVelocity *= 0.1f;
                 }
                 #endregion follow ship
 
@@ -145,7 +145,7 @@ namespace BodilyInfection
                         {
                             if (collision.Item2.GetType() == typeof(Virus))
                             {
-                                Pos += (0f)*currentVelocity;     // accelerate when they collide with each other
+                                Pos += 1.5f*currentVelocity;     // accelerate when they collide with each other
                             }
 
                             if (collision.Item2.GetType() == typeof(RedBloodCell))

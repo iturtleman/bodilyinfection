@@ -35,8 +35,8 @@ namespace BodilyInfection
             EnableShield();
 
 
-            UpdateBehavior =Update;
-            CollisionBehavior =ActOnCollisions;
+            UpdateBehavior = Update;
+            CollisionBehavior = ActOnCollisions;
         }
         #endregion
 
@@ -49,7 +49,7 @@ namespace BodilyInfection
         private string shieldName = null;
         private TimeSpan shieldDuration = new TimeSpan(0, 0, 0, 4, 0);
         private TimeSpan shieldEndTime = TimeSpan.MinValue;
-        private TimeSpan shootCooldown = new TimeSpan(0, 0, 0, 0, 75);
+        private TimeSpan shootCooldown = new TimeSpan(0, 0, 0, 0, 60);
         private TimeSpan cooldownEndTime = TimeSpan.MinValue;
         private TimeSpan timeOfDeath;
         private TimeSpan explosionLength = new TimeSpan(0, 0, 0, 0, 500);
@@ -75,8 +75,10 @@ namespace BodilyInfection
                 if (currentState.IsConnected)
                 {
                     #region Movement
-                    Pos.X += shipSpeed * currentState.ThumbSticks.Left.X;
-                    Pos.Y += shipSpeed * -currentState.ThumbSticks.Left.Y;
+                    Move(new Vector2(
+                        Pos.X + shipSpeed * currentState.ThumbSticks.Left.X,
+                        Pos.Y + shipSpeed * -currentState.ThumbSticks.Left.Y)
+                    );
                     #endregion
 
                     #region Shooting
@@ -107,6 +109,8 @@ namespace BodilyInfection
                         this.Angle = (float)Math.Atan2(lThumbstick.Y, lThumbstick.X) + ((float)Math.PI / 2);
                     }
                     #endregion
+#if NOCHEATS
+#else
 
                     // In case you get lost, press A to warp back to the center.
                     if (currentState.Buttons.A == ButtonState.Pressed)
@@ -115,6 +119,7 @@ namespace BodilyInfection
                         shipVelocity = Vector2.Zero;
                         This.Game.AudioManager.PlaySoundEffect("ship_spawn");
                     }
+#endif
 
                 }
                 else /* Move with arrow keys */
@@ -170,9 +175,9 @@ namespace BodilyInfection
             #region explosion/deletion code
             if ((gameTime.TotalGameTime >= explosionLength + timeOfDeath) && Dead)
             {
-                
+
                 GameData.NumberOfLives--;
-                if (GameData.NumberOfLives > 0)
+                if (GameData.NumberOfLives >= 0)
                 {
                     Pos = (This.Game.CurrentLevel as BodilyInfectionLevel).PlayerSpawnPoint;
                     Dead = false;
@@ -186,7 +191,7 @@ namespace BodilyInfection
                 else
                 {
                     LevelFunctions.GoToGameOver();
-                } 
+                }
 
                 //cannon.mVisible = true;
             }
@@ -198,6 +203,19 @@ namespace BodilyInfection
             }
 
             shipVelocity *= 0.95f;
+        }
+
+        internal void Move(Vector2 pos)
+        {
+            Pos = pos;
+            Sprite turret = This.Game.CurrentLevel.GetSprite("ship_cannon");
+            Sprite shield = This.Game.CurrentLevel.GetSprite("ship_shield");
+            if (turret != null)
+            {
+                turret.Pos = Pos + GetAnimation().AnimationPeg - turret.GetAnimation().AnimationPeg;
+                if (shield != null)
+                    shield.Pos = Pos + GetAnimation().AnimationPeg - shield.GetAnimation().AnimationPeg;
+            }
         }
 
         private void ActOnCollisions()
@@ -222,7 +240,7 @@ namespace BodilyInfection
 
                                     Dead = true;
 
-                                    This.Game.AudioManager.PlaySoundEffect("ship_explosion",.7f);
+                                    This.Game.AudioManager.PlaySoundEffect("ship_explosion", .7f);
 
 
                                     //break;
@@ -236,45 +254,45 @@ namespace BodilyInfection
                                 {
                                     bgCollision = false;
                                 */
-                                    //move object to new location
-                                    Vector2 corner1 = new Vector2(boundingBox.drawPoints[0].Position.X,
-                                                                      boundingBox.drawPoints[0].Position.Y);
-                                    Vector2 corner2 = new Vector2(boundingBox.drawPoints[1].Position.X,
-                                                                  boundingBox.drawPoints[1].Position.Y);
-                                    Vector2 c1toc2 = Vector2.Normalize(corner2 - corner1);
-                                    Vector2 normal = new Vector2(-c1toc2.Y, c1toc2.X);
-                                    Vector2 animPeg = this.GetAnimation().AnimationPeg;
-                                    float radius = ((Collision_BoundingCircle)collision.Item1).radius;
-                                    Pos = (radius - Vector2.Dot(normal, (Pos + animPeg - corner1))) * normal + Pos;
+                                //move object to new location
+                                Vector2 corner1 = new Vector2(boundingBox.drawPoints[0].Position.X,
+                                                                  boundingBox.drawPoints[0].Position.Y);
+                                Vector2 corner2 = new Vector2(boundingBox.drawPoints[1].Position.X,
+                                                              boundingBox.drawPoints[1].Position.Y);
+                                Vector2 c1toc2 = Vector2.Normalize(corner2 - corner1);
+                                Vector2 normal = new Vector2(-c1toc2.Y, c1toc2.X);
+                                Vector2 animPeg = this.GetAnimation().AnimationPeg;
+                                float radius = ((Collision_BoundingCircle)collision.Item1).radius;
+                                Pos = (radius - Vector2.Dot(normal, (Pos + animPeg - corner1))) * normal + Pos;
 
-                                    //test for collisions in new position
-                                   /* List<Vector2> gridLocations = collision.Item1.gridLocations(this);
-                                    foreach (Vector2 v in gridLocations)
-                                    {
-                                        List<WorldObject> worldObjectList = new List<WorldObject>();
-                                        try
-                                        {
-                                            worldObjectList = Collision.bucket[v];
-                                        }
-                                        catch { };
-                                        foreach (WorldObject worldObject in worldObjectList)
-                                        {
-                                            if (worldObject.GetType() == typeof(Background))
-                                            {
-                                                List<Tuple<CollisionObject, CollisionObject>> detectedCollisions = Collision.detectCollision(this, worldObject);
-                                                if (detectedCollisions.Count != 0)
-                                                {
-                                                    bgCollision = true;
-                                                    boundingBox = detectedCollisions[0].Item2;
-                                                    break;
-                                                }
-                                            }
-                                        }
-                                        if (bgCollision)
-                                            break;
-                                    }
-                                }
-                                while (bgCollision);*/
+                                //test for collisions in new position
+                                /* List<Vector2> gridLocations = collision.Item1.gridLocations(this);
+                                 foreach (Vector2 v in gridLocations)
+                                 {
+                                     List<WorldObject> worldObjectList = new List<WorldObject>();
+                                     try
+                                     {
+                                         worldObjectList = Collision.bucket[v];
+                                     }
+                                     catch { };
+                                     foreach (WorldObject worldObject in worldObjectList)
+                                     {
+                                         if (worldObject.GetType() == typeof(Background))
+                                         {
+                                             List<Tuple<CollisionObject, CollisionObject>> detectedCollisions = Collision.detectCollision(this, worldObject);
+                                             if (detectedCollisions.Count != 0)
+                                             {
+                                                 bgCollision = true;
+                                                 boundingBox = detectedCollisions[0].Item2;
+                                                 break;
+                                             }
+                                         }
+                                     }
+                                     if (bgCollision)
+                                         break;
+                                 }
+                             }
+                             while (bgCollision);*/
                             }
                         }
                     }
@@ -325,7 +343,7 @@ namespace BodilyInfection
             Sprite ship = This.Game.CurrentLevel.GetSprite(shipName);
             if (ship != null)
             {
-                Pos = ship.Pos + ship.GetAnimation().AnimationPeg - GetAnimation().AnimationPeg;
+                //Pos = ship.Pos + ship.GetAnimation().AnimationPeg - GetAnimation().AnimationPeg;
 
                 #region Rotation
                 GamePadState currentState = GamePad.GetState(gamepad);
@@ -370,7 +388,7 @@ namespace BodilyInfection
             else
             {
                 mVisible = true;
-                Pos = ship.Pos + ship.GetAnimation().AnimationPeg - GetAnimation().AnimationPeg;
+                //Pos = ship.Pos + ship.GetAnimation().AnimationPeg - GetAnimation().AnimationPeg;
             }
         }
     }

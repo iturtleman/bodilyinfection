@@ -34,11 +34,12 @@ namespace BodilyInfection
             Pos.X += movementVelocity.X;
             Pos.Y += movementVelocity.Y;
 
+            int buffer = 250;
             Vector2 mod = Pos - This.Game.CurrentLevel.Camera.Pos;
-            if (mod.X > This.Game.GraphicsDevice.Viewport.Width ||
-                mod.Y > This.Game.GraphicsDevice.Viewport.Height ||
-                mod.X < 0 ||
-                mod.Y < 0)
+            if (mod.X > This.Game.GraphicsDevice.Viewport.Width + buffer ||
+                mod.Y > This.Game.GraphicsDevice.Viewport.Height + buffer ||
+                mod.X < -buffer ||
+                mod.Y < -buffer)
             {
                 This.Game.CurrentLevel.RemoveSprite(this);
             }
@@ -52,11 +53,7 @@ namespace BodilyInfection
                     {
                         foreach (Tuple<CollisionObject, WorldObject, CollisionObject> collision in Collision.collisionData[this])
                         {
-                            if (collision.Item2.GetType() == typeof(Virus))
-                            {
-                                This.Game.CurrentLevel.RemoveSprite(this);
-                            }
-                            if (collision.Item2.GetType() == typeof(RedBloodCell))
+                            if (collision.Item2.GetType() == typeof(Virus) || collision.Item2.GetType() == typeof(RedBloodCell) || collision.Item2.GetType() == typeof(Background_Collision))
                             {
                                 //Remove Bullet
                                 This.Game.CurrentLevel.RemoveSprite(this);

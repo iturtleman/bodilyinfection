@@ -17,7 +17,7 @@ namespace BodilyInfection
         public static int Score { get; set; }
         public static int NumberOfLives { get; set; }
         public static readonly int DefaultNumberOfLives = 4;
-
+        public static int livesAwarded = 0;
     }
 
     /// <summary>
@@ -26,6 +26,7 @@ namespace BodilyInfection
     class BodilyInfectionLevel : Level
     {
         public Vector2 PlayerSpawnPoint = new Vector2(50, 50);
+        internal int waveNumber;
 
         /// <summary>
         /// A count of the enemies defeated in this level
@@ -42,9 +43,8 @@ namespace BodilyInfection
         /// </summary>
         internal static List<string> LevelProgression = new List<string>()
         {
-            "Lungs",
             "Stomach",
-            "Lungs",
+            "Lungs"
         };
 
         /// <summary>
@@ -61,7 +61,8 @@ namespace BodilyInfection
             {
                 Viewport viewport = This.Game.GraphicsDevice.Viewport;
                 Vector2 cameraPos = This.Game.CurrentLevel.Camera.Pos;
-                int borderWidth = 300;
+                int borderWidth = viewport.Width/2;
+                int borderHeight = viewport.Height/2;
 
                 Vector2 difference = player.Pos - cameraPos;
                 if (difference.X < viewport.X + borderWidth)
@@ -74,14 +75,21 @@ namespace BodilyInfection
                 }
                 if (difference.Y < viewport.Y + borderWidth)
                 {
-                    cameraPos.Y -= borderWidth - (difference.Y);
+                    cameraPos.Y -= borderHeight - (difference.Y);
                 }
                 else if (difference.Y > viewport.Y + viewport.Height - borderWidth)
                 {
-                    cameraPos.Y += borderWidth - (viewport.Height - (difference.Y));
+                    cameraPos.Y += borderHeight - (viewport.Height - (difference.Y));
                 }
                 This.Game.CurrentLevel.Camera.Pos = cameraPos;
             }
+
+            if ((int)(GameData.Score / 10000) > GameData.livesAwarded)
+            {
+                GameData.NumberOfLives++;
+                GameData.livesAwarded++;
+            }
+            
         }
 
         internal static int NextLevel()

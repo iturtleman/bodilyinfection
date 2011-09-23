@@ -136,9 +136,11 @@ namespace BodilyInfection
         public Game()
         {
             graphics = new GraphicsDeviceManager(this);
+            //remove this to make it strech
+            graphics.PreparingDeviceSettings+=new EventHandler<PreparingDeviceSettingsEventArgs>(graphics_PreparingDeviceSettings);
             Content.RootDirectory = "Content";
-            graphics.PreferredBackBufferWidth = 1024;
-            graphics.PreferredBackBufferHeight = 768;
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 600;
         }
         #endregion Constructor
 
@@ -157,13 +159,12 @@ namespace BodilyInfection
 
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 600;
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = true;
             graphics.ApplyChanges();
 
             //Initialize Collision Cell Size
             Collision.gridCellHeight = 40;
             Collision.gridCellWidth = 40;
-            Collision.createGrid(0, 0, 800, 800);
         }
 
         /// <summary>
@@ -263,6 +264,15 @@ namespace BodilyInfection
         #endregion Updating
 
         #region Methods
+        void graphics_PreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
+        {
+            DisplayMode displayMode = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
+            e.GraphicsDeviceInformation.PresentationParameters.BackBufferFormat = displayMode.Format;
+            e.GraphicsDeviceInformation.PresentationParameters.BackBufferWidth = displayMode.Width;
+            e.GraphicsDeviceInformation.PresentationParameters.BackBufferHeight = displayMode.Height;
+
+        }
+
         /// <summary>
         /// Sets the current level.
         /// </summary>

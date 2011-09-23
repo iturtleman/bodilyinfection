@@ -12,7 +12,7 @@ namespace BodilyInfection
     {
         public delegate Sprite EnemyFactory();
 
-        private static readonly Random rand = new Random();
+        internal static readonly Random rand = new Random();
 
         internal static void DoNothing(GameTime gameTime) { }
 
@@ -86,8 +86,8 @@ namespace BodilyInfection
                 {
                     Sprite virus = constructEnemy();
                     virus.Pos = l.Camera.Pos +
-                        new Vector2(rand.Next(0, This.Game.GraphicsDevice.Viewport.Width),
-                            rand.Next(0, This.Game.GraphicsDevice.Viewport.Height));
+                        new Vector2(rand.Next(-500, This.Game.GraphicsDevice.Viewport.Width+500),
+                            rand.Next(-500, This.Game.GraphicsDevice.Viewport.Height+500));
                 }
 #if NOCHEATS
 #else
@@ -109,14 +109,13 @@ namespace BodilyInfection
             if (!This.Cheats)
             {
 #endif
+                double radius = 160f;
+                double angleInc = (1.5 * Math.PI) / numEnemies;
+                double startAngle = Math.PI * 2 * rand.NextDouble();
                 for (int i = 0; i < numEnemies; i++)
                 {
                     Sprite virus = constructEnemy();
-                    double radius = Math.Max(virus.GetAnimation().Height, virus.GetAnimation().Width) * numEnemies / 4.0;
-                    double x = rand.NextDouble() * radius * 2 - radius;
-                    int mod = (rand.Next(0, 2) - 1);
-                    double y = Math.Sqrt(radius * radius - x * x) * mod;
-                    virus.Pos = position + new Vector2((float)x, (float)y);
+                    virus.Pos = position + new Vector2((float)(Math.Cos(angleInc * i + startAngle) * radius), (float)(Math.Sin(angleInc * i + startAngle) * radius));
                 }
 #if NOCHEATS
 #else

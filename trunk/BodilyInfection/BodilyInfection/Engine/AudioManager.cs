@@ -39,6 +39,11 @@ namespace BodilyInfection
             }
         }
 
+        public void BackgroundMusicVolume(float volume)
+        {
+            MediaPlayer.Volume = volume;
+        }
+
         public void AddSoundEffect(string name)
         {
             try

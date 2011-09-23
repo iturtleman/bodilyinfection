@@ -15,13 +15,14 @@ namespace BodilyInfection.Levels
         internal static TimeSpan PreviousSpawn = new TimeSpan(0, 0, 0, 0, 0);
         #endregion Timer Variables
 
-        private static int EnemiesDefeatedWinCondition = 2000;
+        private static int EnemiesDefeatedWinCondition = 1000;
 
         internal static void Load()
         {
             BodilyInfectionLevel l = (This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel) as BodilyInfectionLevel;
 
             l.EnemiesDefeated = 0;
+            l.waveNumber = 0;
 
             /// load background
             l.Background = new Background("stomach", "stomach.anim");
@@ -59,13 +60,13 @@ namespace BodilyInfection.Levels
                 rbcActor.Animations.Add(l.GetAnimation("RedExplosion2.anim"));
                 Sprite rbc = new RedBloodCell("rbc", rbcActor);
                 return rbc;
-            }, 8);
+            }, 5);
             LevelFunctions.Spawn(delegate()
             {
                 Actor virusActor = new Actor(l.GetAnimation("virusPulse.anim"));
                 virusActor.Animations.Add(l.GetAnimation("BlueExplosion2.anim"));
                 return new Virus("virus", virusActor);
-            }, 0);
+            }, 1);
 
             LevelFunctions.MakeHUD();
 
@@ -95,13 +96,27 @@ namespace BodilyInfection.Levels
             GameTime gameTime = This.gameTime;
             if (gameTime.TotalGameTime >= SpawnWaitTime + PreviousSpawn)
             {
+                int waveNumber = (This.Game.CurrentLevel as BodilyInfectionLevel).waveNumber++;
                 LevelFunctions.Spawn(delegate()
                 {
                     Actor virusActor = new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"));
                     virusActor.Animations.Add(This.Game.CurrentLevel.GetAnimation("BlueExplosion2.anim"));
                     return new Virus("virus", virusActor);
-                }, 15);
+                }, (int)((Math.Sin((double)waveNumber) + waveNumber)));
                 PreviousSpawn = gameTime.TotalGameTime;
+
+                if (This.Game.CurrentLevel.mSprites.FindAll(delegate(WorldObject obj) { return obj.Name == "rbc"; }).Count < 8)
+                {
+                    LevelFunctions.Spawn(delegate()
+                    {
+                        Actor rbcActor = new Actor(This.Game.CurrentLevel.GetAnimation("rbc.anim"));
+                        rbcActor.Animations.Add(This.Game.CurrentLevel.GetAnimation("infected.anim"));
+                        rbcActor.Animations.Add(This.Game.CurrentLevel.GetAnimation("vulnerable.anim"));
+                        rbcActor.Animations.Add(This.Game.CurrentLevel.GetAnimation("RedExplosion2.anim"));
+                        Sprite rbc = new RedBloodCell("rbc", rbcActor);
+                        return rbc;
+                    }, waveNumber % 2);
+                }
             }
         }
 
