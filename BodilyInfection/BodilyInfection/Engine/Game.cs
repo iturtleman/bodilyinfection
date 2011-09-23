@@ -137,10 +137,9 @@ namespace BodilyInfection
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-
-            graphics.PreferredBackBufferWidth = 800;
-            graphics.PreferredBackBufferHeight = 600;
-            graphics.IsFullScreen = true;
+            graphics.PreferredBackBufferWidth = 1024;
+            graphics.PreferredBackBufferHeight = 768;
+            This.Cheats = true;
         }
         #endregion Constructor
 
@@ -219,6 +218,11 @@ namespace BodilyInfection
             if (mLastKeyState.IsKeyDown(Keys.F9) && keyState.IsKeyUp(Keys.F9))
             {
                 This.Cheats = !This.Cheats;
+            }
+            //enable cheats
+            if (mLastKeyState.IsKeyDown(Keys.F1) && keyState.IsKeyUp(Keys.F1))
+            {
+                graphics.ToggleFullScreen();
             }
             #endregion Handle input
 

@@ -42,6 +42,7 @@ namespace BodilyInfection
         /// </summary>
         internal static List<string> LevelProgression = new List<string>()
         {
+            "Lungs",
             "Stomach",
             "Lungs",
         };
