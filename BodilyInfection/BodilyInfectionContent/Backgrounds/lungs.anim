@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Animation>
   <Frame SpriteSheet="lungs/0003" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0">
-    <Collision Type="OBB" Corner1="1130.0,477.0" Corner2="1137.0,441.0" Thickness="20.0"/>
+    <Collision Type="OBB" Corner1="1077.0,0.0" Corner2="1072.0,316.0" Thickness="20.0"/>
+    <Collision Type="OBB" Corner1="1072.0,316.0" Corner2="1080.0,403.0" Thickness="20.0"/>
+    <Collision Type="OBB" Corner1="1080.0,403.0" Corner2="1100.0,449.0" Thickness="20.0"/>
+    <Collision Type="OBB" Corner1="1100.0,449.0" Corner2="1130.0,450.0" Thickness="20.0"/>
+    <Collision Type="OBB" Corner1="1130.0,450.0" Corner2="1137.0,441.0" Thickness="20.0"/>
     <Collision Type="OBB" Corner1="1137.0,441.0" Corner2="1180.0,255.0" Thickness="20.0"/>
     <Collision Type="OBB" Corner1="1180.0,255.0" Corner2="1205.0,163.0" Thickness="20.0"/>
     <Collision Type="OBB" Corner1="1205.0,163.0" Corner2="1227.0,109.0" Thickness="20.0"/>
@@ -82,8 +86,12 @@
     <Collision Type="OBB" Corner1="800.0,109.0" Corner2="822.0,163.0" Thickness="20.0"/>
     <Collision Type="OBB" Corner1="822.0,163.0" Corner2="847.0,255.0" Thickness="20.0"/>
     <Collision Type="OBB" Corner1="847.0,255.0" Corner2="890.0,441.0" Thickness="20.0"/>
-    <Collision Type="OBB" Corner1="890.0,441.0" Corner2="897.0,477.0" Thickness="20.0"/>
-    <Collision Type="OBB" Corner1="897.0,477.0" Corner2="1130.0,477.0" Thickness="20.0"/>
+    <Collision Type="OBB" Corner1="890.0,441.0" Corner2="897.0,450.0" Thickness="20.0"/>
+    <Collision Type="OBB" Corner1="897.0,450.0" Corner2="927.0,449.0" Thickness="20.0"/>
+    <Collision Type="OBB" Corner1="927.0,449.0" Corner2="947.0,403.0" Thickness="20.0"/>
+    <Collision Type="OBB" Corner1="947.0,403.0" Corner2="955.0,316.0" Thickness="20.0"/>
+    <Collision Type="OBB" Corner1="955.0,316.0" Corner2="950.0,0.0" Thickness="20.0"/>
+    <Collision Type="OBB" Corner1="950.0,0.0" Corner2="1077.0,1.0" Thickness="20.0"/>
   </Frame>
   <Frame SpriteSheet="lungs/0005" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
   <Frame SpriteSheet="lungs/0007" FrameDelay="75" Width="3000" Height="3000" TLPos="0,0" AnimationPeg="0,0" />
