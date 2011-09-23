@@ -74,16 +74,25 @@ namespace BodilyInfection
         /// Spawns Enemies created by the EnemyFactory at random locations on the screen
         /// </summary>
         /// <param name="gameTime"></param>
-        public static void SpawnEnemies(EnemyFactory constructEnemy, int numEnemies)
+        public static void Spawn(EnemyFactory constructEnemy, int numEnemies)
         {
-            BodilyInfectionLevel l = (This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel) as BodilyInfectionLevel;
-            for (int i = 0; i < numEnemies; i++)
-            {             
-                Sprite virus = constructEnemy();
-                virus.Pos = l.Camera.Pos + 
-                    new Vector2(rand.Next(0, This.Game.GraphicsDevice.Viewport.Width),
-                        rand.Next(0, This.Game.GraphicsDevice.Viewport.Height));
+#if NOCHEATS
+#else
+            if (!This.Cheats)
+            {
+#endif
+                BodilyInfectionLevel l = (This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel) as BodilyInfectionLevel;
+                for (int i = 0; i < numEnemies; i++)
+                {
+                    Sprite virus = constructEnemy();
+                    virus.Pos = l.Camera.Pos +
+                        new Vector2(rand.Next(0, This.Game.GraphicsDevice.Viewport.Width),
+                            rand.Next(0, This.Game.GraphicsDevice.Viewport.Height));
+                }
+#if NOCHEATS
+#else
             }
+#endif
         }
 
         /// <summary>
@@ -93,17 +102,26 @@ namespace BodilyInfection
         /// <param name="constructEnemy"></param>
         /// <param name="numEnemies"></param>
         /// <param name="position"></param>
-        public static void SpawnEnemies(EnemyFactory constructEnemy, int numEnemies, Vector2 position)
+        public static void Spawn(EnemyFactory constructEnemy, int numEnemies, Vector2 position)
         {
-            for (int i = 0; i < numEnemies; i++)
+#if NOCHEATS
+#else
+            if (!This.Cheats)
             {
-                Sprite virus = constructEnemy();
-                double radius = Math.Max(virus.GetAnimation().Height, virus.GetAnimation().Width) * numEnemies / 4.0;
-                double x = rand.NextDouble() * radius * 2 - radius;
-                int mod = (rand.Next(0, 2) - 1);
-                double y = Math.Sqrt(radius * radius - x * x) * mod;
-                virus.Pos = position + new Vector2((float)x, (float)y);
+#endif
+                for (int i = 0; i < numEnemies; i++)
+                {
+                    Sprite virus = constructEnemy();
+                    double radius = Math.Max(virus.GetAnimation().Height, virus.GetAnimation().Width) * numEnemies / 4.0;
+                    double x = rand.NextDouble() * radius * 2 - radius;
+                    int mod = (rand.Next(0, 2) - 1);
+                    double y = Math.Sqrt(radius * radius - x * x) * mod;
+                    virus.Pos = position + new Vector2((float)x, (float)y);
+                }
+#if NOCHEATS
+#else
             }
+#endif
         }
     }
 }

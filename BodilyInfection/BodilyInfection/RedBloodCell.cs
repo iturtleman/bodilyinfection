@@ -68,7 +68,7 @@ namespace BodilyInfection
                 }
                 if (gameTime.TotalGameTime > timeOfInfection + timeToExplode)
                 {
-                    LevelFunctions.SpawnEnemies(delegate()
+                    LevelFunctions.Spawn(delegate()
                     {
                         Actor virusActor = new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"));
                         virusActor.Animations.Add(This.Game.CurrentLevel.GetAnimation("BlueExplosion2.anim"));

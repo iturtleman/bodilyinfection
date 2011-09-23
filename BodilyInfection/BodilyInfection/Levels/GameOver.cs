@@ -18,7 +18,7 @@ namespace BodilyInfection.Levels
 
             Level l = This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel;
             l.AddAnimation(new BackgroundAnimation("gameover.anim"));
-            l.Background = new Background("gameover", new Actor(l.GetAnimation("gameover.anim")));
+            l.Background = new Background("gameover", "gameover.anim");
 
             GameData.Score = 0;
             GameData.NumberOfLives = GameData.DefaultNumberOfLives;

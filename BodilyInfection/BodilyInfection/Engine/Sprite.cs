@@ -149,7 +149,7 @@ namespace BodilyInfection
         /// Draw the Scene
         /// </summary>
         /// <param name="gameTime">Game time as given by the game class</param>
-        public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
+        public override void Draw(GameTime gameTime)
         {
             //Frame so we don't have to find it so often
             SpriteFrame frame = GetAnimation();
@@ -203,6 +203,8 @@ namespace BodilyInfection
         //public vector<Collision> getCollisionData();
         #endregion Collision
 
+        #endregion Methods
+        
         #region Variables
 
         /// <summary>
@@ -218,7 +220,7 @@ namespace BodilyInfection
         /// <summary>
         /// Number that indicates when the Sprite'a animation was last updated.
         /// </summary>
-        private Microsoft.Xna.Framework.GameTime mLastUpdate;
+        private GameTime mLastUpdate;
 
         /// <summary>
         /// This Sprite's Actor.
@@ -226,7 +228,5 @@ namespace BodilyInfection
         protected Actor mActor;
 
         #endregion Variables
-
-        #endregion Methods
     }
 }

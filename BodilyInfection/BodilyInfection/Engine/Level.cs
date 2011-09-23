@@ -108,6 +108,10 @@ namespace BodilyInfection
             if (Loaded)
             {
                 UpdateBehavior();
+                if (WinCondition())
+                {
+                    Unload();
+                }
                 foreach (Sprite sp in mSprites)
                 {
                     if (!WinCondition())
@@ -154,12 +158,16 @@ namespace BodilyInfection
         #region Draw
         internal void Draw(Microsoft.Xna.Framework.GameTime gameTime)
         {
+            This.Game.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
+    null, null, null, null,
+    Camera.GetTransformation(This.Game.GraphicsDevice));
+
+            /** Draw Background */
+            Background.Draw(gameTime);
+
             List<WorldObject> staticSprites = new List<WorldObject>();
 
             #region Draw Sprites
-            This.Game.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
-                null, null, null, null,
-                Camera.GetTransformation(This.Game.GraphicsDevice));
 
             foreach (var sprite in mSprites)
             {
