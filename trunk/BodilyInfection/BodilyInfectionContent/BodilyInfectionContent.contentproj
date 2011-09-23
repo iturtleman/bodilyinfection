@@ -42,6 +42,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Backgrounds\credits.anim">
+      <Name>credits</Name>
+    </None>
     <None Include="Backgrounds\gameover.anim">
       <Name>gameover</Name>
     </None>
@@ -366,13 +369,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Backgrounds\title.png">
-      <Name>title</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Backgrounds\Stomach\0041.png">
       <Name>0041</Name>
       <Importer>TextureImporter</Importer>
@@ -616,6 +612,20 @@
     </Compile>
     <Compile Include="Sprites\red_x_cannon.png">
       <Name>red_x_cannon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Backgrounds\title.png">
+      <Name>title</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Backgrounds\credits.png">
+      <Name>credits</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

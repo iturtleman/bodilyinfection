@@ -23,7 +23,7 @@ namespace BodilyInfection.Levels
             LevelFunctions.MakeHUD();
 
             //GameData.Score = 0;
-            //GameData.NumberOfLives = GameData.DefaultNumberOfLives;
+            GameData.NumberOfLives = 0;
         }
 
         internal static void Update()
@@ -34,7 +34,7 @@ namespace BodilyInfection.Levels
             GamePadState currentState = GamePad.GetState(PlayerIndex.One);
             if (currentState.IsConnected)
             {
-                if (currentState.Buttons.Start == ButtonState.Pressed)
+                if (This.Game.mLastPadState.Buttons.Start == ButtonState.Released && currentState.Buttons.Start == ButtonState.Pressed)
                 {
                     // Go to next
                     // Make awesome sound
