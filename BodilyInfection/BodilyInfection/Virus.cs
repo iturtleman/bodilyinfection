@@ -121,7 +121,7 @@ namespace BodilyInfection
                 #region explosion animation removal
                 if ((gameTime.TotalGameTime >= explosionLength + timeOfDeath) && IsDead)
                 {
-                    GameData.Score++;
+                    GameData.Score += 100;
                     (This.Game.CurrentLevel as BodilyInfectionLevel).EnemiesDefeated++;
                     This.Game.CurrentLevel.RemoveSprite(this);
                 }
@@ -145,7 +145,7 @@ namespace BodilyInfection
                         {
                             if (collision.Item2.GetType() == typeof(Virus))
                             {
-                                Pos += currentVelocity;     // accelerate when they collide with each other
+                                Pos += (1.5f)*currentVelocity;     // accelerate when they collide with each other
                             }
 
                             if (collision.Item2.GetType() == typeof(RedBloodCell))

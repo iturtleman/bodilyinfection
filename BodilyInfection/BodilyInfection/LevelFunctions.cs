@@ -76,10 +76,11 @@ namespace BodilyInfection
         /// <param name="gameTime"></param>
         public static void SpawnEnemies(EnemyFactory constructEnemy, int numEnemies)
         {
+            BodilyInfectionLevel l = (This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel) as BodilyInfectionLevel;
             for (int i = 0; i < numEnemies; i++)
             {             
                 Sprite virus = constructEnemy();
-                virus.Pos = This.Game.CurrentLevel.Camera.Pos + 
+                virus.Pos = l.Camera.Pos + 
                     new Vector2(rand.Next(0, This.Game.GraphicsDevice.Viewport.Width),
                         rand.Next(0, This.Game.GraphicsDevice.Viewport.Height));
             }

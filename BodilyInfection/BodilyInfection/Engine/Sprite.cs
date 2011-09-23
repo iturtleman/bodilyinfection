@@ -20,7 +20,7 @@ namespace BodilyInfection
             EndBehavior = () => { };
 
             (This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel).AddSprite(this);
-            AnimationSpeed = 1;
+            Speed = 3;
             
             if (mActor != null)
             {
@@ -40,7 +40,7 @@ namespace BodilyInfection
         /// <summary>
         ///     the sprite's speed
         /// </summary>
-        public float AnimationSpeed { get; set; }
+        public float Speed { get; set; }
 
         #endregion Properties
 
@@ -106,6 +106,42 @@ namespace BodilyInfection
         {
             return Name;
         }
+
+        protected override void CollideWithBackground()
+        {
+            if (Collision.collisionData.Count > 0)
+            {
+                foreach (CollisionObject co in this.GetCollision())
+                {
+                    if (Collision.collisionData.ContainsKey(this))
+                    {
+                        foreach (Tuple<CollisionObject, WorldObject, CollisionObject> collision in Collision.collisionData[this])
+                        {
+                            if (collision.Item2.GetType() == typeof(Background))
+                            {
+                                /*bool bgCollision = true;*/
+                                CollisionObject boundingBox = collision.Item3;
+                                /*do
+                                {
+                                    bgCollision = false;
+                                */
+                                //move object to new location
+                                Vector2 corner1 = new Vector2(boundingBox.drawPoints[0].Position.X,
+                                                                  boundingBox.drawPoints[0].Position.Y);
+                                Vector2 corner2 = new Vector2(boundingBox.drawPoints[1].Position.X,
+                                                              boundingBox.drawPoints[1].Position.Y);
+                                Vector2 c1toc2 = Vector2.Normalize(corner2 - corner1);
+                                Vector2 normal = new Vector2(-c1toc2.Y, c1toc2.X);
+                                normal.Normalize();
+                                Vector2 animPeg = this.GetAnimation().AnimationPeg;
+                                float radius = ((Collision_BoundingCircle)collision.Item1).radius;
+                                Pos = (radius - Vector2.Dot(normal, (Pos + animPeg - corner1))) * normal + Pos;
+                            }
+                        }
+                    }
+                }
+            }
+        }
         #endregion Methods
 
         #region Draw
@@ -120,7 +156,7 @@ namespace BodilyInfection
             if (mAnimating == true)
             {
                 //used to update the animation. Occurs once the frame's pause * sprite's speed occurs.
-                if (mLastUpdate.TotalGameTime.TotalMilliseconds + frame.Pause * AnimationSpeed < gameTime.TotalGameTime.TotalMilliseconds)
+                if (mLastUpdate.TotalGameTime.TotalMilliseconds + frame.Pause * Speed < gameTime.TotalGameTime.TotalMilliseconds)
                 {
                     //obtain current peg 
                     Vector2 ppos = frame.AnimationPeg;

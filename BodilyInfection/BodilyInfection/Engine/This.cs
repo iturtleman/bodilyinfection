@@ -10,5 +10,7 @@ namespace BodilyInfection
     {
         internal static Game Game;
         internal static GameTime gameTime;
+
+        public static bool Cheats = false;
     }
 }
