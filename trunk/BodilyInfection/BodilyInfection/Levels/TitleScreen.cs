@@ -22,7 +22,7 @@ namespace BodilyInfection.Levels
             Level l = This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel;
             l.AddAnimation(new BackgroundAnimation("title.anim"));
 
-            l.Background = new Background("title", new Actor(l.GetAnimation("title.anim")));
+            l.Background = new Background("title", "title.anim");
 
             /** load music */
             This.Game.AudioManager.AddBackgroundMusic("title");

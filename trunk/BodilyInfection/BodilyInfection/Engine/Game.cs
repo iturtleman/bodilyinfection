@@ -139,7 +139,6 @@ namespace BodilyInfection
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = 1024;
             graphics.PreferredBackBufferHeight = 768;
-            This.Cheats = true;
         }
         #endregion Constructor
 

@@ -24,8 +24,7 @@ namespace BodilyInfection.Levels
             l.EnemiesDefeated = 0;
 
             /// load background
-            l.AddAnimation(new BackgroundAnimation("lungs.anim"));
-            l.Background = new Background("lungs", new Actor(l.GetAnimation("lungs.anim")));
+            l.Background = new Background("lungs", "lungs.anim");
 
             /** load animations */
             l.AddAnimation(new Animation("rbc.anim"));
@@ -43,7 +42,7 @@ namespace BodilyInfection.Levels
             /** load sprites */
 
             // Spawn initial RedBloodCells and Viruses
-            LevelFunctions.SpawnEnemies(delegate()
+            LevelFunctions.Spawn(delegate()
             {
                 Actor rbcActor = new Actor(l.GetAnimation("rbc.anim"));
                 rbcActor.Animations.Add(l.GetAnimation("infected.anim"));
@@ -52,7 +51,7 @@ namespace BodilyInfection.Levels
                 Sprite rbc = new RedBloodCell("rbc", rbcActor);
                 return rbc;
             }, 2);
-            LevelFunctions.SpawnEnemies(delegate()
+            LevelFunctions.Spawn(delegate()
             {
                 Actor virusActor = new Actor(l.GetAnimation("virusPulse.anim"));
                 virusActor.Animations.Add(l.GetAnimation("BlueExplosion2.anim"));
@@ -96,7 +95,7 @@ namespace BodilyInfection.Levels
             GameTime gameTime = This.gameTime;
             if (gameTime.TotalGameTime >= SpawnWaitTime + PreviousSpawn)
             {
-                LevelFunctions.SpawnEnemies(delegate()
+                LevelFunctions.Spawn(delegate()
                 {
                     Actor virusActor = new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"));
                     virusActor.Animations.Add(This.Game.CurrentLevel.GetAnimation("BlueExplosion2.anim"));

@@ -33,11 +33,14 @@ namespace BodilyInfection
     {
         #region Properties
         public bool Built { get; set; }
-        public int NumFrames { get; set; }
+        public int NumFrames { get { return Frames.Count; } }
         public string Name { get; set; }
         #endregion
 
         #region Variables
+        /// <summary>
+        /// Animation Frames
+        /// </summary>
         public List<SpriteFrame> Frames = new List<SpriteFrame>();
 
         #endregion
@@ -45,7 +48,6 @@ namespace BodilyInfection
         #region Constructors
         public Animation()
         {
-            NumFrames = 0;
             Built = false;
         }
 
@@ -78,7 +80,6 @@ namespace BodilyInfection
                 throw new Exception(String.Format("Animation file {0} does not exist.", filename));
             }
             XDocument doc = XDocument.Load(filename);
-            int count = 0;
             foreach (var frame in doc.Descendants("Frame"))
             {
                 SpriteFrame sf = new SpriteFrame();
@@ -150,9 +151,7 @@ namespace BodilyInfection
 
 
                 Frames.Add(sf);
-                count++;
             }
-            NumFrames = count;
         }
 
         #endregion
