@@ -228,7 +228,7 @@ namespace BodilyInfection
                                     //break;
                                 }
                             }
-                            else if (collision.Item2.GetType() == typeof(Background))
+                            else if (collision.Item2.GetType() == typeof(Background_Collision))
                             {
                                 /*bool bgCollision = true;*/
                                 CollisionObject boundingBox = collision.Item3;

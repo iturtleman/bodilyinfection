@@ -119,6 +119,7 @@
     <Compile Include="Engine\Animation.cs" />
     <Compile Include="Engine\AudioManager.cs" />
     <Compile Include="Engine\Background.cs" />
+    <Compile Include="Engine\Background_Collision.cs" />
     <Compile Include="Engine\Camera.cs" />
     <Compile Include="Engine\Collision.cs" />
     <Compile Include="Engine\CollisionObject.cs" />

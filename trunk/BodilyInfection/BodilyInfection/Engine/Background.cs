@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using System.IO;
 using System.Xml.Linq;
 using Microsoft.Xna.Framework.Graphics;
+using BodilyInfection.Engine;
 
 namespace BodilyInfection
 {
@@ -38,7 +39,7 @@ namespace BodilyInfection
         /// <summary>
         /// current frame of anim
         /// </summary>
-        protected int Frame=0;
+        protected int Frame = 0;
         #endregion Variables
 
         public Background(string name, string animfile)
@@ -48,7 +49,7 @@ namespace BodilyInfection
 
         public Background(string name, string animfile, int layer)
         {
-            (This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel).Background=this;
+            (This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel).Background = this;
             LoadAnimation(animfile, "Backgrounds");
 
             // Allows layering of background objects
@@ -94,6 +95,12 @@ namespace BodilyInfection
         internal override List<CollisionObject> GetCollision()
         {
             return CollisionData;
+        }
+
+        internal List<Background_Collision> objects = new List<Background_Collision>();
+        internal List<Background_Collision> GetObjects()
+        {
+            return objects;
         }
 
         /// <summary>
@@ -144,10 +151,14 @@ namespace BodilyInfection
                 if (collision.Attribute("Type").Value == "Circle")
                 {
                     string[] pt = collision.Attribute("Pos").Value.Split(',');
-                    CollisionData.Add(new Collision_BoundingCircle(
+
+                    var col = new Collision_BoundingCircle(
                         idCount++,
                         new Vector2(float.Parse(pt[0]), float.Parse(pt[1])),
-                        float.Parse(collision.Attribute("Radius").Value)));
+                        float.Parse(collision.Attribute("Radius").Value));
+
+                    CollisionData.Add(col);
+                    objects.Add(new Background_Collision(col));
                 }
                 else if (collision.Attribute("Type").Value == "Rectangle")
                 {
@@ -157,11 +168,14 @@ namespace BodilyInfection
                     string[] br = collision.Attribute("BRPos").Value.Split(',');
                     float brx = float.Parse(tl[0]);
                     float bry = float.Parse(tl[1]);
-                    CollisionData.Add(new Collision_AABB(
+
+                    var col = new Collision_AABB(
                         idCount++,
                         new Vector2(tlx, tly),
                         new Vector2(brx, bry)
-                        ));
+                        );
+                    CollisionData.Add(col);
+                    objects.Add(new Background_Collision(col));
                 }
                 else if (collision.Attribute("Type").Value == "OBB")
                 {
@@ -172,12 +186,14 @@ namespace BodilyInfection
                     float c2x = float.Parse(c2[0]);
                     float c2y = float.Parse(c2[1]);
                     float thickness = float.Parse(collision.Attribute("Thickness").Value.ToString());
-                    CollisionData.Add(new Collision_OBB(
+                    var col = new Collision_OBB(
                         idCount++,
                         new Vector2(c1x, c1y),
                         new Vector2(c2x, c2y),
                         thickness
-                        ));
+                        );
+                    CollisionData.Add(col);
+                    objects.Add(new Background_Collision(col));
                 }
             }
         }
