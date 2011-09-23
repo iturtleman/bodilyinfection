@@ -119,6 +119,12 @@ namespace BodilyInfection
         protected float mAngle;
 
         private bool mCollidesWithBackground = true;
+
+        /// <summary>
+        /// \todo get rid of this
+        /// this is to make it work
+        /// </summary>
+        internal CollisionObject Col { get; set; }
         #endregion Variables
 
         internal abstract List<CollisionObject> GetCollision();

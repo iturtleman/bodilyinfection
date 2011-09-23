@@ -50,13 +50,13 @@ namespace BodilyInfection.Levels
                 rbcActor.Animations.Add(l.GetAnimation("RedExplosion2.anim"));
                 Sprite rbc = new RedBloodCell("rbc", rbcActor);
                 return rbc;
-            }, 2);
+            }, 5);
             LevelFunctions.Spawn(delegate()
             {
                 Actor virusActor = new Actor(l.GetAnimation("virusPulse.anim"));
                 virusActor.Animations.Add(l.GetAnimation("BlueExplosion2.anim"));
                 return new Virus("virus", virusActor);
-            }, 0);
+            }, 15);
 
 
             // Load ship
@@ -100,7 +100,7 @@ namespace BodilyInfection.Levels
                     Actor virusActor = new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"));
                     virusActor.Animations.Add(This.Game.CurrentLevel.GetAnimation("BlueExplosion2.anim"));
                     return new Virus("virus", virusActor);
-                }, 15);
+                }, 25);
 
                 PreviousSpawn = gameTime.TotalGameTime;
             }

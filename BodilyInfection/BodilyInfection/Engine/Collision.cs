@@ -60,9 +60,9 @@ namespace BodilyInfection
                 }
             }
             var BG =This.Game.CurrentLevel.Background;
-            foreach (var col in BG.GetCollision())
+            foreach (var obj in BG.GetObjects())
             {
-                col.addToBucket(BG);
+                obj.Col.addToBucket(obj);
             }
         }
 

@@ -117,7 +117,7 @@ namespace BodilyInfection
                     {
                         foreach (Tuple<CollisionObject, WorldObject, CollisionObject> collision in Collision.collisionData[this])
                         {
-                            if (collision.Item2.GetType() == typeof(Background))
+                            if (collision.Item2.GetType() == typeof(Background_Collision))
                             {
                                 /*bool bgCollision = true;*/
                                 CollisionObject boundingBox = collision.Item3;
