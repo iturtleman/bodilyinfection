@@ -20,8 +20,10 @@ namespace BodilyInfection.Levels
             l.AddAnimation(new BackgroundAnimation("gameover.anim"));
             l.Background = new Background("gameover", "gameover.anim");
 
-            GameData.Score = 0;
-            GameData.NumberOfLives = GameData.DefaultNumberOfLives;
+            LevelFunctions.MakeHUD();
+
+            //GameData.Score = 0;
+            //GameData.NumberOfLives = GameData.DefaultNumberOfLives;
         }
 
         internal static void Update()
