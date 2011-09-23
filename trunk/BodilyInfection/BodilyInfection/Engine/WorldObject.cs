@@ -32,9 +32,14 @@ namespace BodilyInfection
         {
             if (mCollidesWithBackground)
             {
-                // do background collisions
+                CollideWithBackground();
             }
             CollisionBehavior();
+        }
+
+        protected virtual void CollideWithBackground()
+        {
+            throw new NotImplementedException();
         }
         #endregion Methods
 

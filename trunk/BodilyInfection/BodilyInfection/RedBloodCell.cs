@@ -18,7 +18,7 @@ namespace BodilyInfection
         public RedBloodCell(string name, Actor actor, Vector2 velocity)
             : base(name, actor)
         {
-            movementVelocity = velocity;
+            MovementDir = velocity;
             UpdateBehavior = Update;
             CollisionBehavior = ActOnCollisions;
             Wounded = false;
@@ -26,11 +26,25 @@ namespace BodilyInfection
             Dead = false;
         }
 
-        private Vector2 movementVelocity;
+        private Vector2 MovementDir
+        {
+            get
+            {
+                return movementDir;
+            }
+            set
+            {
+                movementDir = value;
+                movementDir.Normalize();
+            }
+        }
         public bool Wounded { get; set; }
         public bool Infected { get; set; }
         public bool Dead { get; set; }
+        public bool Reflected { get; set; }
 
+
+        public Vector2 movementDir;
         private int health = 20;
         public TimeSpan timeToExplode = new TimeSpan(0, 0, 5);  // on infection, it takes 5 seconds for virus to come out.
         public TimeSpan timeOfDeath;
@@ -43,40 +57,7 @@ namespace BodilyInfection
             if (!Infected)
             {
                 // Move the sprite by speed.
-                Pos.X += movementVelocity.X;
-
-                Pos.Y += movementVelocity.Y;
-
-                int MaxX =
-                    This.Game.GraphicsDevice.Viewport.Width;
-                int MinX = 0;
-                int MaxY =
-                    This.Game.GraphicsDevice.Viewport.Height;
-                int MinY = 0;
-
-                // Check for bounce.
-                if (Pos.X > MaxX)
-                {
-                    movementVelocity.X *= -1;
-                    Pos.X = MaxX;
-                }
-                else if (Pos.X < MinX)
-                {
-                    movementVelocity.X *= -1;
-                    Pos.X = MinX;
-                }
-
-                if (Pos.Y > MaxY)
-                {
-                    movementVelocity.Y *= -1;
-                    Pos.Y = MaxY;
-                }
-
-                else if (Pos.Y < MinY)
-                {
-                    movementVelocity.Y *= -1;
-                    Pos.Y = MinY;
-                }
+                Pos += MovementDir * Speed;
             }
             else // this is the infect/multiply code
             {
@@ -102,6 +83,7 @@ namespace BodilyInfection
             if (Dead && (gameTime.TotalGameTime >= explosionLength + timeOfDeath))
             {
                 //This.Game.CurrentLevel.EnemiesDefeated++;
+                GameData.Score -= 2000;
                 This.Game.CurrentLevel.RemoveSprite(this);
             }
             #endregion explosion/deletion code
@@ -125,7 +107,7 @@ namespace BodilyInfection
                                     Infected = true;
                                     SetAnimation(1);
                                     StartAnim();
-                                    GameData.Score = GameData.Score - 1500;
+                                    GameData.Score -= 1000;
                                 }
                             }
                             else if (collision.Item2.GetType() == typeof(Bullet))
@@ -133,9 +115,11 @@ namespace BodilyInfection
                                 if (!Wounded)
                                 {
                                     // RBC becomes vulnerable.
+
                                     Wounded = true;
                                     SetAnimation(2);
                                     StartAnim();
+                                    GameData.Score -= 1000;
                                 }
 
                                 else
@@ -146,12 +130,31 @@ namespace BodilyInfection
                                         Dead = true;
 
                                         timeOfDeath = gameTime.TotalGameTime;
-
+                                        GameData.Score -= 1000;
                                         // change the animation if the rbc is dead
                                         SetAnimation(3);
                                         StartAnim();
                                     }
                                 }
+                            }
+                            else if (collision.Item2.GetType() == typeof(Background))
+                            {
+                                /*bool bgCollision = true;*/
+                                CollisionObject boundingBox = collision.Item3;
+                                /*do
+                                {
+                                    bgCollision = false;
+                                */
+                                //move object to new location
+                                Vector2 corner1 = new Vector2(boundingBox.drawPoints[0].Position.X,
+                                                                  boundingBox.drawPoints[0].Position.Y);
+                                Vector2 corner2 = new Vector2(boundingBox.drawPoints[1].Position.X,
+                                                              boundingBox.drawPoints[1].Position.Y);
+                                Vector2 c1toc2 = Vector2.Normalize(corner2 - corner1);
+                                Vector2 normal = new Vector2(-c1toc2.Y, c1toc2.X);
+                                normal.Normalize();
+
+                                MovementDir = 2 * (-MovementDir * normal) * normal + MovementDir + (new Vector2(normal.X*.75f,normal.Y*.45f)) ;
                             }
                         }
                     }

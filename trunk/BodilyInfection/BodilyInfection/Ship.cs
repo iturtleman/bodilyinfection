@@ -109,12 +109,12 @@ namespace BodilyInfection
                     #endregion
 
                     // In case you get lost, press A to warp back to the center.
-                    //if (currentState.Buttons.A == ButtonState.Pressed)
-                    //{
-                    //   Pos = (This.Game.CurrentLevel as BodilyInfectionLevel).PlayerSpawnPoint;
-                    //    shipVelocity = Vector2.Zero;
-                    //    This.Game.AudioManager.PlaySoundEffect("ship_spawn");
-                    //}
+                    if (currentState.Buttons.A == ButtonState.Pressed)
+                    {
+                        Pos = new Vector2();
+                        shipVelocity = Vector2.Zero;
+                        This.Game.AudioManager.PlaySoundEffect("ship_spawn");
+                    }
 
                 }
                 else /* Move with arrow keys */

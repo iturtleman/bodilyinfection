@@ -15,7 +15,7 @@ namespace BodilyInfection.Levels
         internal static TimeSpan PreviousSpawn = new TimeSpan(0, 0, 0, 0, 0);
         #endregion Timer Variables
 
-        private static int EnemiesDefeatedWinCondition = 200;
+        private static int EnemiesDefeatedWinCondition = 2000;
 
         internal static void Load()
         {
@@ -42,6 +42,15 @@ namespace BodilyInfection.Levels
 
             /** load sprites */
 
+            // Load ship
+            Actor shipActor = new Actor(l.GetAnimation("ship.anim"));
+            shipActor.Animations.Add(l.GetAnimation("xplosion17.anim"));
+            Ship ship = new Ship("ship", shipActor);
+            l.PlayerSpawnPoint = new Vector2(1000, 1300);
+            l.Camera.Pos = l.PlayerSpawnPoint - new Vector2(This.Game.GraphicsDevice.Viewport.Width / 2,
+                This.Game.GraphicsDevice.Viewport.Height / 2);
+            ship.Pos = l.PlayerSpawnPoint;
+
             // Spawn initial RedBloodCells and Viruses
             LevelFunctions.SpawnEnemies(delegate()
             {
@@ -51,22 +60,13 @@ namespace BodilyInfection.Levels
                 rbcActor.Animations.Add(l.GetAnimation("RedExplosion2.anim"));
                 Sprite rbc = new RedBloodCell("rbc", rbcActor);
                 return rbc;
-            }, 2);
+            }, 20);
             LevelFunctions.SpawnEnemies(delegate() 
             {
                 Actor virusActor = new Actor(l.GetAnimation("virusPulse.anim"));
                 virusActor.Animations.Add(l.GetAnimation("BlueExplosion2.anim"));
                 return new Virus("virus", virusActor); 
             }, 0);
-
-
-            // Load ship
-            Actor shipActor = new Actor(l.GetAnimation("ship.anim"));
-            shipActor.Animations.Add(l.GetAnimation("xplosion17.anim"));
-            Ship ship = new Ship("ship", shipActor);
-            l.PlayerSpawnPoint = new Vector2(1000, 1300);
-            l.Camera.Pos = 
-            ship.Pos = l.PlayerSpawnPoint;
 
             LevelFunctions.MakeHUD();
 
@@ -96,13 +96,15 @@ namespace BodilyInfection.Levels
             GameTime gameTime = This.gameTime;
             if (gameTime.TotalGameTime >= SpawnWaitTime + PreviousSpawn)
             {
-                LevelFunctions.SpawnEnemies(delegate() 
+                if (!This.Cheats)
                 {
-                    Actor virusActor = new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"));
-                    virusActor.Animations.Add(This.Game.CurrentLevel.GetAnimation("BlueExplosion2.anim"));
-                    return new Virus("virus", virusActor);                 
-                }, 15);
-
+                    LevelFunctions.SpawnEnemies(delegate()
+                    {
+                        Actor virusActor = new Actor(This.Game.CurrentLevel.GetAnimation("virusPulse.anim"));
+                        virusActor.Animations.Add(This.Game.CurrentLevel.GetAnimation("BlueExplosion2.anim"));
+                        return new Virus("virus", virusActor);
+                    }, 15);
+                }
                 PreviousSpawn = gameTime.TotalGameTime;
             }
         }
