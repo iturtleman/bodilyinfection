@@ -38,6 +38,29 @@ namespace BodilyInfection
             UpdateBehavior = Update;
             CollisionBehavior = ActOnCollisions;
         }
+
+        public Ship(string name, Actor actor, PlayerIndex input, string cannonAnimName)
+            : base(name, actor)
+        {
+            cannon = new Cannon(cannonAnimName, new Actor((This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel).GetAnimation("cannon.anim")), name, input);
+            cannon.ZOrder = ZOrder + 1;
+            shieldEndTime = TimeSpan.MinValue;
+            RemainingLives = DefaultLives;
+            this.gamepad = input;
+            shipVelocity = Vector2.Zero;
+            shipSpeed = 10.0f;
+            lThumbstick = Vector2.Zero;
+            rThumbstick = Vector2.Zero;
+            Dead = false;
+            shieldName = Name + "_shield";
+            Dead = false;
+            EnableShield();
+
+
+            UpdateBehavior = Update;
+            CollisionBehavior = ActOnCollisions;
+        }
+
         #endregion
 
         #region variables
