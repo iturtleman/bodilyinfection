@@ -60,7 +60,7 @@ namespace BodilyInfection.Levels
                 rbcActor.Animations.Add(l.GetAnimation("RedExplosion2.anim"));
                 Sprite rbc = new RedBloodCell("rbc", rbcActor);
                 return rbc;
-            }, 20);
+            }, 8);
             LevelFunctions.SpawnEnemies(delegate() 
             {
                 Actor virusActor = new Actor(l.GetAnimation("virusPulse.anim"));

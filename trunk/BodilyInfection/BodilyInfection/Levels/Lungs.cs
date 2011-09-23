@@ -65,7 +65,7 @@ namespace BodilyInfection.Levels
             shipActor.Animations.Add(l.GetAnimation("xplosion17.anim"));
             Sprite ship = new Ship("ship", shipActor);
 
-            l.PlayerSpawnPoint = new Vector2(1000, 450);
+            l.PlayerSpawnPoint = new Vector2(1000, 400);
             ship.Pos = l.PlayerSpawnPoint;
 
             LevelFunctions.MakeHUD();
