@@ -135,6 +135,11 @@ namespace BodilyInfection
                                 normal.Normalize();
                                 Vector2 animPeg = this.GetAnimation().AnimationPeg;
                                 float radius = ((Collision_BoundingCircle)collision.Item1).radius;
+                                if ((this as Ship) != null)
+                                {
+                                    (this as Ship).Move((radius - Vector2.Dot(normal, (Pos + animPeg - corner1))) * normal + Pos);
+                                }
+                                else
                                 Pos = (radius - Vector2.Dot(normal, (Pos + animPeg - corner1))) * normal + Pos;
                             }
                         }

@@ -10,7 +10,7 @@ namespace BodilyInfection
     class RedBloodCell : Sprite
     {
         public RedBloodCell(string name, Actor actor)
-            : this(name, actor, new Vector2(3.0f, 3.0f))
+            : this(name, actor, new Vector2(3.0f * (float)(LevelFunctions.rand.NextDouble() - 1f), 3.0f * (float)(LevelFunctions.rand.NextDouble() - 1f)))
         {
 
         }
