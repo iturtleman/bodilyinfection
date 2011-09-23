@@ -21,6 +21,9 @@ namespace BodilyInfection.Levels
         {
             BodilyInfectionLevel l = (This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel) as BodilyInfectionLevel;
 
+            GameData.Score = 0;
+            GameData.NumberOfLives = GameData.DefaultNumberOfLives;
+
             l.EnemiesDefeated = 0;
             l.waveNumber = 0;
 
