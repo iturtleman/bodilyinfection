@@ -59,6 +59,11 @@ namespace BodilyInfection
                     collisionObject.addToBucket(worldObject);
                 }
             }
+            var BG =This.Game.CurrentLevel.Background;
+            foreach (var col in BG.GetCollision())
+            {
+                col.addToBucket(BG);
+            }
         }
 
         public static void detectCollisions()
@@ -175,6 +180,12 @@ namespace BodilyInfection
                     {
                         collisionObject.draw(world, transformation);
                     }
+                }
+
+                var BG = This.Game.CurrentLevel.Background;
+                foreach (var col in BG.GetCollision())
+                {
+                    col.draw(BG,transformation);
                 }
             }
         }
