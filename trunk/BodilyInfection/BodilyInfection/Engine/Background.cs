@@ -49,8 +49,13 @@ namespace BodilyInfection
 
         public Background(string name, string animfile, int layer)
         {
+            mName = name;
+
             (This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel).Background = this;
             LoadAnimation(animfile, "Backgrounds");
+
+            mLastUpdate = new GameTime();
+            mAnimating = true;
 
             // Allows layering of background objects
             ZOrder = int.MinValue + layer;
