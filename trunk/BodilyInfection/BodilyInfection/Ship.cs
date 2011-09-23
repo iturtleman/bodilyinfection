@@ -231,14 +231,12 @@ namespace BodilyInfection
         internal void Move(Vector2 pos)
         {
             Pos = pos;
-            Sprite turret = This.Game.CurrentLevel.GetSprite("ship_cannon");
-            Sprite shield = This.Game.CurrentLevel.GetSprite("ship_shield");
-            if (turret != null)
-            {
-                turret.Pos = Pos + GetAnimation().AnimationPeg - turret.GetAnimation().AnimationPeg;
-                if (shield != null)
-                    shield.Pos = Pos + GetAnimation().AnimationPeg - shield.GetAnimation().AnimationPeg;
-            }
+            Sprite shield = This.Game.CurrentLevel.GetSprite(shieldName);
+
+            cannon.Pos = Pos + GetAnimation().AnimationPeg - cannon.GetAnimation().AnimationPeg;
+            if (shield != null)
+                shield.Pos = Pos + GetAnimation().AnimationPeg - shield.GetAnimation().AnimationPeg;
+
         }
 
         private void ActOnCollisions()
