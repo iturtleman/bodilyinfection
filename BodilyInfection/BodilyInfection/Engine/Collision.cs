@@ -319,21 +319,21 @@ namespace BodilyInfection
             Vector2 drawPoint2 = new Vector2(o1.drawPoints[2].Position.X + o1Anchor.X, o1.drawPoints[2].Position.Y + o1Anchor.Y);
             Vector2 drawPoint3 = new Vector2(o1.drawPoints[3].Position.X + o1Anchor.X, o1.drawPoints[3].Position.Y + o1Anchor.Y);
 
-            Vector2 C = drawPoint1 + Vector2.Dot(c1Center - drawPoint1, Vector2.Normalize(drawPoint1 - drawPoint0)) * Vector2.Normalize(drawPoint1 - drawPoint0);
+             Vector2 C = drawPoint1 + Vector2.Dot(c1Center - drawPoint1, Vector2.Normalize(drawPoint1 - drawPoint0)) * Vector2.Normalize(drawPoint1 - drawPoint0);
             Vector2 D = drawPoint1 + Vector2.Dot(c1Center - drawPoint1, Vector2.Normalize(drawPoint1 - drawPoint2)) * Vector2.Normalize(drawPoint1 - drawPoint2);
 
-            float CtoDP1 = distanceSquared(C.X, C.Y, drawPoint1.X, drawPoint1.Y);
-            float CtoDP0 = distanceSquared(C.X, C.Y, drawPoint0.X, drawPoint0.Y);
-            float DP0toDP1=distanceSquared(drawPoint1.X, drawPoint1.Y, drawPoint0.X, drawPoint0.Y);
+            float CtoDP1 = Vector2.DistanceSquared(C, drawPoint1);
+            float CtoDP0 = Vector2.DistanceSquared(C, drawPoint0);
+            float DP0toDP1=Vector2.DistanceSquared(drawPoint1, drawPoint0);
 
-            float DtoDP1 = distanceSquared(D.X, D.Y, drawPoint1.X, drawPoint1.Y);
-            float DtoDP2 = distanceSquared(D.X, D.Y, drawPoint2.X, drawPoint2.Y);
-            float DP2toDP1=distanceSquared(drawPoint1.X, drawPoint1.Y, drawPoint2.X, drawPoint2.Y);
+            float DtoDP1 = Vector2.DistanceSquared(D, drawPoint1);
+            float DtoDP2 = Vector2.DistanceSquared(D, drawPoint2);
+            float DP2toDP1=Vector2.DistanceSquared(drawPoint1, drawPoint2);
 
-            float CentertoDP0 = distanceSquared(c1Center.X, c1Center.Y, drawPoint0.X, drawPoint0.Y);
-            float CentertoDP1 = distanceSquared(c1Center.X, c1Center.Y, drawPoint1.X, drawPoint1.Y);
-            float CentertoDP2 = distanceSquared(c1Center.X, c1Center.Y, drawPoint2.X, drawPoint2.Y);
-            float CentertoDP3 = distanceSquared(c1Center.X, c1Center.Y, drawPoint3.X, drawPoint3.Y);
+            float CentertoDP0 = Vector2.DistanceSquared(c1Center, drawPoint0);
+            float CentertoDP1 = Vector2.DistanceSquared(c1Center, drawPoint1);
+            float CentertoDP2 = Vector2.DistanceSquared(c1Center, drawPoint2);
+            float CentertoDP3 = Vector2.DistanceSquared(c1Center, drawPoint3);
 
             if (((DP0toDP1 + (c1.radius * 2) * (c1.radius * 2) + 100 >= CtoDP0 + CtoDP1) && (DP2toDP1 + (c1.radius * 2) * (c1.radius * 2) + 100 >= DtoDP2 + DtoDP1)) ||
                   (CentertoDP0 <= c1.radius * c1.radius) || (CentertoDP1 <= c1.radius * c1.radius) || (CentertoDP2 <= c1.radius * c1.radius) || (CentertoDP3 <= c1.radius * c1.radius))
