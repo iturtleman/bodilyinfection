@@ -16,7 +16,7 @@ namespace BodilyInfection
             Harmless = true;
             Frozen = true;
             IsDead = false;
-
+            CollisionList = 2;
             birth = TimeSpan.Zero;
         }
 

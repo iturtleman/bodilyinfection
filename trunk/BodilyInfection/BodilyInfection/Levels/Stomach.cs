@@ -20,6 +20,8 @@ namespace BodilyInfection.Levels
 
         internal static void Load()
         {
+            Collision.Lists.Add(new KeyValuePair<int,int>(1,2));
+
             BodilyInfectionLevel l = (This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel) as BodilyInfectionLevel;
 
             GameData.Score = 0;

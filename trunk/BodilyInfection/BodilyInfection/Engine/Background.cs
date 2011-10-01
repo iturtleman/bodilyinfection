@@ -49,6 +49,8 @@ namespace BodilyInfection
 
         public Background(string name, string animfile, int layer)
         {
+            CollisionList = 0;
+
             mName = name;
 
             (This.Game.CurrentLevel != This.Game.NextLevel && This.Game.NextLevel != null ? This.Game.NextLevel : This.Game.CurrentLevel).Background = this;

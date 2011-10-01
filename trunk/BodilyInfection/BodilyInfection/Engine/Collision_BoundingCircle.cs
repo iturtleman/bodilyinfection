@@ -75,21 +75,7 @@ namespace BodilyInfection
             int topRightX = (int)(worldObject.Pos.X + centerPointOffset.X + radius) / (int)Collision.gridCellWidth;
             int topRightY = (int)(worldObject.Pos.Y + centerPointOffset.Y + radius) / (int)Collision.gridCellHeight;
 
-            for (int i = bottomLeftX; i <= topRightX; i++) //cols
-            {
-                for (int j = bottomLeftY; j <= topRightY; j++) //rows
-                {
-                    Vector2 location = new Vector2(i, j);
-                    if (Collision.bucket.ContainsKey(location))
-                        Collision.bucket[location].Add(worldObject);
-                    else
-                    {
-                        List<WorldObject> possibleCollisions = new List<WorldObject>();
-                        possibleCollisions.Add(worldObject);
-                        Collision.bucket.Add(location, possibleCollisions);
-                    }
-                }
-            }
+            AddToBucket(worldObject, bottomLeftX, bottomLeftY, topRightX, topRightY);
         }
 
         public override void draw(WorldObject world, Matrix transformation)

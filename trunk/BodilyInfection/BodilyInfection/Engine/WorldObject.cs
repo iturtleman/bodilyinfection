@@ -138,5 +138,12 @@ namespace BodilyInfection
         {
             return ZOrder.CompareTo(other.ZOrder);
         }
+
+        /// <summary>
+        /// Collision list for World objects Objects in the same list are not checked against eachother
+        /// Background's collision defaults to list 0
+        /// All other objects default to 1
+        /// </summary>
+        public int CollisionList = 1;
     }
 }
