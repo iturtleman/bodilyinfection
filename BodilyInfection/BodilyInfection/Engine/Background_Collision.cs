@@ -10,6 +10,7 @@ namespace BodilyInfection
         public Background_Collision(CollisionObject col)
         {
             Col = col;
+            CollisionList = 0;
         }
 
         public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
