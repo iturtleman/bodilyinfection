@@ -38,35 +38,6 @@ namespace BodilyInfection
         }
 
         /// <summary>
-        /// Initializes a Bounding Circle.
-        /// </summary>
-        public Collision_OBB(int _id, Vector2 _cornerOffset1, Vector2 _cornerOffset2, float _thickness, WorldObject _parentObject)
-        {
-            cornerOffset1 = _cornerOffset1;
-            cornerOffset2 = _cornerOffset2;
-            thickness = _thickness;
-            id = _id;
-            parentObject = _parentObject;
-            type = 'o';
-            previousPos = new Vector2(100017, 100017);
-
-
-            //create collision object's points for drawing
-            Vector3 normal = Vector3.Normalize(new Vector3(cornerOffset2.Y - cornerOffset1.Y, cornerOffset1.X - cornerOffset2.X, 0));
-            drawPoints = new VertexPositionColor[5];
-            drawPoints[0].Position = new Vector3(cornerOffset1.X, cornerOffset1.Y, 0f);
-            drawPoints[0].Color = Color.Red;
-            drawPoints[1].Position = new Vector3(cornerOffset2.X, cornerOffset2.Y, 0f);
-            drawPoints[1].Color = Color.Red;
-            drawPoints[2].Position = new Vector3(cornerOffset2.X + normal.X * thickness, cornerOffset2.Y + normal.Y * thickness, 0f);
-            drawPoints[2].Color = Color.Red;
-            drawPoints[3].Position = new Vector3(cornerOffset1.X + normal.X * thickness, cornerOffset1.Y + normal.Y * thickness, 0f);
-            drawPoints[3].Color = Color.Red;
-            drawPoints[4].Position = new Vector3(cornerOffset1.X, cornerOffset1.Y, 0f);
-            drawPoints[4].Color = Color.Red;
-        }
-
-        /// <summary>
         /// Offset of Corner1 from sprite anchor.
         /// </summary>
         public Vector2 cornerOffset1 { get; set; }
@@ -157,7 +128,7 @@ namespace BodilyInfection
                 {
                     for (int j = lowestY; j <= highestY; j++) //rows
                     {
-                        float slope0to1, slope1to2;
+                        float slope0to1;
                         bool isInGrid = false;
                         try
                         {

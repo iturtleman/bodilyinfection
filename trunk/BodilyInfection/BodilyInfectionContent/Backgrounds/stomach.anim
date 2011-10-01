@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Animation>
   <Frame SpriteSheet="Stomach/0041" FrameDelay="100" Width="2000" Height="2000" TLPos="0,0" AnimationPeg="0,0">
+    <Collision Type="Rectangle" TLPos="-10, -10" BRPos="10, 10"/>
     <Collision Type="OBB" Corner1="673.0,461.0" Corner2="800.0,300.0" Thickness="20.0"/>
     <Collision Type="OBB" Corner1="800.0,300.0" Corner2="890.0,270.0" Thickness="20.0"/>
     <Collision Type="OBB" Corner1="890.0,270.0" Corner2="1157.0,260.0" Thickness="20.0"/>

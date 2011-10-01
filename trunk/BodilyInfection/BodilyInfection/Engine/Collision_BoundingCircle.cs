@@ -33,30 +33,6 @@ namespace BodilyInfection
         }
 
         /// <summary>
-        /// Initializes a Bounding Circle.
-        /// </summary>
-        public Collision_BoundingCircle(int _id, Vector2 _centerPointOffset, float _radius, WorldObject _parentObject)
-        {
-            centerPointOffset = _centerPointOffset;
-            radius = _radius;
-            id = _id;
-            parentObject = _parentObject;
-            type = 'c';
-
-
-            //create collision object's points for drawing
-            int numOfPoints = (int)(radius * 2);
-            drawPoints = new VertexPositionColor[numOfPoints + 1];
-            for (int i = 0; i <= numOfPoints; i++)
-            {
-                drawPoints[i].Position = new Vector3(radius * (float)Math.Cos(((double)i / (double)numOfPoints) * (Math.PI * 2))
-                                                   , radius * (float)Math.Sin(((double)i / (double)numOfPoints) * (Math.PI * 2))
-                                                   , 0f);
-                drawPoints[i].Color = Color.Red;
-            }
-        }
-
-        /// <summary>
         /// Offset of centerPoint from sprite anchor.
         /// </summary>
         public Vector2 centerPointOffset { get; set; }
