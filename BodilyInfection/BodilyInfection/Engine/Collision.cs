@@ -59,7 +59,7 @@ namespace BodilyInfection
                     collisionObject.addToBucket(worldObject);
                 }
             }
-            var BG =This.Game.CurrentLevel.Background;
+            var BG = This.Game.CurrentLevel.Background;
             foreach (var obj in BG.GetObjects())
             {
                 obj.Col.addToBucket(obj);
@@ -185,7 +185,7 @@ namespace BodilyInfection
                 var BG = This.Game.CurrentLevel.Background;
                 foreach (var col in BG.GetCollision())
                 {
-                    col.draw(BG,transformation);
+                    col.draw(BG, transformation);
                 }
             }
         }
@@ -208,11 +208,10 @@ namespace BodilyInfection
             detectCollisions();
         }
 
-        public static float distanceSquared(float x1, float y1, float x2, float y2)
+        public static float distanceSquared(Vector2 p1, Vector2 p2)
         {
-            float a = x1 - x2;
-            float b = y1 - y2;
-            return a * a + b * b;
+            Vector2 d = p1 - p2;
+            return d.X * d.X + d.Y * d.Y;
         }
 
         public static List<Tuple<CollisionObject, CollisionObject>> detectCollision(WorldObject w1, WorldObject w2)
@@ -238,24 +237,70 @@ namespace BodilyInfection
         /// <summary>
         /// Determine if BoundingCircle and BoundingCircle collide
         /// </summary>
-        public static bool detectCollision(WorldObject w1, Collision_BoundingCircle c1, WorldObject w2, Collision_BoundingCircle c2)
+        /// /// <param name="w1">This Collision data's world object</param>
+        /// <param name="w2">Other collision data's world object</param>
+        /// <param name="c2">Collision circle which to check</param>
+        /// <returns>Whether a collision occurred</returns>
+        public static bool detectCollision(WorldObject w1, Collision_BoundingCircle c1, WorldObject w2, Collision_BoundingCircle o)
         {
-            float ds = Collision.distanceSquared((w1.Pos.X + c1.centerPointOffset.X), (w1.Pos.Y + c1.centerPointOffset.Y),
-                                                 (w2.Pos.X + c2.centerPointOffset.X), (w2.Pos.Y + c2.centerPointOffset.Y));
-            float r = c1.radius + c2.radius;
-            return (ds <= r * r);
+            float ds = Collision.distanceSquared(w1.Pos + c1.centerPointOffset, w2.Pos + o.centerPointOffset);
+            return (ds <= c1.radius * o.radius);
         }
+
+        /// <summary>
+        /// Detects OBB on OBB collision
+        /// </summary>
+        /// <param name="w1">This Collision data's world object</param>
+        /// <param name="w2">Other collision data's world object</param>
+        /// <param name="o">Collision circle which to check</param>
+        /// <returns>Whether a collision occurred</returns>
+        public static bool detectCollision(WorldObject w1, Collision_OBB c1, WorldObject w2, Collision_OBB o)
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Determine whether an AABB and AABB collide
+        /// </summary>
+        /// <param name="w1">This Collision data's world object</param>
+        /// <param name="w2">Other collision data's world object</param>
+        /// <param name="o">AABB which to check</param>
+        /// <returns>Whether a collision occurred</returns>
+        public static bool detectCollision(WorldObject w1, Collision_AABB a1, WorldObject w2, Collision_AABB o)
+        {
+            Vector2 TL1 = a1.topLeftPointOffset + w1.Pos;
+            Vector2 BR1 = a1.bottomRightPointOffset + w1.Pos;
+            Vector2 TL2 = o.topLeftPointOffset + w2.Pos;
+            Vector2 BR2 = o.bottomRightPointOffset + w2.Pos;
+
+            ///check rect vs rect really just axis aligned box check (simpler)
+            bool outsideX = BR1.X < TL2.X || TL1.X > BR2.X;
+            bool outsideY = BR1.Y < TL2.Y || TL1.Y > BR2.Y;
+            return !(outsideY || outsideX);
+        }
+
 
         /// <summary>
         /// Determine if AABB and BoundingCircle collide
         /// </summary>
-        public static bool detectCollision(WorldObject w1, Collision_BoundingCircle c1, WorldObject w2, Collision_AABB a1)
+        /// /// <param name="w1">This Collision data's world object</param>
+        /// <param name="w2">Other collision data's world object</param>
+        /// <param name="a1">AABB which to check</param>
+        /// <returns>Whether a collision occurred</returns>
+        public static bool detectCollision(WorldObject w1, Collision_BoundingCircle c1, WorldObject w2, Collision_AABB o)
         {
-            return detectCollision(w2, a1, w1, c1);
+            return detectCollision(w2, o, w1, c1);
         }
-        public static bool detectCollision(WorldObject w1, Collision_AABB a1, WorldObject w2, Collision_BoundingCircle c1)
+        /// <summary>
+        /// Determine whether an AABB and Collision circle collide
+        /// </summary>
+        /// <param name="w1">This Collision data's world object</param>
+        /// <param name="w2">Other collision data's world object</param>
+        /// <param name="o">Collision circle which to check</param>
+        /// <returns>Whether a collision occurred</returns>
+        public static bool detectCollision(WorldObject w1, Collision_AABB a1, WorldObject w2, Collision_BoundingCircle o)
         {
-            Vector2 centerPoint = c1.centerPointOffset + w2.Pos;
+            Vector2 centerPoint = o.centerPointOffset + w2.Pos;
             Vector2 topLeftPoint = a1.topLeftPointOffset + w1.Pos;
             Vector2 bottomRightPoint = a1.bottomRightPointOffset + w1.Pos;
 
@@ -270,7 +315,7 @@ namespace BodilyInfection
             if (centerPoint.Y < bottomRightPoint.Y)
                 regionCode += 8;
 
-            float radius = c1.radius;
+            float radius = o.radius;
             switch (regionCode)
             {
                 case 0: //0000
@@ -292,19 +337,13 @@ namespace BodilyInfection
                         return true;
                     break;
                 case 5: //0101
-                    if (Collision.distanceSquared(centerPoint.X, centerPoint.Y, topLeftPoint.X, topLeftPoint.Y) <= radius * radius)
+                case 9: //1001
+                    if (Collision.distanceSquared(centerPoint, topLeftPoint) <= radius * radius)
                         return true;
                     break;
                 case 6: //0110
-                    if (Collision.distanceSquared(centerPoint.X, centerPoint.Y, bottomRightPoint.X, topLeftPoint.Y) <= radius * radius)
-                        return true;
-                    break;
-                case 9: //1001
-                    if (Collision.distanceSquared(centerPoint.X, centerPoint.Y, topLeftPoint.X, bottomRightPoint.Y) <= radius * radius)
-                        return true;
-                    break;
                 case 10: //1010
-                    if (Collision.distanceSquared(centerPoint.X, centerPoint.Y, bottomRightPoint.X, bottomRightPoint.Y) <= radius * radius)
+                    if (Collision.distanceSquared(centerPoint, bottomRightPoint) <= radius * radius)
                         return true;
                     break;
             }
@@ -316,13 +355,24 @@ namespace BodilyInfection
         /// <summary>
         /// Determine if OBB and BoundingCircle collide
         /// </summary>
-        public static bool detectCollision(WorldObject w1, Collision_BoundingCircle c1, WorldObject w2, Collision_OBB o1)
+        /// /// <param name="w1">This Collision data's world object</param>
+        /// <param name="w2">Other collision data's world object</param>
+        /// <param name="o1">OBB which to check</param>
+        /// <returns>Whether a collision occurred</returns>
+        public static bool detectCollision(WorldObject w1, Collision_BoundingCircle c1, WorldObject w2, Collision_OBB o)
         {
-            return detectCollision(w2, o1, w1, c1);
+            return detectCollision(w2, o, w1, c1);
         }
-        public static bool detectCollision(WorldObject w1, Collision_OBB o1, WorldObject w2, Collision_BoundingCircle c1)
+        /// <summary>
+        /// Detect of a Collision circle and OBB collide
+        /// </summary>
+        /// <param name="w1">This Collision data's world object</param>
+        /// <param name="w2">Other collision data's world object</param>
+        /// <param name="o">Collision circle which to check</param>
+        /// <returns>Whether a collision occurred</returns>
+        public static bool detectCollision(WorldObject w1, Collision_OBB o1, WorldObject w2, Collision_BoundingCircle o)
         {
-            Vector2 c1Center = c1.centerPointOffset + w2.Pos;
+            Vector2 c1Center = o.centerPointOffset + w2.Pos;
             Vector2 o1Anchor = new Vector2(w1.Pos.X, w1.Pos.Y);
 
             Vector2 drawPoint0 = new Vector2(o1.drawPoints[0].Position.X + o1Anchor.X, o1.drawPoints[0].Position.Y + o1Anchor.Y);
@@ -330,33 +380,29 @@ namespace BodilyInfection
             Vector2 drawPoint2 = new Vector2(o1.drawPoints[2].Position.X + o1Anchor.X, o1.drawPoints[2].Position.Y + o1Anchor.Y);
             Vector2 drawPoint3 = new Vector2(o1.drawPoints[3].Position.X + o1Anchor.X, o1.drawPoints[3].Position.Y + o1Anchor.Y);
 
-             Vector2 C = drawPoint1 + Vector2.Dot(c1Center - drawPoint1, Vector2.Normalize(drawPoint1 - drawPoint0)) * Vector2.Normalize(drawPoint1 - drawPoint0);
+            Vector2 C = drawPoint1 + Vector2.Dot(c1Center - drawPoint1, Vector2.Normalize(drawPoint1 - drawPoint0)) * Vector2.Normalize(drawPoint1 - drawPoint0);
             Vector2 D = drawPoint1 + Vector2.Dot(c1Center - drawPoint1, Vector2.Normalize(drawPoint1 - drawPoint2)) * Vector2.Normalize(drawPoint1 - drawPoint2);
 
             float CtoDP1 = Vector2.DistanceSquared(C, drawPoint1);
             float CtoDP0 = Vector2.DistanceSquared(C, drawPoint0);
-            float DP0toDP1=Vector2.DistanceSquared(drawPoint1, drawPoint0);
+            float DP0toDP1 = Vector2.DistanceSquared(drawPoint1, drawPoint0);
 
             float DtoDP1 = Vector2.DistanceSquared(D, drawPoint1);
             float DtoDP2 = Vector2.DistanceSquared(D, drawPoint2);
-            float DP2toDP1=Vector2.DistanceSquared(drawPoint1, drawPoint2);
+            float DP2toDP1 = Vector2.DistanceSquared(drawPoint1, drawPoint2);
 
             float CentertoDP0 = Vector2.DistanceSquared(c1Center, drawPoint0);
             float CentertoDP1 = Vector2.DistanceSquared(c1Center, drawPoint1);
             float CentertoDP2 = Vector2.DistanceSquared(c1Center, drawPoint2);
             float CentertoDP3 = Vector2.DistanceSquared(c1Center, drawPoint3);
 
-            if (((DP0toDP1 + (c1.radius * 2) * (c1.radius * 2) + 100 >= CtoDP0 + CtoDP1) && (DP2toDP1 + (c1.radius * 2) * (c1.radius * 2) + 100 >= DtoDP2 + DtoDP1)) ||
-                  (CentertoDP0 <= c1.radius * c1.radius) || (CentertoDP1 <= c1.radius * c1.radius) || (CentertoDP2 <= c1.radius * c1.radius) || (CentertoDP3 <= c1.radius * c1.radius))
+            if (((DP0toDP1 + (o.radius * 2) * (o.radius * 2) + 100 >= CtoDP0 + CtoDP1) && (DP2toDP1 + (o.radius * 2) * (o.radius * 2) + 100 >= DtoDP2 + DtoDP1)) ||
+                  (CentertoDP0 <= o.radius * o.radius) || (CentertoDP1 <= o.radius * o.radius) || (CentertoDP2 <= o.radius * o.radius) || (CentertoDP3 <= o.radius * o.radius))
                 return true;
 
 
             return false;
         }
 
-        public static bool detectCollision(WorldObject w1, Collision_OBB c1, WorldObject w2, Collision_OBB a1)
-        {
-            return false;
-        }
     }
 }

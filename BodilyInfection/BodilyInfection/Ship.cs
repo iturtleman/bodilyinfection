@@ -263,57 +263,7 @@ namespace BodilyInfection
 
                                     This.Game.AudioManager.PlaySoundEffect("ship_explosion", .7f);
 
-
-                                    //break;
                                 }
-                            }
-                            else if (collision.Item2.GetType() == typeof(Background_Collision))
-                            {
-                                /*bool bgCollision = true;*/
-                                CollisionObject boundingBox = collision.Item3;
-                                /*do
-                                {
-                                    bgCollision = false;
-                                */
-                                //move object to new location
-                                Vector2 corner1 = new Vector2(boundingBox.drawPoints[0].Position.X,
-                                                                  boundingBox.drawPoints[0].Position.Y);
-                                Vector2 corner2 = new Vector2(boundingBox.drawPoints[1].Position.X,
-                                                              boundingBox.drawPoints[1].Position.Y);
-                                Vector2 c1toc2 = Vector2.Normalize(corner2 - corner1);
-                                Vector2 normal = new Vector2(-c1toc2.Y, c1toc2.X);
-                                Vector2 animPeg = this.GetAnimation().AnimationPeg;
-                                float radius = ((Collision_BoundingCircle)collision.Item1).radius;
-                                Pos = (radius - Vector2.Dot(normal, (Pos + animPeg - corner1))) * normal + Pos;
-
-                                //test for collisions in new position
-                                /* List<Vector2> gridLocations = collision.Item1.gridLocations(this);
-                                 foreach (Vector2 v in gridLocations)
-                                 {
-                                     List<WorldObject> worldObjectList = new List<WorldObject>();
-                                     try
-                                     {
-                                         worldObjectList = Collision.bucket[v];
-                                     }
-                                     catch { };
-                                     foreach (WorldObject worldObject in worldObjectList)
-                                     {
-                                         if (worldObject.GetType() == typeof(Background))
-                                         {
-                                             List<Tuple<CollisionObject, CollisionObject>> detectedCollisions = Collision.detectCollision(this, worldObject);
-                                             if (detectedCollisions.Count != 0)
-                                             {
-                                                 bgCollision = true;
-                                                 boundingBox = detectedCollisions[0].Item2;
-                                                 break;
-                                             }
-                                         }
-                                     }
-                                     if (bgCollision)
-                                         break;
-                                 }
-                             }
-                             while (bgCollision);*/
                             }
                         }
                     }
