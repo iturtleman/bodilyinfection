@@ -30,7 +30,7 @@ namespace BodilyInfection
                 try
                 {
                     MediaPlayer.IsRepeating = true;
-                    MediaPlayer.Play(backgroundMusic[name]);
+                    //MediaPlayer.Play(backgroundMusic[name]);
                 }
                 catch (InvalidOperationException)
                 {
