@@ -262,7 +262,8 @@ namespace BodilyInfection
         public static bool detectCollision(WorldObject w1, Collision_BoundingCircle c1, WorldObject w2, Collision_BoundingCircle o)
         {
             float ds = Collision.distanceSquared(w1.Pos + c1.centerPointOffset, w2.Pos + o.centerPointOffset);
-            return (ds <= c1.radius * o.radius);
+            float r = c1.radius + o.radius;
+            return (ds <= r*r);
         }
 
         /// <summary>
