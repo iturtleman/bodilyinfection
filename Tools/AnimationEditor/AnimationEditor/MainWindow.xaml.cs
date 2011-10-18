@@ -180,7 +180,6 @@ namespace AnimationEditor
         public void ImportImage(Object sender, ExecutedRoutedEventArgs e)
         {
             OpenFileDialog loadAnimDialog = new OpenFileDialog();
-            loadAnimDialog.InitialDirectory = @"C:\Users\Ivan Lloyd\Dropbox\GameDesign\BodilyInfection\BodilyInfection\BodilyInfectionContent\Sprites";
             loadAnimDialog.Title = "Select image file(s) to load.";
             loadAnimDialog.Multiselect = true;
             loadAnimDialog.Filter = "Image Files(*.BMP;*PNG;*.JPG;*.GIF)|*.BMP;*.PNG;*.JPG;*.GIF|All files (*.*)|*.*";

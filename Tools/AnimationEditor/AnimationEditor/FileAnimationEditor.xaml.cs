@@ -111,6 +111,9 @@ namespace AnimationEditor
                             pow *= 2;
                         }
 
+                        //make sure it tiles across before going down
+                        horizTileCount = pow / max;
+
                         //create Xdoc to store data about frames
                         doc = new XDocument();
                         doc.Add(new XElement("SpriteSheet"));
